@@ -42,11 +42,30 @@ for d in sorted(SRC.glob("site-[0-9][0-9]-*")):
     sites.append(dict(slug=d.name, num=d.name[5:7], brand=brand.strip(), place=place, state=st))
     print(f"synced {d.name}: {brand} — {place}")
 
-cards = "\n".join(f'''      <a class="card" href="{s['slug']}/">
+# ---- Featured (externally hosted) demos: always pinned first, persist across rebuilds ----
+FEATURED = [dict(
+    slug="featured/halston", num="00", brand="The Halston Group", place="Naples, Florida", state="FL",
+    url="https://halston-group-demo.lovable.app", thumb="featured/halston-thumb.jpg",
+    thumb_src="/workspace/demo-site/hero.png")]
+for f in FEATURED:
+    t = DST / f["thumb"]; t.parent.mkdir(parents=True, exist_ok=True)
+    if Path(f["thumb_src"]).exists():
+        im = Image.open(f["thumb_src"]).convert("RGB")
+        w = 1200; h = int(im.height * w / im.width)
+        im = im.resize((w, h), Image.LANCZOS).crop((0, 0, w, min(h, 750)))
+        im.save(t, "JPEG", quality=80, optimize=True, progressive=True)
+    elif not t.exists():
+        print(f"warning: no thumbnail for {f['brand']}")
+featured_cards = "\n".join(f'''      <a class="card featured" href="{f['url']}">
+        <div class="ph"><span class="badge">Featured</span><img src="{f['thumb']}" alt="{html.escape(f['brand'])} website preview" width="1200" height="750"></div>
+        <div class="meta"><span class="no">{f['num']}</span><div><h2>{html.escape(f['brand'])}</h2><p>{html.escape(f['place'])}</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>''' for f in FEATURED)
+cards = featured_cards + "\n" + "\n".join(f'''      <a class="card" href="{s['slug']}/">
         <div class="ph"><img src="{s['slug']}/thumb.jpg" alt="{html.escape(s['brand'])} website preview" loading="lazy" width="1200" height="750"></div>
         <div class="meta"><span class="no">{s['num']}</span><div><h2>{html.escape(s['brand'])}</h2><p>{html.escape(s['place'])}</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
       </a>''' for s in sites)
-n = len(sites)
+n = len(sites) + len(FEATURED)
+all_states = set(s['state'] or s['place'] for s in sites + FEATURED)
 page = f'''<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -80,8 +99,14 @@ main{{max-width:1440px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(16px,5vw
 .meta div{{flex:1;min-width:0}}
 h2{{font:600 24px/1.15 "Cormorant Garamond",serif}}
 .meta p{{color:var(--mute);font-size:14px}}
+.ph{{position:relative}}
+.badge{{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}}
+.card.featured{{border-color:rgba(201,169,106,.6)}}
 .go{{font-size:20px;color:var(--gold);transition:transform .3s}}
-.card:hover .go{{transform:translateX(4px)}}
+.card:hover .ph{{position:relative}}
+.badge{{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}}
+.card.featured{{border-color:rgba(201,169,106,.6)}}
+.go{{transform:translateX(4px)}}
 footer{{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color:var(--mute);font-size:13px;text-align:center}}
 </style></head>
 <body>
@@ -89,7 +114,7 @@ footer{{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color
   <p class="eyebrow">VSH Media · Portfolio</p>
   <h1>Demo Agent<br><em>Websites</em></h1>
   <p class="lede">Bespoke, cinematic websites for top-producing real estate agents — each one designed from scratch for its market, with video heroes, AI concierge and instant valuation built in. Tap any site to explore it live.</p>
-  <div class="stats"><div><b>{n}</b><span>Live demos</span></div><div><b>{len(set(s['state'] or s['place'] for s in sites))}</b><span>States</span></div><div><b>100%</b><span>Mobile-ready</span></div></div>
+  <div class="stats"><div><b>{n}</b><span>Live demos</span></div><div><b>{len(all_states)}</b><span>States</span></div><div><b>100%</b><span>Mobile-ready</span></div></div>
 </header>
 <main><div class="grid">
 {cards}

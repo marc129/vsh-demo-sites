@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VSH Media — Demo Agent Websites</title>
-<meta name="description" content="A collection of 50 demo luxury real estate agent websites by VSH Media.">
+<meta name="description" content="A collection of 51 demo luxury real estate agent websites by VSH Media.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,8 +31,14 @@ main{max-width:1440px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(16px,5vw,
 .meta div{flex:1;min-width:0}
 h2{font:600 24px/1.15 "Cormorant Garamond",serif}
 .meta p{color:var(--mute);font-size:14px}
+.ph{position:relative}
+.badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}
+.card.featured{border-color:rgba(201,169,106,.6)}
 .go{font-size:20px;color:var(--gold);transition:transform .3s}
-.card:hover .go{transform:translateX(4px)}
+.card:hover .ph{position:relative}
+.badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}
+.card.featured{border-color:rgba(201,169,106,.6)}
+.go{transform:translateX(4px)}
 footer{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color:var(--mute);font-size:13px;text-align:center}
 </style></head>
 <body>
@@ -40,9 +46,13 @@ footer{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color:
   <p class="eyebrow">VSH Media · Portfolio</p>
   <h1>Demo Agent<br><em>Websites</em></h1>
   <p class="lede">Bespoke, cinematic websites for top-producing real estate agents — each one designed from scratch for its market, with video heroes, AI concierge and instant valuation built in. Tap any site to explore it live.</p>
-  <div class="stats"><div><b>50</b><span>Live demos</span></div><div><b>39</b><span>States</span></div><div><b>100%</b><span>Mobile-ready</span></div></div>
+  <div class="stats"><div><b>51</b><span>Live demos</span></div><div><b>39</b><span>States</span></div><div><b>100%</b><span>Mobile-ready</span></div></div>
 </header>
 <main><div class="grid">
+      <a class="card featured" href="https://halston-group-demo.lovable.app">
+        <div class="ph"><span class="badge">Featured</span><img src="featured/halston-thumb.jpg" alt="The Halston Group website preview" width="1200" height="750"></div>
+        <div class="meta"><span class="no">00</span><div><h2>The Halston Group</h2><p>Naples, Florida</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
+      </a>
       <a class="card" href="site-01-astor-and-lake/">
         <div class="ph"><img src="site-01-astor-and-lake/thumb.jpg" alt="Astor &amp; Lake website preview" loading="lazy" width="1200" height="750"></div>
         <div class="meta"><span class="no">01</span><div><h2>Astor &amp; Lake</h2><p>Chicago Gold Coast, Illinois</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
