@@ -42,12 +42,22 @@ for d in sorted(SRC.glob("site-[0-9][0-9]-*")):
     sites.append(dict(slug=d.name, num=d.name[5:7], brand=brand.strip(), place=place, state=st))
     print(f"synced {d.name}: {brand} — {place}")
 
-# ---- Featured (externally hosted) demos: always pinned first, persist across rebuilds ----
+# ---- Featured demos: always pinned first, persist across rebuilds ----
+# The Halston Group is a static React build hosted in this repo at site-00-halston-group/.
+# Source: /workspace/halston-src (built with Vite, base=/vsh-demo-sites/site-00-halston-group/).
+# If a fresh build exists in halston-src/dist it is copied in; otherwise the committed folder is kept as-is.
 FEATURED = [dict(
-    slug="featured/halston", num="00", brand="The Halston Group", place="Naples, Florida", state="FL",
-    url="https://halston-group-demo.lovable.app", thumb="featured/halston-thumb.jpg",
-    thumb_src="/workspace/demo-site/hero.png")]
+    slug="site-00-halston-group", num="00", brand="The Halston Group", place="Naples, Florida", state="FL",
+    url="site-00-halston-group/", thumb="site-00-halston-group/thumb.jpg",
+    thumb_src="/workspace/demo-site/hero.png", build_dir="/workspace/halston-src/dist")]
 for f in FEATURED:
+    out = DST / f["slug"]
+    bd = Path(f.get("build_dir", ""))
+    if f.get("build_dir") and (bd / "index.html").exists():
+        if out.exists(): shutil.rmtree(out)
+        shutil.copytree(bd, out)
+    elif not (out / "index.html").exists():
+        print(f"warning: {f['slug']}/index.html missing")
     t = DST / f["thumb"]; t.parent.mkdir(parents=True, exist_ok=True)
     if Path(f["thumb_src"]).exists():
         im = Image.open(f["thumb_src"]).convert("RGB")
@@ -100,13 +110,10 @@ main{{max-width:1440px;margin:0 auto;padding:clamp(28px,5vw,64px) clamp(16px,5vw
 h2{{font:600 24px/1.15 "Cormorant Garamond",serif}}
 .meta p{{color:var(--mute);font-size:14px}}
 .ph{{position:relative}}
-.badge{{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}}
+.badge{{position:absolute;bottom:14px;right:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}}
 .card.featured{{border-color:rgba(201,169,106,.6)}}
 .go{{font-size:20px;color:var(--gold);transition:transform .3s}}
-.card:hover .ph{{position:relative}}
-.badge{{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:#0c0c0d;font:600 11px/1 Inter;letter-spacing:.2em;text-transform:uppercase;padding:8px 12px;border-radius:999px}}
-.card.featured{{border-color:rgba(201,169,106,.6)}}
-.go{{transform:translateX(4px)}}
+.card:hover .go{{transform:translateX(4px)}}
 footer{{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color:var(--mute);font-size:13px;text-align:center}}
 </style></head>
 <body>
