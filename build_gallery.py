@@ -126,7 +126,7 @@ footer{{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color
 <main><div class="grid">
 {cards}
 </div></main>
-<footer>© VSH Media · Demo site.</footer>
+<footer>© VSH Media · Demo site. · <a href="https://studio.vshmedia.com" target="_blank" rel="noopener">Website by VSH Media</a> · <a href="https://www.instagram.com/vshmediacom" target="_blank" rel="noopener">Instagram</a></footer>
 </body></html>
 '''
 (DST / "index.html").write_text(page)
