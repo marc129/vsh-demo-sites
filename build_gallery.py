@@ -126,7 +126,7 @@ footer{{border-top:1px solid var(--line);padding:32px clamp(20px,5vw,64px);color
 <main><div class="grid">
 {cards}
 </div></main>
-<footer>© VSH Media · Demo sites for presentation only — listings, agents and data are fictional.</footer>
+<footer>© VSH Media · Demo site.</footer>
 </body></html>
 '''
 (DST / "index.html").write_text(page)
