@@ -1599,7 +1599,7 @@ body.page-squares .hd-sqn,body.page-tidepool .hd-cf:not(.scrolled) .links,body.p
 .hv5-slope h1{text-transform:none;letter-spacing:-.02em;font-size:clamp(2.8rem,5.4vw,5.6rem);line-height:.98;margin:18px 0 20px;text-shadow:none;transform:rotate(-4deg);transform-origin:left bottom}
 .hv5-slope p{max-width:420px;opacity:.78}.hv5-slope .eyebrow{color:var(--accent)}
 .hv5-slope .grade{position:absolute;z-index:3;left:5vw;top:16vh;display:flex;align-items:baseline;gap:10px;font-family:var(--display)}.hv5-slope .grade b{font-size:clamp(2.4rem,4vw,3.6rem);font-weight:400;color:var(--accent)}.hv5-slope .grade span{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;font-family:inherit;opacity:.6}
-.hv5-slope .grade::after{content:"";position:absolute;left:0;top:110%;width:180px;height:2px;background:var(--dark);transform:rotate(-17deg);transform-origin:left}
+.hv5-slope .grade::after{content:"";position:absolute;z-index:-1;left:0;top:calc(100% + 14px);width:min(180px,100%);height:2px;background:var(--dark);opacity:.85;transform:rotate(-12deg);transform-origin:right center;pointer-events:none}
 .hv5-ko{position:relative}
 .hv5-ko .ko{position:absolute;inset:0;z-index:2;background:var(--light);mix-blend-mode:screen;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hv5-ko .ko span{font-family:var(--display);color:#000;font-size:clamp(5rem,min(12.5vw,30vh),22rem);line-height:.82;letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;transform:translateY(-9vh);animation:k5ko 2.4s var(--ease) both}
