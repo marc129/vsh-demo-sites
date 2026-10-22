@@ -88,3 +88,5 @@ footer{display:flex;justify-content:space-between;padding:40px 56px;border-top:1
  footer{flex-direction:column;gap:8px;padding:30px 24px}
  .copy{text-shadow:0 1px 24px rgba(10,8,6,.8)}
 }
+.credits{margin:0;padding:0 6vw 28px;font-size:11px;letter-spacing:.04em;color:rgba(232,220,198,.62)}
+.credits a{color:inherit;text-decoration:underline;text-underline-offset:2px}
