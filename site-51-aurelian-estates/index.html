@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelian Estates — Private Residences</title>
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div class="veil" id="veil"></div>
+
+<header class="nav">
+  <a class="brand" href="#hero">Aurelian<span>Estates</span></a>
+  <nav><a href="#listings">Residences</a><a href="#explore">The House</a><a href="#agent">Advisory</a><a href="#contact">Enquire</a></nav>
+</header>
+
+<section id="hero" class="stage">
+  <div class="copy hero-copy">
+    <p class="kicker">Casa Lumen &nbsp;/&nbsp; Paradise Valley</p>
+    <h1>A house drawn<br>in <em>light</em> and stone.</h1>
+    <p class="lede">Six bedrooms, a forty-metre horizon pool and four acres of desert garden, offered privately for the first time since its completion in 2021.</p>
+    <a class="link-arrow" href="#listings">View the residence &nbsp;&rarr;</a>
+  </div>
+  <div class="scroll-cue"><span></span>Scroll</div>
+</section>
+
+<section id="pool" class="stage">
+  <div class="copy right">
+    <p class="kicker">I &nbsp; The Water</p>
+    <h2>The pool holds<br>the last hour of day.</h2>
+    <p>Set flush with the terrace and lined in honed basalt, the pool reads as a single dark plane. At dusk it takes on the colour of the sky above Camelback.</p>
+  </div>
+</section>
+
+<section id="explore" class="stage">
+  <div class="copy">
+    <p class="kicker">II &nbsp; The Living Room</p>
+    <h2>Explore<br>the residence.</h2>
+    <p>Select a point in the room.</p>
+    <div class="spot-detail" id="spotDetail"><h3>Travertine hearth</h3><p>A single block of Tivoli travertine, hand-dressed on site.</p></div>
+  </div>
+  <div class="hotspots" id="hotspots"></div>
+</section>
+
+<section id="aerial" class="stage">
+  <div class="copy right">
+    <p class="kicker">III &nbsp; The Land</p>
+    <h2>Four acres,<br>one quiet line.</h2>
+    <p>Native palo verde, ironwood and agave, arranged by the landscape architect so that no neighbour is visible from any room.</p>
+  </div>
+</section>
+
+<main class="content">
+  <section id="listings" class="block">
+    <div class="block-head"><p class="kicker">Selected Residences</p><h2>Currently offered</h2></div>
+    <div class="cards">
+      <article class="card"><div class="frame"><img id="th0" alt=""></div><div class="meta"><h3>Casa Lumen</h3><p>Paradise Valley, AZ</p><p class="price">$18,750,000</p><p class="spec">6 bd &nbsp;·&nbsp; 8 ba &nbsp;·&nbsp; 11,400 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img id="th1" alt=""></div><div class="meta"><h3>The Ridge House</h3><p>Montecito, CA</p><p class="price">$24,200,000</p><p class="spec">5 bd &nbsp;·&nbsp; 7 ba &nbsp;·&nbsp; 9,850 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img id="th2" alt=""></div><div class="meta"><h3>Villa Ostra</h3><p>Key Biscayne, FL</p><p class="price">$31,000,000</p><p class="spec">7 bd &nbsp;·&nbsp; 9 ba &nbsp;·&nbsp; 13,200 sq ft</p></div></article>
+    </div>
+  </section>
+
+  <section class="block stats">
+    <div><span class="num">$2.4B</span><span class="lab">in residences represented since 2009</span></div>
+    <div><span class="num">61%</span><span class="lab">of our sales never reach the open market</span></div>
+    <div><span class="num">38</span><span class="lab">days, median from listing to signed contract</span></div>
+    <div><span class="num">14</span><span class="lab">advisors, each holding fewer than ten listings</span></div>
+  </section>
+
+  <section id="agent" class="block agent">
+    <div class="frame portrait"><img id="th3" alt=""></div>
+    <div class="agent-copy">
+      <p class="kicker">Advisory</p>
+      <h2>Eleanor Vance</h2>
+      <p class="role">Principal Advisor, Southwest Estates</p>
+      <blockquote>“A great house is sold the way it was built: slowly, deliberately, and to someone who understands it.”</blockquote>
+      <p>Eleanor has represented architect-designed homes across Arizona and California for sixteen years. She takes on no more than eight residences at a time.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="block contact">
+    <div><p class="kicker">Private Enquiries</p><h2>Arrange a viewing.</h2><p>Viewings are by appointment and accompanied. We reply within one business day.</p><p class="addr">7135 East Camelback Road<br>Scottsdale, Arizona 85251<br>+1 (480) 555 0142</p></div>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Thank you — we will be in touch.'">
+      <label>Name<input required></label>
+      <label>Email<input type="email" required></label>
+      <label>Residence of interest<select><option>Casa Lumen</option><option>The Ridge House</option><option>Villa Ostra</option></select></label>
+      <label>Message<textarea rows="3"></textarea></label>
+      <button>Request a viewing</button>
+    </form>
+  </section>
+  <footer><span>Aurelian Estates</span><span>A fictional brokerage — design concept by VSH Media</span><span>© 2026</span></footer>
+</main>
+<script type="module" src="main.js"></script>
+</body>
+</html>
