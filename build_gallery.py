@@ -43,12 +43,12 @@ for d in sorted(SRC.glob("site-[0-9][0-9]-*")):
     print(f"synced {d.name}: {brand} — {place}")
 
 # ---- Featured demos: always pinned first, persist across rebuilds ----
-# The Halston Group is a static React build hosted in this repo at site-00-halston-group/.
-# Source: /workspace/halston-src (built with Vite, base=/vsh-demo-sites/site-00-halston-group/).
+# The Halstead Group is a static React build hosted in this repo at site-00-halstead-group/.
+# Source: /workspace/halston-src (built with Vite, base=/vsh-demo-sites/site-00-halstead-group/).
 # If a fresh build exists in halston-src/dist it is copied in; otherwise the committed folder is kept as-is.
 FEATURED = [dict(
-    slug="site-00-halston-group", num="00", brand="The Halston Group", place="Naples, Florida", state="FL",
-    url="site-00-halston-group/", thumb="site-00-halston-group/thumb.jpg",
+    slug="site-00-halstead-group", num="00", brand="The Halstead Group", place="Naples, Florida", state="FL",
+    url="site-00-halstead-group/", thumb="site-00-halstead-group/thumb.jpg",
     thumb_src="/workspace/demo-site/hero.png", build_dir="/workspace/halston-src/dist")]
 for f in FEATURED:
     out = DST / f["slug"]
