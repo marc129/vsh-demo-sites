@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aurelian Estates — Private Residences</title>
 <link rel="stylesheet" href="style.css">
-<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+<link rel="preload" as="image" href="frames/s1/001.webp">
 </head>
 <body>
-<canvas id="scene"></canvas>
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="loadbar" id="loadbar"><i></i></div>
 <div class="veil" id="veil"></div>
 
 <a class="skip" href="#listings">Skip to content</a>
@@ -27,7 +28,7 @@
   <p class="as-note">Demo only. Nothing is sent or stored.</p>
 </aside>
 
-<section id="hero" class="stage">
+<section id="hero" class="stage" data-scene="0">
   <div class="copy hero-copy">
     <p class="kicker">Casa Lumen &nbsp;/&nbsp; Paradise Valley</p>
     <h1>A house drawn<br>in <em>light</em> and stone.</h1>
@@ -40,29 +41,67 @@
   <div class="scroll-cue"><span></span>Scroll</div>
 </section>
 
-<section id="pool" class="stage">
-  <div class="copy right">
-    <p class="kicker">I &nbsp; The Water</p>
-    <h2>The pool holds<br>the last hour of day.</h2>
-    <p>Set flush with the terrace and lined in honed basalt, the pool reads as a single dark plane. At dusk it takes on the colour of the sky above Camelback.</p>
-  </div>
-</section>
-
-<section id="explore" class="stage">
+<section class="stage" data-scene="1" id="explore">
   <div class="copy">
-    <p class="kicker">II &nbsp; The Living Room</p>
-    <h2>Explore<br>the residence.</h2>
-    <p>Select a point in the room.</p>
-    <div class="spot-detail" id="spotDetail"><h3>Travertine hearth</h3><p>A single block of Tivoli travertine, hand-dressed on site.</p></div>
+    <p class="kicker">I &nbsp; Arrival</p>
+    <h2>The door opens<br>onto the light.</h2>
+    <p>A pivoting walnut door, four metres tall, and a gallery of honed limestone that runs straight through to the view.</p>
   </div>
-  <div class="hotspots" id="hotspots"></div>
 </section>
 
-<section id="aerial" class="stage">
+<section class="stage" data-scene="2">
   <div class="copy right">
-    <p class="kicker">III &nbsp; The Land</p>
+    <p class="kicker">II &nbsp; The Living Room</p>
+    <h2>A room built<br>around the horizon.</h2>
+    <p>Floor-to-ceiling glass on three sides, a travertine hearth and a ceiling that disappears into the dusk.</p>
+  </div>
+</section>
+
+<section class="stage" data-scene="3">
+  <div class="copy">
+    <p class="kicker">III &nbsp; The Kitchen</p>
+    <h2>Stone, oak<br>and quiet.</h2>
+    <p>A single slab of Calacatta on the island, joinery in rift-sawn white oak, and a scullery hidden behind it.</p>
+  </div>
+</section>
+
+<section class="stage" data-scene="4">
+  <div class="copy right">
+    <p class="kicker">IV &nbsp; The Dining Room</p>
+    <h2>A table for twelve,<br>a view for all.</h2>
+    <p>Set against the glass so that every chair faces the valley as the light goes.</p>
+  </div>
+</section>
+
+<section class="stage" data-scene="5">
+  <div class="copy">
+    <p class="kicker">V &nbsp; The Primary Suite</p>
+    <h2>Wake to<br>the mountain.</h2>
+    <p>A private wing with its own terrace, dressing rooms and the first light over Camelback.</p>
+  </div>
+</section>
+
+<section class="stage" data-scene="6">
+  <div class="copy right">
+    <p class="kicker">VI &nbsp; The Spa Bath</p>
+    <h2>A bath carved<br>from one stone.</h2>
+    <p>A sculpted stone tub before a single pane of glass, heated floors and a steam room beyond.</p>
+  </div>
+</section>
+
+<section class="stage" data-scene="7">
+  <div class="copy">
+    <p class="kicker">VII &nbsp; The Water</p>
+    <h2>The pool holds<br>the last hour of day.</h2>
+    <p>Set flush with the terrace and lined in honed basalt, the horizon pool reads as a single dark plane.</p>
+  </div>
+</section>
+
+<section class="stage" data-scene="8">
+  <div class="copy right">
+    <p class="kicker">VIII &nbsp; The Land</p>
     <h2>Four acres,<br>one quiet line.</h2>
-    <p>Native palo verde, ironwood and agave, arranged by the landscape architect so that no neighbour is visible from any room.</p>
+    <p>Native palo verde, ironwood and agave, arranged so that no neighbour is visible from any room.</p>
   </div>
 </section>
 
@@ -70,9 +109,9 @@
   <section id="listings" class="block">
     <div class="block-head"><p class="kicker">Selected Residences</p><h2>Currently offered</h2></div>
     <div class="cards">
-      <article class="card"><div class="frame"><img id="th0" alt=""></div><div class="meta"><h3>Casa Lumen</h3><p>Paradise Valley, AZ</p><p class="price">$18,750,000</p><p class="spec">6 bd &nbsp;·&nbsp; 8 ba &nbsp;·&nbsp; 11,400 sq ft</p></div></article>
-      <article class="card"><div class="frame"><img id="th1" alt=""></div><div class="meta"><h3>The Ridge House</h3><p>Montecito, CA</p><p class="price">$24,200,000</p><p class="spec">5 bd &nbsp;·&nbsp; 7 ba &nbsp;·&nbsp; 9,850 sq ft</p></div></article>
-      <article class="card"><div class="frame"><img id="th2" alt=""></div><div class="meta"><h3>Villa Ostra</h3><p>Key Biscayne, FL</p><p class="price">$31,000,000</p><p class="spec">7 bd &nbsp;·&nbsp; 9 ba &nbsp;·&nbsp; 13,200 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img src="img/l1.jpg" loading="lazy" alt=""></div><div class="meta"><h3>Casa Lumen</h3><p>Paradise Valley, AZ</p><p class="price">$18,750,000</p><p class="spec">6 bd &nbsp;·&nbsp; 8 ba &nbsp;·&nbsp; 11,400 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img src="img/l2.jpg" loading="lazy" alt=""></div><div class="meta"><h3>The Ridge House</h3><p>Montecito, CA</p><p class="price">$24,200,000</p><p class="spec">5 bd &nbsp;·&nbsp; 7 ba &nbsp;·&nbsp; 9,850 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img src="img/l3.jpg" loading="lazy" alt=""></div><div class="meta"><h3>Villa Ostra</h3><p>Key Biscayne, FL</p><p class="price">$31,000,000</p><p class="spec">7 bd &nbsp;·&nbsp; 9 ba &nbsp;·&nbsp; 13,200 sq ft</p></div></article>
     </div>
   </section>
 
@@ -95,7 +134,7 @@
   </section>
 
   <section id="agent" class="block agent">
-    <div class="frame portrait"><img id="th3" alt=""></div>
+    <div class="frame portrait"><img src="img/p.jpg" loading="lazy" alt=""></div>
     <div class="agent-copy">
       <p class="kicker">Advisory</p>
       <h2>Eleanor Vance</h2>
@@ -140,9 +179,9 @@
     <div class="fcol"><h4>Office</h4><p>7135 East Camelback Road<br>Scottsdale, Arizona 85251<br><a href="tel:+14805550142">+1 (480) 555 0142</a></p></div>
     <div class="fbase"><span>© 2026 Aurelian Estates · A fictional brokerage. Demo site.</span><a href="https://studio.vshmedia.com" target="_blank" rel="noopener">Website by VSH Media</a></div>
   </footer>
-  <p class="credits">Villa modelled and light-baked in Blender. Textures, furniture, HDRI and plants from <a href="https://polyhaven.com">Poly Haven</a> (CC0).</p>
+  <p class="credits">Interiors and exteriors are photoreal visualisations of a fictional residence.</p>
 </main>
 <script src="ui.js"></script>
-<script type="module" src="main.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
