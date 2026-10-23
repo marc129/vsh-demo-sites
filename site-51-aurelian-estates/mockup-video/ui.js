@@ -1,8 +1,8 @@
 (()=>{const $=s=>document.querySelector(s),nav=$('#nav'),tg=$('#menuTg'),menu=$('#menu');
-const onS=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onS,{passive:true});onS();
+const onS=()=>nav.classList.toggle('solid',(()=>{const h=document.getElementById('hero');return h?h.getBoundingClientRect().bottom<70:scrollY>40})());addEventListener('scroll',onS,{passive:true});onS();
 tg.onclick=()=>{const o=nav.classList.toggle('open');tg.setAttribute('aria-expanded',o);tg.setAttribute('aria-label',o?'Close menu':'Open menu')};
 menu.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.classList.remove('open');tg.setAttribute('aria-expanded',false)});
-const f=$('#search'),inp=$('#searchIn');f.querySelectorAll('.search-tabs button').forEach(b=>b.onclick=()=>{f.querySelectorAll('.search-tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');inp.placeholder=b.dataset.m=='sell'?'Your address for a private estimate':'Neighbourhood, city or address'});
+const f=$('#search'),inp=$('#searchIn');if(f)f.querySelectorAll('.search-tabs button').forEach(b=>b.onclick=()=>{f.querySelectorAll('.search-tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');inp.placeholder=b.dataset.m=='sell'?'Your address for a private estimate':'Neighbourhood, city or address'});
 f.onsubmit=e=>{e.preventDefault();location.hash=f.querySelector('.on').dataset.m=='sell'?'valuation':'listings'};
 const as=$('#assistant'),ask=$('#ask'),log=$('#asLog');const tog=o=>{as.hidden=!o;ask.setAttribute('aria-expanded',o);if(o)$('#asIn').focus()};
 ask.onclick=()=>tog(as.hidden);$('#asClose').onclick=()=>tog(false);
