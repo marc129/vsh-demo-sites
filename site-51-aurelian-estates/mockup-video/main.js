@@ -9,8 +9,7 @@ async function bmp(u){if(window.createImageBitmap){const r=await fetch(u);return
 function nextLo(){if(!rl[0])return 0;if(!rl[N-1])return N-1;for(const st of[16,8,4,2,1])for(let f=0;f<N;f+=st)if(!rl[f])return f;return -1}
 function nextHi(){for(let d=0;d<=WIN;d++){for(const f of[cf+d,cf-d])if(f>=0&&f<N&&!rh[f])return f}return -1}
 function evict(){for(let f=0;f<N;f++)if(hi[f]&&Math.abs(f-cf)>WIN+8){hi[f].close&&hi[f].close();hi[f]=null;rh[f]=0}}
-function pump(){while(inflight<6){let f=nextLo(),t='l';if(f<0||(doneLo>N*.25&&inflight<4&&(t='h',f=nextHi())>=0)){if(t==='l'){t='h';f=nextHi()}}else t='l';
-  if(t==='h'&&f<0){f=nextLo();t='l'}if(f<0)return;inflight++;
+function pump(){while(inflight<6){let t='l',f=nextLo();const h=nextHi();if(h>=0&&(f<0||(doneLo>N*.25&&inflight<4))){t='h';f=h}if(f<0)return;inflight++;
   if(t==='l'){rl[f]=1;img(src(LO,f)).then(b=>{lo[f]=b;dirty=true;doneLo++;bar.style.width=(doneLo/N*100)+'%';if(doneLo>=N)bar.parentNode.classList.add('done')}).catch(()=>{rl[f]=0}).finally(()=>{inflight--;pump()})}
   else{rh[f]=1;bmp(src(HI,f)).then(b=>{if(Math.abs(f-cf)>WIN+8){b.close&&b.close();rh[f]=0;return}hi[f]=b;dirty=true}).catch(()=>{rh[f]=0}).finally(()=>{inflight--;pump()})}}}
 let top=0,span=1,target=0,cur=0,last='';
