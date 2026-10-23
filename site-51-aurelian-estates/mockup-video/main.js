@@ -3,15 +3,15 @@ const tour=document.getElementById('hero'),cv=document.getElementById('scene'),c
 const fade=document.createElement('div');fade.className='endfade';pin.appendChild(fade);
 const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp`;
 const lo=new Array(N),hi=new Array(N),rl=new Uint8Array(N),rh=new Uint8Array(N);
-let doneLo=0,inflight=0,cf=0,dirty=true;
+let doneLo=0,inflight=0,ih=0,cf=0,dirty=true;
 function img(u){const i=new Image();i.decoding='async';i.src=u;return i.decode().then(()=>i)}
 async function bmp(u){if(window.createImageBitmap){const r=await fetch(u);return createImageBitmap(await r.blob())}return img(u)}
 function nextLo(){if(!rl[0])return 0;if(!rl[N-1])return N-1;for(const st of[16,8,4,2,1])for(let f=0;f<N;f+=st)if(!rl[f])return f;return -1}
 function nextHi(){for(let d=0;d<=WIN;d++){for(const f of[cf+d,cf-d])if(f>=0&&f<N&&!rh[f])return f}return -1}
 function evict(){for(let f=0;f<N;f++)if(hi[f]&&Math.abs(f-cf)>WIN+8){hi[f].close&&hi[f].close();hi[f]=null;rh[f]=0}}
-function pump(){while(inflight<6){let t='l',f=nextLo();const h=nextHi();if(h>=0&&(f<0||(doneLo>N*.25&&inflight<4))){t='h';f=h}if(f<0)return;inflight++;
+function pump(){while(inflight<6){let t='l',f=nextLo();const h=nextHi();if(h>=0&&(f<0||(ih<3&&(doneLo>N*.25||Math.abs(h-cf)<=2)))){t='h';f=h}if(f<0)return;inflight++;
   if(t==='l'){rl[f]=1;img(src(LO,f)).then(b=>{lo[f]=b;dirty=true;doneLo++;bar.style.width=(doneLo/N*100)+'%';if(doneLo>=N)bar.parentNode.classList.add('done')}).catch(()=>{rl[f]=0}).finally(()=>{inflight--;pump()})}
-  else{rh[f]=1;bmp(src(HI,f)).then(b=>{if(Math.abs(f-cf)>WIN+8){b.close&&b.close();rh[f]=0;return}hi[f]=b;dirty=true}).catch(()=>{rh[f]=0}).finally(()=>{inflight--;pump()})}}}
+  else{rh[f]=1;ih++;bmp(src(HI,f)).then(b=>{if(Math.abs(f-cf)>WIN+8){b.close&&b.close();rh[f]=0;return}hi[f]=b;dirty=true}).catch(()=>{rh[f]=0}).finally(()=>{inflight--;ih--;pump()})}}}
 let top=0,span=1,target=0,cur=0,last='';
 function measure(){top=tour.getBoundingClientRect().top+scrollY;span=Math.max(1,tour.offsetHeight-innerHeight-innerHeight*.4);onScroll()}
 function onScroll(){const p=Math.min(1,Math.max(0,(scrollY-top)/span)),hp=Math.min(1,Math.max(0,(scrollY-top-span)/(innerHeight*.4)));fade.style.opacity=(hp*hp*(3-2*hp)).toFixed(3);target=p*(N-1);const c=Math.round(target);if(Math.abs(c-cf)>3){cf=c;evict();pump()}}
