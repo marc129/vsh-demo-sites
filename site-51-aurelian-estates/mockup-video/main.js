@@ -1,5 +1,5 @@
 (()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,SET=mob?'m':'d',N=381,CUTS=[0,70,165,240];
-const tour=document.getElementById('hero'),cv=document.getElementById('scene'),cx=cv.getContext('2d',{alpha:false}),bar=document.querySelector('#loadbar i'),cue=document.querySelector('.scroll-cue'),rooms=[...document.querySelectorAll('.room')],pin=tour.querySelector('.pin');
+const tour=document.getElementById('hero'),cv=document.getElementById('scene'),cx=cv.getContext('2d',{alpha:false}),bar=document.querySelector('#loadbar i'),cue=document.querySelector('.scroll-cue')||document.createElement('i'),rooms=[...document.querySelectorAll('.room')],pin=tour.querySelector('.pin');
 const bm=new Array(N),req=new Uint8Array(N),src=f=>`frames/${SET}/${String(f+1).padStart(3,'0')}.webp`;
 let done=0,inflight=0,cf=0,dirty=true;
 async function dec(f){try{if(window.createImageBitmap){const r=await fetch(src(f));return await createImageBitmap(await r.blob())}}catch(e){}const i=new Image();i.src=src(f);await i.decode();return i}
