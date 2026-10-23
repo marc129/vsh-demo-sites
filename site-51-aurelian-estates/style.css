@@ -180,3 +180,13 @@ html.lenis,html.lenis body{height:auto}
 .pin .scroll-cue{display:none}.pin .veil{opacity:.2}}
 @media(max-height:700px) and (min-width:821px){.hero-box .lede{display:none}.hero-box{bottom:28px;padding:24px 28px}}
 @media(max-width:820px){.rooms{top:104px}}
+
+.pin{--x:0}
+#scene{transform-origin:100% 50%;transform:translateX(calc(var(--x)*-4vw)) scale(calc(1 - var(--x)*.42));outline:calc(var(--x)*1px) solid rgba(240,230,215,.35)}
+.pin .hero-box,.pin .rooms{opacity:calc(1 - var(--x)*1.6)}
+.exitpanel{position:absolute;left:0;top:0;bottom:0;width:38vw;background:#14110e;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:0 5vw;opacity:var(--x);transform:translateX(calc((var(--x) - 1)*48px));pointer-events:none;z-index:3}
+.exitpanel p{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#a89a86;margin:0 0 10px}
+.exitpanel a{font-family:inherit;font-size:clamp(20px,2.2vw,32px);color:#f1e9dc;text-decoration:none;line-height:1.2}
+.exitpanel a:hover{color:#d9c3a0}
+@media(max-width:820px){.exitpanel{display:none}#scene{transform:none;outline:0}}
+.pin.ex .exitpanel{pointer-events:auto}
