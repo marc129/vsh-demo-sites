@@ -4,18 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aurelian Estates — Private Residences</title>
+<link rel="stylesheet" href="vendor/lenis.css">
 <link rel="stylesheet" href="style.css">
-<link rel="preload" as="image" href="frames/d/s1/001.webp" media="(min-width:821px)"><link rel="preload" as="image" href="frames/m/s1/001.webp" media="(max-width:820px)">
+<link rel="preload" as="image" href="frames/d/001.webp" media="(min-width:821px)"><link rel="preload" as="image" href="frames/m/001.webp" media="(max-width:820px)">
+
 </head>
 <body>
-<canvas id="scene" aria-hidden="true"></canvas>
-<div class="loadbar" id="loadbar"><i></i></div>
-<div class="veil" id="veil"></div>
 
 <a class="skip" href="#listings">Skip to content</a>
 <header class="nav" id="nav">
   <a class="brand" href="#hero">Aurelian<span>Estates</span></a>
-  <nav id="menu" aria-label="Primary"><a href="#listings">Residences</a><a href="#explore">The House</a><a href="#neighborhoods">Areas</a><a href="#agent">Advisory</a><a href="#contact">Enquire</a></nav>
+  <nav id="menu" aria-label="Primary"><a href="#listings">Residences</a><a href="#hero">The House</a><a href="#neighborhoods">Areas</a><a href="#agent">Advisory</a><a href="#contact">Enquire</a></nav>
   <a class="btn-value" href="#valuation">Value my home</a>
   <button class="ask" id="ask" type="button" aria-label="Ask Aurelian AI" aria-expanded="false"><span class="ask-mark">A</span><span class="ask-t">Ask Aurelian AI</span></button>
   <button class="menu-tg" id="menuTg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
@@ -28,80 +27,23 @@
   <p class="as-note">Demo only. Nothing is sent or stored.</p>
 </aside>
 
-<section id="hero" class="stage" data-scene="0">
-  <div class="copy hero-copy">
-    <p class="kicker">Casa Lumen &nbsp;/&nbsp; Paradise Valley</p>
-    <h1>A house drawn<br>in <em>light</em> and stone.</h1>
-    <p class="lede">Six bedrooms, a horizon pool and four acres of desert garden, offered privately for the first time since its completion in 2021.</p>
-    <form class="search" id="search" role="search">
+<section id="hero" class="tour">
+  <div class="pin">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="veil"></div>
+    <div class="rooms" aria-live="polite"><p class="room" data-i="0"><span>I</span>Arrival</p><p class="room" data-i="1"><span>II</span>The Entry</p><p class="room" data-i="2"><span>III</span>The Living Room</p><p class="room" data-i="3"><span>IV</span>The Kitchen</p><p class="room" data-i="4"><span>V</span>The Dining Room</p><p class="room" data-i="5"><span>VI</span>The Primary Suite</p><p class="room" data-i="6"><span>VII</span>The Spa Bath</p><p class="room" data-i="7"><span>VIII</span>The Pool Terrace</p><p class="room" data-i="8"><span>IX</span>The Land</p></div>
+    <div class="hero-box">
+      <p class="kicker">Casa Lumen &nbsp;/&nbsp; Paradise Valley</p>
+      <h1>A house drawn in <em>light</em> and stone.</h1>
+      <p class="lede">Six bedrooms, a horizon pool and four acres of desert garden, offered privately for the first time.</p>
+      <div class="hero-btns"><a class="b1" href="#listings">View listings</a><a class="b2" href="#valuation">Value my home</a></div>
+      <form class="search" id="search" role="search">
       <div class="search-tabs"><button type="button" class="on" data-m="buy">Search homes</button><button type="button" data-m="sell">Value my home</button></div>
       <div class="search-row"><input aria-label="Search" id="searchIn" placeholder="Neighbourhood, city or address"><select aria-label="Price"><option>Any price</option><option>$5M+</option><option>$10M+</option><option>$20M+</option></select><button type="submit">Search</button></div>
     </form>
-  </div>
-  <div class="scroll-cue"><span></span>Scroll</div>
-</section>
-
-<section class="stage" data-scene="1" id="explore">
-  <div class="copy">
-    <p class="kicker">I &nbsp; Arrival</p>
-    <h2>The door opens<br>onto the light.</h2>
-    <p>A pivoting walnut door, four metres tall, and a gallery of honed limestone that runs straight through to the view.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="2">
-  <div class="copy right">
-    <p class="kicker">II &nbsp; The Living Room</p>
-    <h2>A room built<br>around the horizon.</h2>
-    <p>Floor-to-ceiling glass on three sides, a travertine hearth and a ceiling that disappears into the dusk.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="3">
-  <div class="copy">
-    <p class="kicker">III &nbsp; The Kitchen</p>
-    <h2>Stone, oak<br>and quiet.</h2>
-    <p>A single slab of Calacatta on the island, joinery in rift-sawn white oak, and a scullery hidden behind it.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="4">
-  <div class="copy right">
-    <p class="kicker">IV &nbsp; The Dining Room</p>
-    <h2>A table for twelve,<br>a view for all.</h2>
-    <p>Set against the glass so that every chair faces the valley as the light goes.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="5">
-  <div class="copy">
-    <p class="kicker">V &nbsp; The Primary Suite</p>
-    <h2>Wake to<br>the mountain.</h2>
-    <p>A private wing with its own terrace, dressing rooms and the first light over Camelback.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="6">
-  <div class="copy right">
-    <p class="kicker">VI &nbsp; The Spa Bath</p>
-    <h2>A bath carved<br>from one stone.</h2>
-    <p>A sculpted stone tub before a single pane of glass, heated floors and a steam room beyond.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="7">
-  <div class="copy">
-    <p class="kicker">VII &nbsp; The Water</p>
-    <h2>The pool holds<br>the last hour of day.</h2>
-    <p>Set flush with the terrace and lined in honed basalt, the horizon pool reads as a single dark plane.</p>
-  </div>
-</section>
-
-<section class="stage" data-scene="8">
-  <div class="copy right">
-    <p class="kicker">VIII &nbsp; The Land</p>
-    <h2>Four acres,<br>one quiet line.</h2>
-    <p>Native palo verde, ironwood and agave, arranged so that no neighbour is visible from any room.</p>
+    </div>
+    <div class="scroll-cue"><span></span>Scroll to walk through</div>
+    <div class="loadbar" id="loadbar"><i></i></div>
   </div>
 </section>
 
@@ -182,6 +124,7 @@
   <p class="credits">Interiors and exteriors are photoreal visualisations of a fictional residence.</p>
 </main>
 <script src="ui.js"></script>
+<script src="vendor/lenis.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
