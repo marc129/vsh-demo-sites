@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelian Estates — Video Tour Mockup</title><meta name="robots" content="noindex">
+<link rel="stylesheet" href="../vendor/lenis.css">
+<link rel="stylesheet" href="style.css">
+<link rel="preload" as="image" href="frames/d/001.webp" media="(min-width:821px)"><link rel="preload" as="image" href="frames/m/001.webp" media="(max-width:820px)">
+
+</head>
+<body>
+
+<a class="skip" href="#listings">Skip to content</a>
+<header class="nav" id="nav">
+  <a class="brand" href="#hero">Aurelian<span>Estates</span></a>
+  <nav id="menu" aria-label="Primary"><a href="#listings">Residences</a><a href="#hero">The House</a><a href="#neighborhoods">Areas</a><a href="#agent">Advisory</a><a href="#contact">Enquire</a></nav>
+  <a class="btn-value" href="#valuation">Value my home</a>
+  <button class="ask" id="ask" type="button" aria-label="Ask Aurelian AI" aria-expanded="false"><span class="ask-mark">A</span><span class="ask-t">Ask Aurelian AI</span></button>
+  <button class="menu-tg" id="menuTg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+</header>
+<aside class="assistant" id="assistant" aria-label="Aurelian AI assistant" hidden>
+  <div class="as-head"><b>Aurelian AI</b><button type="button" id="asClose" aria-label="Close assistant">Close</button></div>
+  <div class="as-log" id="asLog"><p class="as-bot">Good evening. I can tell you about Casa Lumen, arrange a viewing or estimate what your home is worth.</p></div>
+  <div class="as-quick"><button type="button">Tell me about Casa Lumen</button><button type="button">Value my home</button><button type="button">Book a viewing</button></div>
+  <form id="asForm"><input id="asIn" aria-label="Ask a question" placeholder="Ask about a residence"><button type="submit">Send</button></form>
+  <p class="as-note">Demo only. Nothing is sent or stored.</p>
+</aside>
+
+<section id="hero" class="tour">
+  <div class="pin">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="veil"></div>
+    <div class="rooms" aria-live="polite"><p class="room" data-i="0"><span>I</span>The Living Room</p><p class="room" data-i="1"><span>II</span>The Kitchen</p><p class="room" data-i="2"><span>III</span>The Dining Room</p><p class="room" data-i="3"><span>IV</span>The Primary Suite</p></div>
+    <div class="hero-box">
+      <p class="kicker">Casa Lumen &nbsp;/&nbsp; Paradise Valley</p>
+      <h1>A house drawn in <em>light</em> and stone.</h1>
+      <p class="lede">Six bedrooms, a horizon pool and four acres of desert garden, offered privately for the first time.</p>
+      <div class="hero-btns"><a class="b1" href="#listings">View listings</a><a class="b2" href="#valuation">Value my home</a></div>
+      <form class="search" id="search" role="search">
+      <div class="search-tabs"><button type="button" class="on" data-m="buy">Search homes</button><button type="button" data-m="sell">Value my home</button></div>
+      <div class="search-row"><input aria-label="Search" id="searchIn" placeholder="Neighbourhood, city or address"><select aria-label="Price"><option>Any price</option><option>$5M+</option><option>$10M+</option><option>$20M+</option></select><button type="submit">Search</button></div>
+    </form>
+    </div>
+    <aside class="exitpanel" aria-label="Continue"><p>Casa Lumen</p><a href="#listings">Residences</a><a href="#valuation">Value my home</a><a href="#neighborhoods">Areas</a><a href="#agent">Advisory</a><a href="#contact">Enquire</a></aside>
+    <div class="scroll-cue"><span></span>Scroll to walk through</div>
+    <div class="loadbar" id="loadbar"><i></i></div>
+  </div>
+</section>
+
+<main class="content">
+  <section id="listings" class="block">
+    <div class="block-head"><p class="kicker">Selected Residences</p><h2>Currently offered</h2></div>
+    <div class="cards">
+      <article class="card"><div class="frame"><img src="../img/l1.jpg" loading="lazy" alt=""></div><div class="meta"><h3>Casa Lumen</h3><p>Paradise Valley, AZ</p><p class="price">$18,750,000</p><p class="spec">6 bd &nbsp;·&nbsp; 8 ba &nbsp;·&nbsp; 11,400 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img src="../img/l2.jpg" loading="lazy" alt=""></div><div class="meta"><h3>The Ridge House</h3><p>Montecito, CA</p><p class="price">$24,200,000</p><p class="spec">5 bd &nbsp;·&nbsp; 7 ba &nbsp;·&nbsp; 9,850 sq ft</p></div></article>
+      <article class="card"><div class="frame"><img src="../img/l3.jpg" loading="lazy" alt=""></div><div class="meta"><h3>Villa Ostra</h3><p>Key Biscayne, FL</p><p class="price">$31,000,000</p><p class="spec">7 bd &nbsp;·&nbsp; 9 ba &nbsp;·&nbsp; 13,200 sq ft</p></div></article>
+    </div>
+  </section>
+
+  <section id="valuation" class="block valuation">
+    <div><p class="kicker">Value my home</p><h2>What is your house worth now?</h2><p>A private estimate from our advisory desk, drawn from closed sales the portals never see. Reviewed by an advisor before it reaches you.</p></div>
+    <form class="vform" onsubmit="event.preventDefault();this.querySelector('button').textContent='Estimate requested. We reply within one day.'">
+      <label>Property address<input required placeholder="6200 N Mockingbird Ln, Paradise Valley"></label>
+      <div class="two"><label>Bedrooms<select><option>3</option><option>4</option><option selected>5</option><option>6+</option></select></label><label>Timing<select><option>Within 3 months</option><option>This year</option><option>Just curious</option></select></label></div>
+      <label>Email<input type="email" required></label>
+      <button>Request my estimate</button>
+      <p class="fnote">Demo only. Nothing is submitted or stored.</p>
+    </form>
+  </section>
+
+  <section class="block stats">
+    <div><span class="num">$2.4B</span><span class="lab">in residences represented since 2009</span></div>
+    <div><span class="num">61%</span><span class="lab">of our sales never reach the open market</span></div>
+    <div><span class="num">38</span><span class="lab">days, median from listing to signed contract</span></div>
+    <div><span class="num">14</span><span class="lab">advisors, each holding fewer than ten listings</span></div>
+  </section>
+
+  <section id="agent" class="block agent">
+    <div class="frame portrait"><img src="../img/p.jpg" loading="lazy" alt=""></div>
+    <div class="agent-copy">
+      <p class="kicker">Advisory</p>
+      <h2>Eleanor Vance</h2>
+      <p class="role">Principal Advisor, Southwest Estates</p>
+      <blockquote>“A great house is sold the way it was built: slowly, deliberately, and to someone who understands it.”</blockquote>
+      <p>Eleanor has represented architect-designed homes across Arizona and California for sixteen years. She takes on no more than eight residences at a time.</p>
+    </div>
+  </section>
+
+  <section class="block quotes">
+    <div class="block-head"><p class="kicker">Clients</p><h2>In their words</h2></div>
+    <div class="qgrid">
+      <figure><blockquote>“Eleanor sold our Camelback house without a single public photograph. Three viewings, one offer, no noise.”</blockquote><figcaption>Daniel &amp; Ruth Ahern <span>Sellers, Paradise Valley</span></figcaption></figure>
+      <figure><blockquote>“She talked us out of two houses before she found the right one. That honesty is rare at this level.”</blockquote><figcaption>Marisol Okafor <span>Buyer, Arcadia</span></figcaption></figure>
+      <figure><blockquote>“The valuation was within one percent of our final sale price. Everything after that was calm.”</blockquote><figcaption>James Whitcombe <span>Seller, Carefree</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section id="neighborhoods" class="block hoods">
+    <div class="block-head"><p class="kicker">Neighbourhoods</p><h2>Where we work</h2></div>
+    <div class="hgrid">
+      <article><h3>Paradise Valley</h3><p>One-acre minimums, Camelback views and the quietest streets in the valley.</p><dl><dt>Median</dt><dd>$4.9M</dd><dt>Days on market</dt><dd>41</dd></dl></article>
+      <article><h3>Arcadia</h3><p>Citrus groves and mid-century ranches under the shoulder of the mountain.</p><dl><dt>Median</dt><dd>$2.6M</dd><dt>Days on market</dt><dd>29</dd></dl></article>
+      <article><h3>Desert Mountain</h3><p>Gated golf estates at 3,000 feet, cooler evenings and long sightlines.</p><dl><dt>Median</dt><dd>$3.8M</dd><dt>Days on market</dt><dd>52</dd></dl></article>
+      <article><h3>Carefree</h3><p>Boulder country, dark skies and houses set low into the granite.</p><dl><dt>Median</dt><dd>$2.1M</dd><dt>Days on market</dt><dd>47</dd></dl></article>
+    </div>
+  </section>
+
+  <section id="contact" class="block contact">
+    <div><p class="kicker">Private Enquiries</p><h2>Arrange a viewing.</h2><p>Viewings are by appointment and accompanied. We reply within one business day.</p><p class="addr">7135 East Camelback Road<br>Scottsdale, Arizona 85251<br>+1 (480) 555 0142</p></div>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Thank you — we will be in touch.'">
+      <label>Name<input required></label>
+      <label>Email<input type="email" required></label>
+      <label>Residence of interest<select><option>Casa Lumen</option><option>The Ridge House</option><option>Villa Ostra</option></select></label>
+      <label>Message<textarea rows="3"></textarea></label>
+      <button>Request a viewing</button>
+    </form>
+  </section>
+  <footer class="foot">
+    <div class="fcol"><a class="brand" href="#hero">Aurelian<span>Estates</span></a><p>Architect-designed homes across Arizona and California, represented privately since 2009.</p></div>
+    <div class="fcol"><h4>Explore</h4><a href="#listings">Residences</a><a href="#valuation">Value my home</a><a href="#neighborhoods">Neighbourhoods</a><a href="#agent">Advisory</a></div>
+    <div class="fcol"><h4>Office</h4><p>7135 East Camelback Road<br>Scottsdale, Arizona 85251<br><a href="tel:+14805550142">+1 (480) 555 0142</a></p></div>
+    <div class="fbase"><span>© 2026 Aurelian Estates · A fictional brokerage. Demo site.</span><a href="https://studio.vshmedia.com" target="_blank" rel="noopener">Website by VSH Media</a></div>
+  </footer>
+  <p class="credits">Interiors and exteriors are photoreal visualisations of a fictional residence.</p>
+</main>
+<script src="ui.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
