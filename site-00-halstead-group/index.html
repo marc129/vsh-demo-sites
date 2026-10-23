@@ -54,7 +54,14 @@
 .vsh-ie h2{font-size:clamp(1.7rem,7.4vw,2.2rem)}
 .vsh-ie button{width:100%}
 }
-</style></head>
+</style><style id="vsh-hero-fit">
+/* hero grows to fit content: never clip text */
+main>section:first-of-type,body #root section:first-of-type.h-screen{height:auto!important;min-height:100vh;min-height:100svh;overflow:hidden}
+#root section:first-of-type.h-screen>div.flex-1{padding-top:132px;padding-bottom:40px}
+@media (min-width:1024px){#root section:first-of-type.h-screen>div.flex-1{padding-top:150px}}
+#root section:first-of-type.h-screen>div.grid{flex-shrink:0}
+</style>
+</head>
 <body><div id="root"></div><style id="vsh-fx-css">#vsh-fx-halstead{--accent:#3B6FD8;--dark:#0E1B26;--light:#F6F4EF;--ink:#0E1B26;--display:"Jost",sans-serif;--sans:"Inter",sans-serif;--ease:cubic-bezier(.2,.7,.2,1);--line:rgba(14,27,38,.14);background:var(--light);color:var(--ink);font-family:var(--sans)}
 #vsh-fx-halstead .sec{padding:clamp(72px,9vw,120px) 0}#vsh-fx-halstead .wrap{width:min(1200px,100% - 48px);margin:0 auto}
 #vsh-fx-halstead .idx{display:flex;align-items:center;gap:14px;font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:22px}
