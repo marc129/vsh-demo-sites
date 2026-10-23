@@ -145,3 +145,5 @@ figcaption{font-size:12px;letter-spacing:.2em;text-transform:uppercase}figcaptio
 .copy{background:rgba(16,13,10,.46);padding:30px 34px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 .copy p{color:#efe8dc}
 @media(max-width:760px){.copy{padding:22px 20px;margin-left:-4px;margin-right:-4px}}
+.scroll-cue{color:#f3ede3;font-size:11px;font-weight:400;text-shadow:0 1px 3px rgba(10,8,6,.9);background:rgba(16,13,10,.55);padding:10px 16px;bottom:8vh}
+.scroll-cue span{background:rgba(243,237,227,.35)}
