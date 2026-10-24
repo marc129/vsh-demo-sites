@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aurelian Estates — Private Residences</title>
 <link rel="stylesheet" href="vendor/lenis.css">
-<link rel="stylesheet" href="style.css?v=20261024b">
+<link rel="stylesheet" href="style.css?v=20261024full">
 <link rel="preload" as="image" href="frames/d/001.webp" media="(min-width:821px)"><link rel="preload" as="image" href="frames/m/001.webp" media="(max-width:820px)">
 
 </head>
@@ -136,35 +136,53 @@
       <button type="button" class="ld-back" id="ldBack">← Back to residences</button>
       <button type="button" class="ld-close" id="ldClose" aria-label="Close">Close</button>
     </div>
-    <div class="ld-hero"><img id="ldImg" src="" alt="" decoding="async"></div>
+    <div class="ld-gallery" id="ldGallery"></div>
+    <div class="ld-thumbs" id="ldThumbs" hidden></div>
     <div class="ld-main">
-      <p class="kicker" id="ldStatus">Offered privately</p>
-      <h1 id="ldTitle"></h1>
-      <p class="ld-loc" id="ldLoc"></p>
-      <p class="ld-price" id="ldPrice"></p>
-      <p class="ld-spec" id="ldSpec"></p>
-      <div class="ld-gate-wrap" id="ldGateWrap">
-        <div class="ld-private" id="ldPrivate">
-          <p class="ld-desc" id="ldDesc"></p>
-          <dl class="ld-facts" id="ldFacts"></dl>
-        </div>
-        <div class="ld-gate" id="ldGate" hidden>
-          <p class="ld-gate-kicker">Private details</p>
-          <p class="ld-gate-line">Full address, floor notes and advisory remarks are held for qualified enquiries.</p>
-          <p class="ld-gate-hint">Enquire to request the full address and advisory notes, or open the sample residence marked above.</p>
+      <div class="ld-col">
+        <p class="kicker" id="ldStatus">Offered privately</p>
+        <h1 id="ldTitle"></h1>
+        <p class="ld-loc" id="ldLoc"></p>
+        <p class="ld-price" id="ldPrice"></p>
+        <div class="ld-keyfacts" id="ldKeys"></div>
+        <div class="ld-gate-wrap" id="ldGateWrap">
+          <div class="ld-private" id="ldPrivate">
+            <section class="ld-sec">
+              <h2>About this home</h2>
+              <div id="ldDesc"></div>
+            </section>
+            <section class="ld-sec">
+              <h2>Features &amp; amenities</h2>
+              <ul class="ld-amenities" id="ldAmen"></ul>
+            </section>
+            <section class="ld-sec">
+              <h2>Property details</h2>
+              <table class="ld-table"><tbody id="ldTable"></tbody></table>
+            </section>
+            <section class="ld-sec">
+              <h2>Neighborhood</h2>
+              <div class="ld-map" id="ldMap"></div>
+            </section>
+          </div>
+          <div class="ld-gate" id="ldGate" hidden>
+            <p class="ld-gate-kicker">Private details</p>
+            <p class="ld-gate-line">Full address, gallery notes and advisory remarks are held for qualified enquiries.</p>
+            <p class="ld-gate-hint">Enquire to request the private file, or open Casa Lumen (marked Open sample) to preview a complete listing.</p>
+          </div>
         </div>
       </div>
-      <div class="ld-actions">
-        <a class="ld-enquire" id="ldEnquire" href="#contact">Enquire about this residence</a>
+      <aside class="ld-aside">
+        <div class="ld-agent" id="ldAgent"></div>
+        <a class="ld-enquire" id="ldEnquire" href="#contact">Request a private tour</a>
         <button type="button" class="ld-home" id="ldHome">Back to residences</button>
-      </div>
+      </aside>
     </div>
   </div>
 </div>
 
 </main>
-<script src="ui.js?v=20261024b"></script>
+<script src="ui.js?v=20261024full"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="main.js?v=20261024b"></script>
+<script src="main.js?v=20261024full"></script>
 </body>
 </html>
