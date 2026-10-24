@@ -1,11 +1,12 @@
-(()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI=mob?'m':'d',LO=mob?'ml':'dl',N=457,WIN=mob?100:48;
+(()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI='d',LO='dl',N=457,WIN=mob?120:48,V=6;
 const tour=document.getElementById('hero'),cv=document.getElementById('scene'),cx=cv.getContext('2d',{alpha:false}),bar=document.querySelector('#loadbar i'),pin=tour.querySelector('.pin');
 const fade=document.createElement('div');fade.className='endfade';pin.appendChild(fade);
-const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp?v=v5`;
+const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp?v=v${V}`;
 const lo=new Array(N),hi=new Array(N),rl=new Uint8Array(N),rh=new Uint8Array(N);
-let doneLo=0,doneHi=0,inflight=0,ih=0,cf=0,dirty=true;
+let doneLo=0,doneHi=0,inflight=0,ih=0,cf=0,dirty=true,pan=null;
 function img(u){const i=new Image();i.decoding='async';i.src=u;return i.decode().then(()=>i)}
 async function bmp(u){if(window.createImageBitmap){try{const r=await fetch(u,{cache:'force-cache'});return createImageBitmap(await r.blob())}catch(e){}}return img(u)}
+fetch(`pan.json?v=v${V}`).then(r=>r.json()).then(j=>{pan=j;dirty=true}).catch(()=>{});
 function nextLo(){if(!rl[0])return 0;if(!rl[N-1])return N-1;for(const st of[16,8,4,2,1])for(let f=0;f<N;f+=st)if(!rl[f])return f;return -1}
 function nextHi(){for(let d=0;d<=WIN;d++){for(const f of[cf+d,cf-d])if(f>=0&&f<N&&!rh[f])return f}return -1}
 function evict(){for(let f=0;f<N;f++)if(hi[f]&&Math.abs(f-cf)>WIN+16){hi[f].close&&hi[f].close();hi[f]=null;rh[f]=0}}
@@ -14,10 +15,10 @@ function pump(){
   while(inflight<maxIn){
     let t='l',f=nextLo();
     const h=nextHi();
-    // Prefer HQ aggressively: always if near scrubber, or after a little LO is in
-    const near=h>=0&&Math.abs(h-cf)<=(mob?8:4);
-    const ready=doneLo>N*.12||doneHi>12;
-    if(h>=0&&(f<0||near||(ih<(mob?6:5)&&ready)||(mob&&ih<4))){t='h';f=h}
+    const near=h>=0&&Math.abs(h-cf)<=(mob?12:4);
+    const ready=doneLo>N*.08||doneHi>8;
+    // HQ-first near scrubber; never starve HQ once LO has a toehold
+    if(h>=0&&(f<0||near||(ih<(mob?7:5)&&ready)||(mob&&ih<5))){t='h';f=h}
     if(f<0)return;
     inflight++;
     if(t==='l'){
@@ -35,20 +36,45 @@ function onScroll(){const p=Math.min(1,Math.max(0,(scrollY-top)/span)),hp=Math.m
 function fit(){const k=Math.min(devicePixelRatio||1,3),r=cv.getBoundingClientRect();cv.width=Math.round(r.width*k);cv.height=Math.round(r.height*k);cx.imageSmoothingEnabled=true;cx.imageSmoothingQuality='high';window.__cv=[cv.width,cv.height,r.width,r.height,k];dirty=true;measure()}
 const get=f=>hi[f]||lo[f];
 function near(f){for(let d=1;d<N;d++){if(get(f-d))return get(f-d);if(get(f+d))return get(f+d)}return null}
-function draw(i,a){const W=cv.width,H=cv.height,iw=i.width||i.naturalWidth,ih=i.height||i.naturalHeight,k=Math.max(W/iw,H/ih),w=iw*k,h=ih*k;cx.globalAlpha=a;cx.drawImage(i,(W-w)/2,(H-h)/2,w,h)}
+function womanCx(f,iw,pw){
+  if(pan&&pan.cx&&pan.cx[f]!=null)return pan.cx[f]*(iw/(pan.W||720));
+  return iw/2;
+}
+function draw(i,a,f){
+  const W=cv.width,H=cv.height,iw=i.width||i.naturalWidth,ihh=i.height||i.naturalHeight;
+  cx.globalAlpha=a;
+  if(!mob){
+    const k=Math.max(W/iw,H/ihh),w=iw*k,h=ihh*k;
+    cx.drawImage(i,(W-w)/2,(H-h)/2,w,h);
+    return;
+  }
+  // Soft letterbox + horizontal pan: show a wide window (~405–540 of 720)
+  // so she stays in frame without aggressive cover crop.
+  const fill=.56;
+  let VW=Math.round(ihh*W/(fill*H));
+  VW=Math.max(405,Math.min(540,VW));
+  VW=Math.min(VW,iw);
+  const wc=womanCx(f|0,iw,pan&&pan.W);
+  let sx=Math.round(wc-VW/2);
+  sx=Math.max(0,Math.min(iw-VW,sx));
+  const dh=ihh*(W/VW),dy=(H-dh)/2;
+  cx.fillStyle='#14110e';
+  cx.fillRect(0,0,W,H);
+  cx.drawImage(i,sx,0,VW,ihh,0,dy,W,dh);
+}
 function tick(){const d=target-cur;cur=Math.abs(d)<.008?target:cur+d*.28;
- const f0=Math.floor(cur),fr=cur-f0,A=get(f0),B=get(Math.min(N-1,f0+1)),key=f0+'|'+fr.toFixed(2)+'|'+(A===hi[f0]);if(key===last&&!dirty)return;last=key;dirty=false;
- window.__lastFrame=A?f0:-1;window.__hq=!!hi[f0];if(A){draw(A,1);if(B&&fr>.02)draw(B,fr)}else{const n=near(f0);if(n)draw(n,1)}cx.globalAlpha=1}
+ const f0=Math.floor(cur),fr=cur-f0,A=get(f0),B=get(Math.min(N-1,f0+1)),key=f0+'|'+fr.toFixed(2)+'|'+(A===hi[f0])+'|'+(pan?1:0);if(key===last&&!dirty)return;last=key;dirty=false;
+ window.__lastFrame=A?f0:-1;window.__hq=!!hi[f0];
+ if(A){draw(A,1,f0);if(!mob&&B&&fr>.02)draw(B,fr,Math.min(N-1,f0+1))}
+ else{const n=near(f0);if(n)draw(n,1,f0)}
+ cx.globalAlpha=1}
 
 let lenis=null;if(window.Lenis&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lenis=new Lenis({lerp:.12,smoothWheel:true,anchors:true,wheelMultiplier:0.9});window.lenis=lenis}
 function raf(t){if(lenis)lenis.raf(t);tick();requestAnimationFrame(raf)}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',fit,{passive:true});addEventListener('load',measure);
 if(window.ResizeObserver){new ResizeObserver(measure).observe(document.body);new ResizeObserver(fit).observe(cv)}
 const io=window.IntersectionObserver&&new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});const it=document.getElementById('intro');if(io&&it){it.classList.add('rise');io.observe(it)}
-// Kick HQ for the opening stretch immediately so scrub starts sharp
 fit();cur=target;
-for(let f=0;f<Math.min(N,mob?36:24);f++){if(!rh[f]){/* pump will pick */}}
 pump();
-// Also schedule idle HQ fill ahead of scrub
 if(window.requestIdleCallback){const idleFill=d=>{pump();if(doneHi<N*.5)requestIdleCallback(idleFill,{timeout:800})};requestIdleCallback(idleFill,{timeout:400})}
 requestAnimationFrame(raf);})();
