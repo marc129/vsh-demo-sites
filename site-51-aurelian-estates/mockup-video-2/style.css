@@ -227,7 +227,7 @@ body.intour .ask{opacity:0;pointer-events:none}
 .intro.rise.in .intro-in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.intro.rise .intro-in{opacity:1;transform:none;transition:none}}
 
-/* FULLBLEED-FS8 */
+/* FULLBLEED-CUT1 */
 html,body{background:#14110e;margin:0}
 #hero.tour .pin{position:sticky;top:0;height:100vh;height:100dvh;height:100svh;width:100%;overflow:hidden;background:#14110e}
 #hero.tour .pin #scene,

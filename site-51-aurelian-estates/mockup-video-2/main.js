@@ -1,4 +1,4 @@
-(()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI=mob?'m':'d',LO=mob?'ml':'dl',N=457,WIN=mob?120:48,V='20261024fs8';
+(()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI=mob?'m':'d',LO=mob?'ml':'dl',N=322,WIN=mob?120:48,V='20261024cut1';
 const tour=document.getElementById('hero'),cv=document.getElementById('scene'),cx=cv.getContext('2d',{alpha:false}),bar=document.querySelector('#loadbar i'),pin=tour.querySelector('.pin');
 const fade=document.createElement('div');fade.className='endfade';pin.appendChild(fade);
 const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp?v=${V}`;
