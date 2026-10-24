@@ -205,8 +205,8 @@ html.lenis,html.lenis body{height:auto}
 .room{white-space:normal;line-height:1.5}
 @media(max-width:820px){.hero-box.hero-min{left:20px;right:20px;bottom:calc(28px + env(safe-area-inset-bottom));width:auto}
 .rooms{top:calc(env(safe-area-inset-top) + 92px)!important;left:20px;right:20px;width:auto}}
-#hero.tour{height:600vh;padding:0}
-@media(max-width:820px){#hero.tour{height:480vh}}
+#hero.tour{height:720vh;padding:0}
+@media(max-width:820px){#hero.tour{height:600vh}}
 
 /* raw full-bleed video */
 .pin,.pin #scene{border:0!important;border-radius:0!important;outline:0!important;box-shadow:none!important;transform:none!important;margin:0!important;padding:0!important}
@@ -220,8 +220,6 @@ body.intour .ask{opacity:0;pointer-events:none}
 .intro h1{font:300 clamp(36px,4.4vw,64px)/1.08 Cormorant,serif;margin:14px 0 18px;overflow-wrap:break-word}
 .intro .lede{color:#d9cfc0;max-width:520px;margin:0 0 30px;font-size:17px;line-height:1.6}
 @media(max-width:820px){.intro{padding:72px 20px 64px}.intro h1{font-size:clamp(30px,9vw,42px)}.intro .lede{font-size:15px}}
-#hero.tour{height:640vh}
-@media(max-width:820px){#hero.tour{height:520vh}}
 
 .endfade{position:absolute;inset:0;background:#14110e;opacity:0;pointer-events:none;z-index:2}
 .intro{background:#14110e;margin-top:-1px}
