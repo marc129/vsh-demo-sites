@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aurelian Estates — Private Residences</title>
 <link rel="stylesheet" href="vendor/lenis.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20261023e">
 <link rel="preload" as="image" href="frames/d/001.webp" media="(min-width:821px)"><link rel="preload" as="image" href="frames/m/001.webp" media="(max-width:820px)">
 
 </head>
@@ -51,10 +51,20 @@
 <main class="content">
   <section id="listings" class="block">
     <div class="block-head"><p class="kicker">Selected Residences</p><h2>Currently offered</h2></div>
-    <div class="cards">
-      <article class="card"><div class="frame"><img src="img/l1.jpg" loading="lazy" alt=""></div><div class="meta"><h3>Casa Lumen</h3><p>Paradise Valley, AZ</p><p class="price">$18,750,000</p><p class="spec">6 bd &nbsp;·&nbsp; 8 ba &nbsp;·&nbsp; 11,400 sq ft</p></div></article>
-      <article class="card"><div class="frame"><img src="img/l2.jpg" loading="lazy" alt=""></div><div class="meta"><h3>The Ridge House</h3><p>Montecito, CA</p><p class="price">$24,200,000</p><p class="spec">5 bd &nbsp;·&nbsp; 7 ba &nbsp;·&nbsp; 9,850 sq ft</p></div></article>
-      <article class="card"><div class="frame"><img src="img/l3.jpg" loading="lazy" alt=""></div><div class="meta"><h3>Villa Ostra</h3><p>Key Biscayne, FL</p><p class="price">$31,000,000</p><p class="spec">7 bd &nbsp;·&nbsp; 9 ba &nbsp;·&nbsp; 13,200 sq ft</p></div></article>
+    <p class="list-hint">Open <a href="#listing-casa-lumen">Casa Lumen</a> to preview a full listing. Other residences show a private teaser.</p>
+    <div class="cards" id="listingCards">
+      <article class="card" id="listing-casa-lumen" data-listing="casa-lumen" data-unlocked="true" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="listingDetail">
+        <div class="frame"><img src="img/l1.jpg" loading="lazy" alt="Casa Lumen exterior"></div>
+        <div class="meta"><h3>Casa Lumen</h3><p class="sample-cue">Open sample</p><p>Paradise Valley, AZ</p><p class="price">$18,750,000</p><p class="spec">6 bd &nbsp;·&nbsp; 8 ba &nbsp;·&nbsp; 11,400 sq ft</p><span class="card-cta">View full residence</span></div>
+      </article>
+      <article class="card" data-listing="ridge-house" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="listingDetail">
+        <div class="frame"><img src="img/l2.jpg" loading="lazy" alt="The Ridge House exterior"></div>
+        <div class="meta"><h3>The Ridge House</h3><p>Montecito, CA</p><p class="price">$24,200,000</p><p class="spec">5 bd &nbsp;·&nbsp; 7 ba &nbsp;·&nbsp; 9,850 sq ft</p><span class="card-cta">View residence</span></div>
+      </article>
+      <article class="card" data-listing="villa-ostra" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="listingDetail">
+        <div class="frame"><img src="img/l3.jpg" loading="lazy" alt="Villa Ostra exterior"></div>
+        <div class="meta"><h3>Villa Ostra</h3><p>Key Biscayne, FL</p><p class="price">$31,000,000</p><p class="spec">7 bd &nbsp;·&nbsp; 9 ba &nbsp;·&nbsp; 13,200 sq ft</p><span class="card-cta">View residence</span></div>
+      </article>
     </div>
   </section>
 
@@ -123,9 +133,40 @@
     <div class="fbase"><span>© 2026 Aurelian Estates · A fictional brokerage. Demo site.</span><a href="https://studio.vshmedia.com" target="_blank" rel="noopener">Website by VSH Media</a></div>
   </footer>
   <p class="credits">Interiors and exteriors are photoreal visualisations of a fictional residence.</p>
+
+<div class="ld-root" id="listingDetail" role="dialog" aria-modal="true" aria-labelledby="ldTitle" hidden>
+  <button type="button" class="ld-scrim" id="ldScrim" aria-label="Close residence details"></button>
+  <div class="ld-panel" id="ldPanel">
+    <button type="button" class="ld-close" id="ldClose" aria-label="Close">Close</button>
+    <div class="ld-media"><img id="ldImg" src="" alt=""></div>
+    <div class="ld-body">
+      <p class="kicker" id="ldStatus">Offered privately</p>
+      <h2 id="ldTitle"></h2>
+      <p class="ld-loc" id="ldLoc"></p>
+      <p class="ld-price" id="ldPrice"></p>
+      <p class="ld-spec" id="ldSpec"></p>
+      <div class="ld-gate-wrap" id="ldGateWrap">
+        <div class="ld-private" id="ldPrivate">
+          <p class="ld-desc" id="ldDesc"></p>
+          <dl class="ld-facts" id="ldFacts"></dl>
+        </div>
+        <div class="ld-gate" id="ldGate" hidden>
+          <p class="ld-gate-kicker">Private details</p>
+          <p class="ld-gate-line">Full address, floor notes and advisory remarks are held for qualified enquiries.</p>
+          <p class="ld-gate-hint">Enquire to request the full address and advisory notes, or open the sample residence marked above.</p>
+        </div>
+      </div>
+      <div class="ld-actions">
+        <a class="ld-enquire" id="ldEnquire" href="#contact">Enquire about this residence</a>
+        <button type="button" class="ld-back" id="ldBack">Back to residences</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
-<script src="ui.js"></script>
+<script src="ui.js?v=20261023e"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="main.js"></script>
+<script src="main.js?v=20261023e"></script>
 </body>
 </html>
