@@ -58,7 +58,7 @@ const LISTINGS={
   }
 };
 
-const root=$('#listingDetail'),panel=$('#ldPanel'),closeBtn=$('#ldClose'),scrim=$('#ldScrim'),backBtn=$('#ldBack');
+const root=$('#listingDetail'),panel=$('#ldPanel'),closeBtn=$('#ldClose'),backBtn=$('#ldBack'),homeBtn=$('#ldHome');
 let lastFocus=null;
 
 const fill=d=>{
@@ -87,24 +87,35 @@ const fill=d=>{
 
 const focusables=()=>[...panel.querySelectorAll('a[href],button:not([disabled]),textarea,input,select,[tabindex]:not([tabindex="-1"])')].filter(el=>el.offsetParent!==null||el===closeBtn);
 
+let pushLock=false;
 const open=id=>{
   const d=LISTINGS[id];if(!d)return;
   lastFocus=document.activeElement;
   fill(d);
   root.hidden=false;
+  root.scrollTop=0;
   document.body.classList.add('ld-open');
   if(window.lenis)try{window.lenis.stop()}catch(e){}
-  closeBtn.focus();
+  backBtn.focus();
+  pushLock=true;
+  try{history.pushState({ld:id},'',location.pathname+location.search+'#listing/'+id)}catch(e){}
+  pushLock=false;
 };
 
-const close=()=>{
+const close=(fromPop)=>{
   if(root.hidden)return;
   root.hidden=true;
   document.body.classList.remove('ld-open');
   if(window.lenis)try{window.lenis.start()}catch(e){}
   if(lastFocus&&typeof lastFocus.focus==='function')lastFocus.focus();
   lastFocus=null;
+  if(!fromPop){
+    pushLock=true;
+    try{if(location.hash.indexOf('#listing/')===0)history.pushState(null,'',location.pathname+location.search)}catch(e){}
+    pushLock=false;
+  }
 };
+addEventListener('popstate',()=>{if(!pushLock&&!root.hidden)close(true)});
 
 document.querySelectorAll('.card[data-listing]').forEach(card=>{
   const go=()=>open(card.dataset.listing);
@@ -114,7 +125,7 @@ document.querySelectorAll('.card[data-listing]').forEach(card=>{
 const hint=document.querySelector('.list-hint a[href="#listing-casa-lumen"]');
 if(hint)hint.addEventListener('click',e=>{e.preventDefault();const c=document.getElementById('listing-casa-lumen');if(c){c.scrollIntoView({block:'center',behavior:'smooth'});setTimeout(()=>open('casa-lumen'),350)}});
 
-closeBtn.onclick=close;scrim.onclick=close;backBtn.onclick=close;
+closeBtn.onclick=()=>close(false);backBtn.onclick=()=>close(false);if(homeBtn)homeBtn.onclick=()=>close(false);
 
 panel.addEventListener('keydown',e=>{
   if(e.key!=='Tab'||root.hidden)return;
@@ -126,7 +137,7 @@ panel.addEventListener('keydown',e=>{
 
 addEventListener('keydown',e=>{
   if(e.key==='Escape'){
-    if(!root.hidden){close();return}
+    if(!root.hidden){close(false);return}
     tog(false);nav.classList.remove('open')
   }
 });

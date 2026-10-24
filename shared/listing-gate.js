@@ -1,4 +1,4 @@
-/*! VSH Media — listing detail gate (one unlocked sample per demo) */
+/*! VSH Media — Zillow-style listing detail (full page, correct photo aspect; one unlocked sample) */
 (function () {
   if (window.__vshListingGate) return;
   window.__vshListingGate = true;
@@ -8,42 +8,50 @@
     var s = document.createElement('style');
     s.id = 'vsh-lg-css';
     s.textContent = [
-      '.vsh-lg-hint{margin:0 0 1.25rem;font-size:14px;line-height:1.6;opacity:.78;max-width:52ch}',
-      '.vsh-lg-hint a{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;border-bottom-color:color-mix(in srgb,currentColor 55%,transparent)}',
+      '.vsh-lg-hint{margin:0 0 1.25rem;font-size:14px;line-height:1.6;opacity:.72;max-width:52ch}',
+      '.vsh-lg-hint a{color:inherit;text-decoration:none;border-bottom:1px solid color-mix(in srgb,currentColor 55%,transparent)}',
       '.vsh-lg-hint a:hover{opacity:1}',
-      '.vsh-lg-cue{display:block;margin:.35rem 0 .15rem;font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.85}',
-      'article[data-lst].vsh-lg-sample{cursor:pointer}',
-      'article[data-lst]{cursor:pointer}',
-      '.vsh-lg-root{position:fixed;inset:0;z-index:99990;display:flex;align-items:stretch;justify-content:center}',
+      '.vsh-lg-cue{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.75;margin:.35rem 0 .2rem;font-weight:400}',
+      'article[data-lst].vsh-lg-sample,article.lst.vsh-lg-sample{cursor:pointer}',
+      '.vsh-lg-root{position:fixed;inset:0;z-index:10050;display:block;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--panel,var(--bg,#0f0e0c));color:inherit}',
       '.vsh-lg-root[hidden]{display:none!important}',
-      '.vsh-lg-scrim{position:absolute;inset:0;border:0;padding:0;margin:0;width:100%;height:100%;background:rgba(10,8,6,.72);cursor:pointer}',
-      '.vsh-lg-panel{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);width:min(1080px,calc(100vw - 48px));max-height:min(860px,calc(100vh - 48px));margin:auto;background:var(--panel,var(--bg,#14110e));color:inherit;border:1px solid color-mix(in srgb,currentColor 22%,transparent);overflow:auto}',
-      '.vsh-lg-close{position:absolute;top:16px;right:20px;z-index:2;background:transparent;border:0;color:inherit;opacity:.7;padding:10px 0;font:inherit;font-size:11px;letter-spacing:.28em;text-transform:uppercase;cursor:pointer}',
-      '.vsh-lg-close:hover{opacity:1}',
-      '.vsh-lg-media{background:color-mix(in srgb,currentColor 8%,transparent);min-height:260px}',
-      '.vsh-lg-media img{width:100%;height:100%;object-fit:cover;display:block;min-height:100%}',
-      '.vsh-lg-body{padding:44px 44px 36px;display:flex;flex-direction:column}',
-      '.vsh-lg-kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;opacity:.75;margin:0 0 14px}',
-      '.vsh-lg-title{font-size:clamp(28px,3.6vw,48px);line-height:1.08;margin:0 0 10px;font-weight:400}',
-      '.vsh-lg-loc,.vsh-lg-spec{opacity:.72;font-size:14px;margin:0 0 10px}',
-      '.vsh-lg-price{font-size:26px;margin:0 0 8px;font-weight:400}',
-      '.vsh-lg-gate-wrap{position:relative;margin:12px 0 8px}',
+      '.vsh-lg-page{min-height:100%;width:100%;max-width:1120px;margin:0 auto;display:flex;flex-direction:column}',
+      '.vsh-lg-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:color-mix(in srgb,var(--panel,var(--bg,#0f0e0c)) 92%,transparent);border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}',
+      '.vsh-lg-back,.vsh-lg-close{background:transparent;border:0;color:inherit;font:inherit;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;padding:10px 0;opacity:.85}',
+      '.vsh-lg-back:hover,.vsh-lg-close:hover{opacity:1}',
+      '.vsh-lg-back{letter-spacing:.16em}',
+      '.vsh-lg-hero{position:relative;width:100%;aspect-ratio:16/10;max-height:min(62vh,640px);background:color-mix(in srgb,currentColor 8%,transparent);overflow:hidden}',
+      '.vsh-lg-hero img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}',
+      '.vsh-lg-main{padding:36px 28px 72px;display:flex;flex-direction:column;gap:0;flex:1}',
+      '.vsh-lg-kicker{font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.65;margin:0 0 14px}',
+      '.vsh-lg-title{font-size:clamp(32px,4.5vw,48px);line-height:1.08;font-weight:400;margin:0 0 10px;overflow-wrap:anywhere}',
+      '.vsh-lg-loc{font-size:15px;opacity:.7;margin:0 0 18px;overflow-wrap:anywhere}',
+      '.vsh-lg-price{font-size:clamp(26px,3vw,34px);line-height:1.2;margin:0 0 8px;font-weight:400}',
+      '.vsh-lg-spec{font-size:15px;opacity:.72;margin:0 0 28px;letter-spacing:.02em}',
+      '.vsh-lg-gate-wrap{position:relative;margin:0 0 8px}',
       '.vsh-lg-private{transition:filter .3s}',
       '.vsh-lg-root.is-locked .vsh-lg-private{filter:blur(5px);opacity:.55;user-select:none;pointer-events:none}',
-      '.vsh-lg-gate{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:8px 0;background:color-mix(in srgb,var(--panel,var(--bg,#14110e)) 78%,transparent)}',
-      '.vsh-lg-gate[hidden]{display:none!important}',
-      '.vsh-lg-gate-k{font-size:11px;letter-spacing:.32em;text-transform:uppercase;margin:0 0 12px;opacity:.9}',
-      '.vsh-lg-gate-line{font-style:italic;font-size:22px;line-height:1.35;margin:0 0 12px;max-width:28ch;opacity:.95}',
-      '.vsh-lg-gate-hint{font-size:13px;line-height:1.55;opacity:.7;max-width:36ch;margin:0}',
-      '.vsh-lg-desc{font-size:16px;line-height:1.7;max-width:42ch;margin:0 0 22px;opacity:.9}',
-      '.vsh-lg-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent);padding-top:20px;margin:0 0 28px;font-size:13px}',
-      '.vsh-lg-facts dt{opacity:.65;letter-spacing:.16em;text-transform:uppercase;font-size:10px;margin:0 0 4px}',
-      '.vsh-lg-facts dd{margin:0 0 8px;font-size:15px}',
-      '.vsh-lg-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}',
-      '.vsh-lg-enquire{display:inline-flex;align-items:center;justify-content:center;padding:15px 24px;min-height:48px;text-decoration:none;font-size:11px;letter-spacing:.24em;text-transform:uppercase;background:currentColor;color:var(--panel,var(--bg,#14110e));border:0}',
-      '.vsh-lg-back{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 45%,transparent);padding:14px 20px;min-height:48px;font:inherit;font-size:11px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer}',
+      '.vsh-lg-desc{font-size:17px;line-height:1.7;max-width:62ch;margin:0 0 28px;opacity:.92}',
+      '.vsh-lg-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px;border-top:1px solid color-mix(in srgb,currentColor 18%,transparent);padding-top:24px;margin:0 0 32px;font-size:13px}',
+      '.vsh-lg-facts dt{opacity:.62;letter-spacing:.16em;text-transform:uppercase;font-size:10px;margin:0 0 4px}',
+      '.vsh-lg-facts dd{margin:0 0 6px;font-size:16px;overflow-wrap:anywhere}',
+      '.vsh-lg-gate{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:12px 8px;background:color-mix(in srgb,var(--panel,var(--bg,#0f0e0c)) 82%,transparent)}',
+      '.vsh-lg-gate[hidden]{display:none}',
+      '.vsh-lg-gate-k{font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.8;margin:0 0 12px}',
+      '.vsh-lg-gate-line{font-size:clamp(20px,2.6vw,26px);line-height:1.35;font-style:italic;max-width:28ch;margin:0 0 12px;opacity:.95}',
+      '.vsh-lg-gate-hint{font-size:13px;line-height:1.55;opacity:.7;max-width:40ch;margin:0}',
+      '.vsh-lg-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}',
+      '.vsh-lg-enquire{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;min-height:50px;text-decoration:none;font-size:11px;letter-spacing:.22em;text-transform:uppercase;background:currentColor;color:var(--panel,var(--bg,#0f0e0c));border:0}',
+      '.vsh-lg-home{background:transparent;color:inherit;border:1px solid color-mix(in srgb,currentColor 45%,transparent);padding:15px 22px;min-height:50px;font:inherit;font-size:11px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer}',
       'body.vsh-lg-open{overflow:hidden}',
-      '@media(max-width:820px){.vsh-lg-panel{grid-template-columns:1fr;width:100%;max-height:100%;height:100%;margin:0;border:0}.vsh-lg-media{aspect-ratio:4/3;min-height:0;max-height:42vh}.vsh-lg-body{padding:24px 20px 36px}.vsh-lg-actions{flex-direction:column;align-items:stretch}.vsh-lg-enquire,.vsh-lg-back{width:100%;text-align:center;justify-content:center}.vsh-lg-close{background:color-mix(in srgb,var(--panel,var(--bg,#14110e)) 70%,transparent);padding:10px 14px}}'
+      '@media(max-width:820px){',
+      '.vsh-lg-hero{aspect-ratio:4/3;max-height:none}',
+      '.vsh-lg-main{padding:28px 18px 64px}',
+      '.vsh-lg-facts{grid-template-columns:1fr 1fr;gap:12px 18px}',
+      '.vsh-lg-actions{flex-direction:column;align-items:stretch}',
+      '.vsh-lg-enquire,.vsh-lg-home{width:100%;text-align:center;justify-content:center}',
+      '.vsh-lg-root.is-locked .vsh-lg-private{filter:blur(4px)}',
+      '}'
     ].join('');
     document.head.appendChild(s);
   }
@@ -53,15 +61,15 @@
   function parseCard(card, i){
     var img = card.querySelector('img.orig, img:not(.staged)') || card.querySelector('img');
     var title = text(card.querySelector('h3, .addr, .lbl b, [class*="title"]')) || (img && img.alt) || ('Residence '+(i+1));
-    var priceEl = card.querySelector('.price, .lbl span:last-child, b');
     var price = '';
     card.querySelectorAll('.price, .ov .price, .lbl span, b, span').forEach(function(n){
       var t=text(n); if(/\$[\d,.]+/.test(t) && !price) price=t.match(/\$[\d,.]+[MKmk]?/)[0];
     });
     if(!price){var m=(card.textContent||'').match(/\$[\d,.]+(?:\s*[Mm])?/); price=m?m[0]:'Price on request'}
     var loc='';
-    var pEls=card.querySelectorAll('.addr, .lbl span, p, .ov .addr');
-    pEls.forEach(function(n){var t=text(n); if(t && t!==title && !/^\$/.test(t) && t.length<80 && !loc) loc=t.replace(/\s*·\s*/g,' · ')});
+    card.querySelectorAll('.addr, .lbl span, p, .ov .addr').forEach(function(n){
+      var t=text(n); if(t && t!==title && !/^\$/.test(t) && t.length<80 && !loc) loc=t.replace(/\s*·\s*/g,' · ');
+    });
     if(!loc) loc=title;
     var beds=''; var bm=(card.textContent||'').match(/(\d+)\s*BD/i); if(bm) beds=bm[1];
     return {
@@ -74,11 +82,8 @@
   }
 
   function invent(d){
-    var fullAddr = d.unlocked
-      ? (/\d/.test(d.loc) ? d.loc : (120+Math.floor(Math.random()*800))+' '+d.loc)
-      : d.city;
-    // deterministic-ish from title length to avoid random flicker
     var n = d.title.length*17+d.price.length;
+    var fullAddr = d.loc;
     if(d.unlocked && !/\d/.test(d.loc)){
       fullAddr = (200+(n%700))+' '+d.loc.replace(/^[^·]*·\s*/,'');
     }
@@ -109,13 +114,15 @@
     root.setAttribute('aria-labelledby','vshLgTitle');
     root.hidden=true;
     root.innerHTML=[
-      '<button type="button" class="vsh-lg-scrim" id="vshLgScrim" aria-label="Close"></button>',
-      '<div class="vsh-lg-panel" id="vshLgPanel">',
+      '<div class="vsh-lg-page" id="vshLgPanel">',
+      '<div class="vsh-lg-top">',
+      '<button type="button" class="vsh-lg-back" id="vshLgBack">← Back to residences</button>',
       '<button type="button" class="vsh-lg-close" id="vshLgClose">Close</button>',
-      '<div class="vsh-lg-media"><img id="vshLgImg" alt=""></div>',
-      '<div class="vsh-lg-body">',
+      '</div>',
+      '<div class="vsh-lg-hero"><img id="vshLgImg" alt="" decoding="async"></div>',
+      '<div class="vsh-lg-main">',
       '<p class="vsh-lg-kicker" id="vshLgStatus"></p>',
-      '<h2 class="vsh-lg-title" id="vshLgTitle"></h2>',
+      '<h1 class="vsh-lg-title" id="vshLgTitle"></h1>',
       '<p class="vsh-lg-loc" id="vshLgLoc"></p>',
       '<p class="vsh-lg-price" id="vshLgPrice"></p>',
       '<p class="vsh-lg-spec" id="vshLgSpec"></p>',
@@ -131,7 +138,7 @@
       '</div></div>',
       '<div class="vsh-lg-actions">',
       '<a class="vsh-lg-enquire" id="vshLgEnquire" href="#contact">Request private details</a>',
-      '<button type="button" class="vsh-lg-back" id="vshLgBack">Back to residences</button>',
+      '<button type="button" class="vsh-lg-home" id="vshLgHome">Back to residences</button>',
       '</div></div></div>'
     ].join('');
     document.body.appendChild(root);
@@ -142,21 +149,18 @@
     css();
     var cards=[].slice.call(document.querySelectorAll('#listings article[data-lst], #properties article[data-lst], section[id="listings"] article.lst'));
     if(!cards.length) cards=[].slice.call(document.querySelectorAll('article[data-lst]'));
-    // de-dupe
     cards=cards.filter(function(c,i,a){return a.indexOf(c)===i});
     if(!cards.length) return;
 
     var data=cards.map(parseCard);
     var sampleName=data[0].title;
     var section=cards[0].closest('#listings, #properties, section')||cards[0].parentElement;
-    var head=section && section.querySelector('.head, .block-head, .wrap > .head');
     if(section && !section.querySelector('.vsh-lg-hint')){
       var hint=document.createElement('p');
       hint.className='vsh-lg-hint';
       hint.innerHTML='Open <a href="#vsh-lg-sample">'+sampleName.replace(/</g,'')+'</a> to preview a full listing. Other residences show a private teaser.';
       var grid=section.querySelector('.g, .cards, .grid')||cards[0].parentElement;
       if(grid && grid.parentElement) grid.parentElement.insertBefore(hint, grid);
-      else if(head && head.parentElement) head.parentElement.insertBefore(hint, head.nextSibling);
     }
 
     cards[0].classList.add('vsh-lg-sample');
@@ -173,6 +177,7 @@
     var root=ensureRoot();
     var panel=document.getElementById('vshLgPanel');
     var lastFocus=null;
+    var pushLock=false;
 
     function fill(d){
       var open=!!d.unlocked;
@@ -204,19 +209,33 @@
       lastFocus=document.activeElement;
       fill(d);
       root.hidden=false;
+      root.scrollTop=0;
       document.body.classList.add('vsh-lg-open');
-      document.getElementById('vshLgClose').focus();
+      document.getElementById('vshLgBack').focus();
+      pushLock=true;
+      try{
+        var slug=encodeURIComponent((data[i].title||'listing').toLowerCase().replace(/\s+/g,'-').slice(0,48));
+        history.pushState({vshLg:1,i:i},'', (location.pathname+location.search)+'#listing/'+slug);
+      }catch(e){}
+      pushLock=false;
     }
-    function close(){
+    function close(fromPop){
       if(root.hidden) return;
       root.hidden=true;
       document.body.classList.remove('vsh-lg-open');
       if(lastFocus && lastFocus.focus) lastFocus.focus();
+      if(!fromPop){
+        pushLock=true;
+        try{
+          if(location.hash.indexOf('#listing/')===0) history.pushState(null,'',location.pathname+location.search);
+        }catch(e){}
+        pushLock=false;
+      }
     }
 
     cards.forEach(function(card,i){
       card.setAttribute('tabindex','0');
-      card.setAttribute('role','button');
+      card.setAttribute('role','link');
       card.setAttribute('aria-haspopup','dialog');
       function go(e){
         if(e.target.closest && (e.target.closest('.badge.tour') || e.target.closest('a.badge'))) return;
@@ -225,7 +244,8 @@
         if(typeof e.stopImmediatePropagation==='function') e.stopImmediatePropagation();
         openAt(i);
       }
-      card.addEventListener('click', go);
+      // capture so vault/other handlers don't open a second distorted UI
+      card.addEventListener('click', go, true);
       card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openAt(i);} });
     });
 
@@ -236,15 +256,20 @@
       setTimeout(function(){ openAt(0); }, 350);
     });
 
-    document.getElementById('vshLgClose').onclick=close;
-    document.getElementById('vshLgScrim').onclick=close;
-    document.getElementById('vshLgBack').onclick=close;
-    document.getElementById('vshLgEnquire').addEventListener('click', function(){ close(); });
+    document.getElementById('vshLgClose').onclick=function(){ close(false); };
+    document.getElementById('vshLgBack').onclick=function(){ close(false); };
+    document.getElementById('vshLgHome').onclick=function(){ close(false); };
+    document.getElementById('vshLgEnquire').addEventListener('click', function(){ close(false); });
+
+    addEventListener('popstate', function(){
+      if(pushLock) return;
+      if(!root.hidden) close(true);
+    });
 
     document.addEventListener('keydown', function(e){
-      if(e.key==='Escape' && !root.hidden){ close(); e.stopPropagation(); }
+      if(e.key==='Escape' && !root.hidden){ close(false); e.stopPropagation(); }
       if(e.key==='Tab' && !root.hidden){
-        var list=[].slice.call(panel.querySelectorAll('a[href],button:not([disabled])')).filter(function(el){return el.offsetParent!==null||el.id==='vshLgClose'});
+        var list=[].slice.call(panel.querySelectorAll('a[href],button:not([disabled])')).filter(function(el){return el.offsetParent!==null});
         if(!list.length) return;
         var first=list[0], last=list[list.length-1];
         if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
