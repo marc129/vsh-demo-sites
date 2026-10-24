@@ -1,7 +1,7 @@
 (()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI=mob?'m':'d',LO=mob?'ml':'dl',N=383,WIN=mob?60:24;
 const tour=document.getElementById('hero'),cv=document.getElementById('scene'),cx=cv.getContext('2d',{alpha:false}),bar=document.querySelector('#loadbar i'),pin=tour.querySelector('.pin');
 const fade=document.createElement('div');fade.className='endfade';pin.appendChild(fade);
-const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp`;
+const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp?v=b1`;
 const lo=new Array(N),hi=new Array(N),rl=new Uint8Array(N),rh=new Uint8Array(N);
 let doneLo=0,inflight=0,ih=0,cf=0,dirty=true;
 function img(u){const i=new Image();i.decoding='async';i.src=u;return i.decode().then(()=>i)}
@@ -23,15 +23,8 @@ function tick(){const d=target-cur;cur=Math.abs(d)<.01?target:cur+d*.22;
  const f0=Math.floor(cur),fr=cur-f0,A=get(f0),B=get(Math.min(N-1,f0+1)),key=f0+'|'+fr.toFixed(2)+'|'+(A===hi[f0]);if(key===last&&!dirty)return;last=key;dirty=false;
  window.__lastFrame=A?f0:-1;window.__hq=!!hi[f0];if(A){draw(A,1);if(B&&fr>.03)draw(B,fr)}else{const n=near(f0);if(n)draw(n,1)}cx.globalAlpha=1}
 
-const lns=[...document.querySelectorAll('#story .ln')].map(e=>({e,a:+e.dataset.a,b:+e.dataset.b,ws:[...e.querySelectorAll('.w')],r:e.querySelector('.kr')}));
-const ez=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);let lastP=-1;
-function story(){const p=cur/(N-1);if(Math.abs(p-lastP)<.0004)return;lastP=p;for(const L of lns){const d=L.b-L.a,t=(p-L.a)/d;
- if(t<-.05||t>1.05){if(L.v!==0){L.e.style.opacity=0;L.v=0}continue}L.v=1;
- const out=ez((t-.78)/.22);L.e.style.opacity=(1-out).toFixed(3);L.e.style.transform=`translate3d(0,${(-out*28).toFixed(1)}px,0)`;
- L.r.style.setProperty('--r',ez(t/.3).toFixed(3));
- L.ws.forEach((w,i)=>{const q=ez((t-.04-i*.045)/.24);w.style.transform=`translate3d(0,${((1-q)*110).toFixed(1)}%,0)`;w.style.opacity=q.toFixed(3)})}}
 let lenis=null;if(window.Lenis&&!matchMedia('(prefers-reduced-motion: reduce)').matches){lenis=new Lenis({lerp:.1,smoothWheel:true,anchors:true});window.lenis=lenis}
-function raf(t){if(lenis)lenis.raf(t);tick();story();requestAnimationFrame(raf)}
+function raf(t){if(lenis)lenis.raf(t);tick();requestAnimationFrame(raf)}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',fit,{passive:true});addEventListener('load',measure);
 if(window.ResizeObserver){new ResizeObserver(measure).observe(document.body);new ResizeObserver(fit).observe(cv)}
 const io=window.IntersectionObserver&&new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});const it=document.getElementById('intro');if(io&&it){it.classList.add('rise');io.observe(it)}
