@@ -1,4 +1,4 @@
-(()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI='d',LO='dl',N=457,WIN=mob?120:48,V=6;
+(()=>{const mob=Math.min(innerWidth,screen.width||innerWidth)<=820,HI='d',LO='dl',N=457,WIN=mob?120:48,V=7;
 const tour=document.getElementById('hero'),cv=document.getElementById('scene'),cx=cv.getContext('2d',{alpha:false}),bar=document.querySelector('#loadbar i'),pin=tour.querySelector('.pin');
 const fade=document.createElement('div');fade.className='endfade';pin.appendChild(fade);
 const src=(s,f)=>`frames/${s}/${String(f+1).padStart(3,'0')}.webp?v=v${V}`;
@@ -43,24 +43,19 @@ function womanCx(f,iw,pw){
 function draw(i,a,f){
   const W=cv.width,H=cv.height,iw=i.width||i.naturalWidth,ihh=i.height||i.naturalHeight;
   cx.globalAlpha=a;
-  if(!mob){
-    const k=Math.max(W/iw,H/ihh),w=iw*k,h=ihh*k;
-    cx.drawImage(i,(W-w)/2,(H-h)/2,w,h);
-    return;
+  // Cover: scale 16:9 to fill the full pin viewport (no letterbox bars).
+  const k=Math.max(W/iw,H/ihh);
+  const vw=W/k, vh=H/k;
+  let sx,sy;
+  if(mob){
+    const wc=womanCx(f|0,iw);
+    sx=wc-vw/2;
+    sx=Math.max(0,Math.min(iw-vw,sx));
+    sy=Math.max(0,Math.min(ihh-vh,(ihh-vh)/2));
+  }else{
+    sx=(iw-vw)/2; sy=(ihh-vh)/2;
   }
-  // Soft letterbox + horizontal pan: show a wide window (~405–540 of 720)
-  // so she stays in frame without aggressive cover crop.
-  const fill=.56;
-  let VW=Math.round(ihh*W/(fill*H));
-  VW=Math.max(405,Math.min(540,VW));
-  VW=Math.min(VW,iw);
-  const wc=womanCx(f|0,iw,pan&&pan.W);
-  let sx=Math.round(wc-VW/2);
-  sx=Math.max(0,Math.min(iw-VW,sx));
-  const dh=ihh*(W/VW),dy=(H-dh)/2;
-  cx.fillStyle='#14110e';
-  cx.fillRect(0,0,W,H);
-  cx.drawImage(i,sx,0,VW,ihh,0,dy,W,dh);
+  cx.drawImage(i,sx,sy,vw,vh,0,0,W,H);
 }
 function tick(){const d=target-cur;cur=Math.abs(d)<.008?target:cur+d*.28;
  const f0=Math.floor(cur),fr=cur-f0,A=get(f0),B=get(Math.min(N-1,f0+1)),key=f0+'|'+fr.toFixed(2)+'|'+(A===hi[f0])+'|'+(pan?1:0);if(key===last&&!dirty)return;last=key;dirty=false;
