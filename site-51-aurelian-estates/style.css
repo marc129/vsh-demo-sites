@@ -187,7 +187,7 @@ html.lenis,html.lenis body{height:auto}
 .card:focus-visible{box-shadow:0 0 0 1px var(--bronze)}
 .card-cta{display:inline-block;margin-top:14px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--bronze);border-bottom:1px solid transparent;padding-bottom:4px;transition:border-color .3s,color .3s}
 .card:hover .card-cta,.card:focus-visible .card-cta{border-color:var(--bronze);color:var(--ink)}
-.ld-root{position:fixed;inset:0;z-index:10050;display:block;overflow:auto;-webkit-overflow-scrolling:touch;background:#14110e;color:var(--ink)}
+.ld-root{position:fixed;inset:0;z-index:10050;display:block;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;height:100%;height:100dvh;background:#14110e;color:var(--ink)}
 .ld-root[hidden]{display:none!important}
 .ld-page{min-height:100%;width:100%;max-width:1180px;margin:0 auto;display:flex;flex-direction:column}
 .ld-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;background:rgba(20,17,14,.94);border-bottom:1px solid rgba(243,237,227,.12);backdrop-filter:blur(10px)}

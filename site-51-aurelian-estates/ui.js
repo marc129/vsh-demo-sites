@@ -161,6 +161,9 @@ const open=id=>{
   fill(d);
   root.hidden=false;
   root.scrollTop=0;
+  root.setAttribute('data-lenis-prevent','');
+  root.setAttribute('data-lenis-prevent-wheel','');
+  root.setAttribute('data-lenis-prevent-touch','');
   document.body.classList.add('ld-open');
   if(window.lenis)try{window.lenis.stop()}catch(e){}
   backBtn.focus();

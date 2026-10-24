@@ -20,7 +20,7 @@
       '.vsh-lg-hint a{color:inherit;text-decoration:none;border-bottom:1px solid color-mix(in srgb,currentColor 55%,transparent)}',
       '.vsh-lg-cue{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.75;margin:.35rem 0 .2rem;font-weight:400}',
       'article[data-lst].vsh-lg-sample,article.lst.vsh-lg-sample{cursor:pointer}',
-      '.vsh-lg-root{position:fixed;inset:0;z-index:10050;display:block;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--panel,var(--bg,#0f0e0c));color:inherit}',
+      '.vsh-lg-root{position:fixed;inset:0;z-index:10050;display:block;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;height:100%;height:100dvh;background:var(--panel,var(--bg,#0f0e0c));color:inherit}',
       '.vsh-lg-root[hidden]{display:none!important}',
       '.vsh-lg-page{min-height:100%;width:100%;max-width:1180px;margin:0 auto;display:flex;flex-direction:column}',
       '.vsh-lg-top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 22px;background:color-mix(in srgb,var(--panel,var(--bg,#0f0e0c)) 94%,transparent);border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent);backdrop-filter:blur(10px)}',
@@ -232,6 +232,9 @@
     root.setAttribute('role','dialog');
     root.setAttribute('aria-modal','true');
     root.setAttribute('aria-labelledby','vshLgTitle');
+    root.setAttribute('data-lenis-prevent','');
+    root.setAttribute('data-lenis-prevent-wheel','');
+    root.setAttribute('data-lenis-prevent-touch','');
     root.hidden=true;
     root.innerHTML=[
       '<div class="vsh-lg-page" id="vshLgPanel">',
@@ -411,7 +414,11 @@
       fill(d);
       root.hidden=false;
       root.scrollTop=0;
+      root.setAttribute('data-lenis-prevent','');
+      root.setAttribute('data-lenis-prevent-wheel','');
+      root.setAttribute('data-lenis-prevent-touch','');
       document.body.classList.add('vsh-lg-open');
+      if(window.lenis)try{window.lenis.stop()}catch(e){}
       document.getElementById('vshLgBack').focus();
       pushLock=true;
       try{
@@ -424,6 +431,7 @@
       if(root.hidden) return;
       root.hidden=true;
       document.body.classList.remove('vsh-lg-open');
+      if(window.lenis)try{window.lenis.start()}catch(e){}
       if(lastFocus && lastFocus.focus) lastFocus.focus();
       if(!fromPop){
         pushLock=true;
