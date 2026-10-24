@@ -2,8 +2,6 @@
 const onS=()=>nav.classList.toggle('solid',scrollY>40);addEventListener('scroll',onS,{passive:true});onS();
 tg.onclick=()=>{const o=nav.classList.toggle('open');tg.setAttribute('aria-expanded',o);tg.setAttribute('aria-label',o?'Close menu':'Open menu')};
 menu.querySelectorAll('a').forEach(a=>a.onclick=()=>{nav.classList.remove('open');tg.setAttribute('aria-expanded',false)});
-const f=$('#search'),inp=$('#searchIn');f.querySelectorAll('.search-tabs button').forEach(b=>b.onclick=()=>{f.querySelectorAll('.search-tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');inp.placeholder=b.dataset.m=='sell'?'Your address for a private estimate':'Neighbourhood, city or address'});
-f.onsubmit=e=>{e.preventDefault();location.hash=f.querySelector('.on').dataset.m=='sell'?'valuation':'listings'};
 const as=$('#assistant'),ask=$('#ask'),log=$('#asLog');const tog=o=>{as.hidden=!o;ask.setAttribute('aria-expanded',o);if(o)$('#asIn').focus()};
 ask.onclick=()=>tog(as.hidden);$('#asClose').onclick=()=>tog(false);
 const A=q=>/value|worth|estimate/i.test(q)?'I can prepare a private estimate. Share your address in the Value my home form and an advisor reviews it within a day.':/view|tour|visit|book/i.test(q)?'Viewings of Casa Lumen are accompanied and by appointment. Use the enquiry form and Eleanor will propose times.':'Casa Lumen has six bedrooms, a 26 metre horizon pool and four acres of desert garden in Paradise Valley, offered at $18,750,000.';
