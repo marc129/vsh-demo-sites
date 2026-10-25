@@ -10,12 +10,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --glass: rgba(255, 255, 255, 0.14);
-    --glass-mid: rgba(255, 255, 255, 0.20);
-    --glass-card: rgba(255, 255, 255, 0.22);
-    --glass-strong: rgba(255, 255, 255, 0.32);
-    --border: rgba(255, 255, 255, 0.35);
-    --border-soft: rgba(255, 255, 255, 0.28);
+    --glass: rgba(255, 255, 255, 0.10);
+    --glass-mid: rgba(255, 255, 255, 0.12);
+    --glass-card: rgba(255, 255, 255, 0.14);
+    --glass-strong: rgba(255, 255, 255, 0.18);
+    --border: rgba(255, 255, 255, 0.14);
+    --border-soft: rgba(255, 255, 255, 0.14);
     --text: #1f2328;
     --text-soft: rgba(31, 35, 40, 0.78);
     --muted: rgba(31, 35, 40, 0.58);
@@ -42,19 +42,19 @@
     background: #eef0f3;
   }
 
-  /* Soft warm abstract wash — color blobs visible through glass */
+  /* Soft cool neutral wash — color blobs visible through glass */
   .bg {
     position: fixed;
     inset: -10%;
     z-index: 0;
     background:
       radial-gradient(ellipse 45% 40% at 12% 18%, #ffffff 0%, transparent 60%),
-      radial-gradient(ellipse 40% 45% at 88% 12%, #c9ced6 0%, transparent 58%),
-      radial-gradient(ellipse 50% 45% at 80% 85%, #b8bec8 0%, transparent 58%),
-      radial-gradient(ellipse 45% 40% at 15% 85%, #d5d9df 0%, transparent 58%),
+      radial-gradient(ellipse 40% 45% at 88% 12%, #9aa3b0 0%, transparent 58%),
+      radial-gradient(ellipse 50% 45% at 80% 85%, #8a93a1 0%, transparent 58%),
+      radial-gradient(ellipse 45% 40% at 15% 85%, #aeb5c0 0%, transparent 58%),
       radial-gradient(ellipse 35% 32% at 50% 45%, #ffffff 0%, transparent 65%),
       linear-gradient(145deg, #f5f6f8 0%, #e6e9ed 50%, #dadee4 100%);
-    filter: blur(50px);
+    filter: blur(30px);
     transform: scale(1.1);
   }
   .bg::after {
@@ -69,6 +69,12 @@
     pointer-events: none;
   }
 
+  .shapes{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .shapes i{position:absolute;border-radius:50%;filter:blur(2px)}
+  .shapes i:nth-child(1){width:420px;height:420px;left:22%;top:18%;background:radial-gradient(circle at 35% 30%,#ffffff,#9ea6b2 70%)}
+  .shapes i:nth-child(2){width:320px;height:320px;right:8%;top:40%;background:radial-gradient(circle at 35% 30%,#e9edf2,#7d8694 75%)}
+  .shapes i:nth-child(3){width:260px;height:260px;left:48%;bottom:-60px;background:radial-gradient(circle at 35% 30%,#ffffff,#b3bac4 70%)}
+  .shapes i:nth-child(4){width:180px;height:180px;left:4%;top:55%;background:radial-gradient(circle at 35% 30%,#f2f4f7,#8f98a5 75%)}
   .app {
     position: relative;
     z-index: 1;
@@ -93,8 +99,8 @@
     background: var(--glass);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(24px) saturate(1.05);
-    -webkit-backdrop-filter: blur(24px) saturate(1.05);
+    backdrop-filter: blur(28px) saturate(1.1);
+    -webkit-backdrop-filter: blur(28px) saturate(1.1);
     height: fit-content;
     max-height: calc(100vh - 56px);
     align-self: center;
@@ -129,7 +135,7 @@
     transition: background 0.2s, color 0.2s, transform 0.15s;
   }
   .nav-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-  .nav-btn:hover { background: rgba(255, 255, 255, 0.28); color: var(--ink); }
+  .nav-btn:hover { background: rgba(255, 255, 255, 0.14); color: var(--ink); }
   .nav-btn.active {
     background: rgba(255, 255, 255, 0.85);
     color: var(--ink);
@@ -154,8 +160,8 @@
     background: var(--glass);
     border: 1px solid var(--border-soft);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(24px) saturate(1.05);
-    -webkit-backdrop-filter: blur(24px) saturate(1.05);
+    backdrop-filter: blur(28px) saturate(1.1);
+    -webkit-backdrop-filter: blur(28px) saturate(1.1);
     flex-shrink: 0;
   }
   .top-user {
@@ -192,8 +198,8 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.14);
     color: var(--text);
     display: grid;
     place-items: center;
@@ -206,11 +212,11 @@
     flex: 1;
     min-height: 0;
     border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(24px) saturate(1.05);
-    -webkit-backdrop-filter: blur(24px) saturate(1.05);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -257,7 +263,7 @@
     border-radius: 999px;
     font-size: 12px;
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.14);
     border: 1px solid rgba(255, 255, 255, 0.40);
     color: var(--text);
     backdrop-filter: blur(12px);
@@ -271,12 +277,12 @@
 
   /* Inner cards — layered glass, still see-through */
   .card {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.40);
     border-radius: var(--radius-sm);
     box-shadow: 0 4px 20px rgba(30, 40, 60, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px) saturate(1.05);
-    -webkit-backdrop-filter: blur(20px) saturate(1.05);
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
     padding: 18px 18px;
   }
   .card h3 {
@@ -345,7 +351,7 @@
     font-weight: 600;
     padding: 4px 9px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.32);
+    background: rgba(255, 255, 255, 0.14);
     border: 1px solid rgba(255, 255, 255, 0.45);
     color: var(--text);
   }
@@ -362,8 +368,8 @@
     background: var(--glass);
     border: 1px solid var(--border-soft);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(24px) saturate(1.05);
-    -webkit-backdrop-filter: blur(24px) saturate(1.05);
+    backdrop-filter: blur(28px) saturate(1.1);
+    -webkit-backdrop-filter: blur(28px) saturate(1.1);
     flex-shrink: 0;
     width: fit-content;
     margin: 0 auto;
@@ -380,7 +386,7 @@
     font-family: inherit;
     transition: all 0.2s;
   }
-  .bottom-pill button:hover { color: var(--text); background: rgba(255,255,255,0.28); }
+  .bottom-pill button:hover { color: var(--text); background: rgba(255, 255, 255, 0.14); }
   .bottom-pill button.active {
     background: rgba(255, 255, 255, 0.82);
     color: var(--ink);
@@ -402,7 +408,7 @@
     padding: 12px 14px;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.40);
-    background: rgba(255, 255, 255, 0.28);
+    background: rgba(255, 255, 255, 0.14);
     color: var(--text);
     font-size: 14px;
     font-family: inherit;
@@ -413,7 +419,7 @@
   .field input::placeholder, .field textarea::placeholder { color: var(--muted-soft); }
   .field input:focus, .field select:focus, .field textarea:focus {
     border-color: rgba(255, 255, 255, 0.55);
-    background: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.14);
   }
   .field select option { background: #fff; color: var(--text); }
 
@@ -436,7 +442,7 @@
   }
   .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(60,40,20,0.14); }
   .btn.ghost {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.14);
     color: var(--text);
     border-color: rgba(255, 255, 255, 0.40);
   }
@@ -458,7 +464,7 @@
     -webkit-backdrop-filter: blur(12px);
   }
   .dropzone:hover, .dropzone.drag {
-    background: rgba(255, 255, 255, 0.30);
+    background: rgba(255, 255, 255, 0.14);
     border-color: rgba(31, 35, 40, 0.45);
   }
   .dropzone strong { display: block; font-size: 14px; margin: 10px 0 4px; color: var(--text); }
@@ -502,7 +508,7 @@
     position: absolute;
     inset: 8px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
@@ -568,6 +574,7 @@
 </head>
 <body>
   <div class="bg" aria-hidden="true"></div>
+  <div class="shapes" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
   <div class="app">
     <aside class="sidebar" aria-label="Primary">
@@ -698,7 +705,7 @@
                 <span class="badge live">Live</span>
               </div>
               <div class="list-row">
-                <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.25),rgba(94,234,212,0.35))"></div>
+                <div class="thumb" style="background:linear-gradient(135deg,rgba(255, 255, 255, 0.14),rgba(94,234,212,0.35))"></div>
                 <div class="meta">
                   <strong>12 leads synced to Zoho CRM</strong>
                   <span>Source: contact form · today 9:14 AM</span>
@@ -1034,7 +1041,7 @@
               "rgba(150,160,175,0.9)",
               "rgba(255,255,255,0.45)",
               "rgba(190,198,210,0.75)",
-              "rgba(255,255,255,0.25)"
+              "rgba(255, 255, 255, 0.14)"
             ],
             borderWidth: 0
           }]
