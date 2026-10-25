@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aurelia Partners — Palm Beach, Florida</title>
-<meta name="description" content="Aurelia Partners — private representation for exceptional estates across Palm Beach, Florida.">
+<title>Aurelia Partners — New York</title>
+<meta name="description" content="Aurelia Partners — Confidential advisory for New York and Brooklyn Heights.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="vendor/lenis.css">
-<link rel="stylesheet" href="style.css?v=20261025scrub1">
-<link rel="preload" as="image" href="frames/d/001.webp?v=20261025scrub1" media="(min-width:821px)">
-<link rel="preload" as="image" href="frames/m/001.webp?v=20261025scrub1" media="(max-width:820px)">
+<link rel="preload" as="image" href="frames/d/001.webp?v=20261025city2" media="(min-width:821px)">
+<link rel="preload" as="image" href="frames/m/001.webp?v=20261025city2" media="(max-width:820px)">
+<link rel="stylesheet" href="style.css?v=20261025city2">
 </head>
 <body>
 <a class="skip" href="#about">Skip to content</a>
@@ -20,9 +20,12 @@
 <header class="nav" id="nav">
   <a class="brand" href="#hero">AURELIA<span>PARTNERS</span></a>
   <nav id="menu" aria-label="Primary">
-    <a href="#about">About</a><a href="#homes">Homes</a><a href="#reviews">Clients</a><a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a href="#homes">Homes</a>
+    <a href="#reviews">Clients</a>
+    <a href="#contact">Contact</a>
   </nav>
-  <a class="nav-cta" href="#contact">Write</a>
+  <a class="nav-cta" href="#contact">Pitch us</a>
   <button class="menu-tg" id="menuTg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
 </header>
 
@@ -33,8 +36,8 @@
     <div class="hero-copy">
     <div class="hero-type">
       <p class="eyebrow-top">CONFIDENTIAL ADVISORY FOR</p>
-      <h1>PALM BEACH</h1>
-      <p class="eyebrow-bot">AND THE ISLAND</p>
+      <h1>NEW YORK</h1>
+      <p class="eyebrow-bot">AND BROOKLYN HEIGHTS</p>
     </div>
     <div class="hero-cta-row"><a class="btn accent" href="#homes">View residences</a></div>
   </div>
@@ -43,91 +46,114 @@
   </div>
 </section>
 
+<button class="ask" id="ask" type="button" aria-label="Ask Aurelia AI" aria-expanded="false"><span class="ask-mark">A</span><span class="ask-t">Ask Aurelia AI</span></button>
+<aside class="assistant" id="assistant" aria-label="Aurelia AI assistant" hidden>
+  <div class="as-head"><b>Aurelia AI</b><button type="button" id="asClose" aria-label="Close assistant">Close</button></div>
+  <div class="as-log" id="asLog"><p class="as-bot">Good evening. I can discuss a Brooklyn Heights brownstone, arrange a private parlor tour, or connect you with Claire.</p></div>
+  <div class="as-quick"><button type="button">Tell me about Brooklyn Heights Brownstone</button><button type="button">Value my home</button><button type="button">Book a viewing</button></div>
+  <form id="asForm"><input id="asIn" aria-label="Ask a question" placeholder="Ask about a residence"><button type="submit">Send</button></form>
+  <p class="as-note">Demo only. Nothing is sent or stored.</p>
+</aside>
 
 <main class="panels">
+<section class="panel reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Clients</p>
+      <h2>In their words</h2>
+    </div>
+    <div class="quotes">
+<figure>
+  <blockquote>“They photographed our brownstone like a story — then sold it like one.”</blockquote>
+  <figcaption>Claire Benton client <span>Seller, Brooklyn Heights</span></figcaption>
+</figure>
+<figure>
+  <blockquote>“Editorial taste. Brokerage discipline.”</blockquote>
+  <figcaption>Tom Rivers <span>Buyer, NYC</span></figcaption>
+</figure>
+<figure>
+  <blockquote>“The Heights&#x27; most careful team.”</blockquote>
+  <figcaption>Anna Wells <span>Seller, Brooklyn</span></figcaption>
+</figure>
+</div>
+  </div>
+</section>
+<section class="panel about" id="about">
+  <div class="wrap narrow">
+    <p class="eyebrow">The firm</p>
+    <h2>Confidential advisory for New York and Brooklyn Heights.</h2>
+    <p class="body">Aurelia Partners represents exceptional Brooklyn Heights and Manhattan residences — brownstone stoops, parlor floors, and harbor-light homes treated with editorial care from first photograph to closing.</p>
+    <div class="stats"><div><b>$1.6B</b><span>Represented</span></div><div><b>48</b><span>Brownstone sales</span></div><div><b>11</b><span>Years</span></div></div>
+  </div>
+</section>
+<section class="panel homes" id="homes">
+  <div class="wrap">
+<div class="section-head">
+  <p class="eyebrow">Featured this season</p>
+  <h2>Brownstones &amp; parlor floors</h2>
+</div>
+<div class="cards">
+<article class="card">
+  <div class="frame"><img src="media/listing-living.jpg?v=2" alt="Brooklyn Heights Brownstone" loading="lazy" width="1200" height="675"></div>
+  <div class="meta">
+    <h3>Brooklyn Heights Brownstone</h3>
+    <p class="loc">Brooklyn Heights, NY</p>
+    <p class="price">$14,800,000</p>
+    <p class="spec">5 bed · 5 bath · 5,800 sq ft</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame"><img src="media/listing-kitchen.jpg?v=2" alt="Parlor Marble Kitchen" loading="lazy" width="1200" height="675"></div>
+  <div class="meta">
+    <h3>Parlor Marble Kitchen</h3>
+    <p class="loc">Brooklyn Heights, NY</p>
+    <p class="price">$6,950,000</p>
+    <p class="spec">4 bed · 4 bath · 3,900 sq ft</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame"><img src="media/listing-pool.jpg?v=2" alt="Harbor Garden Terrace" loading="lazy" width="1200" height="675"></div>
+  <div class="meta">
+    <h3>Harbor Garden Terrace</h3>
+    <p class="loc">Brooklyn, NY</p>
+    <p class="price">$9,400,000</p>
+    <p class="spec">4 bed · 5 bath · 4,700 sq ft</p>
+  </div>
+</article>
+</div>
+  </div>
+</section>
 
-  <section class="panel reviews" id="reviews">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Clients</p>
-        <h2>Letters from the Island</h2>
-      </div>
-      <div class="stack">
-        <figure>
-          <blockquote>“Aurelia never put our name in a brochure. Perfect.”</blockquote>
-          <figcaption>Isabella Moreau client <span>Seller, Palm Beach</span></figcaption>
-        </figure>
-        <figure>
-          <blockquote>“Confidential from the first call to the last wire.”</blockquote>
-          <figcaption>Victor Lang <span>Buyer, Palm Beach</span></figcaption>
-        </figure>
-        <figure>
-          <blockquote>“The Island’s most careful advisors.”</blockquote>
-          <figcaption>Nora Ellis <span>Seller, Palm Beach</span></figcaption>
-        </figure>
-        <figure>
-          <blockquote>“They treat every house like a family matter.”</blockquote>
-          <figcaption>James Cho <span>Buyer, Manalapan</span></figcaption>
-        </figure></div>
-    </div>
-  </section>
-  
-  <section class="panel about" id="about">
-    <div class="wrap narrow">
-      <p class="eyebrow">The firm</p>
-      <h2>Clients first. Then the island.</h2>
-      <p class="body">Aurelia Partners is a confidential advisory for Palm Beach and the Island — Mediterranean estates, ocean boulevard compounds, and residences exchanged among families who prefer letters to listings.</p>
-      <div class="stats"><div><b>$1.9B</b><span>Advised</span></div><div><b>74%</b><span>Referral</span></div><div><b>5</b><span>Partners</span></div></div>
-    </div>
-  </section>
-  <section class="panel homes" id="homes">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Quietly offered</p>
-        <h2>Island residences</h2>
-      </div><div class="cards">
-        <article class="card">
-          <div class="frame"><img src="media/listing-living.jpg?v=1" alt="Ocean Boulevard Villa" loading="lazy" width="1200" height="675"></div>
-          <div class="meta">
-            <h3>Ocean Boulevard Villa</h3>
-            <p class="loc">Palm Beach, FL</p>
-            <p class="price">$48,000,000</p>
-            <p class="spec">7 bed · 9 bath · 15,400 sq ft</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="frame"><img src="media/listing-kitchen.jpg?v=1" alt="Brass & Marble Kitchen" loading="lazy" width="1200" height="675"></div>
-          <div class="meta">
-            <h3>Brass & Marble Kitchen</h3>
-            <p class="loc">Palm Beach, FL</p>
-            <p class="price">$19,200,000</p>
-            <p class="spec">5 bed · 6 bath · 8,100 sq ft</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="frame"><img src="media/listing-pool.jpg?v=1" alt="Lagoon Cabana Estate" loading="lazy" width="1200" height="675"></div>
-          <div class="meta">
-            <h3>Lagoon Cabana Estate</h3>
-            <p class="loc">Palm Beach, FL</p>
-            <p class="price">$31,500,000</p>
-            <p class="spec">6 bed · 8 bath · 12,000 sq ft</p>
-          </div>
-        </article></div></div>
-  </section>
-  
-  <section class="panel contact" id="contact">
-    <div class="wrap narrow">
-      <p class="eyebrow">Begin a conversation</p>
-      <h2>Write to us. We reply within one day.</h2>
-      <form class="cform" id="cform" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message received. We reply within one day.';">
-        <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
-        <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
-        <label>Message<textarea name="msg" rows="4" placeholder="Buying, selling, or both?"></textarea></label>
-        <button type="submit">Send enquiry</button>
-        <p class="note">Demo only. Nothing is submitted or stored.</p>
-      </form>
-    </div>
-  </section>
+<section class="panel fx fx-portal" id="fx-portal">
+<style>
+.fx .fx-tag{display:inline-flex;align-items:center;gap:8px;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.fx .fx-tag i{width:6px;height:6px;border-radius:50%%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%%,transparent);animation:fxp 2s infinite}
+@keyframes fxp{50%%{box-shadow:0 0 0 8px transparent}}
+.fx .fx-lead{max-width:560px;color:var(--mute);margin:0 0 28px}
+.fx .fx-note{font-size:.7rem;color:var(--mute);margin-top:14px;opacity:.7}
+.pt-w{display:grid;grid-template-columns:1.3fr 1fr;gap:28px}.pt-frame{position:relative;aspect-ratio:4/3;border-radius:4px;overflow:hidden}.pt-frame img{width:100%%;height:100%%;object-fit:cover;filter:blur(2px) brightness(.7);transition:filter .6s}.pt-frame.open img{filter:none}.pt-door{position:absolute;inset:0;display:grid;place-content:center;gap:14px;background:rgba(0,0,0,.35);transition:opacity .5s;text-align:center;color:#fff}.pt-frame.open .pt-door{opacity:0;pointer-events:none}.pt-door span{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase}.pt-open{padding:14px 22px;background:var(--accent);color:#111;border:0;letter-spacing:.16em;text-transform:uppercase;font-size:11px;cursor:pointer}.pt-side h3{font-family:var(--display);font-size:1.6rem;margin:0 0 12px}.pt-side p{color:var(--mute)}.pt-list{margin:20px 0;padding:0;list-style:none;display:grid;gap:10px}.pt-list li{padding-left:16px;position:relative;color:var(--ink)}.pt-list li:before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%%;background:var(--accent)}.pt-status{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}@media(max-width:860px){.pt-w{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="fx-tag"><i></i>Frontier feature · Private Listing Portal</div>
+  <h2>The brownstones we don't advertise.</h2>
+  <p class="fx-lead">Request access to off-market New York inventory — floor notes after a qualified intro.</p>
+  <div class="pt-w"><div class="pt-frame"><img src="media/listing-living.jpg?v=2" alt=""><div class="pt-door"><span>Private portal</span><button type="button" class="pt-open">Request access</button></div></div><div class="pt-side"><h3>Off-market New York</h3><p>Unlock floor notes, advisory remarks, and three privately held brownstones — shared after a qualified introduction.</p><ul class="pt-list"><li>Floor plans &amp; elevation notes</li><li>Comp set (trailing 18 months)</li><li>Private showing calendar</li></ul><p class="pt-status">Locked · demo</p></div></div>
+</div>
+<script>(function(){const S=document.getElementById("fx-portal");if(!S)return;const fr=S.querySelector('.pt-frame'),st=S.querySelector('.pt-status');S.querySelector('.pt-open').addEventListener('click',()=>{fr.classList.add('open');st.textContent='Unlocked · demo access'});})();</script>
+</section>
+<section class="panel contact" id="contact">
+  <div class="wrap narrow">
+    <p class="eyebrow">Begin a conversation</p>
+    <h2>Pitch us the brownstone — or the story you want to buy into.</h2>
+    <form class="cform" id="cform" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message received. We reply within one day.';">
+      <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+      <label>Message<textarea name="msg" rows="4" placeholder="Buying, selling, or both?"></textarea></label>
+      <button type="submit">Send enquiry</button>
+      <p class="note">Demo only. Nothing is submitted or stored.</p>
+    </form>
+  </div>
+</section>
   <footer class="site-foot">
     <div class="wrap foot-row">
       <p class="brand-mini">AURELIA PARTNERS</p>
@@ -137,27 +163,28 @@
 </main>
 
 <button class="agent-chip" id="agentChip" type="button" aria-expanded="false" aria-controls="agentPanel">
-  <img src="media/agent.jpg?v=1" alt="" width="48" height="48">
+  <img src="media/agent.jpg?v=2" alt="" width="48" height="48">
   <span>Speak to an agent</span>
 </button>
 <aside class="agent-panel" id="agentPanel" hidden>
   <div class="ap-head">
-    <img src="media/agent.jpg?v=1" alt="" width="56" height="56">
+    <img src="media/agent.jpg?v=2" alt="" width="56" height="56">
     <div>
-      <strong>Isabella Moreau</strong>
-      <p>Senior Partner · Island</p>
+      <strong>Claire Benton</strong>
+      <p>Partner · NYC</p>
     </div>
     <button type="button" id="agentClose" aria-label="Close">×</button>
   </div>
-  <p class="ap-msg">Good evening. I can arrange a private viewing, discuss an off-market opportunity, or connect you with our advisory desk.</p>
+  <p class="ap-msg">Good evening. I can discuss a Brooklyn Heights brownstone, arrange a private parlor tour, or connect you with Claire.</p>
   <div class="ap-actions">
     <a href="#contact">Send an enquiry</a>
-    <a href="tel:+15615550120">(561) 555-0120</a>
+    <a href="tel:+19175550133">(917) 555-0133</a>
   </div>
   <p class="note">Demo only.</p>
 </aside>
 
+
 <script src="vendor/lenis.min.js"></script>
-<script src="main.js?v=20261025scrub1"></script>
+<script src="main.js?v=20261025city2"></script>
 </body>
 </html>

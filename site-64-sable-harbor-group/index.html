@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sable Harbor Group — Newport, Rhode Island</title>
-<meta name="description" content="Sable Harbor Group — private representation for exceptional estates across Newport, Rhode Island.">
+<title>Sable Harbor Group — Miami</title>
+<meta name="description" content="Sable Harbor Group — Estate advisors serving Miami and Fisher Island.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="vendor/lenis.css">
-<link rel="stylesheet" href="style.css?v=20261025scrub1">
-<link rel="preload" as="image" href="frames/d/001.webp?v=20261025scrub1" media="(min-width:821px)">
-<link rel="preload" as="image" href="frames/m/001.webp?v=20261025scrub1" media="(max-width:820px)">
+<link rel="preload" as="image" href="frames/d/001.webp?v=20261025city2" media="(min-width:821px)">
+<link rel="preload" as="image" href="frames/m/001.webp?v=20261025city2" media="(max-width:820px)">
+<link rel="stylesheet" href="style.css?v=20261025city2">
 </head>
 <body>
 <a class="skip" href="#about">Skip to content</a>
@@ -20,9 +20,12 @@
 <header class="nav" id="nav">
   <a class="brand" href="#hero">SABLE HARBOR<span>GROUP</span></a>
   <nav id="menu" aria-label="Primary">
-    <a href="#about">About</a><a href="#homes">Homes</a><a href="#reviews">Clients</a><a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a href="#homes">Homes</a>
+    <a href="#reviews">Clients</a>
+    <a href="#contact">Contact</a>
   </nav>
-  <a class="nav-cta" href="#contact">Get brief</a>
+  <a class="nav-cta" href="#contact">Request intro</a>
   <button class="menu-tg" id="menuTg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
 </header>
 
@@ -33,8 +36,8 @@
     <div class="hero-copy">
     <div class="hero-type">
       <p class="eyebrow-top">ESTATE ADVISORS SERVING</p>
-      <h1>NEWPORT</h1>
-      <p class="eyebrow-bot">AND AQUIDNECK ISLAND</p>
+      <h1>MIAMI</h1>
+      <p class="eyebrow-bot">AND FISHER ISLAND</p>
     </div>
     <div class="hero-cta-row"><a class="btn accent" href="#homes">View residences</a></div>
   </div>
@@ -43,98 +46,121 @@
   </div>
 </section>
 
+<button class="ask" id="ask" type="button" aria-label="Ask Sable AI" aria-expanded="false"><span class="ask-mark">S</span><span class="ask-t">Ask Sable AI</span></button>
+<aside class="assistant" id="assistant" aria-label="Sable AI assistant" hidden>
+  <div class="as-head"><b>Sable AI</b><button type="button" id="asClose" aria-label="Close assistant">Close</button></div>
+  <div class="as-log" id="asLog"><p class="as-bot">Good evening. I can share marina comps, arrange a Fisher Island viewing, or connect you with Helena.</p></div>
+  <div class="as-quick"><button type="button">Tell me about Fisher Island Marina Villa</button><button type="button">Value my home</button><button type="button">Book a viewing</button></div>
+  <form id="asForm"><input id="asIn" aria-label="Ask a question" placeholder="Ask about a residence"><button type="submit">Send</button></form>
+  <p class="as-note">Demo only. Nothing is sent or stored.</p>
+</aside>
 
 <main class="panels">
+<section class="panel about" id="about">
+  <div class="wrap narrow">
+    <p class="eyebrow">The firm</p>
+    <h2>Estate advisors serving Miami and Fisher Island.</h2>
+    <p class="body">Sable Harbor Group represents marina villas and coral-stone compounds across Fisher Island and Biscayne Bay — residences for clients who expect tools, maps, and discretion in equal measure.</p>
+    <div class="stats"><div><b>$2.0B</b><span>Represented</span></div><div><b>72%</b><span>Private</span></div><div><b>By invite</b><span>New clients</span></div></div>
+  </div>
+</section>
+<section class="panel tools" id="tools">
+  <div class="wrap">
+    <p class="eyebrow">Client tools</p>
+    <h2>Maps, comps, and silence.</h2>
+    <div class="tools-grid"><div class="tool"><h3>Market brief</h3><p>Weekly comps for your bay corridor.</p></div><div class="tool"><h3>Private map</h3><p>Inventory held quietly across Fisher Island.</p></div><div class="tool"><h3>Dock desk</h3><p>Marina logistics answered in hours.</p></div></div>
+  </div>
+</section>
+<section class="panel homes" id="homes">
+  <div class="wrap">
+<div class="section-head">
+  <p class="eyebrow">By appointment</p>
+  <h2>Marina estates</h2>
+</div>
+<div class="cards">
+<article class="card">
+  <div class="frame"><img src="media/listing-living.jpg?v=2" alt="Fisher Island Marina Villa" loading="lazy" width="1200" height="675"></div>
+  <div class="meta">
+    <h3>Fisher Island Marina Villa</h3>
+    <p class="loc">Fisher Island, FL</p>
+    <p class="price">$32,000,000</p>
+    <p class="spec">7 bed · 9 bath · 13,200 sq ft</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame"><img src="media/listing-kitchen.jpg?v=2" alt="Coral Stone Kitchen" loading="lazy" width="1200" height="675"></div>
+  <div class="meta">
+    <h3>Coral Stone Kitchen</h3>
+    <p class="loc">Fisher Island, FL</p>
+    <p class="price">$19,500,000</p>
+    <p class="spec">5 bed · 6 bath · 9,100 sq ft</p>
+  </div>
+</article>
+<article class="card">
+  <div class="frame"><img src="media/listing-pool.jpg?v=2" alt="Lagoon Cabana Estate" loading="lazy" width="1200" height="675"></div>
+  <div class="meta">
+    <h3>Lagoon Cabana Estate</h3>
+    <p class="loc">Miami, FL</p>
+    <p class="price">$24,800,000</p>
+    <p class="spec">6 bed · 8 bath · 11,000 sq ft</p>
+  </div>
+</article>
+</div>
+  </div>
+</section>
+<section class="panel reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Clients</p>
+      <h2>In their words</h2>
+    </div>
+    <div class="quotes">
+<figure>
+  <blockquote>“Maps, comps, and silence — exactly what Fisher Island requires.”</blockquote>
+  <figcaption>Helena Frost client <span>Buyer, Fisher Island</span></figcaption>
+</figure>
+<figure>
+  <blockquote>“The most discreet bay team we&#x27;ve used.”</blockquote>
+  <figcaption>David Chen <span>Seller, Miami</span></figcaption>
+</figure>
+<figure>
+  <blockquote>“Tools without the noise.”</blockquote>
+  <figcaption>Camila Ortiz <span>Buyer, Biscayne</span></figcaption>
+</figure>
+</div>
+  </div>
+</section>
 
-  <section class="panel about" id="about">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">The desk</p>
-        <h2>Estate tools for Aquidneck Island.</h2>
-      </div>
-      <p class="body" style="max-width:62ch;margin-bottom:36px">Sable Harbor Group pairs classic Newport brokerage with the tools clients actually use — market briefs, private inventory maps, and a coastal desk that answers in hours, not days.</p>
-      <div class="tools"><article><h3>Private inventory</h3><p>Off-market shingle estates and cliff houses, updated weekly.</p></article><article><h3>Coastal brief</h3><p>A monthly read on Newport and Aquidneck pricing.</p></article><article><h3>Showing desk</h3><p>Same-day private tours when the tide and schedule allow.</p></article><article><h3>Seller toolkit</h3><p>Photography, staging partners, and quiet launch plans.</p></article></div>
-      <div class="stats"><div><b>$510M</b><span>Volume</span></div><div><b>3</b><span>Island desks</span></div><div><b>24h</b><span>Reply standard</span></div></div>
-      <div class="map-panel">
-        <div class="map-art" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <div>
-          <p class="eyebrow">Coverage</p>
-          <h2>Newport & Aquidneck Island</h2>
-          <p class="body">Cliff Walk, Bellevue Avenue, and harbor-side shingle estates — mapped weekly for private clients.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="panel homes" id="homes">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">On the island</p>
-        <h2>Selected estates</h2>
-      </div><div class="cards">
-        <article class="card">
-          <div class="frame"><img src="media/listing-living.jpg?v=1" alt="Cliff Walk Residence" loading="lazy" width="1200" height="675"></div>
-          <div class="meta">
-            <h3>Cliff Walk Residence</h3>
-            <p class="loc">Newport, RI</p>
-            <p class="price">$16,500,000</p>
-            <p class="spec">6 bed · 7 bath · 9,200 sq ft</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="frame"><img src="media/listing-kitchen.jpg?v=1" alt="Butler Pantry House" loading="lazy" width="1200" height="675"></div>
-          <div class="meta">
-            <h3>Butler Pantry House</h3>
-            <p class="loc">Newport, RI</p>
-            <p class="price">$8,400,000</p>
-            <p class="spec">5 bed · 5 bath · 6,100 sq ft</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="frame"><img src="media/listing-pool.jpg?v=1" alt="Infinity Cliff Pool" loading="lazy" width="1200" height="675"></div>
-          <div class="meta">
-            <h3>Infinity Cliff Pool</h3>
-            <p class="loc">Newport, RI</p>
-            <p class="price">$21,000,000</p>
-            <p class="spec">5 bed · 6 bath · 8,800 sq ft</p>
-          </div>
-        </article></div></div>
-  </section>
-  
-  <section class="panel reviews" id="reviews">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Clients</p>
-        <h2>In their words</h2>
-      </div>
-      <div class="quotes">
-        <figure>
-          <blockquote>“The tools alone were worth the engagement.”</blockquote>
-          <figcaption>Helena Croft client <span>Buyer, Newport</span></figcaption>
-        </figure>
-        <figure>
-          <blockquote>“They map the island better than anyone.”</blockquote>
-          <figcaption>Greg Hale <span>Seller, Newport</span></figcaption>
-        </figure>
-        <figure>
-          <blockquote>“Coastal counsel with actual infrastructure.”</blockquote>
-          <figcaption>Mia Stone <span>Buyer, Aquidneck</span></figcaption>
-        </figure></div>
-    </div>
-  </section>
-  
-  <section class="panel contact" id="contact">
-    <div class="wrap narrow">
-      <p class="eyebrow">Begin a conversation</p>
-      <h2>Request the coastal brief — or a private inventory pass.</h2>
-      <form class="cform" id="cform" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message received. We reply within one day.';">
-        <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
-        <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
-        <label>Message<textarea name="msg" rows="4" placeholder="Buying, selling, or both?"></textarea></label>
-        <button type="submit">Send enquiry</button>
-        <p class="note">Demo only. Nothing is submitted or stored.</p>
-      </form>
-    </div>
-  </section>
+<section class="panel fx fx-roi" id="fx-roi">
+<style>
+.fx .fx-tag{display:inline-flex;align-items:center;gap:8px;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin:0 0 14px}
+.fx .fx-tag i{width:6px;height:6px;border-radius:50%%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%%,transparent);animation:fxp 2s infinite}
+@keyframes fxp{50%%{box-shadow:0 0 0 8px transparent}}
+.fx .fx-lead{max-width:560px;color:var(--mute);margin:0 0 28px}
+.fx .fx-note{font-size:.7rem;color:var(--mute);margin-top:14px;opacity:.7}
+.roi-w{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.roi-card{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--bg-elev)}.roi-card img{aspect-ratio:16/10;object-fit:cover;width:100%%}.roi-card div{padding:18px 20px}.roi-card h3{font-family:var(--display);margin:0 0 6px}.roi-card .price{color:var(--accent);font-weight:600}.roi-ctrl{display:grid;gap:18px}.roi-ctrl label{display:grid;gap:8px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}.roi-ctrl input{accent-color:var(--accent)}.roi-out{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}.roi-out b{font-family:var(--display);font-size:1.6rem;color:var(--accent);font-weight:500}@media(max-width:860px){.roi-w{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="fx-tag"><i></i>Frontier feature · Equity Projector</div>
+  <h2>Model the hold in Miami.</h2>
+  <p class="fx-lead">Adjust hold period and appreciation to see projected value on this marina villa.</p>
+  <div class="roi-w"><div class="roi-card"><img src="media/listing-living.jpg?v=2" alt=""><div><h3>Fisher Island Marina Villa</h3><p class="price">$32,000,000</p></div></div><div class="roi-ctrl"><label>Hold years <input type="range" min="1" max="15" value="5" id="roiY"><em>5 yrs</em></label><label>Annual appreciation <input type="range" min="1" max="12" value="5" id="roiA"><em>5%</em></label><div class="roi-out"><span>Projected value</span><b id="roiV">—</b></div><div class="roi-out"><span>Estimated equity gain</span><b id="roiG">—</b></div></div></div><p class="fx-note">Illustrative only — not a valuation or investment advice.</p>
+</div>
+<script>(function(){const S=document.getElementById("fx-roi");if(!S)return;const base=32000000;const y=S.querySelector('#roiY'),a=S.querySelector('#roiA'),yv=y.nextElementSibling,av=a.nextElementSibling,ov=S.querySelector('#roiV'),og=S.querySelector('#roiG');function fmt(n){return '$'+Math.round(n).toLocaleString('en-US')}function up(){const yrs=+y.value,ap=+a.value/100;yv.textContent=yrs+' yrs';av.textContent=a.value+'%';const fut=base*Math.pow(1+ap,yrs);ov.textContent=fmt(fut);og.textContent=fmt(fut-base)}y.addEventListener('input',up);a.addEventListener('input',up);up();})();</script>
+</section>
+<section class="panel contact" id="contact">
+  <div class="wrap narrow">
+    <p class="eyebrow">Begin a conversation</p>
+    <h2>Request a private bay introduction.</h2>
+    <form class="cform" id="cform" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message received. We reply within one day.';">
+      <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+      <label>Message<textarea name="msg" rows="4" placeholder="Buying, selling, or both?"></textarea></label>
+      <button type="submit">Send enquiry</button>
+      <p class="note">Demo only. Nothing is submitted or stored.</p>
+    </form>
+  </div>
+</section>
   <footer class="site-foot">
     <div class="wrap foot-row">
       <p class="brand-mini">SABLE HARBOR GROUP</p>
@@ -144,27 +170,28 @@
 </main>
 
 <button class="agent-chip" id="agentChip" type="button" aria-expanded="false" aria-controls="agentPanel">
-  <img src="media/agent.jpg?v=1" alt="" width="48" height="48">
+  <img src="media/agent.jpg?v=2" alt="" width="48" height="48">
   <span>Speak to an agent</span>
 </button>
 <aside class="agent-panel" id="agentPanel" hidden>
   <div class="ap-head">
-    <img src="media/agent.jpg?v=1" alt="" width="56" height="56">
+    <img src="media/agent.jpg?v=2" alt="" width="56" height="56">
     <div>
-      <strong>Helena Croft</strong>
-      <p>Managing Partner · Coast</p>
+      <strong>Helena Frost</strong>
+      <p>Director · Bay</p>
     </div>
     <button type="button" id="agentClose" aria-label="Close">×</button>
   </div>
-  <p class="ap-msg">Good evening. I can arrange a private viewing, discuss an off-market opportunity, or connect you with our advisory desk.</p>
+  <p class="ap-msg">Good evening. I can share marina comps, arrange a Fisher Island viewing, or connect you with Helena.</p>
   <div class="ap-actions">
     <a href="#contact">Send an enquiry</a>
-    <a href="tel:+14015550175">(401) 555-0175</a>
+    <a href="tel:+13055550160">(305) 555-0160</a>
   </div>
   <p class="note">Demo only.</p>
 </aside>
 
+
 <script src="vendor/lenis.min.js"></script>
-<script src="main.js?v=20261025scrub1"></script>
+<script src="main.js?v=20261025city2"></script>
 </body>
 </html>
