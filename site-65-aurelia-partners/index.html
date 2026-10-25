@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelia Partners — Palm Beach, Florida</title>
+<meta name="description" content="Aurelia Partners — private representation for exceptional estates across Palm Beach, Florida.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261024b2">
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">AURELIA<span>PARTNERS</span></a>
+  <nav id="menu" aria-label="Primary">
+    <a href="#about">About</a><a href="#homes">Homes</a><a href="#reviews">Clients</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="nav-cta" href="#contact">Write</a>
+  <button class="menu-tg" id="menuTg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+</header>
+
+<div class="hero-fixed" id="top" aria-hidden="false">
+  <div class="hero-videos">
+    <video id="v0" class="hero-vid is-on" muted playsinline loop autoplay preload="auto" poster="media/hero-still.jpg">
+      <source src="media/hero-loop.mp4?v=1" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-copy">
+    <div class="hero-type">
+      <p class="eyebrow-top">CONFIDENTIAL ADVISORY FOR</p>
+      <h1>PALM BEACH</h1>
+      <p class="eyebrow-bot">AND THE ISLAND</p>
+    </div>
+    <div class="hero-cta-row"><a class="btn accent" href="#homes">View residences</a></div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+</div>
+
+<div class="hero-spacer" aria-hidden="true"></div>
+
+<main class="panels">
+
+  <section class="panel reviews" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Clients</p>
+        <h2>Letters from the Island</h2>
+      </div>
+      <div class="stack">
+        <figure>
+          <blockquote>“Aurelia never put our name in a brochure. Perfect.”</blockquote>
+          <figcaption>Isabella Moreau client <span>Seller, Palm Beach</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“Confidential from the first call to the last wire.”</blockquote>
+          <figcaption>Victor Lang <span>Buyer, Palm Beach</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“The Island’s most careful advisors.”</blockquote>
+          <figcaption>Nora Ellis <span>Seller, Palm Beach</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“They treat every house like a family matter.”</blockquote>
+          <figcaption>James Cho <span>Buyer, Manalapan</span></figcaption>
+        </figure></div>
+    </div>
+  </section>
+  
+  <section class="panel about" id="about">
+    <div class="wrap narrow">
+      <p class="eyebrow">The firm</p>
+      <h2>Clients first. Then the island.</h2>
+      <p class="body">Aurelia Partners is a confidential advisory for Palm Beach and the Island — Mediterranean estates, ocean boulevard compounds, and residences exchanged among families who prefer letters to listings.</p>
+      <div class="stats"><div><b>$1.9B</b><span>Advised</span></div><div><b>74%</b><span>Referral</span></div><div><b>5</b><span>Partners</span></div></div>
+    </div>
+  </section>
+  <section class="panel homes" id="homes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Quietly offered</p>
+        <h2>Island residences</h2>
+      </div><div class="cards">
+        <article class="card">
+          <div class="frame"><img src="media/listing-living.jpg?v=1" alt="Ocean Boulevard Villa" loading="lazy" width="1200" height="675"></div>
+          <div class="meta">
+            <h3>Ocean Boulevard Villa</h3>
+            <p class="loc">Palm Beach, FL</p>
+            <p class="price">$48,000,000</p>
+            <p class="spec">7 bed · 9 bath · 15,400 sq ft</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="frame"><img src="media/listing-kitchen.jpg?v=1" alt="Brass & Marble Kitchen" loading="lazy" width="1200" height="675"></div>
+          <div class="meta">
+            <h3>Brass & Marble Kitchen</h3>
+            <p class="loc">Palm Beach, FL</p>
+            <p class="price">$19,200,000</p>
+            <p class="spec">5 bed · 6 bath · 8,100 sq ft</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="frame"><img src="media/listing-pool.jpg?v=1" alt="Lagoon Cabana Estate" loading="lazy" width="1200" height="675"></div>
+          <div class="meta">
+            <h3>Lagoon Cabana Estate</h3>
+            <p class="loc">Palm Beach, FL</p>
+            <p class="price">$31,500,000</p>
+            <p class="spec">6 bed · 8 bath · 12,000 sq ft</p>
+          </div>
+        </article></div></div>
+  </section>
+  
+  <section class="panel contact" id="contact">
+    <div class="wrap narrow">
+      <p class="eyebrow">Begin a conversation</p>
+      <h2>Write to us. We reply within one day.</h2>
+      <form class="cform" id="cform" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message received. We reply within one day.';">
+        <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+        <label>Message<textarea name="msg" rows="4" placeholder="Buying, selling, or both?"></textarea></label>
+        <button type="submit">Send enquiry</button>
+        <p class="note">Demo only. Nothing is submitted or stored.</p>
+      </form>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <div class="wrap foot-row">
+      <p class="brand-mini">AURELIA PARTNERS</p>
+      <p>© Aurelia Partners · Demo site by <a href="https://studio.vshmedia.com" target="_blank" rel="noopener">VSH Media</a></p>
+    </div>
+  </footer>
+</main>
+
+<button class="agent-chip" id="agentChip" type="button" aria-expanded="false" aria-controls="agentPanel">
+  <img src="media/agent.jpg?v=1" alt="" width="48" height="48">
+  <span>Speak to an agent</span>
+</button>
+<aside class="agent-panel" id="agentPanel" hidden>
+  <div class="ap-head">
+    <img src="media/agent.jpg?v=1" alt="" width="56" height="56">
+    <div>
+      <strong>Isabella Moreau</strong>
+      <p>Senior Partner · Island</p>
+    </div>
+    <button type="button" id="agentClose" aria-label="Close">×</button>
+  </div>
+  <p class="ap-msg">Good evening. I can arrange a private viewing, discuss an off-market opportunity, or connect you with our advisory desk.</p>
+  <div class="ap-actions">
+    <a href="#contact">Send an enquiry</a>
+    <a href="tel:+15615550120">(561) 555-0120</a>
+  </div>
+  <p class="note">Demo only.</p>
+</aside>
+
+<script src="main.js?v=20261024b2" defer></script>
+</body>
+</html>
