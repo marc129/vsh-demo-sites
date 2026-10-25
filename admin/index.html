@@ -41,14 +41,21 @@
     background: #2a221c;
   }
 
-  /* Warm interior PHOTO — blur 40px, scale 1.1 (video frame match) */
+  /* Warm interior PHOTO — blur baked into room-bg.jpg.
+     Mobile Chrome/WebView (Android) and Safari often fail to sample a
+     filtered/transformed fixed layer as a backdrop-filter source, so panels
+     would blur the solid body color instead of the room and look opaque. */
   .bg {
     position: fixed;
-    inset: -8%;
+    inset: 0;
     z-index: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
     background: url('room-bg.jpg') center / cover no-repeat;
-    filter: blur(40px);
-    transform: scale(1.1);
+    /* no filter / transform — keeps this layer a valid backdrop source on mobile */
+    pointer-events: none;
   }
   /* Soft warm wash only — no teal/coral/emerald orbs */
   .accents {
@@ -556,7 +563,13 @@
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
-    .app { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+    html, body {
+      /* allow normal scroll compositing on mobile; keep bg covering via fixed .bg */
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .app { grid-template-columns: 1fr; padding: 12px; gap: 12px; min-height: 100dvh; height: auto; }
     .sidebar {
       flex-direction: row;
       width: 100%;
@@ -564,12 +577,30 @@
       max-height: none;
       overflow-x: auto;
       padding: 10px 14px;
+      /* slightly clearer frost so room shows through on small screens */
+      background: rgba(255, 255, 255, 0.10);
+    }
+    .main {
+      background: rgba(255, 255, 255, 0.10);
+    }
+    .card, .glass-card {
+      background: rgba(255, 255, 255, 0.18);
     }
     .nav-spacer { display: none; }
     .brand { margin-bottom: 0; width: 38px; height: 38px; font-size: 11px; }
     .nav-btn { width: 40px; height: 40px; }
     .bottom-pill { display: none; }
     .page-head h1 { font-size: 22px; }
+  }
+
+  /* Fallback when backdrop-filter unsupported — still translucent, not solid */
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .sidebar, .main, .topbar, .bottom-pill {
+      background: rgba(255, 255, 255, 0.22);
+    }
+    .card, .glass-card {
+      background: rgba(255, 255, 255, 0.28);
+    }
   }
 </style>
 </head>
