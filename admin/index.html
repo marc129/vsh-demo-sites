@@ -555,6 +555,24 @@
     .bottom-pill { display: none; }
     .page-head h1 { font-size: 22px; }
   }
+
+  /* ===== White frosted glass (VisionOS milky frost) ===== */
+  :root{--text:#2b2724;--text-soft:rgba(43,39,36,.78);--muted:rgba(43,39,36,.6);--muted-soft:rgba(43,39,36,.42);--border:rgba(255,255,255,.75);--border-soft:rgba(255,255,255,.6)}
+  .panel{background:linear-gradient(160deg,rgba(255,255,255,.46),rgba(255,255,255,.36))!important;backdrop-filter:blur(30px) saturate(1.4) brightness(1.06)!important;-webkit-backdrop-filter:blur(30px) saturate(1.4) brightness(1.06)!important;border:1px solid rgba(255,255,255,.75)!important;box-shadow:0 24px 64px rgba(60,40,20,.18),inset 0 1px 0 rgba(255,255,255,.8)!important}
+  .card{background:rgba(255,255,255,.55)!important;border:1px solid rgba(255,255,255,.8)!important;backdrop-filter:blur(24px) saturate(1.3)!important;-webkit-backdrop-filter:blur(24px) saturate(1.3)!important;box-shadow:0 6px 24px rgba(60,40,20,.10),inset 0 1px 0 rgba(255,255,255,.9)!important}
+  .sidebar,.bottom-pill,.top-pill{background:rgba(255,255,255,.42)!important;border:1px solid rgba(255,255,255,.75)!important;backdrop-filter:blur(30px) saturate(1.4)!important;-webkit-backdrop-filter:blur(30px) saturate(1.4)!important}
+  body,.panel,.card,.panel *,.card *,.top-user,.top-user *{color:var(--text)}
+  .panel h1,.panel h2,.panel h3,.card .value,.card strong{color:#1f1c1a!important;text-shadow:none!important}
+  .nav-btn,.bottom-pill button{color:rgba(43,39,36,.65)!important}
+  .nav-btn:hover,.bottom-pill button:hover{background:rgba(255,255,255,.55)!important;color:#1f1c1a!important}
+  .badge{background:rgba(255,255,255,.6)!important;border-color:rgba(255,255,255,.85)!important;color:#2b2724!important}
+  .badge.live{background:rgba(16,185,129,.16)!important;color:#047857!important}
+  .badge.warn{background:rgba(217,119,6,.16)!important;color:#92400e!important}
+  .card .delta{color:#047857!important}.card .delta.down{color:#be123c!important}
+  .list-row{border-bottom-color:rgba(43,39,36,.08)!important}
+  .field input,.field select,.field textarea{background:rgba(255,255,255,.6)!important;border-color:rgba(255,255,255,.85)!important;color:#2b2724!important}
+  .field input::placeholder,.field textarea::placeholder{color:rgba(43,39,36,.4)!important}
+  .field select option{background:#fff;color:#2b2724}
 </style>
 </head>
 <body>
