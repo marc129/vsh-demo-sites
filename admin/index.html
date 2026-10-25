@@ -573,6 +573,11 @@
   .field input,.field select,.field textarea{background:rgba(255,255,255,.6)!important;border-color:rgba(255,255,255,.85)!important;color:#2b2724!important}
   .field input::placeholder,.field textarea::placeholder{color:rgba(43,39,36,.4)!important}
   .field select option{background:#fff;color:#2b2724}
+  /* soft wash bg */
+  html,body{background:#efe6dc!important}
+  .bg{position:fixed!important;inset:-12%!important;z-index:-2!important;filter:blur(70px) saturate(.55) brightness(1.12)!important;transform:scale(1.15)!important}
+  .bg::after{background:linear-gradient(160deg,rgba(255,248,240,.55),rgba(240,225,208,.45) 50%,rgba(225,205,185,.5))!important}
+  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 </style>
 </head>
 <body>
