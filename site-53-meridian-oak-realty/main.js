@@ -42,23 +42,3 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
   els.forEach(el => io.observe(el));
 })();
-
-/* AI assistant */
-(function(){
-  const $=s=>document.querySelector(s);
-  const as=$('#assistant'), ask=$('#ask'), log=$('#asLog');
-  if(!as||!ask||!log) return;
-  const tog=o=>{as.hidden=!o;ask.setAttribute('aria-expanded',o);if(o){const i=$('#asIn');if(i)i.focus()}};
-  ask.onclick=()=>tog(as.hidden);
-  const close=$('#asClose'); if(close) close.onclick=()=>tog(false);
-  const city = document.querySelector('.hero-type h1')?.textContent?.trim() || 'this market';
-  const A=q=>{
-    if(/value|worth|estimate/i.test(q)) return 'I can prepare a private estimate. Share your address in the enquiry form and an advisor reviews it within a day.';
-    if(/view|tour|visit|book/i.test(q)) return 'Viewings are accompanied and by appointment. Use the enquiry form and we will propose times.';
-    if(/off-market|private/i.test(q)) return 'A portion of our '+city+' inventory is held privately. Tell us what you are looking for and we will introduce a match.';
-    return 'I can arrange a private viewing in '+city+', discuss an off-market opportunity, or connect you with the advising partner.';
-  };
-  const say=q=>{log.insertAdjacentHTML('beforeend','<p class="as-me"></p>');log.lastChild.textContent=q;setTimeout(()=>{log.insertAdjacentHTML('beforeend','<p class="as-bot"></p>');log.lastChild.textContent=A(q);log.scrollTop=1e5},450)};
-  as.querySelectorAll('.as-quick button').forEach(b=>b.onclick=()=>say(b.textContent));
-  const form=$('#asForm'); if(form) form.onsubmit=e=>{e.preventDefault();const v=$('#asIn').value.trim();if(v){say(v);$('#asIn').value=''}};
-})();
