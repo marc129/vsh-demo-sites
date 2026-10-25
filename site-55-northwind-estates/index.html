@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northwind Estates — Lake Tahoe & Truckee</title>
+<meta name="description" content="Northwind Estates — private representation for exceptional mountain and lake residences across Tahoe and Truckee.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20261024v3">
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">NORTHWIND<span>ESTATES</span></a>
+  <nav id="menu" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#homes">Homes</a>
+    <a href="#reviews">Clients</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="nav-cta" href="#contact">Enquire</a>
+  <button class="menu-tg" id="menuTg" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+</header>
+
+<div class="hero-fixed" id="top" aria-hidden="false">
+  <div class="hero-videos">
+    <video id="v0" class="hero-vid is-on" muted playsinline loop autoplay preload="auto" poster="media/hero-still.jpg">
+      <source src="media/hero-loop.mp4?v=1" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-copy">
+    <div class="hero-type">
+      <p class="eyebrow-top">THE #1 REAL ESTATE TEAM SERVING</p>
+      <h1>LAKE TAHOE</h1>
+      <p class="eyebrow-bot">AND THE SURROUNDING AREAS</p>
+    </div>
+    <div class="hero-cta-row"><a class="btn" href="#homes">View residences</a></div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span></span>Scroll</div>
+</div>
+
+<div class="hero-spacer" aria-hidden="true"></div>
+
+<main class="panels">
+  <section class="panel about" id="about">
+    <div class="wrap narrow">
+      <p class="eyebrow">The firm</p>
+      <h2>Mountain estates, handled without noise.</h2>
+      <p class="body">Northwind Estates represents buyers and sellers of consequential lake and alpine homes — chef’s kitchens that open to dining under timber beams, private docks, and off-market compounds. We move carefully.</p>
+      <div class="stats">
+        <div><b>$980M</b><span>Represented since 2016</span></div>
+        <div><b>52%</b><span>Off-market closings</span></div>
+        <div><b>9</b><span>Advisors, limited roster</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel homes" id="homes">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Currently offered</p>
+        <h2>Selected residences</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="frame"><img src="media/listing-hill.jpg?v=1" alt="Mountain lodge estate" loading="lazy" width="1200" height="675"></div>
+          <div class="meta">
+            <h3>Martis Ridge Lodge</h3>
+            <p class="loc">Martis Camp, CA</p>
+            <p class="price">$14,500,000</p>
+            <p class="spec">6 bed · 7 bath · 8,200 sq ft</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="frame"><img src="media/listing-coast.jpg?v=1" alt="Lakeside glass house" loading="lazy" width="1200" height="675"></div>
+          <div class="meta">
+            <h3>North Shore Glass House</h3>
+            <p class="loc">Lake Tahoe, CA</p>
+            <p class="price">$19,200,000</p>
+            <p class="spec">5 bed · 6 bath · 7,400 sq ft</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="frame"><img src="media/listing-pool.jpg?v=1" alt="Timber pavilion home" loading="lazy" width="1200" height="675"></div>
+          <div class="meta">
+            <h3>Truckee Timber Pavilion</h3>
+            <p class="loc">Truckee, CA</p>
+            <p class="price">$11,800,000</p>
+            <p class="spec">5 bed · 5 bath · 6,100 sq ft</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel reviews" id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Clients</p>
+        <h2>In their words</h2>
+      </div>
+      <div class="quotes">
+        <figure>
+          <blockquote>“They understood the kitchen-to-dining flow mattered as much as the view.”</blockquote>
+          <figcaption>Erin & Cole Vargas <span>Buyers, Martis Camp</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“Northwind placed our lake house privately in six weeks.”</blockquote>
+          <figcaption>Sam Okonkwo <span>Seller, North Shore</span></figcaption>
+        </figure>
+        <figure>
+          <blockquote>“No theatrics. Just the right house.”</blockquote>
+          <figcaption>Nina Feldman <span>Buyer, Truckee</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel contact" id="contact">
+    <div class="wrap narrow">
+      <p class="eyebrow">Begin a conversation</p>
+      <h2>Tell us about the mountain home you want — or the one you’re ready to leave.</h2>
+      <form class="cform" id="cform" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Message received. We reply within one day.';">
+        <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+        <label>Message<textarea name="msg" rows="4" placeholder="Buying, selling, or both?"></textarea></label>
+        <button type="submit">Send enquiry</button>
+        <p class="note">Demo only. Nothing is submitted or stored.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-foot">
+    <div class="wrap foot-row">
+      <p class="brand-mini">NORTHWIND ESTATES</p>
+      <p>© Northwind Estates · Demo site by <a href="https://studio.vshmedia.com" target="_blank" rel="noopener">VSH Media</a></p>
+    </div>
+  </footer>
+</main>
+
+<button class="agent-chip" id="agentChip" type="button" aria-expanded="false" aria-controls="agentPanel">
+  <img src="media/agent.jpg?v=1" alt="" width="48" height="48">
+  <span>Speak to an agent</span>
+</button>
+<aside class="agent-panel" id="agentPanel" hidden>
+  <div class="ap-head">
+    <img src="media/agent.jpg?v=1" alt="" width="56" height="56">
+    <div>
+      <strong>Sofia Reyes</strong>
+      <p>Principal Advisor · Tahoe</p>
+    </div>
+    <button type="button" id="agentClose" aria-label="Close">×</button>
+  </div>
+  <p class="ap-msg">Good evening. I can arrange a private viewing, discuss an off-market opportunity, or connect you with our advisory desk.</p>
+  <div class="ap-actions">
+    <a href="#contact">Send an enquiry</a>
+    <a href="tel:+15305550172">(530) 555-0172</a>
+  </div>
+  <p class="note">Demo only.</p>
+</aside>
+
+<script src="main.js?v=20261024v3" defer></script>
+</body>
+</html>
