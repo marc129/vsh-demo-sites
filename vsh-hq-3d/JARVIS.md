@@ -53,7 +53,7 @@ alter publication supabase_realtime add table public.ops_feed;
 
 Keep writing `ops_feed` the way you already do.
 
-- `kind = lane_stats` — Instantly / Ambush / Price-Cut / Expired / brokerage. The office does not call Instantly itself. Put `instantly_sent_today` in `payload` when you have that count.
+- `kind = lane_stats` — optional outreach note. The floor does not name old sending lanes. Maya is the one outreach worker under you. Harbor’s desk stays Cross Street.
 - Money is a daily snapshot and a weekly snapshot, not every invoice. No customer names.
 
 ```bash
