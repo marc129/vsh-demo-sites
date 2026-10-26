@@ -419,7 +419,9 @@
   .list-row:last-child { border-bottom: none; }
   .list-row .thumb {
     width: 42px; height: 42px; border-radius: 12px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(180,150,120,0.45));
+    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(180,150,120,0.45)) center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
     border: 1px solid var(--edge-soft);
     flex-shrink: 0;
   }
@@ -821,7 +823,9 @@
     height: 48px;
     border-radius: 12px;
     flex-shrink: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(180,150,120,0.45));
+    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(180,150,120,0.45)) center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
     border: 1px solid var(--edge-soft);
   }
   .sched-card .meta { flex: 1; min-width: 0; }
@@ -1031,7 +1035,7 @@
               <div class="card">
                 <h3>Featured listing</h3>
                 <div style="margin-top:4px;">
-                  <div class="thumb" style="width:100%;height:110px;border-radius:16px;margin-bottom:12px;background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(138,90,58,0.45));"></div>
+                  <div class="thumb" role="img" aria-label="214 Montecito Ridge exterior" style="width:100%;height:110px;border-radius:16px;margin-bottom:12px;background:url('listing-montecito.jpg') center/cover no-repeat;"></div>
                   <strong style="display:block;font-size:15px;letter-spacing:-0.02em;">214 Montecito Ridge</strong>
                   <div style="font-size:12px;color:var(--muted);margin-top:4px;">$12.4M · 5 bed · 6 bath · video hero</div>
                   <div style="display:flex;gap:18px;margin-top:12px;">
@@ -1122,17 +1126,17 @@
             <div class="card">
               <h3>Top listings by inquiry</h3>
               <div class="list-row">
-                <div class="thumb"></div>
+                <div class="thumb" style="background-image:url('listing-montecito.jpg');"></div>
                 <div class="meta"><strong>Montecito Oak Estate</strong><span>$12.4M · 18 inquiries</span></div>
                 <span class="badge live">Hot</span>
               </div>
               <div class="list-row">
-                <div class="thumb"></div>
+                <div class="thumb" style="background-image:url('listing-hope-ranch.jpg');"></div>
                 <div class="meta"><strong>Hope Ranch Vista</strong><span>$7.8M · 11 inquiries</span></div>
                 <span class="badge">Rising</span>
               </div>
               <div class="list-row">
-                <div class="thumb"></div>
+                <div class="thumb" style="background-image:url('listing-coast-village.jpg');"></div>
                 <div class="meta"><strong>Coast Village Contemporary</strong><span>$4.2M · 9 inquiries</span></div>
                 <span class="badge">Stable</span>
               </div>
@@ -1189,17 +1193,17 @@
             <div class="card" style="margin-top:14px;">
               <h3>Your listings</h3>
               <div class="list-row">
-                <div class="thumb"></div>
+                <div class="thumb" style="background-image:url('listing-montecito.jpg');"></div>
                 <div class="meta"><strong>214 Montecito Ridge</strong><span>$12.4M · Active · video hero</span></div>
                 <span class="badge live">Live</span>
               </div>
               <div class="list-row">
-                <div class="thumb"></div>
+                <div class="thumb" style="background-image:url('listing-coast-village.jpg');"></div>
                 <div class="meta"><strong>88 Coast Village Rd</strong><span>$4.2M · Draft</span></div>
                 <span class="badge warn">Draft</span>
               </div>
               <div class="list-row">
-                <div class="thumb"></div>
+                <div class="thumb" style="background-image:url('listing-hope-ranch.jpg');"></div>
                 <div class="meta"><strong>Hope Ranch Lane</strong><span>$7.8M · Active</span></div>
                 <span class="badge live">Live</span>
               </div>
@@ -1385,7 +1389,7 @@
             <a href="#" id="sched-view-all">view all</a>
           </div>
           <div class="sched-card">
-            <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.75),rgba(20,145,127,0.4));"></div>
+            <div class="thumb" style="background-image:url('listing-montecito.jpg');"></div>
             <div class="meta">
               <strong>Showing · Montecito Ridge</strong>
               <span>214 Montecito Ridge Rd · buyer walkthrough</span>
@@ -1393,7 +1397,7 @@
             <div class="when">2–3 PM</div>
           </div>
           <div class="sched-card">
-            <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(194,59,59,0.35));"></div>
+            <div class="thumb" style="background-image:url('listing-coast-village.jpg');"></div>
             <div class="meta">
               <strong>Open house · Coast Village</strong>
               <span>88 Coast Village Rd · Sat Oct 26</span>
@@ -1401,7 +1405,7 @@
             <div class="when">1–4 PM</div>
           </div>
           <div class="sched-card">
-            <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(138,90,58,0.4));"></div>
+            <div class="thumb" style="background-image:url('listing-hope-ranch.jpg');"></div>
             <div class="meta">
               <strong>Zoho lead follow-up</strong>
               <span>Jordan Lee · inquiry on Hope Ranch</span>
