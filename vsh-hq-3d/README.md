@@ -1,7 +1,6 @@
-# VSH HQ · 3D Mission Control (comparison build)
+# VSH Media Studio · Mission Control (3D HQ)
 
-Separate parallel option to the live Lovable Mission Control.
-Built from Marc's Neon HQ / 3D Sales CRM zip on the bot box — **not** Lovable.
+Live: https://marc129.github.io/vsh-demo-sites/vsh-hq-3d/
 
-Source of truth: `/workspace/mission-control/3d-hq/` on the box.
-Live (GitHub Pages): https://marc129.github.io/vsh-demo-sites/vsh-hq-3d/
+Built from the contoured HQ package (Founder & CEO, MTD vs Net-to-VSH, desk plaques).
+Jarvis posts `ops_feed` + `agent_channel` — see JARVIS.md in the source package.
