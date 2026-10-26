@@ -49,7 +49,11 @@ for d in sorted(SRC.glob("site-[0-9][0-9]-*")):
 FEATURED = [dict(
     slug="site-00-halstead-group", num="00", brand="The Halstead Group", place="Naples, Florida", state="FL",
     url="site-00-halstead-group/", thumb="site-00-halstead-group/thumb.jpg",
-    thumb_src="/workspace/demo-site/hero.png", build_dir="/workspace/halston-src/dist")]
+    thumb_src="/workspace/demo-site/hero.png", build_dir="/workspace/halston-src/dist"),
+dict(
+    slug="site-68-solenne-headland", num="68", brand="Solenne Headland", place="Big Sur, California", state="CA",
+    url="site-68-solenne-headland/", thumb="site-68-solenne-headland/thumb.jpg",
+    badge="Pitch")]
 for f in FEATURED:
     out = DST / f["slug"]
     bd = Path(f.get("build_dir", ""))
@@ -59,15 +63,16 @@ for f in FEATURED:
     elif not (out / "index.html").exists():
         print(f"warning: {f['slug']}/index.html missing")
     t = DST / f["thumb"]; t.parent.mkdir(parents=True, exist_ok=True)
-    if Path(f["thumb_src"]).exists():
-        im = Image.open(f["thumb_src"]).convert("RGB")
+    thumb_src = f.get("thumb_src")
+    if thumb_src and Path(thumb_src).exists():
+        im = Image.open(thumb_src).convert("RGB")
         w = 1200; h = int(im.height * w / im.width)
         im = im.resize((w, h), Image.LANCZOS).crop((0, 0, w, min(h, 750)))
         im.save(t, "JPEG", quality=80, optimize=True, progressive=True)
     elif not t.exists():
         print(f"warning: no thumbnail for {f['brand']}")
 featured_cards = "\n".join(f'''      <a class="card featured" href="{f['url']}">
-        <div class="ph"><span class="badge">Featured</span><img src="{f['thumb']}" alt="{html.escape(f['brand'])} website preview" width="1200" height="750"></div>
+        <div class="ph"><span class="badge">{html.escape(f.get("badge", "Featured"))}</span><img src="{f['thumb']}" alt="{html.escape(f['brand'])} website preview" width="1200" height="750"></div>
         <div class="meta"><span class="no">{f['num']}</span><div><h2>{html.escape(f['brand'])}</h2><p>{html.escape(f['place'])}</p></div><span class="go" aria-hidden="true">&rarr;</span></div>
       </a>''' for f in FEATURED)
 cards = featured_cards + "\n" + "\n".join(f'''      <a class="card" href="{s['slug']}/">
