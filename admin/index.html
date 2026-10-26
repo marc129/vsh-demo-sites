@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>VSH Media — Client Portal</title>
+<title>Alex Rivera — Client Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -139,6 +139,8 @@
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     margin-bottom: 8px;
     flex-shrink: 0;
+    overflow: hidden;
+    padding: 0;
   }
 
   .nav-btn {
@@ -202,6 +204,57 @@
     font-size: 13px;
     color: var(--chrome-ink);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .avatar:hover::after,
+  .avatar:focus-visible::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.28);
+    border-radius: 50%;
+  }
+  .brand img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+  }
+  .profile-photo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .profile-photo-row .avatar {
+    width: 64px;
+    height: 64px;
+    box-shadow: inset 0 0 0 1px rgba(40, 30, 20, 0.12), 0 8px 20px -12px rgba(40, 28, 16, 0.35);
+    background: rgba(255, 255, 255, 0.55);
+  }
+  .profile-photo-row .meta strong {
+    display: block;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .profile-photo-row .meta span {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .profile-photo-row .btn {
+    margin-top: 8px;
   }
   .top-user strong { display: block; font-size: 13px; font-weight: 600; color: var(--chrome-ink); text-shadow: 0 1px 12px rgba(0, 0, 0, 0.12); }
   .top-user span { font-size: 11px; color: var(--chrome-dim); }
@@ -623,7 +676,7 @@
 
   <div class="app">
     <aside class="sidebar" aria-label="Primary">
-      <div class="brand" title="VSH Media">VSH</div>
+      <div class="brand" title="Alex Rivera"><img class="agent-face" src="agent-avatar.jpg" alt="Alex Rivera" /></div>
       <button class="nav-btn active" data-view="overview" title="Overview" aria-label="Overview">
         <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z"/></svg>
       </button>
@@ -645,12 +698,15 @@
     <div class="main-wrap">
       <header class="top-pill">
         <div class="top-user">
-          <div class="avatar">MO</div>
+          <button type="button" class="avatar" id="btn-avatar-top" title="Change profile photo" aria-label="Change profile photo">
+            <img class="agent-face" src="agent-avatar.jpg" alt="Alex Rivera" />
+          </button>
           <div>
-            <strong>Meridian Oak</strong>
-            <span>Client portal · VSH Media</span>
+            <strong>Alex Rivera</strong>
+            <span>Client portal</span>
           </div>
         </div>
+        <input type="file" id="avatarFileInput" accept="image/*" hidden />
         <div class="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           <span>Search listings, leads, reports…</span>
@@ -670,7 +726,7 @@
             <div class="page-head">
               <div>
                 <h1>Overview</h1>
-                <p>Meridian Oak Realty · last 30 days</p>
+                <p>Alex Rivera · last 30 days</p>
               </div>
               <span class="chip"><span class="dot"></span> Live demo data</span>
             </div>
@@ -918,7 +974,7 @@
               </div>
               <div class="card">
                 <h3>Source tag</h3>
-                <div class="value" style="font-size:18px;">meridian-oak.web</div>
+                <div class="value" style="font-size:18px;">alex-rivera.web</div>
                 <div class="delta neutral">Per-site attribution</div>
               </div>
             </div>
@@ -945,19 +1001,29 @@
             <div class="page-head">
               <div>
                 <h1>Settings</h1>
-                <p>Client portal preferences · stub</p>
+                <p>Agent portal preferences · stub</p>
               </div>
             </div>
             <div class="grid-2">
               <div class="card">
-                <h3>Workspace</h3>
+                <h3>Profile</h3>
+                <div class="profile-photo-row">
+                  <button type="button" class="avatar" id="btn-avatar-settings" title="Change profile photo" aria-label="Change profile photo">
+                    <img class="agent-face" src="agent-avatar.jpg" alt="Alex Rivera" />
+                  </button>
+                  <div class="meta">
+                    <strong>Profile photo</strong>
+                    <span>JPG or PNG · preview only, not saved</span>
+                    <button class="btn ghost" type="button" id="btn-upload-photo">Upload photo</button>
+                  </div>
+                </div>
                 <div class="field">
-                  <label>Client name</label>
-                  <input type="text" value="Meridian Oak Realty" readonly />
+                  <label>Agent name</label>
+                  <input type="text" value="Alex Rivera" readonly />
                 </div>
                 <div class="field">
                   <label>Primary site</label>
-                  <input type="text" value="site-53-meridian-oak-realty" readonly />
+                  <input type="text" value="alex-rivera" readonly />
                 </div>
                 <div class="field">
                   <label>Timezone</label>
@@ -972,7 +1038,7 @@
                 <h3>Notifications</h3>
                 <div class="field">
                   <label>Alert email</label>
-                  <input type="email" placeholder="agents@meridianoak.com" />
+                  <input type="email" placeholder="alex@alexrivera.com" />
                 </div>
                 <div class="field">
                   <label>Lead digest</label>
@@ -1131,7 +1197,7 @@
       crmConnected = !crmConnected;
       document.getElementById("crmDot").classList.toggle("on", crmConnected);
       document.getElementById("crmStatusLabel").textContent = crmConnected
-        ? "Connected · Meridian Oak org (mock)"
+        ? "Connected · Alex Rivera org (mock)"
         : "Not connected · demo mock";
       btnConnect.textContent = crmConnected ? "Disconnect" : "Connect Zoho";
       btnSync.disabled = !crmConnected;
@@ -1144,6 +1210,27 @@
       el.textContent = String(next);
       document.getElementById("syncedDelta").textContent = "↑ just now";
       showToast("Synced 14 leads → Zoho (mock)");
+    });
+
+    /* Profile photo upload — client-side preview only */
+    const avatarInput = document.getElementById("avatarFileInput");
+    function openAvatarPicker() { avatarInput.click(); }
+    document.getElementById("btn-avatar-top").addEventListener("click", openAvatarPicker);
+    document.getElementById("btn-avatar-settings").addEventListener("click", openAvatarPicker);
+    document.getElementById("btn-upload-photo").addEventListener("click", openAvatarPicker);
+    avatarInput.addEventListener("change", () => {
+      const file = avatarInput.files && avatarInput.files[0];
+      if (!file) return;
+      if (!file.type.startsWith("image/")) {
+        showToast("Please choose an image file");
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.querySelectorAll("img.agent-face").forEach(img => { img.src = reader.result; });
+        showToast("Profile photo updated (preview only)");
+      };
+      reader.readAsDataURL(file);
     });
   </script>
 </body>
