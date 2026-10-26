@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Alex Rivera — Client Portal</title>
+<title>Alex — Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -676,7 +676,7 @@
 
   <div class="app">
     <aside class="sidebar" aria-label="Primary">
-      <div class="brand" title="Alex Rivera">AR</div>
+      <div class="brand" title="Alex">A</div>
       <button class="nav-btn active" data-view="overview" title="Overview" aria-label="Overview">
         <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z"/></svg>
       </button>
@@ -699,11 +699,10 @@
       <header class="top-pill">
         <div class="top-user">
           <button type="button" class="avatar" id="btn-avatar-top" title="Change profile photo" aria-label="Change profile photo">
-            <img class="agent-face" src="agent-avatar.jpg" alt="Alex Rivera" />
+            <img class="agent-face" src="agent-avatar.jpg" alt="Alex" />
           </button>
           <div>
-            <strong>Welcome, Alex Rivera</strong>
-            <span>Client portal</span>
+            <strong>Welcome, Alex</strong>
           </div>
         </div>
         <input type="file" id="avatarFileInput" accept="image/*" hidden />
@@ -726,9 +725,8 @@
             <div class="page-head">
               <div>
                 <h1>Overview</h1>
-                <p>Alex Rivera · last 30 days</p>
               </div>
-              <span class="chip"><span class="dot"></span> Live demo data</span>
+              <span class="chip"><span class="dot"></span> Live</span>
             </div>
 
             <div class="grid-4">
@@ -974,7 +972,7 @@
               </div>
               <div class="card">
                 <h3>Source tag</h3>
-                <div class="value" style="font-size:18px;">alex-rivera.web</div>
+                <div class="value" style="font-size:18px;">alex.web</div>
                 <div class="delta neutral">Per-site attribution</div>
               </div>
             </div>
@@ -1009,7 +1007,7 @@
                 <h3>Profile</h3>
                 <div class="profile-photo-row">
                   <button type="button" class="avatar" id="btn-avatar-settings" title="Change profile photo" aria-label="Change profile photo">
-                    <img class="agent-face" src="agent-avatar.jpg" alt="Alex Rivera" />
+                    <img class="agent-face" src="agent-avatar.jpg" alt="Alex" />
                   </button>
                   <div class="meta">
                     <strong>Profile photo</strong>
@@ -1019,11 +1017,11 @@
                 </div>
                 <div class="field">
                   <label>Agent name</label>
-                  <input type="text" value="Alex Rivera" readonly />
+                  <input type="text" value="Alex" readonly />
                 </div>
                 <div class="field">
                   <label>Primary site</label>
-                  <input type="text" value="alex-rivera" readonly />
+                  <input type="text" value="alex" readonly />
                 </div>
                 <div class="field">
                   <label>Timezone</label>
@@ -1038,7 +1036,7 @@
                 <h3>Notifications</h3>
                 <div class="field">
                   <label>Alert email</label>
-                  <input type="email" placeholder="alex@alexrivera.com" />
+                  <input type="email" placeholder="alex@example.com" />
                 </div>
                 <div class="field">
                   <label>Lead digest</label>
@@ -1197,7 +1195,7 @@
       crmConnected = !crmConnected;
       document.getElementById("crmDot").classList.toggle("on", crmConnected);
       document.getElementById("crmStatusLabel").textContent = crmConnected
-        ? "Connected · Alex Rivera org (mock)"
+        ? "Connected · Alex org (mock)"
         : "Not connected · demo mock";
       btnConnect.textContent = crmConnected ? "Disconnect" : "Connect Zoho";
       btnSync.disabled = !crmConnected;
