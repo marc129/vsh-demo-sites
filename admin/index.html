@@ -97,12 +97,12 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 76px 1fr;
-    gap: 22px;
+    grid-template-columns: 76px 1fr 300px;
+    gap: 18px;
     height: 100vh;
     height: 100dvh;
-    padding: 28px 28px 28px 22px;
-    max-width: 1480px;
+    padding: 28px 22px 28px 22px;
+    max-width: 1580px;
     margin: 0 auto;
   }
 
@@ -630,17 +630,267 @@
   }
   .toast.show { transform: none; opacity: 1; }
 
-  @media (max-width: 1100px) {
+
+  /* Right rail — profile + calendar + scheduled (fitness-dashboard layout) */
+  .right-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .right-rail-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-right: 2px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(40, 30, 20, 0.25) transparent;
+  }
+  .rail-card {
+    background: var(--panel);
+    border: 1px solid var(--edge);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(44px) saturate(1.5);
+    -webkit-backdrop-filter: blur(44px) saturate(1.5);
+    padding: 16px;
+    color: var(--ink);
+  }
+  .profile-strip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+  .profile-strip .avatar {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.45);
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1px rgba(40, 30, 20, 0.12), 0 10px 24px -14px rgba(40, 28, 16, 0.4);
+  }
+  .profile-strip .name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .profile-strip .handle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: -4px;
+  }
+  .profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin-top: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .profile-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .profile-stats strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .profile-stats span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+
+  .cal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .cal-head h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    text-transform: none;
+    margin: 0;
+  }
+  .cal-nav {
+    display: flex;
+    gap: 4px;
+  }
+  .cal-nav button {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--line-2);
+    background: var(--soft);
+    color: var(--ink-2);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .cal-nav button:hover { background: var(--soft-2); }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+  }
+  .cal-grid .dow {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--faint);
+    padding: 4px 0;
+    letter-spacing: 0.04em;
+  }
+  .cal-grid .day {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-2);
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: default;
+    font-family: inherit;
+  }
+  .cal-grid .day.muted { color: var(--faint); opacity: 0.45; }
+  .cal-grid .day.event {
+    background: rgba(20, 145, 127, 0.18);
+    color: var(--emerald-bright);
+    font-weight: 700;
+  }
+  .cal-grid .day.today {
+    background: #c23b3b;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 6px 14px -6px rgba(194, 59, 59, 0.55);
+  }
+  .cal-grid .day.today.event { background: #c23b3b; color: #fff; }
+
+  .sched-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .sched-head h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .sched-head a {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--emerald-bright);
+    text-decoration: none;
+  }
+  .sched-card {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 16px;
+    background: var(--card);
+    border: 1px solid var(--edge-soft);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 8px;
+  }
+  .sched-card:last-child { margin-bottom: 0; }
+  .sched-card .thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(180,150,120,0.45));
+    border: 1px solid var(--edge-soft);
+  }
+  .sched-card .meta { flex: 1; min-width: 0; }
+  .sched-card .meta strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sched-card .meta span {
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+  .sched-card .when {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--emerald-bright);
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  .rail-toggle {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--edge);
+    background: var(--chrome);
+    color: var(--chrome-ink);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    box-shadow: var(--glass-shadow);
+    cursor: pointer;
+  }
+  .rail-toggle span.chev { opacity: 0.7; font-size: 11px; }
+
+  .greeting-wave { font-style: normal; }
+
+  @media (max-width: 1200px) {
+    .app { grid-template-columns: 76px 1fr 260px; gap: 14px; }
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
     .grid-2, .grid-3 { grid-template-columns: 1fr; }
   }
-  @media (max-width: 720px) {
+  @media (max-width: 900px) {
     html, body {
       overflow-x: hidden;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
     }
-    .app { grid-template-columns: 1fr; padding: 12px; gap: 12px; min-height: 100dvh; height: auto; }
+    .app {
+      grid-template-columns: 1fr;
+      padding: 12px;
+      gap: 12px;
+      min-height: 100dvh;
+      height: auto;
+    }
     .sidebar {
       flex-direction: row;
       width: 100%;
@@ -648,23 +898,37 @@
       max-height: none;
       overflow-x: auto;
       padding: 10px 14px;
+      order: 0;
     }
+    .main-wrap { order: 1; }
+    .right-rail {
+      order: 2;
+      height: auto;
+      overflow: visible;
+    }
+    .rail-toggle { display: flex; }
+    .right-rail-scroll {
+      display: none;
+      overflow: visible;
+    }
+    .right-rail.open .right-rail-scroll { display: flex; }
     .nav-spacer { display: none; }
     .brand { margin-bottom: 0; width: 38px; height: 38px; font-size: 11px; }
     .nav-btn { width: 40px; height: 40px; }
     .bottom-pill { display: none; }
     .page-head h1 { font-size: 22px; }
     .panel { border-radius: 30px; }
+    .top-user { border-right: none; padding-right: 0; }
   }
 
   @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-    .sidebar, .top-pill, .bottom-pill {
+    .sidebar, .top-pill, .bottom-pill, .rail-toggle {
       background: rgba(98, 90, 82, 0.72);
     }
-    .panel {
+    .panel, .rail-card {
       background: rgba(255, 255, 255, 0.72);
     }
-    .card, .glass-card {
+    .card, .glass-card, .sched-card {
       background: rgba(255, 255, 255, 0.88);
     }
   }
@@ -697,14 +961,6 @@
 
     <div class="main-wrap">
       <header class="top-pill">
-        <div class="top-user">
-          <button type="button" class="avatar" id="btn-avatar-top" title="Change profile photo" aria-label="Change profile photo">
-            <img class="agent-face" src="agent-avatar.jpg" alt="Alex" />
-          </button>
-          <div>
-            <strong>Welcome, Alex</strong>
-          </div>
-        </div>
         <input type="file" id="avatarFileInput" accept="image/*" hidden />
         <div class="search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -724,7 +980,8 @@
           <section class="view active" id="view-overview">
             <div class="page-head">
               <div>
-                <h1>Overview</h1>
+                <h1>Welcome, Alex <span class="greeting-wave" aria-hidden="true">👋</span></h1>
+                <p>Your listings, leads, and showings at a glance</p>
               </div>
               <span class="chip"><span class="dot"></span> Live</span>
             </div>
@@ -773,51 +1030,64 @@
                 </div>
               </div>
               <div class="card">
-                <h3>Goal progress</h3>
-                <div style="display:flex;flex-direction:column;gap:16px;margin-top:8px;">
-                  <div class="ring-wrap">
-                    <div class="ring" style="--p:78"><span>78%</span></div>
+                <h3>Featured listing</h3>
+                <div style="margin-top:4px;">
+                  <div class="thumb" style="width:100%;height:110px;border-radius:16px;margin-bottom:12px;background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(138,90,58,0.45));"></div>
+                  <strong style="display:block;font-size:15px;letter-spacing:-0.02em;">214 Montecito Ridge</strong>
+                  <div style="font-size:12px;color:var(--muted);margin-top:4px;">$12.4M · 5 bed · 6 bath · video hero</div>
+                  <div style="display:flex;gap:18px;margin-top:12px;">
                     <div>
-                      <strong style="font-size:14px;">Lead target</strong>
-                      <div style="font-size:12px;color:var(--muted);margin-top:2px;">67 / 86 monthly goal</div>
+                      <div style="font-size:18px;font-weight:700;color:var(--ink);">18</div>
+                      <div style="font-size:11px;color:var(--muted);">Inquiries</div>
                     </div>
-                  </div>
-                  <div class="ring-wrap">
-                    <div class="ring" style="--p:54"><span>54%</span></div>
                     <div>
-                      <strong style="font-size:14px;">Listing coverage</strong>
-                      <div style="font-size:12px;color:var(--muted);margin-top:2px;">13 of 24 with video</div>
+                      <div style="font-size:18px;font-weight:700;color:var(--ink);">2.4k</div>
+                      <div style="font-size:11px;color:var(--muted);">Views</div>
+                    </div>
+                    <div>
+                      <div style="font-size:18px;font-weight:700;color:var(--emerald);">Hot</div>
+                      <div style="font-size:11px;color:var(--muted);">Status</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="card">
-              <h3>Recent activity</h3>
-              <div class="list-row">
-                <div class="thumb"></div>
-                <div class="meta">
-                  <strong>Listing published · 214 Montecito Ridge</strong>
-                  <span>Agent upload · 2 hours ago</span>
+            <div class="grid-3">
+              <div class="card">
+                <h3>Lead target</h3>
+                <div class="ring-wrap" style="margin-top:8px;">
+                  <div class="ring" style="--p:78"><span>78%</span></div>
+                  <div>
+                    <strong style="font-size:13px;">Monthly goal</strong>
+                    <div style="font-size:11px;color:var(--muted);margin-top:2px;">67 / 86 leads</div>
+                  </div>
                 </div>
-                <span class="badge live">Live</span>
               </div>
-              <div class="list-row">
-                <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.4),rgba(94,234,212,0.35))"></div>
-                <div class="meta">
-                  <strong>12 leads synced to Zoho CRM</strong>
-                  <span>Source: contact form · today 9:14 AM</span>
+              <div class="card">
+                <h3>Video coverage</h3>
+                <div class="ring-wrap" style="margin-top:8px;">
+                  <div class="ring" style="--p:54"><span>54%</span></div>
+                  <div>
+                    <strong style="font-size:13px;">Listings with video</strong>
+                    <div style="font-size:11px;color:var(--muted);margin-top:2px;">13 of 24 live</div>
+                  </div>
                 </div>
-                <span class="badge">CRM</span>
               </div>
-              <div class="list-row">
-                <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.3),rgba(232,180,140,0.4))"></div>
-                <div class="meta">
-                  <strong>Hero video refreshed · Solace &amp; Stone</strong>
-                  <span>Pacific Heights fly-through · yesterday</span>
+              <div class="card">
+                <h3>Recent</h3>
+                <div class="list-row" style="padding-top:4px;">
+                  <div class="meta">
+                    <strong>12 leads → Zoho</strong>
+                    <span>Today 9:14 AM</span>
+                  </div>
                 </div>
-                <span class="badge warn">Review</span>
+                <div class="list-row">
+                  <div class="meta">
+                    <strong>Listing published</strong>
+                    <span>Montecito Ridge · 2h</span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -1062,6 +1332,86 @@
         <button type="button" data-view="settings">Settings</button>
       </nav>
     </div>
+
+    <aside class="right-rail" id="right-rail" aria-label="Profile and schedule">
+      <button type="button" class="rail-toggle" id="rail-toggle" aria-expanded="false">
+        <span>Calendar &amp; schedule</span>
+        <span class="chev">▼</span>
+      </button>
+      <div class="right-rail-scroll">
+        <div class="rail-card profile-strip">
+          <button type="button" class="avatar" id="btn-avatar-rail" title="Change profile photo" aria-label="Change profile photo">
+            <img class="agent-face" src="agent-avatar.jpg" alt="Alex" />
+          </button>
+          <div class="name">Alex</div>
+          <div class="handle">@alex</div>
+          <div class="profile-stats">
+            <div><strong>24</strong><span>Listings</span></div>
+            <div><strong>86</strong><span>Leads</span></div>
+            <div><strong>12</strong><span>Active</span></div>
+          </div>
+        </div>
+
+        <div class="rail-card">
+          <div class="cal-head">
+            <h3>October 2026</h3>
+            <div class="cal-nav" aria-hidden="true">
+              <button type="button" tabindex="-1">‹</button>
+              <button type="button" tabindex="-1">›</button>
+            </div>
+          </div>
+          <div class="cal-grid" aria-label="October 2026 calendar">
+            <div class="dow">Su</div><div class="dow">Mo</div><div class="dow">Tu</div><div class="dow">We</div><div class="dow">Th</div><div class="dow">Fr</div><div class="dow">Sa</div>
+            <!-- Oct 2026 starts Thursday; pad Sun–Wed with Sep 27–30 -->
+            <div class="day muted">27</div><div class="day muted">28</div><div class="day muted">29</div><div class="day muted">30</div>
+            <div class="day">1</div><div class="day">2</div><div class="day">3</div>
+            <div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div><div class="day">9</div><div class="day">10</div>
+            <div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div>
+            <div class="day event" title="Open house prep">17</div>
+            <div class="day">18</div><div class="day">19</div><div class="day">20</div>
+            <div class="day event" title="Showing">21</div>
+            <div class="day">22</div>
+            <div class="day event" title="Zoho follow-up">23</div>
+            <div class="day">24</div>
+            <div class="day today event" title="Today · Showing">25</div>
+            <div class="day event" title="Open house">26</div>
+            <div class="day event" title="Lead follow-up">27</div>
+            <div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
+          </div>
+        </div>
+
+        <div class="rail-card">
+          <div class="sched-head">
+            <h3>Scheduled</h3>
+            <a href="#" id="sched-view-all">view all</a>
+          </div>
+          <div class="sched-card">
+            <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.75),rgba(20,145,127,0.4));"></div>
+            <div class="meta">
+              <strong>Showing · Montecito Ridge</strong>
+              <span>214 Montecito Ridge Rd · buyer walkthrough</span>
+            </div>
+            <div class="when">2–3 PM</div>
+          </div>
+          <div class="sched-card">
+            <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(194,59,59,0.35));"></div>
+            <div class="meta">
+              <strong>Open house · Coast Village</strong>
+              <span>88 Coast Village Rd · Sat Oct 26</span>
+            </div>
+            <div class="when">1–4 PM</div>
+          </div>
+          <div class="sched-card">
+            <div class="thumb" style="background:linear-gradient(135deg,rgba(255,255,255,0.7),rgba(138,90,58,0.4));"></div>
+            <div class="meta">
+              <strong>Zoho lead follow-up</strong>
+              <span>Jordan Lee · inquiry on Hope Ranch</span>
+            </div>
+            <div class="when">Mon 10 AM</div>
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <div class="toast" id="toast" role="status"></div>
@@ -1210,10 +1560,10 @@
       showToast("Synced 14 leads → Zoho (mock)");
     });
 
-    /* Profile photo upload — client-side preview only */
+    /* Profile photo upload — client-side preview only (one face: right rail + settings) */
     const avatarInput = document.getElementById("avatarFileInput");
     function openAvatarPicker() { avatarInput.click(); }
-    document.getElementById("btn-avatar-top").addEventListener("click", openAvatarPicker);
+    document.getElementById("btn-avatar-rail").addEventListener("click", openAvatarPicker);
     document.getElementById("btn-avatar-settings").addEventListener("click", openAvatarPicker);
     document.getElementById("btn-upload-photo").addEventListener("click", openAvatarPicker);
     avatarInput.addEventListener("change", () => {
@@ -1229,6 +1579,18 @@
         showToast("Profile photo updated (preview only)");
       };
       reader.readAsDataURL(file);
+    });
+
+    const rail = document.getElementById("right-rail");
+    const railToggle = document.getElementById("rail-toggle");
+    railToggle.addEventListener("click", () => {
+      const open = rail.classList.toggle("open");
+      railToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      railToggle.querySelector(".chev").textContent = open ? "▲" : "▼";
+    });
+    document.getElementById("sched-view-all").addEventListener("click", (e) => {
+      e.preventDefault();
+      showToast("Full schedule coming soon (demo)");
     });
   </script>
 </body>
