@@ -10,6 +10,8 @@ https://marc129.github.io/vsh-demo-sites/vsh-hq-3d/
 
 Until that path is updated, the office you should treat as the target is that URL. The channel commands below do not change.
 
+This build is the phone layout. The floor takes one-finger orbit and two-finger pinch zoom and pan. Board still frames the wall. Projects is in the bottom bar and the tiles stay tappable. Marc stays the younger founder: black hair worn up, no glasses. Maya is the outreach worker. Harbor’s desk stays Cross Street. Desk titles stay on the front face. Money is still MTD revenue versus net to VSH, and ad pass-through is not profit.
+
 ## Same Supabase
 
 ```
