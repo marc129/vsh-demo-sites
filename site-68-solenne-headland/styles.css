@@ -214,11 +214,13 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   .nav-panel { display: none; }
 }
 
-/* Hero */
+/* Hero — pinned while the scroll pushes the camera */
+.hero-stage { height: 180vh; }
 .hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   color: #fff;
@@ -228,12 +230,13 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
 }
 .hero-img {
   position: absolute;
-  inset: 0;
+  left: 0;
+  top: -12%;
   width: 100%;
-  height: 100%;
+  height: 124%;
   object-fit: cover;
   object-position: center 42%;
-  animation: ken 32s ease-out forwards;
+  will-change: transform;
 }
 .hero-shade {
   position: absolute;
@@ -294,11 +297,10 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   transform-origin: top;
   animation: stem 1.8s ease-in-out infinite;
 }
-@keyframes ken { from { transform: scale(1); } to { transform: scale(1.07); } }
 @keyframes stem { 0%, 100% { transform: scaleY(0.4); opacity: 0.4; } 50% { transform: scaleY(1); opacity: 1; } }
 
-/* Sticky showcase */
-.reel { height: 420vh; position: relative; background: #0c0c0c; }
+/* Sticky showcase. Extra height is the scrub distance. */
+.reel { height: 540vh; position: relative; background: #0c0c0c; }
 .reel-sticky {
   position: sticky;
   top: 0;
@@ -314,9 +316,14 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   opacity: 0;
 }
 .slide img, .beat img {
+  position: absolute;
+  left: 0;
+  top: -12%;
   width: 100%;
-  height: 100%;
+  height: 124%;
+  max-width: none;
   object-fit: cover;
+  will-change: transform;
 }
 .slide figcaption, .beat figcaption { display: none; }
 .reel-shade {
@@ -384,11 +391,14 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
 }
 .ticks li.on { opacity: 1; }
 
-/* Editorial */
+/* Editorial — type stays put, pills travel with the scroll */
+.edit-stage { height: 190vh; background: var(--paper); }
 .editorial {
+  position: sticky;
+  top: 0;
   background: var(--paper);
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   padding: 18vh 20px;
@@ -448,10 +458,13 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   max-width: 1280px;
   margin: 0 auto;
 }
-.built-photo {
-  margin: 0;
+.built-photo, .room-grid figure, .cal-photo {
   overflow: hidden;
 }
+.built-photo {
+  margin: 0;
+}
+.drift img { will-change: transform; transform: scale(1.12); }
 .built-photo img, .room-grid img, .cal-photo img {
   width: 100%;
   height: 68vw;
@@ -544,8 +557,8 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   .room-list { grid-template-columns: 1fr 1fr; column-gap: 48px; }
 }
 
-/* Day */
-.day { height: 400vh; background: #090909; color: #f4f1ea; }
+/* Day — pinned scrub, one beat per stretch of scroll */
+.day { height: 500vh; background: #090909; color: #f4f1ea; }
 .day-pin {
   position: sticky;
   top: 0;
@@ -678,7 +691,6 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
 }
 .cal-photo {
   margin: 0;
-  overflow: hidden;
   position: relative;
 }
 @media (min-width: 900px) {
@@ -768,11 +780,7 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   pointer-events: none;
 }
 .giant-wrap.masked .giant { color: transparent; }
-.giant-wrap.masked .giant-sea { display: block; animation: tide 22s ease-in-out infinite alternate; }
-@keyframes tide {
-  from { object-position: 0% 40%; }
-  to { object-position: 100% 70%; }
-}
+.giant-wrap.masked .giant-sea { display: block; }
 .legal {
   display: flex;
   flex-wrap: wrap;
@@ -817,7 +825,16 @@ dialog .text-btn { display: inline; letter-spacing: 0.14em; text-transform: uppe
   .nav-panel, .cursor { transition: none; }
 }
 
+@media (max-width: 700px) {
+  .hero-stage { height: 150vh; }
+  .reel { height: 460vh; }
+  .edit-stage { height: 160vh; }
+  .day { height: 440vh; }
+}
+
 /* Without JavaScript the long sticky sequences become a readable stack. */
+.no-js .hero-stage, .no-js .edit-stage, .no-js .reel, .no-js .day { height: auto; }
+.no-js .hero, .no-js .editorial { position: relative; height: auto; min-height: 100dvh; }
 .no-js .reel, .no-js .day { height: auto; }
 .no-js .reel-sticky, .no-js .day-pin { position: relative; height: auto; display: block; }
 .no-js .slide, .no-js .beat {
