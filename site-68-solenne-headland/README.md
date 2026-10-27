@@ -6,7 +6,7 @@ Fictional cliffside listing site for VSH Media to pitch real-estate agents. Insp
 
 No build step. This folder is the static site GitHub Pages should serve. Open `index.html` or serve the folder.
 
-Scroll is the animation. `main.js` scrubs the pinned hero, the Interior / Mooring / Arrival / Airside sequence, the editorial pills, the room photographs, and the day timeline from the scroll position. A real wheel or finger scroll moves the camera; it does not wait for a click.
+Scroll is the playhead. Vendored GSAP ScrollTrigger pins the hero, the Interior / Mooring / Arrival / Airside reel, the editorial, the day, and the footer word. Lenis smooths the wheel so a trackpad scrubs those pins like a film. Photographs dolly and wipe for the whole hold. No build step. The `vendor/` files are GSAP 3.12.7, ScrollTrigger, and Lenis 1.1.20.
 
 Scroll sequence: hero wordmark, sticky Interior / Mooring / Arrival / Airside, headland editorial, rooms and the 1 466 figure, a dark day from 06:40 to 22:00, September 2026 handover, agent CTA. The CTA links to the VSH studio. It does not collect a name or an email.
 

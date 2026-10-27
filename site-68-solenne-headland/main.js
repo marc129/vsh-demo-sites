@@ -2,157 +2,29 @@ document.documentElement.classList.remove("no-js");
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const phone = () => matchMedia("(max-width: 700px)").matches;
 
-const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
-const smooth = (t) => {
-  const x = clamp(t, 0, 1);
-  return x * x * (3 - 2 * x);
-};
-const sectionProgress = (el) => {
-  if (!el) return 0;
-  const total = el.offsetHeight - window.innerHeight;
-  if (total <= 0) return 0;
-  return clamp(-el.getBoundingClientRect().top / total, 0, 1);
-};
-
-const heroStage = document.querySelector(".hero-stage");
+const hero = document.querySelector(".hero");
 const heroImg = document.querySelector(".hero-img");
-const heroCopy = document.querySelector(".hero-copy");
-const heroShade = document.querySelector(".hero-shade");
-const reel = document.querySelector(".reel");
+const reelSticky = document.querySelector(".reel-sticky");
 const slides = [...document.querySelectorAll(".reel .slide")];
 const titles = [...document.querySelectorAll(".reel-titles h2")];
 const ticks = [...document.querySelectorAll(".ticks li")];
 const rail = document.querySelector(".rail i");
-const editStage = document.querySelector(".edit-stage");
+const editorial = document.querySelector(".editorial");
 const pills = [...document.querySelectorAll(".pill")];
 const drifts = [...document.querySelectorAll(".drift")];
-const day = document.querySelector(".day");
+const dayPin = document.querySelector(".day-pin");
 const beats = [...document.querySelectorAll(".beat")];
-const dayCopy = document.querySelector(".day-copy");
 const dayTime = document.querySelector(".day-time");
 const dayLabel = document.querySelector(".day-label");
-const airportLine = document.querySelector(".airport p");
-const tenure = document.querySelector(".tenure-copy");
 const giant = document.querySelector(".giant");
 const sea = document.querySelector(".giant-sea");
+const liquidMap = document.getElementById("liquid-map");
 
-/* Hold, then a long wipe. Motion never sits still: scale and shift run the whole beat. */
-function sceneAt(progress, count) {
-  const scaled = clamp(progress, 0, 0.9999) * count;
-  const index = Math.min(count - 1, Math.floor(scaled));
-  const local = scaled - index;
-  const wipe = reduced ? (local > 0.5 ? 1 : 0) : smooth(local < 0.42 ? 0 : (local - 0.42) / 0.58);
-  return { index, local, wipe };
-}
-
-function placeImage(img, local, extra) {
-  if (!img || reduced) {
-    if (img) img.style.transform = "";
-    return;
-  }
-  const depth = 1.16 - local * 0.1 + (extra || 0);
-  const shift = (0.42 - local) * 10;
-  img.style.transform = `translate3d(0, ${shift}%, 0) scale(${depth})`;
-}
-
-function updateHero() {
-  const progress = sectionProgress(heroStage);
-  if (reduced) return;
-  heroImg.style.transform = `translate3d(0, ${progress * -10}%, 0) scale(${1.04 + progress * 0.14})`;
-  const fade = progress < 0.5 ? 1 : 1 - (progress - 0.5) / 0.5;
-  heroCopy.style.opacity = String(clamp(fade, 0, 1));
-  heroCopy.style.transform = `translate3d(0, ${progress * -18}vh, 0)`;
-  heroShade.style.opacity = String(0.75 + progress * 0.7);
-}
-
-function updateReel() {
-  const { index, local, wipe } = sceneAt(sectionProgress(reel), slides.length);
-  const last = slides.length - 1;
-  slides.forEach((slide, idx) => {
-    const incoming = idx === index + 1 && index < last;
-    const current = idx === index;
-    slide.style.opacity = current || incoming ? "1" : "0";
-    slide.style.zIndex = incoming ? "2" : "1";
-    slide.style.clipPath = incoming ? `inset(${(1 - wipe) * 100}% 0 0 0)` : "none";
-    const img = slide.querySelector("img");
-    if (current) placeImage(img, local, 0);
-    else if (incoming) placeImage(img, wipe, 0.04);
-    else if (img) img.style.transform = "scale(1.12)";
-  });
-  titles.forEach((title, idx) => {
-    let opacity = 0;
-    if (idx === index) opacity = index === last ? 1 : 1 - wipe;
-    else if (idx === index + 1) opacity = wipe;
-    title.style.opacity = String(opacity);
-    title.style.transform = reduced ? "" : `translate3d(0, ${(1 - opacity) * 36}px, 0)`;
-  });
-  ticks.forEach((tick, idx) => tick.classList.toggle("on", idx === index));
-  if (rail) rail.style.transform = `scaleY(${sectionProgress(reel)})`;
-}
-
-function updatePills() {
-  const progress = sectionProgress(editStage);
-  const shift = (progress - 0.5) * 2;
-  pills.forEach((pill) => {
-    const y = Number(pill.dataset.d) || 40;
-    const x = Number(pill.dataset.x) || 0;
-    pill.style.transform = reduced ? "" : `translate3d(${shift * x}px, ${shift * y}px, 0)`;
-  });
-}
-
-function updateDrift() {
-  if (reduced) return;
-  drifts.forEach((frame) => {
-    const img = frame.querySelector("img");
-    if (!img) return;
-    const rect = frame.getBoundingClientRect();
-    const center = (rect.top + rect.height / 2) / window.innerHeight - 0.5;
-    const speed = Number(frame.dataset.drift) || 40;
-    img.style.transform = `translate3d(0, ${center * speed}px, 0) scale(1.14)`;
-  });
-}
-
-function updateDay() {
-  const { index, local, wipe } = sceneAt(sectionProgress(day), beats.length);
-  const last = beats.length - 1;
-  beats.forEach((beat, idx) => {
-    const incoming = idx === index + 1 && index < last;
-    const current = idx === index;
-    beat.style.opacity = current || incoming ? "1" : "0";
-    beat.style.zIndex = incoming ? "2" : "1";
-    beat.classList.toggle("liquid", incoming && wipe > 0.04 && wipe < 0.96 && !reduced);
-    beat.style.clipPath = incoming ? `circle(${wipe * 145}% at 68% 46%)` : "none";
-    const img = beat.querySelector("img");
-    if (current) placeImage(img, local, 0);
-    else if (incoming) placeImage(img, wipe, 0.05);
-  });
-  const shown = wipe > 0.55 && index < last ? index + 1 : index;
-  const beat = beats[shown];
-  if (dayTime.textContent !== beat.dataset.time) {
-    dayTime.textContent = beat.dataset.time;
-    dayLabel.textContent = beat.dataset.label;
-  }
-  if (!reduced) {
-    const edge = local < 0.12 ? local / 0.12 : local > 0.9 ? (1 - local) / 0.1 : 1;
-    dayCopy.style.opacity = String(clamp(edge, 0.35, 1));
-    dayCopy.style.transform = `translate3d(0, ${(1 - local) * 18}px, 0)`;
-  }
-}
-
-function rise(el, distance) {
-  if (!el || reduced) return;
-  const rect = el.getBoundingClientRect();
-  const progress = clamp(1 - rect.top / (window.innerHeight * 0.9), 0, 1);
-  el.style.opacity = String(0.15 + 0.85 * progress);
-  el.style.transform = `translate3d(0, ${(1 - progress) * distance}px, 0)`;
-}
-
-function updateSea() {
-  if (!sea || reduced) return;
-  const rect = sea.parentElement.getBoundingClientRect();
-  const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0, 1);
-  sea.style.objectPosition = `${12 + progress * 70}% ${28 + progress * 36}%`;
+function screens(desktop, mobile) {
+  const n = phone() ? mobile : desktop;
+  return () => "+=" + Math.round(window.innerHeight * n);
 }
 
 function fitGiant() {
@@ -190,49 +62,263 @@ function paintSea() {
   if ("letterSpacing" in ctx) ctx.letterSpacing = "-0.05em";
   ctx.fillText("SOLENNE", width / 2, height * 0.47);
   const url = canvas.toDataURL();
-  sea.style.webkitMaskImage = `url("${url}")`;
-  sea.style.maskImage = `url("${url}")`;
-  sea.style.webkitMaskSize = "100% 100%";
-  sea.style.maskSize = "100% 100%";
-  sea.style.webkitMaskRepeat = "no-repeat";
-  sea.style.maskRepeat = "no-repeat";
-  sea.style.webkitMaskPosition = "center";
-  sea.style.maskPosition = "center";
-  sea.style.webkitMaskMode = "alpha";
-  sea.style.maskMode = "alpha";
+  wrap.style.webkitMaskImage = `url("${url}")`;
+  wrap.style.maskImage = `url("${url}")`;
+  wrap.style.webkitMaskSize = "100% 100%";
+  wrap.style.maskSize = "100% 100%";
+  wrap.style.webkitMaskRepeat = "no-repeat";
+  wrap.style.maskRepeat = "no-repeat";
+  wrap.style.webkitMaskPosition = "center";
+  wrap.style.maskPosition = "center";
+  wrap.style.webkitMaskMode = "alpha";
+  wrap.style.maskMode = "alpha";
+  sea.style.webkitMaskImage = "none";
+  sea.style.maskImage = "none";
   wrap.classList.add("masked");
 }
 
 sea.addEventListener("error", () => giant.parentElement.classList.remove("masked"));
 
-function scrub() {
-  updateHero();
-  updateReel();
-  updatePills();
-  updateDrift();
-  updateDay();
-  rise(airportLine, 56);
-  rise(tenure, 36);
-  updateSea();
+function wave(tl, at, duration, from) {
+  const state = { scale: 0 };
+  tl.fromTo(state, { scale: from }, {
+    scale: 0,
+    duration,
+    ease: "power2.out",
+    immediateRender: false,
+    onUpdate: () => liquidMap.setAttribute("scale", state.scale.toFixed(2)),
+  }, at);
 }
 
-let frame = 0;
-function onScroll() {
-  if (frame) return;
-  frame = requestAnimationFrame(() => {
-    scrub();
-    frame = 0;
-  });
+function showBeat(index) {
+  const beat = beats[index];
+  if (!beat || dayTime.textContent === beat.dataset.time) return;
+  dayTime.textContent = beat.dataset.time;
+  dayLabel.textContent = beat.dataset.label;
 }
+
+function markTicks(index) {
+  ticks.forEach((tick, n) => tick.classList.toggle("on", n === index));
+}
+
+function build() {
+  if (!window.gsap || !window.ScrollTrigger || !window.Lenis) {
+    document.documentElement.classList.add("reduced");
+    return null;
+  }
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+
+  const lenis = new Lenis({
+    lerp: 0.08,
+    smoothWheel: true,
+    syncTouch: false,
+    wheelMultiplier: 0.9,
+  });
+  window.lenis = lenis;
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  document.documentElement.classList.add("has-scrub");
+
+  const heroTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: hero,
+      start: "top top",
+      end: screens(1.7, 1.05),
+      pin: true,
+      scrub: true,
+      anticipatePin: 1,
+    },
+  });
+  heroTl.fromTo(heroImg, { scale: 1.62, yPercent: 8 }, { scale: 1, yPercent: -10, ease: "none", duration: 1 }, 0);
+  heroTl.fromTo(".hero-shade", { opacity: 0.35 }, { opacity: 0.88, ease: "none", duration: 1 }, 0);
+  heroTl.fromTo(".wordmark", { letterSpacing: "0.04em" }, { letterSpacing: "0.2em", ease: "none", duration: 1 }, 0);
+  heroTl.to([".kicker", ".hero-sub", ".hero-note", ".scroll-cue"], { opacity: 0, y: -24, ease: "none", duration: 0.38 }, 0);
+  heroTl.to(".hero-copy", { yPercent: -36, opacity: 0, ease: "power1.in", duration: 0.5 }, 0.42);
+
+  const reelTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: reelSticky,
+      start: "top top",
+      end: screens(6.2, 3.6),
+      pin: true,
+      scrub: true,
+      anticipatePin: 1,
+      onUpdate: (self) => {
+        const index = Math.min(slides.length - 1, Math.floor(self.progress * slides.length * 0.999));
+        markTicks(index);
+        if (rail) rail.style.transform = `scaleY(${self.progress})`;
+      },
+    },
+  });
+  const step = 0.64;
+  slides.forEach((slide, index) => {
+    const img = slide.querySelector("img");
+    const title = titles[index];
+    const at = index * step;
+    const last = index === slides.length - 1;
+    gsap.set(img, { transformOrigin: "50% 46%" });
+    if (index === 0) {
+      reelTl.set(slide, { autoAlpha: 1, zIndex: 1, clipPath: "inset(0% 0% 0% 0%)" }, 0);
+      reelTl.set(title, { autoAlpha: 1, y: 0 }, 0);
+    } else {
+      reelTl.set(slide, { autoAlpha: 0, zIndex: index + 1, clipPath: "inset(0% 100% 0% 0%)" }, 0);
+      reelTl.set(slide, { autoAlpha: 1 }, at);
+      reelTl.fromTo(slide,
+        { clipPath: "inset(0% 100% 0% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0%)", duration: 0.46, ease: "power1.inOut", immediateRender: false },
+        at);
+      reelTl.fromTo(title,
+        { autoAlpha: 0, y: 64 },
+        { autoAlpha: 1, y: 0, duration: 0.28, ease: "power2.out", immediateRender: false },
+        at);
+      reelTl.call(() => slide.classList.add("liquid"), null, at);
+      wave(reelTl, at, 0.46, 78);
+      reelTl.call(() => slide.classList.remove("liquid"), null, at + 0.46);
+    }
+    reelTl.fromTo(img,
+      { scale: 1.42, xPercent: 8, yPercent: 6 },
+      { scale: 1.02, xPercent: -8, yPercent: -8, ease: "none", duration: 1 },
+      at);
+    if (!last) {
+      reelTl.to(title, { autoAlpha: 0, y: -52, duration: 0.26, ease: "power1.in", immediateRender: false }, at + step - 0.04);
+    }
+  });
+
+  const editTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: editorial,
+      start: "top top",
+      end: screens(1.45, 1.05),
+      pin: true,
+      scrub: true,
+      anticipatePin: 1,
+    },
+  });
+  pills.forEach((pill) => {
+    const y = Number(pill.dataset.d) || 80;
+    const x = Number(pill.dataset.x) || 0;
+    editTl.fromTo(pill,
+      { x: x * -1.3, y: y * 0.85, scale: 0.78 },
+      { x: x * 1.5, y: y * -0.95, scale: 1.16, ease: "none" },
+      0);
+  });
+
+  drifts.forEach((frame) => {
+    const img = frame.querySelector(":scope > img");
+    if (!img) return;
+    const amp = 7 + ((Number(frame.dataset.drift) || 40) % 9);
+    gsap.fromTo(img,
+      { yPercent: amp, scale: 1.34 },
+      {
+        yPercent: -amp,
+        scale: 1.06,
+        ease: "none",
+        scrollTrigger: { trigger: frame, start: "top bottom", end: "bottom top", scrub: true },
+      });
+  });
+
+  gsap.fromTo(".stat",
+    { y: 90, opacity: 0, scale: 0.9 },
+    { y: 0, opacity: 1, scale: 1, ease: "none", scrollTrigger: { trigger: ".matter", start: "top 88%", end: "top 42%", scrub: true } });
+  gsap.fromTo(".airport p",
+    { y: 80, opacity: 0.1 },
+    { y: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".airport", start: "top 92%", end: "top 48%", scrub: true } });
+  gsap.fromTo(".tenure-copy",
+    { y: 64, opacity: 0.15 },
+    { y: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".tenure", start: "top 88%", end: "top 42%", scrub: true } });
+
+  const dayTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: dayPin,
+      start: "top top",
+      end: screens(5.2, 3.2),
+      pin: true,
+      scrub: true,
+      anticipatePin: 1,
+    },
+  });
+  beats.forEach((beat, index) => {
+    const img = beat.querySelector("img");
+    const at = index * step;
+    gsap.set(img, { transformOrigin: "50% 46%" });
+    if (index === 0) {
+      dayTl.set(beat, { autoAlpha: 1, zIndex: 1, clipPath: "circle(140% at 68% 46%)" }, 0);
+    } else {
+      dayTl.set(beat, { autoAlpha: 0, zIndex: index + 1, clipPath: "circle(0% at 68% 46%)" }, 0);
+      dayTl.set(beat, { autoAlpha: 1 }, at);
+      dayTl.fromTo(beat,
+        { clipPath: "circle(0% at 68% 46%)" },
+        { clipPath: "circle(140% at 68% 46%)", duration: 0.48, ease: "power2.out", immediateRender: false },
+        at);
+      dayTl.call(() => beat.classList.add("liquid"), null, at);
+      wave(dayTl, at, 0.48, 86);
+      dayTl.call(() => {
+        beat.classList.remove("liquid");
+        showBeat(index);
+      }, null, at + 0.16);
+    }
+    dayTl.fromTo(img,
+      { scale: 1.4, xPercent: 5, yPercent: 8 },
+      { scale: 1.02, xPercent: -6, yPercent: -9, ease: "none", duration: 1 },
+      at);
+    if (index === 0) dayTl.set(".day-copy", { y: 0, opacity: 1 }, 0);
+    else {
+      dayTl.fromTo(".day-copy",
+        { y: 36, opacity: 0.35 },
+        { y: 0, opacity: 1, duration: 0.32, ease: "power2.out", immediateRender: false },
+        at);
+    }
+  });
+
+  const glass = document.querySelector(".scrub-glass");
+  const glassImg = glass.querySelector("img");
+  gsap.fromTo(glass,
+    { left: "8%", top: "14%" },
+    { left: "64%", top: "52%", ease: "none", scrollTrigger: { trigger: ".calendar", start: "top 75%", end: "bottom 25%", scrub: true } });
+  gsap.fromTo(glassImg,
+    { xPercent: -6, yPercent: -4 },
+    { xPercent: -34, yPercent: -28, ease: "none", scrollTrigger: { trigger: ".calendar", start: "top 75%", end: "bottom 25%", scrub: true } });
+
+  const seaTravel = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".giant-wrap",
+      start: "center center",
+      end: screens(0.85, 0.55),
+      pin: true,
+      scrub: true,
+    },
+  });
+  seaTravel.fromTo(sea, { x: -40, y: -20 }, { x: 90, y: 46, ease: "none" }, 0);
+
+  return lenis;
+}
+
+const lenis = reduced ? (document.documentElement.classList.add("reduced"), null) : build();
 
 const toggle = document.querySelector(".nav-toggle");
-const menuLinks = document.querySelectorAll(".nav-panel a, .nav-links a");
 function setMenu(open) {
   document.body.classList.toggle("menu-open", open);
   toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  if (lenis) {
+    if (open) lenis.stop();
+    else lenis.start();
+  }
 }
 toggle.addEventListener("click", () => setMenu(!document.body.classList.contains("menu-open")));
-menuLinks.forEach((link) => link.addEventListener("click", () => setMenu(false)));
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[href^='#']");
+  if (!link) return;
+  const href = link.getAttribute("href");
+  if (!href || href.length < 2) return;
+  const target = document.querySelector(href);
+  if (!target) return;
+  event.preventDefault();
+  setMenu(false);
+  if (lenis) lenis.scrollTo(target, { offset: 0 });
+  else target.scrollIntoView();
+});
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setMenu(false);
@@ -244,7 +330,7 @@ const brochure = document.getElementById("brochure");
 document.getElementById("open-brochure").addEventListener("click", () => brochure.showModal());
 document.getElementById("close-brochure").addEventListener("click", () => brochure.close());
 
-if (fine) {
+if (fine && !reduced) {
   document.documentElement.classList.add("has-cursor");
   const cursor = document.querySelector(".cursor");
   const dot = document.querySelector(".cursor-dot");
@@ -259,15 +345,14 @@ if (fine) {
   };
   window.addEventListener("pointermove", track, { passive: true });
   window.addEventListener("mousemove", track, { passive: true });
-
   const loop = () => {
-    cx += (x - cx) * (reduced ? 1 : 0.22);
-    cy += (y - cy) * (reduced ? 1 : 0.22);
+    cx += (x - cx) * 0.22;
+    cy += (y - cy) * 0.22;
     dot.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     cursor.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
     const hit = document.elementFromPoint(x, y);
     const zone = hit && hit.closest(".lens-zone");
-    const photo = zone && zone.classList.contains("cal-photo") ? zone.querySelector("img") : null;
+    const photo = zone && zone.classList.contains("cal-photo") ? zone.querySelector(":scope > img") : null;
     cursor.classList.toggle("lens", Boolean(zone));
     cursor.classList.toggle("photo", Boolean(photo));
     if (photo && photo.complete && photo.naturalWidth) {
@@ -288,11 +373,11 @@ if (fine) {
   loop();
 }
 
-scrub();
-fitGiant();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fitGiant(); scrub(); });
-window.addEventListener("scroll", onScroll, { passive: true });
-window.addEventListener("resize", () => {
+function refresh() {
   fitGiant();
-  onScroll();
-});
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+}
+fitGiant();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+window.addEventListener("load", refresh);
+window.addEventListener("resize", refresh);
