@@ -4,88 +4,155 @@ const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+const smooth = (t) => {
+  const x = clamp(t, 0, 1);
+  return x * x * (3 - 2 * x);
+};
 const sectionProgress = (el) => {
+  if (!el) return 0;
   const total = el.offsetHeight - window.innerHeight;
   if (total <= 0) return 0;
   return clamp(-el.getBoundingClientRect().top / total, 0, 1);
 };
 
+const heroStage = document.querySelector(".hero-stage");
+const heroImg = document.querySelector(".hero-img");
+const heroCopy = document.querySelector(".hero-copy");
+const heroShade = document.querySelector(".hero-shade");
 const reel = document.querySelector(".reel");
 const slides = [...document.querySelectorAll(".reel .slide")];
 const titles = [...document.querySelectorAll(".reel-titles h2")];
 const ticks = [...document.querySelectorAll(".ticks li")];
 const rail = document.querySelector(".rail i");
-
+const editStage = document.querySelector(".edit-stage");
+const pills = [...document.querySelectorAll(".pill")];
+const drifts = [...document.querySelectorAll(".drift")];
 const day = document.querySelector(".day");
 const beats = [...document.querySelectorAll(".beat")];
+const dayCopy = document.querySelector(".day-copy");
 const dayTime = document.querySelector(".day-time");
 const dayLabel = document.querySelector(".day-label");
-
-const pills = [...document.querySelectorAll(".pill")];
-const editorial = document.querySelector(".editorial");
+const airportLine = document.querySelector(".airport p");
+const tenure = document.querySelector(".tenure-copy");
 const giant = document.querySelector(".giant");
+const sea = document.querySelector(".giant-sea");
 
-function scrubPair(items, progress, apply) {
-  const last = items.length - 1;
-  const scaled = progress * items.length;
-  let i = Math.min(last, Math.floor(scaled));
-  let f = scaled - i;
-  if (i === last) f = 0;
-  const wipe = reduced ? (f > 0.5 ? 1 : 0) : f > 0.8 ? (f - 0.8) / 0.2 : 0;
-  const shown = wipe > 0.45 && i < last ? i + 1 : i;
-  apply(i, wipe, shown, last);
+/* Hold, then a long wipe. Motion never sits still: scale and shift run the whole beat. */
+function sceneAt(progress, count) {
+  const scaled = clamp(progress, 0, 0.9999) * count;
+  const index = Math.min(count - 1, Math.floor(scaled));
+  const local = scaled - index;
+  const wipe = reduced ? (local > 0.5 ? 1 : 0) : smooth(local < 0.42 ? 0 : (local - 0.42) / 0.58);
+  return { index, local, wipe };
+}
+
+function placeImage(img, local, extra) {
+  if (!img || reduced) {
+    if (img) img.style.transform = "";
+    return;
+  }
+  const depth = 1.16 - local * 0.1 + (extra || 0);
+  const shift = (0.42 - local) * 10;
+  img.style.transform = `translate3d(0, ${shift}%, 0) scale(${depth})`;
+}
+
+function updateHero() {
+  const progress = sectionProgress(heroStage);
+  if (reduced) return;
+  heroImg.style.transform = `translate3d(0, ${progress * -10}%, 0) scale(${1.04 + progress * 0.14})`;
+  const fade = progress < 0.5 ? 1 : 1 - (progress - 0.5) / 0.5;
+  heroCopy.style.opacity = String(clamp(fade, 0, 1));
+  heroCopy.style.transform = `translate3d(0, ${progress * -18}vh, 0)`;
+  heroShade.style.opacity = String(0.75 + progress * 0.7);
 }
 
 function updateReel() {
-  scrubPair(slides, sectionProgress(reel), (i, wipe, shown, last) => {
-    slides.forEach((slide, idx) => {
-      const incoming = idx === i + 1 && i < last;
-      slide.style.opacity = idx === i || incoming ? "1" : "0";
-      slide.style.zIndex = incoming ? "2" : "1";
-      if (incoming) {
-        slide.style.clipPath = `inset(${(1 - wipe) * 100}% 0 0 0)`;
-      } else {
-        slide.style.clipPath = "none";
-      }
-      const img = slide.querySelector("img");
-      const drift = idx === shown ? 1.04 - (reduced ? 0 : (wipe || (sectionProgress(reel) % 0.25)) * 0.03) : 1.08;
-      img.style.transform = `scale(${drift})`;
-    });
-    titles.forEach((title, idx) => {
-      let opacity = 0;
-      if (idx === i) opacity = i === last ? 1 : 1 - wipe;
-      else if (idx === i + 1) opacity = wipe;
-      title.style.opacity = String(opacity);
-    });
-    ticks.forEach((tick, idx) => tick.classList.toggle("on", idx === shown));
-    if (rail) rail.style.transform = `scaleY(${sectionProgress(reel)})`;
+  const { index, local, wipe } = sceneAt(sectionProgress(reel), slides.length);
+  const last = slides.length - 1;
+  slides.forEach((slide, idx) => {
+    const incoming = idx === index + 1 && index < last;
+    const current = idx === index;
+    slide.style.opacity = current || incoming ? "1" : "0";
+    slide.style.zIndex = incoming ? "2" : "1";
+    slide.style.clipPath = incoming ? `inset(${(1 - wipe) * 100}% 0 0 0)` : "none";
+    const img = slide.querySelector("img");
+    if (current) placeImage(img, local, 0);
+    else if (incoming) placeImage(img, wipe, 0.04);
+    else if (img) img.style.transform = "scale(1.12)";
+  });
+  titles.forEach((title, idx) => {
+    let opacity = 0;
+    if (idx === index) opacity = index === last ? 1 : 1 - wipe;
+    else if (idx === index + 1) opacity = wipe;
+    title.style.opacity = String(opacity);
+    title.style.transform = reduced ? "" : `translate3d(0, ${(1 - opacity) * 36}px, 0)`;
+  });
+  ticks.forEach((tick, idx) => tick.classList.toggle("on", idx === index));
+  if (rail) rail.style.transform = `scaleY(${sectionProgress(reel)})`;
+}
+
+function updatePills() {
+  const progress = sectionProgress(editStage);
+  const shift = (progress - 0.5) * 2;
+  pills.forEach((pill) => {
+    const y = Number(pill.dataset.d) || 40;
+    const x = Number(pill.dataset.x) || 0;
+    pill.style.transform = reduced ? "" : `translate3d(${shift * x}px, ${shift * y}px, 0)`;
+  });
+}
+
+function updateDrift() {
+  if (reduced) return;
+  drifts.forEach((frame) => {
+    const img = frame.querySelector("img");
+    if (!img) return;
+    const rect = frame.getBoundingClientRect();
+    const center = (rect.top + rect.height / 2) / window.innerHeight - 0.5;
+    const speed = Number(frame.dataset.drift) || 40;
+    img.style.transform = `translate3d(0, ${center * speed}px, 0) scale(1.14)`;
   });
 }
 
 function updateDay() {
-  scrubPair(beats, sectionProgress(day), (i, wipe, shown, last) => {
-    beats.forEach((beat, idx) => {
-      const incoming = idx === i + 1 && i < last;
-      beat.style.opacity = idx === i || incoming ? "1" : "0";
-      beat.style.zIndex = incoming ? "2" : "1";
-      beat.classList.toggle("liquid", incoming && wipe > 0.02 && wipe < 0.98 && !reduced);
-      beat.style.clipPath = incoming ? `circle(${wipe * 140}% at 70% 48%)` : "none";
-    });
-    const beat = beats[shown];
-    if (dayTime.textContent !== beat.dataset.time) {
-      dayTime.textContent = beat.dataset.time;
-      dayLabel.textContent = beat.dataset.label;
-    }
+  const { index, local, wipe } = sceneAt(sectionProgress(day), beats.length);
+  const last = beats.length - 1;
+  beats.forEach((beat, idx) => {
+    const incoming = idx === index + 1 && index < last;
+    const current = idx === index;
+    beat.style.opacity = current || incoming ? "1" : "0";
+    beat.style.zIndex = incoming ? "2" : "1";
+    beat.classList.toggle("liquid", incoming && wipe > 0.04 && wipe < 0.96 && !reduced);
+    beat.style.clipPath = incoming ? `circle(${wipe * 145}% at 68% 46%)` : "none";
+    const img = beat.querySelector("img");
+    if (current) placeImage(img, local, 0);
+    else if (incoming) placeImage(img, wipe, 0.05);
   });
+  const shown = wipe > 0.55 && index < last ? index + 1 : index;
+  const beat = beats[shown];
+  if (dayTime.textContent !== beat.dataset.time) {
+    dayTime.textContent = beat.dataset.time;
+    dayLabel.textContent = beat.dataset.label;
+  }
+  if (!reduced) {
+    const edge = local < 0.12 ? local / 0.12 : local > 0.9 ? (1 - local) / 0.1 : 1;
+    dayCopy.style.opacity = String(clamp(edge, 0.35, 1));
+    dayCopy.style.transform = `translate3d(0, ${(1 - local) * 18}px, 0)`;
+  }
 }
 
-function updatePills() {
-  const rect = editorial.getBoundingClientRect();
-  const shift = clamp(1 - (rect.top + rect.height / 2) / window.innerHeight, -1, 1);
-  pills.forEach((pill) => {
-    const distance = Number(pill.dataset.d) || 24;
-    pill.style.transform = `translate3d(0, ${shift * distance}px, 0)`;
-  });
+function rise(el, distance) {
+  if (!el || reduced) return;
+  const rect = el.getBoundingClientRect();
+  const progress = clamp(1 - rect.top / (window.innerHeight * 0.9), 0, 1);
+  el.style.opacity = String(0.15 + 0.85 * progress);
+  el.style.transform = `translate3d(0, ${(1 - progress) * distance}px, 0)`;
+}
+
+function updateSea() {
+  if (!sea || reduced) return;
+  const rect = sea.parentElement.getBoundingClientRect();
+  const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0, 1);
+  sea.style.objectPosition = `${12 + progress * 70}% ${28 + progress * 36}%`;
 }
 
 function fitGiant() {
@@ -105,8 +172,6 @@ function fitGiant() {
 }
 
 function paintSea() {
-  const sea = document.querySelector(".giant-sea");
-  sea.addEventListener("error", () => giant.parentElement.classList.remove("masked"));
   const wrap = giant.parentElement;
   const width = wrap.clientWidth;
   const height = Math.max(1, Math.round(wrap.getBoundingClientRect().height));
@@ -138,13 +203,24 @@ function paintSea() {
   wrap.classList.add("masked");
 }
 
+sea.addEventListener("error", () => giant.parentElement.classList.remove("masked"));
+
+function scrub() {
+  updateHero();
+  updateReel();
+  updatePills();
+  updateDrift();
+  updateDay();
+  rise(airportLine, 56);
+  rise(tenure, 36);
+  updateSea();
+}
+
 let frame = 0;
 function onScroll() {
   if (frame) return;
   frame = requestAnimationFrame(() => {
-    updateReel();
-    updateDay();
-    updatePills();
+    scrub();
     frame = 0;
   });
 }
@@ -212,11 +288,9 @@ if (fine) {
   loop();
 }
 
-updateReel();
-updateDay();
-updatePills();
+scrub();
 fitGiant();
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitGiant);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { fitGiant(); scrub(); });
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", () => {
   fitGiant();
