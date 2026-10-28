@@ -1,0 +1,194 @@
+/* Kinetic plates for the Liora Vale reel.
+   Clips are H.264 (no alpha), so each one sits in its existing figure slot
+   with a soft edge instead of a hard rectangle. Posters stay the PNG/JPG stills. */
+
+video.reel {
+  background: transparent;
+  display: block;
+  max-width: none;
+  pointer-events: none;
+}
+
+video.hero-figure {
+  right: 0;
+  bottom: 0;
+  height: calc(100dvh - var(--nav) - 10px);
+  max-height: 92%;
+  object-fit: cover;
+  object-position: center top;
+  filter: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 100%), linear-gradient(180deg, transparent 0%, #000 8%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 16%, #000 100%), linear-gradient(180deg, transparent 0%, #000 8%, #000 100%);
+  mask-composite: intersect;
+}
+
+.about-visual video.about-figure {
+  z-index: 1;
+  object-fit: cover;
+  object-position: center 18%;
+  filter: none;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  transform: none;
+}
+
+.listing > video {
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.journey-figure {
+  z-index: 1;
+  pointer-events: none;
+  object-fit: cover;
+  object-position: center top;
+  width: min(100%, 420px);
+  height: 70vh;
+  margin: 12px auto 0;
+  display: block;
+}
+
+.journey.is-scrub .journey-figure {
+  width: auto;
+  max-width: min(28vw, 360px);
+  height: calc(100% - var(--nav));
+  margin: 0;
+  position: absolute;
+  top: var(--nav);
+  right: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 100%);
+}
+
+.journey.is-scrub .journey-year {
+  z-index: 2;
+}
+
+video.orbit-figure {
+  object-fit: cover;
+  object-position: center bottom;
+  filter: none;
+  height: 80%;
+  max-width: min(32vw, 380px);
+  bottom: 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 16%, #000 94%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 82%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 16%, #000 94%, transparent 100%);
+  mask-composite: intersect;
+}
+
+video.desk-figure {
+  object-fit: contain;
+  object-position: center bottom;
+  filter: none;
+  width: min(34vw, 440px);
+  height: auto;
+  max-height: 72vh;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 86%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 7%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 86%, transparent 100%), linear-gradient(180deg, transparent 0%, #000 7%, #000 100%);
+  mask-composite: intersect;
+}
+
+video.footer-figure {
+  right: 0;
+  top: var(--nav);
+  bottom: 0;
+  height: calc(100% - var(--nav));
+  object-fit: cover;
+  object-position: center top;
+  filter: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%), linear-gradient(180deg, transparent 0%, #000 7%, #000 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 100%), linear-gradient(180deg, transparent 0%, #000 7%, #000 100%);
+  mask-composite: intersect;
+}
+
+@media (width <= 860px) {
+  video.hero-figure {
+    align-self: stretch;
+    width: 100%;
+    height: 120vw;
+    max-height: 540px;
+    margin: 6px 0 8px;
+    position: relative;
+    right: auto;
+    top: auto;
+    object-fit: cover;
+    object-position: center 7%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .about-visual {
+    min-height: 78vh;
+  }
+
+  .journey-figure {
+    width: 100%;
+    max-width: none;
+    height: 130vw;
+    max-height: 640px;
+    margin: 8px 0 0;
+    position: relative;
+    top: auto;
+    right: auto;
+    object-fit: cover;
+    object-position: center top;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  video.orbit-figure {
+    width: min(100%, 440px);
+    max-width: none;
+    height: 72vw;
+    max-height: 560px;
+    margin: 8px auto 0;
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  video.desk-figure {
+    width: min(100%, 520px);
+    height: 62vw;
+    max-height: 460px;
+    margin: 8px auto 0;
+    position: relative;
+    left: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  video.footer-figure {
+    justify-self: stretch;
+    width: 100%;
+    height: 125vw;
+    max-height: 620px;
+    position: relative;
+    right: auto;
+    object-position: center 12%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  video.reel {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
