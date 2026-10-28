@@ -42,6 +42,19 @@ for d in sorted(SRC.glob("site-[0-9][0-9]-*")):
     sites.append(dict(slug=d.name, num=d.name[5:7], brand=brand.strip(), place=place, state=st))
     print(f"synced {d.name}: {brand} — {place}")
 
+# Committed static demos. Not copied from realtor-sites; the folder stays as published.
+# Merged into the numbered grid so the next publish does not drop the card.
+STATIC = [dict(
+    slug="site-69-liora-vale", num="69", brand="Liora Vale",
+    place="Chicago & North Shore, Illinois", state="IL")]
+seen = {s["slug"] for s in sites}
+for s in STATIC:
+    if not (DST / s["slug"] / "index.html").exists():
+        print(f"warning: {s['slug']}/index.html missing")
+    if s["slug"] not in seen:
+        sites.append(s)
+sites.sort(key=lambda s: s["num"])
+
 # ---- Featured demos: always pinned first, persist across rebuilds ----
 # The Halstead Group is a static React build hosted in this repo at site-00-halstead-group/.
 # Source: /workspace/halston-src (built with Vite, base=/vsh-demo-sites/site-00-halstead-group/).
