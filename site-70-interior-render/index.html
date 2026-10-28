@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#12110f">
+<meta name="description" content="A widescreen interior render: a dusk flythrough from the marina to the residence.">
+<title>Interior Render</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #12110f;
+    --ink: #f6f1ea;
+    --mute: #b7aa9c;
+    --line: rgba(246, 241, 234, 0.16);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse 70% 46% at 50% 58%, rgba(198, 162, 122, 0.14), transparent 72%),
+      var(--bg);
+    font: 400 16px/1.5 Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 3vh, 32px);
+    padding:
+      max(20px, env(safe-area-inset-top))
+      max(16px, env(safe-area-inset-right))
+      max(24px, env(safe-area-inset-bottom))
+      max(16px, env(safe-area-inset-left));
+  }
+  header { text-align: center; }
+  h1 {
+    margin: 0;
+    font: 500 clamp(36px, 6vw, 64px)/0.95 "Cormorant Garamond", Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin: 8px 0 0;
+    color: var(--mute);
+    font-size: clamp(14px, 2.1vw, 17px);
+  }
+  .frame {
+    width: min(94vw, 1120px, calc((100vh - 11rem) * 16 / 9));
+    width: min(94vw, 1120px, calc((100dvh - 11rem) * 16 / 9));
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #0c0b09;
+    box-shadow:
+      0 0 0 1px var(--line),
+      0 40px 90px -32px rgba(0, 0, 0, 0.8);
+  }
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #0c0b09;
+  }
+  @media (max-width: 640px) {
+    .frame { border-radius: 12px; }
+  }
+  @media (max-height: 520px) {
+    h1 { font-size: 28px; }
+    header p { margin-top: 2px; }
+    main { gap: 10px; }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Interior Render</h1>
+      <p>From the marina to the residence.</p>
+    </header>
+    <div class="frame">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="images/poster.jpg"
+        width="1280"
+        height="720"
+        aria-label="Widescreen interior render flying from a marina tower into a residence"
+      >
+        <source src="videos/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+  </main>
+  <script>
+    (function () {
+      var video = document.querySelector("video");
+      if (!video) return;
+      video.muted = true;
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      function apply() {
+        if (reduce.matches) {
+          video.pause();
+        } else {
+          var pending = video.play();
+          if (pending && pending.catch) pending.catch(function () {});
+        }
+      }
+      apply();
+      if (reduce.addEventListener) reduce.addEventListener("change", apply);
+    })();
+  </script>
+</body>
+</html>
