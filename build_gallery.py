@@ -50,7 +50,10 @@ STATIC = [dict(
 # state is only for the gallery tally; the reel is not a market site.
 dict(
     slug="site-70-interior-render", num="70", brand="Interior Render",
-    place="Widescreen flythrough", state="CA")]
+    place="Widescreen flythrough", state="CA"),
+dict(
+    slug="site-71-coastal-agent", num="71", brand="The Moreno Group",
+    place="Newport Beach, California", state="CA")]
 seen = {s["slug"] for s in sites}
 for s in STATIC:
     if not (DST / s["slug"] / "index.html").exists():
