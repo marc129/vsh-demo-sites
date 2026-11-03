@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="media/hero-bay.jpg">
+<link rel="icon" type="image/png" href="media/favicon.png"><link rel="apple-touch-icon" href="media/apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
 
 <header class="nav" id="nav">
   <a class="brand" href="#top" aria-label="The Wells Real Estate Group, home">
-    <span class="brand-mark">W</span><span class="brand-word">The Wells<em>Real Estate Group</em></span>
+    <img class="logo-l" src="media/logo-light.png" alt="Wells Real Estate Group" width="1061" height="523"><img class="logo-c" src="media/logo-color.png" alt="" aria-hidden="true" width="1061" height="523">
   </a>
   <nav class="nav-links" aria-label="Primary">
     <a href="#places">Places</a><a href="#listing">Listing</a><a href="#team">Team</a><a href="#value">Home Value</a><a href="#contact">Contact</a>
@@ -129,13 +130,13 @@
   <h2 class="h2 reveal">Three advisors. <em>One standard.</em></h2>
   <div class="agents">
     <article class="agent reveal">
-      <div class="portrait" aria-hidden="true"><span>RM</span><small>Photo to come</small></div>
+      <div class="portrait has-img"><img src="media/ruben.jpg" alt="Ruben Martinez, Broker" loading="lazy"></div>
       <header><h3>Ruben Martinez</h3><p class="role">Broker &middot; DRE #01198060</p></header>
       <p>A seasoned branch manager and licensed real estate broker with extensive experience in financial services and property sales. In banking he led teams to exceed goals, improve client satisfaction and grow the business. Today he brings that market knowledge and negotiating skill to buyers and sellers, with a focus on long-term relationships.</p>
       <ul class="chips"><li>Broker since 2004</li><li>Bay Area &amp; San Diego</li></ul>
     </article>
     <article class="agent reveal">
-      <div class="portrait" aria-hidden="true"><span>RC</span><small>Photo to come</small></div>
+      <div class="portrait has-img"><img src="media/rc.jpg" alt="Rafael RC Covarrubias, Realtor" loading="lazy"></div>
       <header><h3>Rafael &ldquo;RC&rdquo; Covarrubias</h3><p class="role">Realtor&reg; &middot; DRE #02442276</p></header>
       <p>RC brings executive leadership from the technology industry: strategic planning, complex negotiations and closing deals. He pairs that business sense with his knowledge of the competitive Bay Area market. A proud Morgan Hill resident who loves home architecture, he spends his free time outdoors with his family and his dog, Woody.</p>
       <ul class="chips"><li>Habla espa&ntilde;ol</li><li>San Jose &middot; Morgan Hill &middot; Salinas</li></ul>
@@ -222,12 +223,13 @@
     </div>
   </div>
   <footer class="foot">
-    <img src="media/logo.png" alt="The Wells Real Estate Group logo" class="foot-logo" loading="lazy">
+    <img src="media/logo-light.png" alt="The Wells Real Estate Group logo" class="foot-logo" loading="lazy">
     <p>The Wells Real Estate Group &middot; Ruben Martinez, Broker, CA DRE #01198060. Equal Housing Opportunity.</p>
     <p class="fine">Preview concept by VSH Media. Hero: Golden Gate at sunset (Mixkit). Places: Mission Bay, San Diego (Pexels / Shafiq). Homes: California villas aerial (Pexels). Listing photos from wellsregroup.com.</p>
   </footer>
 </section>
 </main>
 <script src="main.js" defer></script>
+<script src="shared/wells-chat.js" defer></script>
 </body>
 </html>

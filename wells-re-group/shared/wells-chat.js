@@ -1,0 +1,80 @@
+/* Wells AI Concierge: client-side, scripted (no API key, no network calls). Same approach as VSH demo concierges. */
+(function(){
+const F={phone:"408.528.4477",tel:"+14085284477",email:"info@wellsregroup.com",addr:"30 El Toro Avenue, Morgan Hill, CA 95037"};
+const T={
+en:{name:"Wells Concierge",status:"AI assistant · replies instantly",ph:"Ask about homes, values, our team…",
+greet:["Hi, I'm the Wells Concierge, the AI assistant for The Wells Real Estate Group.","I can tell you about our team, the areas we serve, our current listing in Prunedale, or start a home valuation. ¿Prefiere español? Tap ES above."],
+chips:["What's my home worth?","Current listing","Meet the team","Areas you serve","Talk to an agent"],
+R:[
+[["worth","value","valuation","sell","apprais","cma"],["Happy to help. Ruben and the team prepare a complimentary market analysis based on recent comparable sales.","Want me to start one? I'll just need your property address.",{lead:"value"}]],
+[["listing","echo","prunedale","for sale","acre","properties","home for sale"],["Our featured listing is 319 Echo Valley Rd, Prunedale: 3 bd · 2 ba · 1,220 sq ft on 4.87 acres, built 1918, listed at $1,075,999 (MLS #ML82060758, as published Nov 2, 2026).","It's listed by Ruben Martinez, Broker. Would you like to schedule a private tour?",{lead:"tour"}]],
+[["team","agent","who","ruben","rafael","rc","pedro","broker"],["Our team: Ruben Martinez, Broker (DRE #01198060), a broker since 2004 with a long background in banking and financial services.","Rafael \"RC\" Covarrubias, Realtor (DRE #02442276), brings executive experience from the tech industry, lives in Morgan Hill and speaks Spanish.","Pedro Silva, Realtor (DRE #01422644), licensed since 2004, focuses on luxury estates and is based in Gilroy. Want me to connect you with one of them?"]],
+[["area","where","serve","san jose","morgan hill","gilroy","san diego","salinas","neighborhood"],["We serve San Jose, Morgan Hill, Gilroy and San Diego, with our office at 30 El Toro Avenue in Morgan Hill. RC also covers Salinas.","Which area are you looking in?"]],
+[["buy","first","looking","search","purchase"],["Great. We guide first-time and move-up buyers from consultation and search to offer, escrow and closing.","Tell me a bit about what you're looking for and I'll have an agent reach out.",{lead:"buy"}]],
+[["luxury","estate","high-end"],["Pedro Silva leads our luxury estate work, connecting buyers and sellers of high-end properties across South County and beyond.",{lead:"buy"}]],
+[["spanish","español","espanol"],["Yes! RC speaks Spanish. Tap ES at the top to continue en español."]],
+[["contact","call","phone","email","office","hours","talk","agent","human"],["You can reach us at "+F.phone+" or "+F.email+". The office is at "+F.addr+".","Hours: Mon–Fri 9–5, Sat 10–4, closed Sunday. Want a call back?",{lead:"call"}]],
+[["review","testimonial"],["We're gathering verified client reviews to share here soon. In the meantime, the team would be glad to put you in touch directly."]]],
+fb:["Good question. I'll make sure one of our agents follows up on that personally.","Meanwhile, I can share our current listing, introduce the team, or start a home valuation."],
+L:{value:["What's the property address?","Thanks. What's your name?","And the best phone or email to send your valuation to?"],tour:["Wonderful. What's your name?","Best phone or email to confirm the tour?","Any days or times that work best?"],buy:["Which area and price range are you considering?","What's your name?","Best phone or email to reach you?"],call:["What's your name?","Best number to call you back?","Anything specific you'd like to discuss?"]},
+done:n=>"Thank you"+(n?", "+n:"")+". In the live site this goes straight to the Wells team, who reply the same business day. (Demo: nothing was sent.)"},
+es:{name:"Concierge Wells",status:"Asistente IA · responde al instante",ph:"Pregunte sobre casas, valores, el equipo…",
+greet:["Hola, soy el Concierge de Wells, el asistente de IA de The Wells Real Estate Group.","Puedo presentarle al equipo, las zonas que atendemos, nuestra propiedad en Prunedale o iniciar una valuación de su casa."],
+chips:["¿Cuánto vale mi casa?","Propiedad actual","Conozca al equipo","Zonas","Hablar con un agente"],
+R:[
+[["vale","valor","valua","vender","tasa"],["Con gusto. El equipo prepara un análisis de mercado gratuito basado en ventas comparables recientes.","¿Empezamos? Solo necesito la dirección de la propiedad.",{lead:"value"}]],
+[["propiedad","listing","echo","prunedale","venta","acre"],["Nuestra propiedad destacada es 319 Echo Valley Rd, Prunedale: 3 recámaras · 2 baños · 1,220 pies² en 4.87 acres, construida en 1918, a $1,075,999 (MLS #ML82060758, publicado el 2 nov 2026).","La representa Ruben Martinez, Broker. ¿Desea agendar una visita privada?",{lead:"tour"}]],
+[["equipo","agente","quien","quién","ruben","rafael","rc","pedro"],["Ruben Martinez, Broker (DRE #01198060), broker desde 2004 con amplia experiencia en banca y servicios financieros.","Rafael \"RC\" Covarrubias, Realtor (DRE #02442276), ejecutivo de la industria tecnológica, vive en Morgan Hill y habla español.","Pedro Silva, Realtor (DRE #01422644), con licencia desde 2004, especialista en propiedades de lujo, en Gilroy. ¿Le conecto con alguno?"]],
+[["zona","donde","dónde","area","área","san jose","morgan","gilroy","diego","salinas"],["Atendemos San Jose, Morgan Hill, Gilroy y San Diego; la oficina está en 30 El Toro Avenue, Morgan Hill. RC también cubre Salinas.","¿En qué zona está buscando?"]],
+[["comprar","primera","busco","buscar"],["¡Excelente! Acompañamos a compradores desde la consulta hasta el cierre.",{lead:"buy"}]],
+[["contact","llamar","teléfono","telefono","correo","oficina","horario","hablar"],["Llámenos al "+F.phone+" o escriba a "+F.email+". Oficina: "+F.addr+".","Horario: lun–vie 9–5, sáb 10–4, domingo cerrado. ¿Desea que le llamemos?",{lead:"call"}]]],
+fb:["Buena pregunta. Me aseguraré de que uno de nuestros agentes le responda personalmente.","Mientras tanto, puedo mostrarle la propiedad actual, presentarle al equipo o iniciar una valuación."],
+L:{value:["¿Cuál es la dirección de la propiedad?","Gracias. ¿Cuál es su nombre?","¿Teléfono o correo para enviarle la valuación?"],tour:["¡Perfecto! ¿Cuál es su nombre?","¿Teléfono o correo para confirmar la visita?","¿Qué días u horarios le convienen?"],buy:["¿Qué zona y rango de precio busca?","¿Cuál es su nombre?","¿Teléfono o correo para contactarle?"],call:["¿Cuál es su nombre?","¿A qué número le llamamos?","¿Algo en particular que quiera comentar?"]},
+done:n=>"Gracias"+(n?", "+n:"")+". En el sitio real esto llega directo al equipo Wells, que responde el mismo día hábil. (Demo: no se envió nada.)"}};
+let lang=(navigator.language||"").startsWith("es")?"es":"en",lead=null,step=0,ans=[],opened=false,busy=false;
+const css=`.wc-fab{position:fixed;right:22px;bottom:22px;z-index:9000;display:flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;border:1px solid var(--wc-line,rgba(255,255,255,.25));background:var(--wc-bg,#0f2a20);color:var(--wc-ink,#f3eee4);font:500 14px/1 var(--wc-font,system-ui);letter-spacing:.02em;cursor:pointer;box-shadow:0 18px 40px -12px rgba(0,0,0,.45);transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .3s}
+.wc-fab:hover{transform:translateY(-3px)}.wc-fab .wc-orb{width:34px;height:34px}
+.wc-orb{border-radius:50%;flex:none;background:radial-gradient(circle at 30% 28%,#fff,var(--wc-accent,#c5a46d) 42%,var(--wc-deep,#7a122e) 100%);animation:wcorb 5s ease-in-out infinite;position:relative}
+.wc-orb:after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--wc-accent,#c5a46d);opacity:.5;animation:wcping 2.6s infinite}
+@keyframes wcorb{50%{transform:scale(.9);filter:hue-rotate(14deg)}}@keyframes wcping{0%{transform:scale(.85);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+.wc-open .wc-fab{opacity:0;pointer-events:none;transform:scale(.8)}
+.wc-panel{position:fixed;right:22px;bottom:22px;z-index:9001;width:min(392px,calc(100vw - 24px));height:min(600px,calc(100dvh - 44px));display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:var(--wc-surface,#f7f3ec);color:var(--wc-text,#1b1b1b);font:400 14.5px/1.5 var(--wc-font,system-ui);box-shadow:0 40px 90px -20px rgba(0,0,0,.55);transform-origin:bottom right;transform:scale(.6) translateY(30px);opacity:0;pointer-events:none;transition:transform .55s cubic-bezier(.2,.9,.2,1),opacity .35s}
+.wc-open .wc-panel{transform:none;opacity:1;pointer-events:auto}
+.wc-head{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;background:var(--wc-bg,#0f2a20);color:var(--wc-ink,#f3eee4)}.wc-head .wc-orb{width:36px;height:36px}
+.wc-head b{display:block;font:500 16px/1.2 var(--wc-display,inherit)}.wc-head small{opacity:.7;font-size:11.5px}.wc-head small:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#5fd38a;margin-right:6px}
+.wc-lang{margin-left:auto;display:flex;border:1px solid rgba(255,255,255,.25);border-radius:999px;overflow:hidden}.wc-lang button{background:none;border:0;color:inherit;font:600 11px/1 var(--wc-font,system-ui);padding:7px 9px;cursor:pointer;opacity:.6}.wc-lang button[aria-pressed=true]{background:var(--wc-accent,#c5a46d);color:#111;opacity:1}
+.wc-x{background:none;border:0;color:inherit;font-size:24px;line-height:1;cursor:pointer;padding:2px 4px;opacity:.8}
+.wc-msgs{flex:1;overflow-y:auto;padding:18px 14px;display:flex;flex-direction:column;gap:8px;overscroll-behavior:contain}
+.wc-m{max-width:84%;padding:10px 14px;border-radius:16px;animation:wcin .45s cubic-bezier(.2,.8,.2,1) both}.wc-b{background:#fff;border:1px solid rgba(0,0,0,.06);border-bottom-left-radius:5px}.wc-u{align-self:flex-end;background:var(--wc-bg,#0f2a20);color:var(--wc-ink,#f3eee4);border-bottom-right-radius:5px}
+@keyframes wcin{from{opacity:0;transform:translateY(8px)}}
+.wc-typing{display:flex;gap:4px;padding:14px}.wc-typing i{width:6px;height:6px;border-radius:50%;background:#999;animation:wcdot 1s infinite}.wc-typing i:nth-child(2){animation-delay:.15s}.wc-typing i:nth-child(3){animation-delay:.3s}@keyframes wcdot{50%{transform:translateY(-4px);opacity:.4}}
+.wc-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}.wc-chips button{border:1px solid var(--wc-accent,#c5a46d);background:transparent;color:inherit;border-radius:999px;padding:7px 12px;font:500 12.5px/1 var(--wc-font,system-ui);cursor:pointer;transition:background .25s}.wc-chips button:hover{background:var(--wc-accent,#c5a46d);color:#111}
+.wc-form{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(0,0,0,.08);background:#fff}.wc-form input{flex:1;min-width:0;border:0;outline:0;font:inherit;font-size:16px;background:transparent;color:#111}.wc-form button{width:40px;height:40px;border-radius:50%;border:0;background:var(--wc-bg,#0f2a20);color:var(--wc-ink,#fff);cursor:pointer;font-size:17px}
+.wc-note{font-size:10.5px;opacity:.55;text-align:center;padding:0 0 8px;background:#fff}
+@media(max-width:560px){.wc-panel{right:0;bottom:0;width:100vw;height:100dvh;border-radius:0}.wc-fab{right:14px;bottom:14px}.wc-fab .wc-l{display:none}.wc-fab{padding:8px}}`;
+const st=document.createElement("style");st.textContent=css;document.head.appendChild(st);
+const root=document.createElement("div");root.className="wc";root.innerHTML=`<button class="wc-fab" type="button" aria-label="Open the Wells AI concierge"><span class="wc-orb"></span><span class="wc-l">Ask Wells AI</span></button>
+<div class="wc-panel" role="dialog" aria-label="Wells AI concierge"><div class="wc-head"><span class="wc-orb"></span><div><b class="wc-n"></b><small class="wc-s"></small></div><div class="wc-lang"><button data-l="en">EN</button><button data-l="es">ES</button></div><button class="wc-x" aria-label="Close">×</button></div>
+<div class="wc-msgs" aria-live="polite"></div><div class="wc-chips"></div><form class="wc-form"><input aria-label="Message" autocomplete="off"><button aria-label="Send">↑</button></form><div class="wc-note">AI demo concierge · scripted, no data is sent</div></div>`;
+document.body.appendChild(root);
+const $=s=>root.querySelector(s),msgs=$(".wc-msgs");
+const add=(t,c)=>{const d=document.createElement("div");d.className="wc-m "+c;d.textContent=t;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d};
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function say(t){const d=document.createElement("div");d.className="wc-m wc-b wc-typing";d.innerHTML="<i></i><i></i><i></i>";msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;await wait(Math.min(1400,450+t.length*9));d.remove();add(t,"wc-b")}
+function chips(list){const c=$(".wc-chips");c.innerHTML="";(list||[]).forEach(x=>{const b=document.createElement("button");b.type="button";b.textContent=x;b.onclick=()=>send(x);c.appendChild(b)})}
+function paint(){const t=T[lang];$(".wc-n").textContent=t.name;$(".wc-s").textContent=t.status;$(".wc-form input").placeholder=t.ph;root.querySelectorAll(".wc-lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===lang))}
+async function greet(){busy=true;chips([]);for(const g of T[lang].greet)await say(g);chips(T[lang].chips);busy=false}
+async function run(seq){for(const x of seq){if(typeof x==="string")await say(x);else if(x.lead){lead=x.lead;step=0;ans=[];await say(T[lang].L[lead][0]);chips([]);return}}chips(T[lang].chips)}
+async function send(q){q=(q||"").trim();if(!q||busy)return;busy=true;add(q,"wc-u");chips([]);
+ if(!lead&&lang==="en"&&/[¿¡ñ]|\b(hola|casa|cuánto|cuanto|vender|comprar|español|gracias|quiero|necesito)\b/i.test(q)){lang="es";paint()}
+ if(lead){ans.push(q);step++;const L=T[lang].L[lead];if(step<L.length)await say(L[step]);else{const n=lead==="value"||lead==="buy"?ans[1]:ans[0];await say(T[lang].done((n||"").split(" ")[0]));
+  try{(window.WELLS_LEADS=window.WELLS_LEADS||[]).push({type:lead,answers:ans.slice(),lang,at:new Date().toISOString()})}catch(e){}lead=null;chips(T[lang].chips)}busy=false;return}
+ const s=q.toLowerCase();const hit=T[lang].R.find(r=>r[0].some(k=>s.includes(k)));await run(hit?hit[1]:T[lang].fb.concat([]));busy=false}
+function open(){document.documentElement.classList.add("wc-open");paint();if(!opened){opened=true;greet()}setTimeout(()=>$(".wc-form input").focus({preventScroll:true}),400)}
+$(".wc-fab").onclick=open;$(".wc-x").onclick=()=>document.documentElement.classList.remove("wc-open");
+document.addEventListener("keydown",e=>{if(e.key==="Escape")document.documentElement.classList.remove("wc-open")});
+root.querySelectorAll(".wc-lang button").forEach(b=>b.onclick=()=>{if(busy||b.dataset.l===lang)return;lang=b.dataset.l;lead=null;paint();msgs.innerHTML="";greet()});
+$(".wc-form").onsubmit=e=>{e.preventDefault();const i=$(".wc-form input");send(i.value);i.value=""};
+document.querySelectorAll("[data-chat]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();open();const q=a.dataset.chat;if(q)setTimeout(()=>{const w=setInterval(()=>{if(!busy){clearInterval(w);send(q)}},200)},300)}));
+window.WellsChat={open,send};
+})();

@@ -145,3 +145,10 @@ em{font-style:italic;font-family:var(--serif)}
 .gallery{grid-template-columns:1fr}.g-thumbs{flex-direction:row}.g-thumbs button{aspect-ratio:1}.lead{grid-template-columns:1fr}.specs{grid-template-columns:repeat(2,1fr)}.contact-cols{grid-template-columns:1fr 1fr}.foot{grid-template-columns:1fr}.foot-logo{grid-row:auto}
 .hero-actions .btn{flex:1;justify-content:center}.scroll-cue{display:none}.scrub-rail{height:110px}.band{clip-path:none}.hero-foot{gap:24px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.ln>span{opacity:1;transform:none}.grain{display:none}}
+
+.brand img{height:46px;width:auto;display:block;transition:opacity .4s,height .5s var(--ease)}.brand{position:relative}.brand .logo-c{position:absolute;left:0;top:0;opacity:0}.nav.solid .brand .logo-l{opacity:0}.nav.solid .brand .logo-c{opacity:1}.nav.solid .brand img{height:38px}
+.portrait.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:saturate(.92) contrast(1.03);transform:scale(1.02);transition:transform 1.2s var(--ease),filter .8s}.agent:hover .portrait.has-img img{transform:scale(1.07);filter:saturate(1.05)}
+.portrait.has-img::after{z-index:1;border-color:rgba(255,255,255,.35)}
+.foot-logo{background:none!important;padding:0!important;width:150px!important}
+:root{--wc-bg:#0f2a20;--wc-ink:#f3eee4;--wc-accent:#c5a46d;--wc-deep:#7a122e;--wc-font:"Inter Tight",system-ui;--wc-display:"Instrument Serif",serif}
+@media(max-width:640px){.brand img{height:38px}}
