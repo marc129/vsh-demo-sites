@@ -56,7 +56,7 @@ header.hide{transform:translateY(-100%)}
 .drawer .x{position:absolute;top:calc(20px + env(safe-area-inset-top));right:var(--pad);background:none;border:0;color:#fff;width:44px;height:44px;font-size:26px;cursor:pointer}
 /* hero */
 .hero{height:100svh;min-height:620px;color:#fff;overflow:hidden;background:#111}
-.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero video,.hero .poster,.hero picture{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero video{transform:scale(1.06);animation:drift 22s var(--ease) forwards}
 @keyframes drift{to{transform:scale(1)}}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,9,.5) 0%,rgba(12,10,9,.08) 30%,rgba(12,10,9,.12) 55%,rgba(12,10,9,.72) 100%)}
@@ -66,7 +66,7 @@ header.hide{transform:translateY(-100%)}
 .hero .meta{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:34px;flex-wrap:wrap}
 .hero .meta p{max-width:30em;color:rgba(255,255,255,.86);font-size:16px}
 .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
-.places{display:flex;gap:28px;font:400 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:26px;flex-wrap:wrap}
+
 .scrollcue{position:absolute;z-index:2;left:50%;bottom:22px;width:1px;height:44px;background:rgba(255,255,255,.35);overflow:hidden}
 .scrollcue:after{content:"";position:absolute;left:0;top:-44px;width:1px;height:44px;background:#fff;animation:cue 2.4s var(--ease) infinite}
 @keyframes cue{to{top:44px}}
@@ -210,7 +210,7 @@ footer .eho{display:inline-flex;align-items:center;gap:8px}
 html{overflow-x:clip}
 .ai .g{grid-template-columns:1fr;max-width:920px}
 .voicecard{padding:clamp(28px,4vw,60px)}.voicecard .voicebox input{font-size:clamp(22px,2.4vw,30px)}
-.places{display:inline-flex;align-self:flex-start;background:rgba(14,11,10,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 20px;gap:10px 26px;font:600 12px/1.2 var(--sans);letter-spacing:.22em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);border-left:2px solid var(--wine)}
+
 .wc-fab{display:none!important}
 :root{--wc-bg:#5e0f22;--wc-accent:#d9b39a;--wc-deep:#78132b;--wc-surface:#fbf9f5;--wc-text:#1c1815;--wc-font:Inter,system-ui,sans-serif}
 .field input,.field select,.field textarea,.finder input,.finder select{font:400 17px/1.4 var(--sans);font-variant-numeric:lining-nums tabular-nums}
@@ -223,7 +223,7 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 .aifab .dot{width:7px;height:7px;background:#f0c9b4;border-radius:50%;animation:pulse2 2.4s infinite}
 @keyframes pulse2{50%{opacity:.35}}
 .aifab.off{opacity:0;transform:translateY(16px);pointer-events:none}
-@media (max-width:640px){.aifab{min-height:52px;width:52px;padding:0;justify-content:center}.aifab .t,.aifab .dot{display:none}.places{padding:10px 14px;font-size:11px;gap:8px 16px;letter-spacing:.18em}}
+@media (max-width:640px){.aifab{min-height:52px;width:52px;padding:0;justify-content:center}.aifab .t,.aifab .dot{display:none}}
 .vhead{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,90px);align-items:end;margin-bottom:56px}
 .vs{display:grid;grid-template-columns:5fr 7fr;border:1px solid var(--line);background:var(--paper);min-height:560px}
 .vs-l{background:var(--ink);color:#efe8de;padding:clamp(24px,3.4vw,48px);display:flex;flex-direction:column;gap:22px;min-width:0}
@@ -282,8 +282,31 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 .tg{grid-template-columns:1fr 1fr}.tg .agent:last-child{grid-column:auto}footer .g{grid-template-columns:1fr 1fr}}
 @media (max-width:820px){.intro .g,.feat .detail,.guide.on,.story .g,.val .g,.contact .g,.ai .g{grid-template-columns:1fr}.feat .g{grid-template-columns:1fr}.feat .side{grid-template-columns:1fr 1fr;grid-template-rows:none}.feat .side .ph{aspect-ratio:4/3}.facts{grid-template-columns:1fr 1fr}.facts div{padding-bottom:20px}.story .ph{aspect-ratio:4/3}}
 @media (max-width:640px){header .bar{height:68px}header .logo img{height:36px}header .r .tel{display:none}.finder .wrap{grid-template-columns:1fr}.finder label{margin-right:0;border-right:0;padding-right:0}
-.hero .meta{flex-direction:column;align-items:flex-start}.hero .ctas{width:100%}.hero .ctas .btn{flex:1;padding:0 10px;letter-spacing:.12em;white-space:nowrap}.places{gap:16px}
+.hero .meta{flex-direction:column;align-items:flex-start}.hero .ctas{width:100%}.hero .ctas .btn{flex:1;padding:0 10px;letter-spacing:.12em;white-space:nowrap}
 .specs{grid-template-columns:1fr 1fr}.specs div:nth-child(-n+2){border-bottom:1px solid var(--line)}.strip{grid-template-columns:1fr}.tg{grid-template-columns:1fr}.row2{grid-template-columns:1fr;gap:0}footer .g{grid-template-columns:1fr}.film:after{background:linear-gradient(180deg,rgba(10,9,8,.2),rgba(10,9,8,.7))}.film .inner{justify-content:flex-end;padding-bottom:60px}}
+.hero .hk{font:500 11px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.hero .hk:before{content:"";width:34px;height:1px;background:rgba(255,255,255,.7)}
+.hero .inner{padding-bottom:clamp(96px,13vh,150px)}
+.hero .inner:before{content:"";position:absolute;z-index:-1;left:-20vw;right:-20vw;bottom:-10vh;height:85%;background:linear-gradient(90deg,rgba(10,8,7,.55),rgba(10,8,7,.25) 45%,rgba(10,8,7,0) 70%);pointer-events:none}
+.hero .hk,.hero h1,.hero .meta p{text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero .places{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(255,255,255,.22)}
+.hero .places .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.2vw,30px);height:58px;font:500 10.5px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 1px 8px rgba(0,0,0,.45);white-space:nowrap}
+.hero .places i{width:3px;height:3px;background:#c9a27e;flex:none}
+@media (max-width:760px){
+.hero:after{background:linear-gradient(180deg,rgba(10,8,7,.55) 0%,rgba(10,8,7,0) 22%,rgba(10,8,7,.05) 32%,rgba(10,8,7,.6) 52%,rgba(10,8,7,.92) 100%)}
+.hero .inner{justify-content:flex-end;padding-bottom:calc(112px + env(safe-area-inset-bottom))}
+.hero .hk{font-size:10px;letter-spacing:.28em;margin-bottom:16px}
+.hero h1{font-size:clamp(46px,12.4vw,64px);line-height:1;max-width:7em}
+.hero .meta{margin-top:20px;gap:24px}
+.hero .meta p{font-size:15px;line-height:1.6;max-width:24em;color:rgba(255,255,255,.88)}
+.hero .ctas{flex-direction:column;gap:0;width:100%}
+.hero .ctas .btn{flex:none;width:100%;min-height:54px}
+.hero .ctas .btn.light{border:0;min-height:48px;justify-content:center;letter-spacing:.22em;text-decoration:underline;text-underline-offset:6px;text-decoration-color:rgba(255,255,255,.45)}
+.hero .ctas .btn.light:hover{background:none;color:#fff}
+.hero .places .wrap{height:50px;font-size:9px;letter-spacing:.2em;gap:9px;padding:0 12px}
+.hero .places i{width:2px;height:2px}
+}
+@media (max-width:420px){.hero .places .wrap{letter-spacing:.14em;gap:7px;font-size:8.5px}}@media (max-width:350px){.hero .places .wrap{letter-spacing:.08em;gap:5px;font-size:8px}}
 </style>
 </head>
 <body>
@@ -296,14 +319,15 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 
 <main id="top">
 <section class="hero">
-<img class="poster" src="../media/ai-sdcity.jpg" alt="" aria-hidden="true">
-<video autoplay muted loop playsinline preload="auto" poster="../media/ai-sdcity.jpg"><source media="(max-width:760px)" src="../media/ai-sdcity-m.mp4" type="video/mp4"><source src="../media/ai-sdcity.mp4" type="video/mp4"></video>
+<picture><source media="(max-aspect-ratio:4/5)" srcset="../media/ai-sdcity-p.jpg"><img class="poster" src="../media/ai-sdcity.jpg" alt="" aria-hidden="true"></picture>
+<video id="hv" autoplay muted loop playsinline preload="auto"><source media="(max-aspect-ratio:4/5)" src="../media/ai-sdcity-p.mp4" type="video/mp4"><source src="../media/ai-sdcity.mp4" type="video/mp4"></video>
 <div class="wrap inner">
-<div class="places rv"><span>San Diego</span><span>San Jose</span><span>Morgan Hill</span><span>Gilroy</span><span>Salinas</span></div>
+<p class="hk rv" data-es="Bienes raíces · Desde 2004">Real estate advisory · Since 2004</p>
 <h1 class="rv d1" data-es="California, <em>con fluidez.</em>">California, <em>fluently.</em></h1>
 <div class="meta rv d2"><p data-es="Una correduría independiente y bilingüe. Asesoría residencial y de fincas desde el Sur de la Bahía hasta San Diego, dirigida por un bróker con licencia desde 2004.">An independent, bilingual brokerage. Residential and estate advisory from the South Bay to San Diego, led by a broker licensed since 2004.</p>
-<div class="ctas"><a class="btn light" href="#featured" data-es="Ver la propiedad">View the listing</a><a class="btn solid" href="#valuation" data-es="Valorar mi casa">Value my home</a></div></div>
-</div><div class="scrollcue" aria-hidden="true"></div>
+<div class="ctas"><a class="btn solid" href="#valuation" data-es="Valorar mi casa">Value my home</a><a class="btn light" href="#featured" data-es="Ver la propiedad">View the listing</a></div></div>
+</div>
+<div class="places" aria-label="Markets served"><div class="wrap"><span>San Diego</span><i></i><span>San Jose</span><i></i><span>Morgan Hill</span><i></i><span>Gilroy</span><i></i><span>Salinas</span></div></div>
 </section>
 
 <section class="finder" aria-label="Search">
