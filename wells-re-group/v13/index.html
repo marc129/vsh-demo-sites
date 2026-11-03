@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Wells Real Estate Group · The 101 Corridor</title>
+<meta name="description" content="The Wells Real Estate Group: San Jose, Morgan Hill, Gilroy and San Diego. Bilingual real estate along the 101.">
+<link rel="icon" href="../media/favicon.png"><link rel="apple-touch-icon" href="../media/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "The Wells Real Estate Group", "url": "https://wellsregroup.com", "telephone": "+1-408-528-4477", "email": "info@wellsregroup.com", "address": {"@type": "PostalAddress", "streetAddress": "30 El Toro Avenue", "addressLocality": "Morgan Hill", "addressRegion": "CA", "postalCode": "95037", "addressCountry": "US"}, "areaServed": ["San Jose", "Morgan Hill", "Gilroy", "San Diego"], "knowsLanguage": ["en", "es"], "employee": [{"@type": "Person", "name": "Ruben Martinez", "jobTitle": "Broker"}, {"@type": "Person", "name": "Rafael Covarrubias", "jobTitle": "Realtor"}, {"@type": "Person", "name": "Pedro Silva", "jobTitle": "Realtor"}]}</script>
+<style>
+:root{--asph:#15181a;--asph2:#1d2124;--sign:#0b6b3a;--sign2:#0e7f46;--refl:#f4f4ee;--amber:#f2b632;--mute:#9aa3a6;--line:rgba(244,244,238,.14)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--asph);color:var(--refl);font:400 17px/1.6 "IBM Plex Sans",system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}img,video{display:block;max-width:100%}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;font-weight:700;line-height:1.08;padding-bottom:.08em;letter-spacing:-.005em}
+h2{font-size:clamp(40px,6vw,88px)}h3{font-size:30px}
+.wrap{width:min(1240px,100% - 48px);margin:0 auto}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:6px;background:var(--amber);color:#111;font:600 15px "IBM Plex Sans";text-decoration:none;border:0;cursor:pointer}
+.btn.g{background:transparent;color:var(--refl);border:1.5px solid var(--refl)}
+/* top bar */
+.bar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;padding-top:max(14px,env(safe-area-inset-top));transition:transform .35s,background .35s}
+.bar.s{background:rgba(21,24,26,.88);backdrop-filter:blur(12px)}.bar.h{transform:translateY(-100%)}
+.bar>a{display:flex;align-items:center;min-height:44px}.bar img{height:44px;width:auto}.bar .r{display:flex;gap:10px;align-items:center}
+/* route rail */
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:0}
+.rail:before{content:"";position:absolute;right:9px;top:10px;bottom:10px;width:2px;background:repeating-linear-gradient(var(--amber) 0 10px,transparent 10px 20px)}
+.rail a{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:12px;min-height:44px;text-decoration:none}
+.rail a span{opacity:0;transform:translateX(6px);transition:.25s;background:var(--sign);border:1.5px solid var(--refl);border-radius:4px;padding:3px 8px;font:600 14px "Barlow Condensed";letter-spacing:.04em;white-space:nowrap}
+.rail a i{width:20px;height:20px;border-radius:3px;background:var(--asph);border:2px solid var(--refl);z-index:1}
+.rail a:hover span,.rail a.on span{opacity:1;transform:none}.rail a.on i{background:var(--amber);border-color:var(--amber)}
+/* hero */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 30%,rgba(10,12,13,.85))}
+.hero .wrap{position:relative;z-index:2;padding:0 0 9vh}
+.sign{display:inline-block;background:var(--sign);border:3px solid var(--refl);border-radius:12px;padding:22px 30px 18px;box-shadow:0 30px 60px rgba(0,0,0,.4);max-width:100%}
+.sign .sh{display:inline-flex;align-items:center;justify-content:center;width:58px;height:62px;background:var(--refl);color:#111;font:800 26px "Barlow Condensed";clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%);margin-bottom:12px}
+.sign h1{font-size:clamp(46px,8.4vw,124px);text-transform:uppercase;letter-spacing:.01em}
+.sign p{font:600 clamp(18px,2vw,24px) "Barlow Condensed";letter-spacing:.06em;text-transform:uppercase;opacity:.92}
+.hero .lede{max-width:560px;margin:26px 0 22px;font-size:18px;color:#dfe3e1}
+.ticker{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid var(--line);background:rgba(10,12,13,.7);white-space:nowrap;overflow:hidden}
+.ticker div{display:inline-block;padding:10px 0;animation:tk 40s linear infinite}.ticker b{color:var(--amber);font-weight:500;margin:0 18px}
+@keyframes tk{to{transform:translateX(-50%)}}
+/* scrub */
+.drive{position:relative;height:500vh}
+.drive .pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.drive video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.drive .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,12,13,.82),rgba(10,12,13,.1) 60%)}
+.odo{position:absolute;left:24px;top:96px;z-index:3;font:500 13px "IBM Plex Mono";letter-spacing:.12em;background:rgba(0,0,0,.55);border:1px solid var(--line);padding:10px 14px;border-radius:6px}
+.odo b{color:var(--amber);font-size:22px;display:block;letter-spacing:.02em}
+.chap{position:absolute;left:0;right:0;bottom:12vh;z-index:3}
+.chap article{position:absolute;left:0;bottom:0;max-width:540px;opacity:0;transform:translateY(24px);transition:.6s}
+.chap article.on{opacity:1;transform:none}
+.chap .mk{display:inline-block;background:var(--refl);color:#111;font:700 15px "Barlow Condensed";padding:4px 10px;border-radius:3px;margin-bottom:14px;letter-spacing:.06em}
+.chap h2{text-transform:uppercase}.chap p{color:#dbe0de;max-width:470px}
+.prog{position:absolute;left:24px;right:24px;bottom:5vh;height:3px;background:var(--line);z-index:3}.prog i{display:block;height:100%;width:var(--p,0%);background:var(--amber)}
+/* sections */
+section.blk{padding:130px 0;border-top:1px solid var(--line)}
+.kick{display:flex;gap:14px;align-items:center;margin-bottom:24px;color:var(--amber)}
+.kick:before{content:"";width:34px;height:2px;background:var(--amber)}
+.grid2{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:start}
+.panel{background:var(--asph2);border:1px solid var(--line);border-radius:10px;padding:30px}
+label.f{display:block;margin:0 0 16px}label.f span{display:block;margin-bottom:8px;color:var(--mute)}
+input,select{width:100%;min-height:50px;background:#0f1112;border:1px solid var(--line);color:var(--refl);border-radius:6px;padding:0 14px;font:inherit;font-size:16px}
+input[type=range]{padding:0;accent-color:var(--amber);min-height:44px;background:none;border:0}
+/* voice */
+.vbox{display:flex;gap:10px;align-items:stretch;margin-top:26px}
+.vbox input{flex:1;min-height:60px;font-size:18px}
+.mic{width:60px;min-height:60px;border-radius:6px;background:var(--amber);border:0;cursor:pointer;display:grid;place-items:center;flex:none}
+.mic.rec{animation:pl 1s infinite}@keyframes pl{50%{box-shadow:0 0 0 12px rgba(242,182,50,.25)}}
+.vout{margin-top:12px;min-height:26px;color:var(--amber);font-family:"IBM Plex Mono";font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.chips button{min-height:44px;padding:0 14px;border-radius:4px;border:1px solid var(--line);background:none;color:var(--refl);font:500 14px "IBM Plex Sans";cursor:pointer}
+.chips button:hover{border-color:var(--amber)}
+/* commute */
+.cm{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cm button{min-height:64px;background:none;border:0;border-right:1px solid var(--line);color:var(--refl);font:700 22px "Barlow Condensed";letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.cm button:last-child{border-right:0}.cm button.on{background:var(--sign);}
+.legs{margin-top:22px;display:grid;gap:0}
+.legs div{display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px 0;border-bottom:1px dashed var(--line);align-items:baseline}
+.legs b{font:700 28px "Barlow Condensed";color:var(--amber)}
+.note{color:var(--mute);font-size:13px;margin-top:14px}
+/* estimate */
+.scan{display:none;margin-top:18px;font-family:"IBM Plex Mono";font-size:13px;color:var(--amber)}
+[data-est] [data-est-out]{display:block;margin-top:22px;font:700 clamp(34px,5vw,56px) "Barlow Condensed";filter:blur(12px);transition:filter .8s;user-select:none}
+[data-est].open [data-est-out]{filter:none}.gate{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}.gate input{flex:1;min-width:200px}
+[data-est].open .gate{display:none}.sent .ok{display:block}.ok{display:none;color:var(--amber);margin-top:10px}
+/* listing */
+.lst{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.lst figure{border-radius:8px;overflow:hidden;position:relative}.lst figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/10}
+.lst .side{display:grid;gap:18px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:8px;margin-top:22px}
+.specs div{padding:16px;border-right:1px solid var(--line)}.specs div:last-child{border:0}.specs b{display:block;font:700 30px "Barlow Condensed"}
+.vault .locked{position:relative}.vault .locked>*:not(form){filter:blur(7px);user-select:none}
+.vault.open .locked>*{filter:none!important}.vault.open .locked form{display:none}
+.vault .locked form{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:20px;background:rgba(21,24,26,.6)}
+/* mortgage */
+.big{font:800 clamp(52px,7vw,96px) "Barlow Condensed";color:var(--amber);line-height:1.05;padding-bottom:.08em}
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--asph2);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.card .ph{aspect-ratio:4/5;background:#0f1112;overflow:hidden}.card .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.card .mono2{height:100%;display:grid;place-items:center;background:var(--sign);font:800 120px "Barlow Condensed";letter-spacing:.02em;color:var(--refl)}
+.card .tx{padding:22px}.card .tx p{color:var(--mute);font-size:15px;margin-top:8px}
+/* footer */
+footer{background:#0c0e0f;padding:90px 0 calc(40px + env(safe-area-inset-bottom));border-top:4px solid var(--sign)}
+.fgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}footer img{height:70px;width:auto}
+footer p,footer a{color:#c8cecc;font-size:15px}.legal{margin-top:50px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--mute);font-size:13px}
+.legal a{color:var(--amber)}
+[data-rv]{opacity:0;transform:translateY(30px);transition:1s cubic-bezier(.2,.7,.2,1)}[data-rv].in{opacity:1;transform:none}
+@media (max-width:900px){.grid2,.lst,.fgrid{grid-template-columns:1fr;gap:36px}.team{grid-template-columns:1fr 1fr}.rail{display:none}section.blk{padding:90px 0}}
+@media (max-width:600px){.wrap{width:calc(100% - 36px)}.team{grid-template-columns:1fr}.cm{grid-template-columns:1fr 1fr}.cm button:nth-child(2){border-right:0}.cm button:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.sign{padding:16px 18px 12px;border-width:2px}.bar img{height:38px}.bar .btn.g{display:none}.drive{height:420vh}.odo{top:84px;left:18px}.chap{left:18px;right:18px}.chap article{right:0}.specs b{font-size:24px}.panel{padding:22px}.ticker{display:none}.hero .wrap{padding-bottom:7vh}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header class="bar" id="bar"><a href="#top" aria-label="The Wells Real Estate Group home"><img src="../media/logo-light.png" alt="The Wells Real Estate Group" width="1061" height="523"></a>
+<div class="r"><a class="btn g" href="tel:+14085284477">408.528.4477</a><button class="btn" data-chat="I'd like to talk to an agent">Ask Wells AI</button></div></header>
+<nav class="rail" aria-label="Route">
+<a href="#top"><span>START · 101 N</span><i></i></a><a href="#drive"><span>THE DRIVE</span><i></i></a><a href="#voice"><span>SAY WHERE</span><i></i></a><a href="#commute"><span>COMMUTE</span><i></i></a><a href="#value"><span>YOUR VALUE</span><i></i></a><a href="#listing"><span>ECHO VALLEY</span><i></i></a><a href="#math"><span>THE MATH</span><i></i></a><a href="#crew"><span>THE CREW</span><i></i></a><a href="#contact"><span>EXIT HERE</span><i></i></a></nav>
+<main id="top">
+<section class="hero"><video class="" autoplay muted loop playsinline preload="metadata" poster="../media/ai-sanjose.jpg"><source media="(max-width:760px)" src="../media/ai-sanjose-m.mp4" type="video/mp4"><source src="../media/ai-sanjose.mp4" type="video/mp4"></video>
+<div class="wrap"><div class="sign" data-rv><div class="sh">101</div><p>San Jose · Morgan Hill · Gilroy · San Diego</p><h1>The Wells<br>Corridor</h1></div>
+<p class="lede" data-rv>One broker-led team working the whole 101, from Silicon Valley through the South County hills, plus a second home base on the San Diego coast. English y español.</p>
+<div data-rv style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#drive">Start the drive ↓</a><a class="btn g" href="#value">Instant home estimate</a></div></div>
+<div class="ticker mono" aria-hidden="true"><div><b>◆</b>San Jose<b>◆</b>Morgan Hill<b>◆</b>Gilroy<b>◆</b>Salinas<b>◆</b>San Diego<b>◆</b>Broker since 2004<b>◆</b>Bilingual EN / ES<b>◆</b>30 El Toro Ave, Morgan Hill<b>◆</b>San Jose<b>◆</b>Morgan Hill<b>◆</b>Gilroy<b>◆</b>Salinas<b>◆</b>San Diego<b>◆</b>Broker since 2004<b>◆</b>Bilingual EN / ES<b>◆</b>30 El Toro Ave, Morgan Hill<b>◆</b>San Jose<b>◆</b>Morgan Hill<b>◆</b>Gilroy<b>◆</b>Salinas<b>◆</b>San Diego<b>◆</b>Broker since 2004<b>◆</b>Bilingual EN / ES<b>◆</b>30 El Toro Ave, Morgan Hill<b>◆</b>San Jose<b>◆</b>Morgan Hill<b>◆</b>Gilroy<b>◆</b>Salinas<b>◆</b>San Diego<b>◆</b>Broker since 2004<b>◆</b>Bilingual EN / ES<b>◆</b>30 El Toro Ave, Morgan Hill</div></div>
+</section>
+<section class="drive" id="drive"><div class="pin">
+<video id="scrub" muted playsinline preload="auto" poster="../media/ai-places.jpg"><source media="(max-width:760px)" src="../media/ai-places-scrub-m.mp4" type="video/mp4"><source src="../media/ai-places-scrub.mp4" type="video/mp4"></video>
+<div class="shade"></div><div class="odo">US-101 · Southbound<b id="odo">EXIT 01</b></div>
+<div class="chap wrap" id="chap">
+<article class="on"><span class="mk">STOP 1</span><h2>San Jose</h2><p>The tech capital the team knows from the inside: RC brings executive experience from the tech industry, and Ruben brings a long background in banking and financial services.</p></article>
+<article><span class="mk">STOP 2</span><h2>Morgan Hill</h2><p>Home base: 30 El Toro Avenue. RC lives here, and the office has worked these hills and ranch parcels for two decades.</p></article>
+<article><span class="mk">STOP 3</span><h2>Gilroy</h2><p>Garlic fields, vineyards and estates. Pedro Silva, licensed since 2004, works luxury estates from Gilroy.</p></article>
+<article><span class="mk">STOP 4</span><h2>San Diego</h2><p>The far end of the line. The same broker-led service on the coast, for buyers and sellers who split their lives between north and south.</p></article></div>
+<div class="prog"><i id="prog"></i></div></div></section>
+
+<section class="blk" id="voice"><div class="wrap grid2"><div data-rv><div class="kick mono">Voice AI search</div><h2>Say where you're headed.</h2><p style="color:var(--mute);max-width:460px;margin-top:18px">Tap the mic and talk the way you'd talk to an agent: a town, how many acres, a budget. It works in English or Spanish, and you can type instead.</p></div>
+<div class="panel" data-rv><div class="mono" style="color:var(--mute)">Ask in English or español</div>
+<div class="vbox"><input id="vq" placeholder="“Acreage near Morgan Hill under 1.5 million”" aria-label="Search"><button class="mic" data-voice="#vout" data-input="#vq" aria-label="Search by voice"><svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M12 15a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v7a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1a7 7 0 0 0 6-6.9z"/></svg></button></div>
+<div class="vout" id="vout"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="btn" id="vgo">Search with Wells AI</button><button class="btn g" data-voice="#vout" data-input="#vq" data-lang="es-US">Hablar en español</button></div>
+<div class="chips"><button data-q="Homes on acreage in Morgan Hill">Acreage · Morgan Hill</button><button data-q="Estates in Gilroy">Estates · Gilroy</button><button data-q="Condos in San Diego">San Diego</button><button data-q="¿Qué casas tienen en San José?">En español</button></div></div></div></section>
+
+<section class="blk" id="commute"><div class="wrap"><div class="grid2" style="margin-bottom:40px"><div data-rv><div class="kick mono">Commute explorer</div><h2>Where do you start your morning?</h2></div><p data-rv style="color:var(--mute);align-self:end">Pick a home base. You'll see road miles along US-101 to the places people actually drive. Real drive times depend on traffic, so ask the team about your route at your hour.</p></div>
+<div class="cm" id="cm" data-rv role="tablist"><button class="on" data-t="0">Morgan Hill</button><button data-t="1">Gilroy</button><button data-t="2">San Jose</button><button data-t="3">Prunedale</button></div>
+<div class="legs" id="legs"></div><p class="note">Approximate road miles from the town center. These are estimates, not a guarantee.</p></div></section>
+
+<section class="blk" id="value"><div class="wrap grid2"><div data-rv><div class="kick mono">Instant AI home estimate</div><h2>What's your place worth at today's exit?</h2><p style="color:var(--mute);margin-top:18px;max-width:440px">Enter the basics and a range is computed instantly from your inputs. Unlock it with your email, and Ruben can follow up with a full comparative market analysis.</p></div>
+<div class="panel" data-est data-rv><form data-lead="estimate">
+<label class="f"><span>Property address</span><input name="address" required placeholder="Street, city"></label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label class="f"><span>Living sq ft</span><input name="sqft" type="number" inputmode="numeric" value="1800" min="300"></label><label class="f"><span>Acres</span><input name="acres" type="number" inputmode="decimal" value="0.25" step="0.05" min="0"></label></div>
+<label class="f"><span>Area</span><select name="ppsf"><option value="760">Morgan Hill</option><option value="640">Gilroy</option><option value="830">San Jose</option><option value="700">San Diego</option></select></label>
+<div class="scan" id="scan">▸ Reading your inputs…<br>▸ Applying the area value per sq ft…<br>▸ Adjusting for land…</div>
+<div class="gate"><input name="email" type="email" required placeholder="Email to unlock" aria-label="Email"><button class="btn">Unlock range</button></div></form>
+<span data-est-out>$0</span><p class="note">Demo range for illustration only, not an appraisal. Every request is reviewed personally.</p></div></div></section>
+
+<section class="blk" id="listing"><div class="wrap"><div class="kick mono" data-rv>Featured listing · Listed by Ruben Martinez</div>
+<h2 data-rv>319 Echo Valley Rd, Prunedale</h2>
+<div class="lst" style="margin-top:36px"><figure data-rv><img src="../media/319EchoValley.webp" alt="319 Echo Valley Rd exterior" loading="lazy" width="2400" height="1349"></figure>
+<div class="side"><figure data-rv><img src="../media/319EchoValley6.webp" alt="319 Echo Valley Rd grounds" loading="lazy" width="2400" height="1601"></figure>
+<div class="vault panel" data-vault data-rv style="padding:22px"><div class="locked">
+<div><b class="mono" style="color:var(--amber)">Full details</b><p style="margin-top:8px">Built in 1918 on 4.87 acres · MLS #ML82060758 (as published Nov 2, 2026) · Private tours with Ruben. Call 408.528.4477.</p></div>
+<form data-lead="listing"><input name="email" type="email" required placeholder="Email for full details" aria-label="Email"><button class="btn">Unlock details</button></form></div></div></div></div>
+<div class="specs" data-rv><div><b>$1,075,999</b><span class="mono">List price</span></div><div><b>3 bd · 2 ba</b><span class="mono">1,220 sq ft</span></div><div><b>4.87 ac</b><span class="mono">Built 1918</span></div></div></div></section>
+
+<section class="blk" id="math"><div class="wrap grid2" data-mort><div data-rv><div class="kick mono">Affordability calculator</div><h2>Run the numbers before the on-ramp.</h2><div class="big" data-mort-out style="margin-top:26px">$0</div><p data-mort-break class="note" style="font-size:15px"></p><p class="note">Estimate only: 30-year fixed with an assumed 1.15% tax and 0.35% insurance. Ruben's banking background helps when it's time to compare real lender quotes.</p></div>
+<form class="panel" data-rv onsubmit="return false">
+<label class="f"><span>Price · <output for="price" data-p="$"></output></span><input type="range" name="price" min="400000" max="4000000" step="5000" value="1075999"></label>
+<label class="f"><span>Down payment · <output for="down" data-u="%"></output></span><input type="range" name="down" min="3" max="50" value="20"></label>
+<label class="f"><span>Your rate · <output for="rate" data-u="%"></output></span><input type="range" name="rate" min="3" max="9" step="0.05" value="6.25"></label></form></div></section>
+
+<section class="blk" id="crew"><div class="wrap"><div class="kick mono" data-rv>The crew</div><h2 data-rv style="margin-bottom:40px">Three agents, one route.</h2>
+<div class="team"><article class="card" data-rv><div class="ph"><img src="../media/ruben.webp" alt="Ruben Martinez" loading="lazy" width="1600" height="2000"></div><div class="tx"><h3>Ruben Martinez</h3><span class="mono" style="color:var(--amber)">Broker · DRE #01198060</span><p>A broker since 2004, with a long background in banking and financial services.</p></div></article>
+<article class="card" data-rv><div class="ph"><img src="../media/rc.webp" alt="Rafael RC Covarrubias" loading="lazy" width="1152" height="1196"></div><div class="tx"><h3>Rafael “RC” Covarrubias</h3><span class="mono" style="color:var(--amber)">Realtor® · DRE #02442276</span><p>Tech-industry executive experience. Lives in Morgan Hill, speaks Spanish and also covers Salinas.</p></div></article>
+<article class="card" data-rv><div class="ph"><div class="mono2">PS</div></div><div class="tx"><h3>Pedro Silva</h3><span class="mono" style="color:var(--amber)">Realtor® · DRE #01422644</span><p>Licensed since 2004. Works luxury estates and is based in Gilroy.</p></div></article></div></div></section>
+
+<section class="blk" id="contact"><div class="wrap grid2"><div data-rv><div class="kick mono">Exit here</div><h2>Tell us your starting point.</h2><p style="color:var(--mute);margin-top:18px">30 El Toro Avenue, Morgan Hill, CA 95037<br><a href="tel:+14085284477">408.528.4477</a> · <a href="mailto:info@wellsregroup.com">info@wellsregroup.com</a></p>
+<div class="chips"><button data-chat="Set up listing alerts for me">Set listing alerts</button><button data-chat="¿Hablan español?">¿Hablan español?</button></div></div>
+<form class="panel" data-lead="contact" data-rv><label class="f"><span>Name</span><input name="name" required autocomplete="name"></label><label class="f"><span>Email</span><input name="email" type="email" required autocomplete="email"></label><label class="f"><span>I'm…</span><select name="intent"><option>Buying</option><option>Selling</option><option>Both</option></select></label><button class="btn">Send to the team</button><p class="ok">Thanks, the team will be in touch.</p></form></div></section>
+</main>
+<footer><div class="wrap"><div class="fgrid"><div><img src="../media/logo-light.png" alt="The Wells Real Estate Group" width="1061" height="523" loading="lazy"><p style="margin-top:18px">Bilingual real estate along the 101. Se habla español.</p></div>
+<div><p class="mono" style="color:var(--amber);margin-bottom:12px">Office</p><p>30 El Toro Avenue<br>Morgan Hill, CA 95037</p></div>
+<div><p class="mono" style="color:var(--amber);margin-bottom:12px">Reach us</p><p><a href="tel:+14085284477">408.528.4477</a><br><a href="mailto:info@wellsregroup.com">info@wellsregroup.com</a></p></div></div>
+<div class="legal"><span>The Wells Real Estate Group · Ruben Martinez, Broker, CA DRE #01198060. Equal Housing Opportunity.</span><a href="https://studio.vshmedia.com" target="_blank" rel="noopener">Powered by VSH Media Studio</a></div></div></footer>
+<script src="../shared/wells-chat.js" defer></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const push=o=>{(window.WELLS_LEADS=window.WELLS_LEADS||[]).push(Object.assign({at:new Date().toISOString()},o))};
+$$("form[data-lead]").forEach(f=>f.addEventListener("submit",e=>{e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}const o={type:f.dataset.lead};new FormData(f).forEach((v,k)=>o[k]=v);push(o);f.classList.add("sent");f.dispatchEvent(new CustomEvent("lead",{bubbles:true}))}));
+/* gated estimate: range computed from the visitor's own inputs, blurred until email */
+$$("[data-est]").forEach(w=>{const f=$("form",w),out=$("[data-est-out]",w);const calc=()=>{const s=+f.sqft.value||0,ppsf=+(f.ppsf?f.ppsf.value:0)||0,ac=+(f.acres?f.acres.value:0)||0;const base=s*ppsf+ac*45000;const lo=Math.round(base*.94/5000)*5000,hi=Math.round(base*1.06/5000)*5000;out.textContent=base?("$"+lo.toLocaleString()+" – $"+hi.toLocaleString()):"—"};f.addEventListener("input",calc);calc();w.addEventListener("lead",()=>{const sc=$(".scan",f);if(sc)f.after(sc);(sc||f).after(out);w.classList.add("open")})});
+/* vault unlock */
+$$("[data-vault]").forEach(v=>v.addEventListener("lead",()=>v.classList.add("open")));
+/* voice search (Web Speech API, en-US / es-US) */
+$$("[data-voice]").forEach(b=>{const out=$(b.dataset.voice);const SR=window.SpeechRecognition||window.webkitSpeechRecognition;b.addEventListener("click",()=>{const lang=b.dataset.lang||(document.documentElement.lang==="es"?"es-US":"en-US");if(!SR){out.textContent=lang.startsWith("es")?"Su navegador no admite voz: escriba su búsqueda.":"Voice isn't supported in this browser — type your search instead.";const i=$(b.dataset.input);i&&i.focus();return}const r=new SR();r.lang=lang;r.interimResults=true;b.classList.add("rec");out.textContent=lang.startsWith("es")?"Escuchando…":"Listening…";r.onresult=e=>{const t=[...e.results].map(x=>x[0].transcript).join(" ");out.textContent="“"+t+"”";const i=$(b.dataset.input);if(i)i.value=t;if(e.results[e.results.length-1].isFinal)push({type:"voice",q:t,lang})};r.onend=()=>b.classList.remove("rec");r.onerror=()=>{b.classList.remove("rec");out.textContent="Mic unavailable — type instead."};r.start()})});
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});$$("[data-rv]").forEach(x=>io.observe(x));
+
+/* affordability: standard amortisation from the visitor's own rate */
+$$("[data-mort]").forEach(w=>{const f=$("form",w),o=$("[data-mort-out]",w),b=$("[data-mort-break]",w);const go=()=>{const P=+f.price.value,d=+f.down.value/100,r=+f.rate.value/1200,n=360;const L=P*(1-d),pm=r?L*r/(1-Math.pow(1+r,-n)):L/n,tax=P*.0115/12,ins=P*.0035/12;o.textContent="$"+Math.round(pm+tax+ins).toLocaleString()+"/mo";b.innerHTML=`Principal & interest $${Math.round(pm).toLocaleString()} · est. property tax $${Math.round(tax).toLocaleString()} · est. insurance $${Math.round(ins).toLocaleString()}`;f.querySelectorAll("output").forEach(x=>{const i=f[x.htmlFor.value];if(i)x.textContent=(x.dataset.p||"")+(+i.value).toLocaleString()+(x.dataset.u||"")})};f.addEventListener("input",go);go()});
+
+/* bar hide */
+let ly=0;addEventListener("scroll",()=>{const y=scrollY,b=$("#bar");b.classList.toggle("s",y>40);b.classList.toggle("h",y>ly&&y>300);ly=y},{passive:true});
+/* rail active */
+const secs=$$(".rail a").map(a=>[a,$(a.getAttribute("href"))]);const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)secs.forEach(([a,s])=>a.classList.toggle("on",s===e.target))}),{rootMargin:"-45% 0px -45% 0px"});secs.forEach(([,s])=>s&&sio.observe(s));
+/* scroll scrub */
+(()=>{const d=$("#drive"),v=$("#scrub"),arts=$$("#chap article"),p=$("#prog"),o=$("#odo");let dur=13,t=0,cur=0;v.addEventListener("loadedmetadata",()=>dur=v.duration||dur);
+const tick=()=>{const r=d.getBoundingClientRect(),h=d.offsetHeight-innerHeight;const f=Math.min(1,Math.max(0,-r.top/h));t=f*(dur-.05);if(Math.abs(cur-t)>.02&&v.readyState>=1){cur+= (t-cur)*.25;try{v.currentTime=cur}catch(e){}}const i=Math.min(3,Math.floor(f*4));arts.forEach((a,k)=>a.classList.toggle("on",k===i));p.style.setProperty("--p",(f*100)+"%");o.textContent="STOP 0"+(i+1)+" · MI "+String(Math.round(f*460)).padStart(3,"0");requestAnimationFrame(tick)};requestAnimationFrame(tick)})();
+/* voice go + chips */
+$("#vgo").onclick=()=>{const q=$("#vq").value.trim()||"Show me homes along the 101";window.WellsChat?WellsChat.send(q):0};
+$$(".chips [data-q]").forEach(b=>b.onclick=()=>{$("#vq").value=b.dataset.q;window.WellsChat&&WellsChat.send(b.dataset.q)});
+/* commute data: approx road miles */
+const C=[["Downtown San Jose",21],["Apple Park, Cupertino",29],["SJC Airport",23],["Gilroy",11],["Monterey",50]],
+CM=[[["Downtown San Jose",21],["SJC Airport",23],["Apple Park, Cupertino",29],["Gilroy",11],["Monterey",50]],[["Morgan Hill",11],["Downtown San Jose",32],["SJC Airport",34],["Salinas",36],["Monterey",43]],[["SJC Airport",3],["Apple Park, Cupertino",9],["Morgan Hill",21],["Gilroy",32],["San Francisco",48]],[["Salinas",10],["Gilroy",22],["Morgan Hill",33],["Downtown San Jose",53],["Monterey",20]]];
+const legs=$("#legs"),draw=i=>{legs.innerHTML=CM[i].map(([n,m])=>`<div><span>${n}</span><b>~${m} mi</b></div>`).join("")};
+$$("#cm button").forEach(b=>b.onclick=()=>{$$("#cm button").forEach(x=>x.classList.toggle("on",x===b));draw(+b.dataset.t)});draw(0);
+/* estimate scan */
+$("[data-est] form").addEventListener("submit",()=>{const s=$("#scan");s.style.display="block"});
+</script></body></html>
