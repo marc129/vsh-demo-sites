@@ -287,7 +287,7 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 .hero .hk{font:500 11px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:22px;display:flex;align-items:center;gap:14px}
 .hero .hk:before{content:"";width:34px;height:1px;background:rgba(255,255,255,.7)}
 .hero .inner{padding-bottom:clamp(96px,13vh,150px)}
-.hero .inner:before{content:"";position:absolute;z-index:-1;left:-20vw;right:-20vw;bottom:-10vh;height:85%;background:linear-gradient(90deg,rgba(10,8,7,.55),rgba(10,8,7,.25) 45%,rgba(10,8,7,0) 70%);pointer-events:none}
+.hero:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 70% at 15% 100%,rgba(10,8,7,.6),rgba(10,8,7,0) 70%)}
 .hero .hk,.hero h1,.hero .meta p{text-shadow:0 2px 18px rgba(0,0,0,.45)}
 .hero .places{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(255,255,255,.22)}
 .hero .places .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(12px,2.2vw,30px);height:58px;font:500 10.5px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 1px 8px rgba(0,0,0,.45);white-space:nowrap}
