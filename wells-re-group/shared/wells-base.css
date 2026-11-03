@@ -35,3 +35,28 @@ form.lead .thanks{position:absolute;inset:0;display:flex;flex-direction:column;j
 @media(max-width:980px){.revs{grid-template-columns:1fr}.ccols{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){form.lead{grid-template-columns:1fr}.gal{grid-template-columns:1fr}.g-thumbs{flex-direction:row}.g-thumbs button{flex:1}.specs{grid-template-columns:repeat(2,1fr)}.burger{display:block}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
+
+/* mobile hardening */
+@media(max-width:760px){.mono,.kick,.tag,.rev-flag,.fine,small{font-size:12px!important}
+.ccols a,.contact a,a.ghost,a.lk,a.link,.big-link,.foot a{display:inline-flex;align-items:center;min-height:44px}
+.btn,button.btn{min-height:48px}.burger{min-width:44px;min-height:44px}
+.fld input,.fld select,.fld textarea{font-size:16px!important}
+[data-progress="pin"] video{will-change:transform}
+body{-webkit-text-size-adjust:100%;overflow-x:clip}}
+
+form.lead[hidden]{display:none!important}
+.menu-open .nav{z-index:80!important;transform:none!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;color:var(--menu-fg,var(--fg))}
+.menu-open .nav .links,.menu-open .nav .cta,.menu-open .nav .btn,.menu-open .nav .clock{visibility:hidden}
+.menu-open .nav .logo img{filter:brightness(0) invert(1)}
+.ph img,.portrait img{object-position:50% 22%}
+
+/* legibility + descender fixes */
+.nav .logo img,.nav .brand img{filter:drop-shadow(0 1px 6px rgba(0,0,0,.35))}
+.nav.solid .logo img,.v4 .nav .logo img,.v6 .nav .logo img{filter:none}
+h1,h2,.big,.hero-title{padding-bottom:.12em}
+h1 span,h1 em,.ln,.ln>span{padding-bottom:.14em;margin-bottom:-.14em}
+@media(min-width:761px){.v4 .logo img{height:52px!important}.v6 .logo img{height:48px!important}.v3 .logo img,.v5 .logo img{height:60px!important}.v2 .logo img{height:60px!important}}
+@media(max-width:760px){.nav .logo img{height:44px!important}}
+.v3 .hero .mono,.v5 .hero .kick,.hero .eyebrow{opacity:1!important;color:#fff!important;text-shadow:0 1px 14px rgba(0,0,0,.75),0 0 2px rgba(0,0,0,.5)}
+.v2 .hero .eyebrow{color:var(--acc)!important;text-shadow:none}
+.v3 .nav:not(.solid)::before,.v5 .nav:not(.solid)::before{content:"";position:absolute;inset:0 0 -40px;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);pointer-events:none}

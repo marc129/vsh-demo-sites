@@ -152,3 +152,11 @@ em{font-style:italic;font-family:var(--serif)}
 .foot-logo{background:none!important;padding:0!important;width:150px!important}
 :root{--wc-bg:#0f2a20;--wc-ink:#f3eee4;--wc-accent:#c5a46d;--wc-deep:#7a122e;--wc-font:"Inter Tight",system-ui;--wc-display:"Instrument Serif",serif}
 @media(max-width:640px){.brand img{height:38px}}
+.portrait img{object-position:50% 22%}
+
+/* legibility + descender fixes */
+.brand img{height:60px;filter:drop-shadow(0 1px 6px rgba(0,0,0,.45))}.nav.solid .brand img{height:46px;filter:none}
+@media(max-width:640px){.brand img{height:46px}.nav.solid .brand img{height:40px}}
+.nav:not(.solid)::before{content:"";position:absolute;inset:0 0 -50px;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);pointer-events:none}
+.hero .eyebrow{color:#fff;opacity:1;font-size:12px;text-shadow:0 1px 14px rgba(0,0,0,.8),0 0 2px rgba(0,0,0,.6)}
+.hero-title,h1,h2{padding-bottom:.12em}.hero-title .ln{padding-bottom:.16em;margin-bottom:-.1em}
