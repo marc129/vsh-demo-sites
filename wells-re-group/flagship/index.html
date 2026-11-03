@@ -267,6 +267,16 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 .vs-lead .err{color:var(--wine);font-size:13px}
 @media (max-width:900px){.vhead,.vs{grid-template-columns:1fr}.vs-mic{width:112px;height:112px}}
 @media (max-width:640px){.vs-cards{grid-template-columns:1fr}.vs-lead .btn{width:100%}}
+.vlock{position:relative;margin-top:6px;min-height:430px}.vlock.open{min-height:0}
+.vl-val{filter:blur(14px);user-select:none;-webkit-user-select:none;pointer-events:none;transition:filter 1.1s var(--ease),opacity 1.1s;opacity:.55}
+.vlock.open .vl-val{filter:none;opacity:1;user-select:text;-webkit-user-select:text;pointer-events:auto}
+.vl-gate{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;justify-content:center;padding:22px;background:color-mix(in srgb,var(--paper) 72%,transparent);border:1px solid var(--line);transition:opacity .6s,transform .6s var(--ease)}
+.vlock.open .vl-gate{opacity:0;transform:translateY(8px);pointer-events:none;visibility:hidden;transition:opacity .6s,transform .6s,visibility 0s .6s}
+.vl-k{display:flex;align-items:center;gap:8px;font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--wine)}
+.vl-t{font:400 24px/1.2 var(--serif);padding-bottom:.08em}
+.vl-gate input{border:1px solid var(--line);background:#fff;min-height:48px;padding:0 14px;outline:none;font:400 16px var(--sans);font-variant-numeric:lining-nums;width:100%}
+.vl-gate input:focus{border-color:var(--wine)}.vl-err{color:var(--wine);font-size:13px;min-height:1em}
+.vlock.open .range{animation:rv .9s var(--ease)}@keyframes rv{from{letter-spacing:.06em;opacity:0}to{opacity:1}}
 /* responsive */
 @media (max-width:1080px){header nav{display:none}.menu{display:block}.finder .wrap{grid-template-columns:1fr 1fr}.finder label:nth-child(2){border-right:0;margin-right:0}.finder label{border-bottom:1px solid var(--line)}.finder .go{grid-column:1/-1}.finder .go .btn{flex:1}
 .tg{grid-template-columns:1fr 1fr}.tg .agent:last-child{grid-column:auto}footer .g{grid-template-columns:1fr 1fr}}
@@ -378,8 +388,11 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 <div class="row2"><label class="field"><span data-es="Ciudad">Market</span><select id="em"><option>San Jose</option><option>Morgan Hill</option><option>Gilroy</option><option>Salinas</option><option>Prunedale</option><option>San Diego</option></select></label><label class="field"><span data-es="Condición">Condition</span><select id="ec"><option data-es="Excelente">Excellent</option><option selected data-es="Buena">Good</option><option data-es="Necesita trabajo">Needs work</option></select></label></div>
 <p class="emsg" id="emsg" role="alert"></p><button class="btn solid" style="margin-top:18px;width:100%" data-es="Estimar ahora">Estimate now</button>
 <ul class="steps" id="steps"><li><i></i><span data-es="Ubicando la propiedad">Locating the property</span></li><li><i></i><span data-es="Analizando el mercado local">Reading the local market</span></li><li><i></i><span data-es="Ajustando por tamaño y condición">Adjusting for size and condition</span></li></ul>
-<div class="result" id="res"><p class="eyebrow" data-es="Rango estimado">Estimated range</p><p class="raddr" id="raddr"></p><p class="range" id="rg">$0</p><p class="enote" id="enote"></p><div class="report" id="rep"><dl id="repdl"></dl></div>
-<div class="gate" id="gate"><input type="email" id="ge" placeholder="Email for the full report" data-es-ph="Correo para el informe completo" autocomplete="email"><button type="button" class="btn ghost" id="gb" data-es="Recibir informe">Unlock full report</button></div>
+<div class="result" id="res"><p class="eyebrow" data-es="Rango estimado">Estimated range</p><p class="raddr" id="raddr"></p><p class="enote" id="enote"></p>
+<div class="vlock" id="vlock"><div class="vl-val" aria-hidden="true"><p class="range" id="rg">$0,000,000 – $0,000,000</p><div class="report on" id="rep"><dl id="repdl"><div><dt>Market</dt><dd>————</dd></div><div><dt>Size used</dt><dd>0,000 sq ft</dd></div><div><dt>Indicative $/sq ft</dt><dd>$000</dd></div><div><dt>Midpoint</dt><dd>$0,000,000</dd></div></dl></div></div>
+<div class="vl-gate" id="gate" role="group"><p class="vl-k"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-es="Su estimación está lista">Your estimate is ready</span></p><p class="vl-t" data-es="Desbloquee su rango y el informe completo">Unlock your range and full report</p>
+<input id="gname" autocomplete="name" placeholder="Full name" data-es-ph="Nombre completo"><input type="email" id="ge" autocomplete="email" placeholder="Email" data-es-ph="Correo"><input type="tel" id="gp" autocomplete="tel" placeholder="Phone (optional)" data-es-ph="Teléfono (opcional)">
+<p class="vl-err" id="gerr" role="alert"></p><button type="button" class="btn solid" id="gb" data-es="Desbloquear estimación">Unlock my estimate</button></div></div>
 <p class="small" id="gn" style="margin-top:14px" data-es="Ruben le enviará un análisis completo.">Ruben will follow up with a full comparable-sales analysis.</p></div>
 </form>
 </div></section>
@@ -484,7 +497,28 @@ const VS=$('#vs'),VR=$('#vres'),VTR=$('#vtr'),VQ=$('#vq');let lastQ='',rec=null,
 function state(s,label){VS.dataset.s=s;$('#vstate b').textContent=label||{idle:T('Ready','Listo'),listen:T('Listening…','Escuchando…'),think:T('Thinking…','Pensando…'),speak:T('Speaking','Hablando')}[s]}
 function setMute(m){muted=m;$('#vmute').setAttribute('aria-pressed',m);$('#vmutel').textContent=m?T('Voice off','Voz desactivada'):T('Voice on','Voz activada');try{localStorage.setItem('wells-mute',m?'1':'0')}catch(e){}if(m&&window.speechSynthesis)speechSynthesis.cancel()}
 $('#vmute').onclick=()=>setMute(!muted);setMute(muted);
-function speak(t){if(muted||!window.speechSynthesis){state('idle');return}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=L=='es'?'es-US':'en-US';const v=speechSynthesis.getVoices().find(v=>v.lang.startsWith(L));if(v)u.voice=v;u.rate=1;u.onstart=()=>state('speak');u.onend=u.onerror=()=>state('idle');speechSynthesis.speak(u);setTimeout(()=>{if(!speechSynthesis.speaking)state('idle')},1500)}catch(e){state('idle')}}
+let VOICES=[];const loadV=()=>{try{VOICES=speechSynthesis.getVoices()}catch(e){}};if(window.speechSynthesis){loadV();speechSynthesis.addEventListener('voiceschanged',loadV)}
+const PREF={en:[/Aria.*Natural/i,/Jenny.*Natural/i,/Guy.*Natural/i,/Online \(Natural\).*English \(United States\)/i,/Natural.*en-US/i,/^Google US English$/i,/Ava.*(Premium|Enhanced)/i,/Samantha.*(Premium|Enhanced)/i,/^Ava/i,/^Samantha/i],
+ es:[/Dalia.*Natural/i,/Paloma.*Natural/i,/Elvira.*Natural/i,/Online \(Natural\).*Spanish/i,/Google español de Estados Unidos/i,/Google español/i,/Paulina.*(Premium|Enhanced)/i,/M[oó]nica.*(Premium|Enhanced)/i,/^Paulina/i,/^M[oó]nica/i]};
+function pickVoice(){const lg=L=='es'?'es':'en',vs=VOICES.filter(v=>v.lang&&v.lang.toLowerCase().startsWith(lg));for(const r of PREF[lg]){const v=vs.find(v=>r.test(v.name));if(v)return v}
+ return vs.find(v=>/en-US|es-US|es-MX/i.test(v.lang)&&v.localService===false)||vs.find(v=>v.default)||vs[0]||null}
+window.WELLS_VOICE=()=>{const v=pickVoice();return v?v.name+' ('+v.lang+')':'browser default'};
+const NUM=['zero','one','two','three','four','five','six','seven','eight','nine'],NUMES=['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
+function sayMoney(n,es){const W=es?NUMES:NUM;if(n>=1e6){const m=n/1e6,r=m>=10?Math.round(m*10)/10:Math.round(m*1000)/1000,[i,d]=String(r).split('.');
+  return es?(i+(d?' punto '+d.split('').map(x=>W[x]).join(' '):'')+(r==1?' millón de dólares':' millones de dólares')):(i+(d?' point '+d.split('').map(x=>x=='0'?'oh':W[x]).join(' '):'')+' million dollars')}
+ if(n>=1e3)return Math.round(n/1e3)+(es?' mil dólares':' thousand dollars');return n+(es?' dólares':' dollars')}
+function spoken(t){const es=L=='es';return t.replace(/\$\s?([\d,.]+)\s*([MK])?\b/gi,(m,x,u)=>{let v=parseFloat(x.replace(/,/g,''));if(u)v*=/m/i.test(u)?1e6:1e3;return sayMoney(v,es)})
+ .replace(/([\d,]+)\s*sq ft/gi,(m,x)=>x.replace(/,/g,'')+(es?' pies cuadrados':' square feet')).replace(/(\d)\.(\d+)\s*acres/gi,'$1 point $2 acres').replace(/\b408\.528\.4477\b/,es?'cuatro cero ocho, cinco dos ocho, cuatro cuatro siete siete':'four oh eight, five two eight, four four seven seven')
+ .replace(/\bon- and off-market\b/i,'on and off market').replace(/\s+/g,' ')}
+let speakTok=0;
+function speak(t){const tok=++speakTok;if(muted||!window.speechSynthesis){state('idle');return}
+ try{if(rec){try{rec.abort()}catch(e){}rec=null}speechSynthesis.cancel();
+  const parts=spoken(t).match(/[^.!?¿¡]+[.!?]*|[¿¡][^.!?]+[.!?]*/g)?.map(x=>x.trim()).filter(Boolean)||[t];
+  const go=()=>{const v=pickVoice();let i=0;state('speak');
+   const next=()=>{if(tok!=speakTok)return;if(i>=parts.length){state('idle');return}
+    const u=new SpeechSynthesisUtterance(parts[i++]);u.lang=v?v.lang:(L=='es'?'es-US':'en-US');if(v)u.voice=v;u.rate=.95;u.pitch=1;
+    u.onend=()=>setTimeout(next,220);u.onerror=()=>{if(tok==speakTok)state('idle')};speechSynthesis.speak(u)};next()};
+  if(VOICES.length)go();else{let done=0;const once=()=>{if(done++)return;loadV();go()};speechSynthesis.addEventListener('voiceschanged',once,{once:true});setTimeout(once,700)}}catch(e){state('idle')}}
 function card(c){if(c=='L')return `<button class="vc" data-go="#featured"><div class="ph"><img src="${LST.img}" alt="319 Echo Valley Rd" loading="lazy"></div><div class="b"><span class="k">${T('Featured listing · Prunedale','Propiedad destacada · Prunedale')}</span><h4>319 Echo Valley Rd</h4><p>$1,075,999 · 3 ${T('bd','rec.')} · 2 ${T('ba','baños')} · 1,220 ${T('sq ft','pies²')} · 4.87 ${T('acres','acres')}</p></div></button>`;
  return `<button class="vc" data-tab="${c[5]}"><div class="ph"><img src="../media/${c[2]}.jpg" alt="${c[0]}" loading="lazy"></div><div class="b"><span class="k">${T('Area guide','Guía de zona')}</span><h4>${c[0]}</h4><p>${T(c[3],c[4])}</p></div></button>`}
 function run(text){text=(text||'').trim();if(!text){VQ.focus();VTR.textContent=T('Type or say what you\'re looking for.','Escriba o diga lo que busca.');return}
@@ -503,9 +537,9 @@ function fallback(why){state('idle');VTR.classList.remove('interim');VTR.textCon
 $('#vmic').onclick=()=>{if(VQ.value.trim()){run(VQ.value);return}
  if(rec){rec.stop();return}
  if(!SR){fallback(T('Voice input isn\'t available in this browser, so just type your request below. I\'ll answer the same way.','La voz no está disponible en este navegador; escriba su búsqueda abajo y le respondo igual.'));return}
- try{window.speechSynthesis&&speechSynthesis.cancel();rec=new SR();rec.lang=L=='es'?'es-US':'en-US';rec.interimResults=true;rec.continuous=false;let fin='',got=false;
+ try{speakTok++;window.speechSynthesis&&speechSynthesis.cancel();rec=new SR();rec.lang=L=='es'?'es-US':'en-US';rec.interimResults=true;rec.continuous=false;let fin='',got=false;
   rec.onstart=()=>{state('listen');VTR.classList.add('interim');VTR.textContent=T('Listening… go ahead.','Escuchando… adelante.')};
-  rec.onresult=e=>{got=true;let it='';fin='';for(const r of e.results){r.isFinal?fin+=r[0].transcript:it+=r[0].transcript}VTR.textContent=(fin+' '+it).trim();VQ.value=(fin+' '+it).trim()};
+  rec.onresult=e=>{if(window.speechSynthesis&&speechSynthesis.speaking)return;got=true;let it='';fin='';for(const r of e.results){r.isFinal?fin+=r[0].transcript:it+=r[0].transcript}VTR.textContent=(fin+' '+it).trim();VQ.value=(fin+' '+it).trim()};
   rec.onerror=e=>{got=got||false;rec._err=e.error};
   rec.onend=()=>{const t=VQ.value.trim(),err=rec&&rec._err;rec=null;if(t){run(t);return}
    fallback(err=='not-allowed'||err=='service-not-allowed'?T('Microphone access is off. No problem, type your request below and I\'ll take it from there.','El micrófono está desactivado. No hay problema: escriba su búsqueda abajo.'):T('I didn\'t catch anything that time. Tap to try again, or type below.','No escuché nada esta vez. Toque para intentar de nuevo o escriba abajo.'))};
@@ -529,15 +563,20 @@ $('#est').onsubmit=e=>{e.preventDefault();if(busy)return;const msg=$('#emsg');ms
  $('#es').value=sq.toLocaleString('en-US');
  let mk=$('#em').value;const al=addr.toLowerCase(),hit=Object.keys(base).find(k=>al.includes(k.toLowerCase()));
  if(hit&&hit!=mk){notes.push(T(`Your address is in ${hit}, so we used ${hit} rather than ${mk}.`,`Su dirección está en ${hit}, así que usamos ${hit} en lugar de ${mk}.`));mk=hit;$('#em').value=hit}
- busy=true;const li=$$('#steps li');li.forEach(x=>x.className='');$('#res').classList.remove('on');$('#rep').classList.remove('on');
+ busy=true;const li=$$('#steps li');li.forEach(x=>x.className='');$('#res').classList.remove('on');$('#vlock').classList.remove('open');
  li.forEach((x,i)=>setTimeout(()=>{x.className='on';setTimeout(()=>x.classList.add('done'),550)},i*750));
  setTimeout(()=>{const c=[1.1,1,.88][$('#ec').selectedIndex]||1,bd={'2':.97,'3':1,'4':1.03,'5+':1.06}[$('#eb').value]||1,ppsf=base[mk]*c*bd,v=sq*ppsf;
-  last={addr:cap(addr),mk,sq,v,ppsf};$('#raddr').textContent=last.addr;$('#rg').textContent=fmt(v*.94)+' – '+fmt(v*1.06);$('#enote').textContent=notes.join(' ');
-  $('#gate').style.display='';$('#res').classList.add('on');busy=false},2600)};
-$('#gb').onclick=()=>{const g=$('#ge'),ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g.value.trim());if(!ok){$('#emsg').textContent='';$('#gn').textContent=T('Please enter a valid email to unlock the full report.','Escriba un correo válido para recibir el informe.');g.focus();return}
- WELLS_LEADS.push({type:'valuation',email:g.value.trim(),...last});const r=last;
+  last={addr:cap(addr),mk,sq,v,ppsf};$('#raddr').textContent=last.addr;$('#enote').textContent=notes.join(' ');$('#rg').textContent='$0,000,000 – $0,000,000';$('#vlock').classList.remove('open');$('.vl-val').setAttribute('aria-hidden','true');$('#res').classList.add('on');busy=false},2600)};
+$('#gate').addEventListener('keydown',e=>{if(e.key=='Enter'){e.preventDefault();$('#gb').click()}});$('#gb').onclick=()=>{const n=$('#gname').value.trim(),em=$('#ge').value.trim(),ph=$('#gp').value.trim(),er=$('#gerr');
+ if(!last){er.textContent=T('Run the estimate first.','Primero calcule la estimación.');return}
+ if(n.length<2){er.textContent=T('Please enter your name.','Escriba su nombre.');$('#gname').focus();return}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){er.textContent=T('Please enter a valid email.','Escriba un correo válido.');$('#ge').focus();return}
+ if(ph&&ph.replace(/\D/g,'').length<10){er.textContent=T('Please enter a 10-digit phone, or leave it blank.','Escriba un teléfono de 10 dígitos o déjelo vacío.');$('#gp').focus();return}
+ er.textContent='';WELLS_LEADS.push({type:'valuation',name:n,email:em,phone:ph,...last});const r=last,lo=r.v*.94,hi=r.v*1.06;
  $('#repdl').innerHTML=`<div><dt>${T('Market','Mercado')}</dt><dd>${r.mk}</dd></div><div><dt>${T('Size used','Tamaño')}</dt><dd>${r.sq.toLocaleString('en-US')} sq ft</dd></div><div><dt>${T('Indicative $/sq ft','$/pie² indicativo')}</dt><dd>$${Math.round(r.ppsf).toLocaleString('en-US')}</dd></div><div><dt>${T('Midpoint','Punto medio')}</dt><dd>${fmt(r.v)}</dd></div>`;
- $('#rep').classList.add('on');$('#gate').style.display='none';$('#gn').textContent=T(`Thank you. Ruben will send a full comparable-sales analysis to ${g.value.trim()}.`,`Gracias. Ruben enviará un análisis completo a ${g.value.trim()}.`)};
+ $('.vl-val').removeAttribute('aria-hidden');$('#vlock').classList.add('open');const t0=performance.now();
+ (function tick(t){const k=Math.min(1,(t-t0)/1200),e2=1-Math.pow(1-k,3);$('#rg').textContent=fmt(lo*e2)+' – '+fmt(hi*e2);if(k<1)requestAnimationFrame(tick)})(t0);
+ $('#gn').textContent=T(`Thank you, ${n.split(' ')[0]}. Ruben will send a full comparable-sales analysis to ${em}.`,`Gracias, ${n.split(' ')[0]}. Ruben enviará un análisis completo a ${em}.`)};
 $('#lead').onsubmit=e=>{e.preventDefault();WELLS_LEADS.push({type:'contact',data:[...e.target.elements].map(x=>x.value)});[...e.target.children].forEach(c=>c.id!='thx'&&(c.style.display='none'));$('#thx').style.display='block'};
 })();
 </script>
