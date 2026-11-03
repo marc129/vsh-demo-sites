@@ -1,0 +1,257 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Wells Real Estate Group · The Line — San Jose to San Diego</title>
+<meta name="description" content="The Wells Real Estate Group, Morgan Hill CA. Bilingual real estate across San Jose, Morgan Hill, Gilroy, Salinas and San Diego.">
+<link rel="icon" href="../media/favicon.png"><link rel="apple-touch-icon" href="../media/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"The Wells Real Estate Group","url":"https://wellsregroup.com","telephone":"+1-408-528-4477","email":"info@wellsregroup.com","address":{"@type":"PostalAddress","streetAddress":"30 El Toro Avenue","addressLocality":"Morgan Hill","addressRegion":"CA","postalCode":"95037","addressCountry":"US"},"areaServed":["San Jose","Morgan Hill","Gilroy","Salinas","San Diego"],"knowsLanguage":["en","es"]}</script>
+<style>
+:root{--k:#0b0d0c;--k2:#141816;--y:#ffc62b;--o:#ff6a2b;--w:#f2efe6;--g:#8c938e;--ln:#2a302d;--mono:'JetBrains Mono',ui-monospace,monospace;--sans:'Space Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{background:var(--k);color:var(--w);font:400 17px/1.55 var(--sans);overflow-x:hidden}
+img,video{display:block;max-width:100%}a{color:inherit}button,input,select{font:inherit;color:inherit}
+.mono{font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+.wrap{width:min(1320px,100% - 48px);margin:auto}
+/* top strip */
+.strip{position:fixed;inset:0 0 auto;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 24px;padding-top:max(10px,env(safe-area-inset-top));background:rgba(11,13,12,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--ln);transition:transform .35s}
+.strip.hide{transform:translateY(-100%)}
+.strip img{height:44px;width:auto}
+.strip .clk{color:var(--y)}.strip a.call{min-height:44px;display:inline-flex;align-items:center;padding:0 16px;background:var(--y);color:var(--k);text-decoration:none;font-weight:700;border-radius:3px}
+/* hero board */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;overflow:hidden}
+.hero video,.hero .pst{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,13,12,.25) 0%,rgba(11,13,12,.1) 40%,rgba(11,13,12,.92) 100%)}
+.board{position:relative;z-index:2;padding:120px 0 56px}
+.board h1{font:700 clamp(46px,9vw,148px)/1.04 var(--sans);letter-spacing:-.035em;padding-bottom:.12em}
+.board h1 em{font-style:normal;color:var(--y)}
+.dep{margin-top:28px;border:1px solid var(--ln);background:rgba(11,13,12,.78);backdrop-filter:blur(6px);border-radius:4px;overflow:hidden}
+.dep .row{display:grid;grid-template-columns:90px 1fr 1fr 130px;gap:12px;padding:12px 18px;border-top:1px solid var(--ln);font-family:var(--mono);font-size:14px;align-items:center}
+.dep .row:first-child{border-top:0;color:var(--g);font-size:11px;letter-spacing:.12em}
+.dep .row b{color:var(--y);font-weight:700}.dep .st{color:#6fe39a}
+.flap{display:inline-block;min-width:1ch}
+/* line nav (bottom) */
+.line{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:41;display:flex;align-items:center;gap:0;background:rgba(20,24,22,.92);backdrop-filter:blur(10px);border:1px solid var(--ln);border-radius:40px;padding:4px 8px;transition:transform .35s,opacity .35s}
+.line.away{transform:translate(-50%,140%);opacity:0}
+.line a{position:relative;display:flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;text-decoration:none;font:500 13px var(--mono);text-transform:uppercase;color:var(--g)}
+.line a i{width:10px;height:10px;border:2px solid var(--g);border-radius:2px;transform:rotate(45deg);flex:none}
+.line a.on{color:var(--w)}.line a.on i{background:var(--y);border-color:var(--y)}
+.line .seg{width:22px;height:2px;background:var(--ln)}
+/* stations: pinned scrub */
+.ride{position:relative;height:520vh}
+.ride .pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.ride video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ride .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,13,12,.9) 0%,rgba(11,13,12,.4) 45%,rgba(11,13,12,0) 70%)}
+.track{position:absolute;left:24px;top:50%;transform:translateY(-50%);height:min(62vh,520px);width:2px;background:var(--ln)}
+.track b{position:absolute;left:0;top:0;width:2px;background:var(--y);height:calc(var(--p,0)*100%)}
+.track span{position:absolute;left:-5px;width:12px;height:12px;background:var(--k);border:2px solid var(--g);transform:rotate(45deg)}
+.track span.on{background:var(--y);border-color:var(--y)}
+.stop{position:absolute;left:clamp(56px,8vw,120px);top:50%;transform:translateY(-40%);max-width:560px;opacity:0;transition:opacity .6s,transform .6s;pointer-events:none}
+.stop.on{opacity:1;transform:translateY(-50%);pointer-events:auto}
+.stop .mono{color:var(--y)}
+.stop h2{font:700 clamp(40px,6.5vw,104px)/1.05 var(--sans);letter-spacing:-.03em;margin:10px 0 14px;padding-bottom:.1em}
+.stop p{color:#d9d6cd;max-width:46ch}
+.stop .km{margin-top:18px;display:flex;gap:22px;flex-wrap:wrap}.stop .km div{border-left:2px solid var(--y);padding-left:10px}.stop .km small{display:block;color:var(--g);font:11px var(--mono);text-transform:uppercase}
+.chip{display:inline-flex;align-items:center;min-height:44px;margin-top:18px;padding:0 16px;border:1px solid var(--y);color:var(--y);background:none;border-radius:3px;cursor:pointer;font:500 13px var(--mono);text-transform:uppercase}
+/* sections */
+section.s{padding:120px 0;border-top:1px solid var(--ln)}
+.lab{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:44px;flex-wrap:wrap}
+.lab h2{font:700 clamp(34px,5vw,72px)/1.06 var(--sans);letter-spacing:-.03em;padding-bottom:.08em;max-width:16ch}
+.lab .mono{color:var(--y)}
+/* commute explorer */
+.cx{display:grid;grid-template-columns:1.1fr 1fr;gap:28px}
+.cx .panel,.card{background:var(--k2);border:1px solid var(--ln);border-radius:6px;padding:28px}
+.seg2{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 22px}
+.seg2 button{min-height:44px;padding:0 14px;border:1px solid var(--ln);background:none;border-radius:3px;cursor:pointer;font:500 13px var(--mono);text-transform:uppercase}
+.seg2 button[aria-pressed=true]{background:var(--y);color:var(--k);border-color:var(--y)}
+.tt{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:14px}
+.tt td{padding:12px 4px;border-top:1px solid var(--ln)}.tt td:last-child{text-align:right;color:var(--y)}
+.note{color:var(--g);font-size:13px;margin-top:14px}
+/* listing */
+.lst{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.gal{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:4px;aspect-ratio:16/10}
+.gal img:first-child{grid-row:1/3;aspect-ratio:auto}
+.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ln);border:1px solid var(--ln);margin:18px 0}
+.spec div{background:var(--k2);padding:14px}.spec b{display:block;font:700 24px var(--sans)}.spec small{color:var(--g);font:11px var(--mono);text-transform:uppercase}
+.vault .locked{filter:blur(6px);user-select:none;transition:filter .6s}.vault.open .locked{filter:none}
+.vault.open form{display:none}
+form.f{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+form.f input,form.f select{min-width:0;flex:1 1 160px;min-height:48px;padding:0 14px;background:var(--k);border:1px solid var(--ln);border-radius:3px}
+form.f input:focus{outline:2px solid var(--y);outline-offset:1px}
+.btn{min-height:48px;padding:0 20px;background:var(--y);color:var(--k);border:0;border-radius:3px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.ok{display:none;color:#6fe39a;font-family:var(--mono);font-size:13px;margin-top:10px}form.sent+.ok{display:block}
+/* tools grid */
+.tools{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.t-voice{grid-column:span 7}.t-est{grid-column:span 5}.t-mort{grid-column:span 6}.t-alert{grid-column:span 6}
+.card h3{font:700 26px/1.15 var(--sans);margin:8px 0 10px;padding-bottom:.08em}.card .mono{color:var(--y)}
+.mic{width:88px;height:88px;border-radius:8px;border:2px solid var(--y);background:none;cursor:pointer;display:grid;place-items:center;flex:none}
+.mic.rec{background:var(--y);animation:pl 1s infinite}.mic.rec svg{stroke:var(--k)}
+@keyframes pl{50%{box-shadow:0 0 0 14px rgba(255,198,43,.15)}}
+.vrow{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:16px}
+.vout{font-family:var(--mono);color:var(--y);min-height:1.5em;margin-top:12px}
+.res{margin-top:12px;display:grid;gap:8px}.res a{display:flex;justify-content:space-between;padding:12px 14px;border:1px solid var(--ln);border-radius:3px;text-decoration:none;font-size:15px}
+.scan{display:none;font-family:var(--mono);font-size:13px;color:var(--g);margin-top:12px}.scan.go{display:block}.scan span{display:block;opacity:0;transition:opacity .3s}.scan span.v{opacity:1}
+.estv{font:700 clamp(30px,4vw,44px)/1.1 var(--sans);color:var(--y);margin-top:14px;filter:blur(9px);transition:filter .8s}.estv.open{filter:none}
+.rng{display:grid;gap:14px;margin-top:10px}.rng label{display:grid;gap:4px;font:12px var(--mono);text-transform:uppercase;color:var(--g)}.rng label span{display:flex;justify-content:space-between}.rng output{color:var(--w)}
+input[type=range]{width:100%;accent-color:var(--y);height:32px}
+.big{font:700 clamp(36px,5vw,56px)/1.1 var(--sans);color:var(--y);margin-top:16px}
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mem{border:1px solid var(--ln);border-radius:6px;overflow:hidden;background:var(--k2)}
+.mem .ph{aspect-ratio:4/5;background:#1d221f;overflow:hidden}.mem .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.mem .mono-ph{display:grid;place-items:center;font:700 120px/1 var(--sans);color:var(--y);letter-spacing:-.05em;background:repeating-linear-gradient(135deg,#161a18 0 14px,#1a1f1c 14px 28px)}
+.mem .bd{padding:20px}.mem h3{font:700 24px/1.2 var(--sans);padding-bottom:.08em}.mem p{color:#cfcbc2;font-size:15px;margin-top:8px}
+.mem .mono{color:var(--y);display:block;margin-top:4px}
+/* contact */
+.end{position:relative;overflow:hidden;padding:140px 0}
+.end video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+.end .wrap{position:relative}
+.end h2{font:700 clamp(40px,7vw,110px)/1.04 var(--sans);letter-spacing:-.035em;padding-bottom:.12em;max-width:14ch}
+footer{border-top:1px solid var(--ln);padding:48px 0 110px;color:var(--g);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer img{height:56px;width:auto}footer a{color:var(--w)}
+footer .vsh{color:var(--y);text-decoration:none;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;display:inline-flex;min-height:44px;align-items:center}
+[data-rv]{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}[data-rv].in{opacity:1;transform:none}
+@media (max-width:900px){.cx,.lst{grid-template-columns:1fr}.tools>*{grid-column:1/-1!important}.team{grid-template-columns:1fr}
+.dep .row{grid-template-columns:64px 1fr 92px;font-size:13px}.dep .row>:nth-child(3){display:none}
+.line .seg{width:6px}.line a{padding:0 8px;font-size:11px}.line a .nm{display:none}.line a.on .nm{display:inline}
+.strip .clk{display:none}.strip img{height:38px}section.s{padding:84px 0}
+.ride .shade{background:linear-gradient(0deg,rgba(11,13,12,.95) 0%,rgba(11,13,12,.5) 55%,rgba(11,13,12,.1) 100%)}
+.stop{left:52px;right:20px;top:auto;bottom:96px;transform:translateY(20px)}.stop.on{transform:none}
+.track{left:22px}.gal{grid-template-columns:1fr 1fr}.gal img:first-child{grid-column:1/3;grid-row:auto;aspect-ratio:16/10}}
+@media (max-width:420px){.wrap{width:calc(100% - 32px)}.spec b{font-size:19px}.strip{padding-inline:16px}.strip a.call{padding:0 12px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body>
+<header class="strip" id="strip"><a href="#top" aria-label="The Wells Real Estate Group home"><img src="../media/logo-light.png" alt="The Wells Real Estate Group" width="1061" height="523"></a>
+<span class="mono clk" id="clk">Morgan Hill · --:--</span><a class="call" href="tel:+14085284477">408.528.4477</a></header>
+
+<main id="top">
+<section class="hero">
+<video class="pst" autoplay muted loop playsinline poster="../media/ai-sdcity.jpg"><source media="(max-width:760px)" src="../media/ai-sdcity-m.mp4" type="video/mp4"><source src="../media/ai-sdcity.mp4" type="video/mp4"></video>
+<div class="wrap board">
+<p class="mono" style="color:var(--y)">The Line · Northbound &amp; Southbound · Est. 2004</p>
+<h1>One team.<br>Every stop from <em style="white-space:nowrap">San Jose</em><br>to San Diego.</h1>
+<div class="dep" aria-label="Markets departure board">
+<div class="row"><span>LINE</span><span>DESTINATION</span><span>WITH</span><span>STATUS</span></div>
+<div class="row"><b>W1</b><span class="flap" data-flap="SAN JOSE">SAN JOSE</span><span>Ruben · RC</span><span class="st">ON TIME</span></div>
+<div class="row"><b>W2</b><span class="flap" data-flap="MORGAN HILL">MORGAN HILL</span><span>Home office · El Toro Ave</span><span class="st">BOARDING</span></div>
+<div class="row"><b>W3</b><span class="flap" data-flap="GILROY">GILROY</span><span>Pedro · Ruben</span><span class="st">ON TIME</span></div>
+<div class="row"><b>W4</b><span class="flap" data-flap="SAN DIEGO">SAN DIEGO</span><span>Ruben</span><span class="st">ON TIME</span></div>
+</div></div></section>
+
+<section class="ride" id="ride" aria-label="Ride the line through four markets">
+<div class="pin">
+<video id="scrub" muted playsinline preload="auto" poster="../media/ai-places.jpg"><source media="(max-width:760px)" src="../media/ai-places-scrub-m.mp4" type="video/mp4"><source src="../media/ai-places-scrub.mp4" type="video/mp4"></video>
+<div class="shade"></div>
+<div class="track" aria-hidden="true"><b></b><span style="top:0"></span><span style="top:33%"></span><span style="top:66%"></span><span style="top:calc(100% - 12px)"></span></div>
+<div class="stop" data-i="0"><span class="mono">Stop 01 · Santa Clara County</span><h2>San Jose</h2><p>The tech capital of the valley. RC brings executive experience from the tech industry to buyers relocating for work, and Ruben's years in banking and finance help with the numbers.</p><button class="chip" data-chat="What areas of San Jose do you cover?">Ask about San Jose →</button></div>
+<div class="stop" data-i="1"><span class="mono">Stop 02 · Home office</span><h2>Morgan Hill</h2><p>Our office is at 30 El Toro Avenue, and RC lives in town. Hillside lots, downtown walkability and room to breathe, about 20 miles south of San Jose.</p><button class="chip" data-chat="Tell me about homes in Morgan Hill">Ask about Morgan Hill →</button></div>
+<div class="stop" data-i="2"><span class="mono">Stop 03 · South County</span><h2>Gilroy</h2><p>Vineyards, ranchland and estate acreage. Pedro Silva is based in Gilroy, has been licensed since 2004, and works on luxury estates.</p><button class="chip" data-chat="Do you sell estates and acreage in Gilroy?">Ask about Gilroy →</button></div>
+<div class="stop" data-i="3"><span class="mono">Stop 04 · Southern terminus</span><h2>San Diego</h2><p>The line runs all the way south. Ruben serves San Diego buyers and sellers too, so you get the same broker and the same standards at both ends of California.</p><button class="chip" data-chat="Can you help me buy in San Diego?">Ask about San Diego →</button></div>
+</div></section>
+
+<section class="s" id="commute"><div class="wrap">
+<div class="lab" data-rv><h2>Commute explorer</h2><span class="mono">Tool · Plan your daily ride</span></div>
+<div class="cx" data-rv>
+<div class="panel"><span class="mono" style="color:var(--g)">I'd live in</span>
+<div class="seg2" id="from"><button aria-pressed="true" data-v="mh">Morgan Hill</button><button aria-pressed="false" data-v="gi">Gilroy</button><button aria-pressed="false" data-v="sj">San Jose</button></div>
+<span class="mono" style="color:var(--g)">Getting there by</span>
+<div class="seg2" id="mode"><button aria-pressed="true" data-v="car">Car · off-peak</button><button aria-pressed="false" data-v="pk">Car · peak</button></div>
+<table class="tt" id="tt"></table>
+<p class="note">Rough planning estimates based on typical highway distances, not live traffic. Ask us about the real drive at the hours you'd commute.</p></div>
+<div class="panel"><span class="mono" style="color:var(--y)">Ask the line</span><h3 style="font:700 30px/1.15 var(--sans);margin:10px 0 14px;padding-bottom:.08em">Where should I live if I work in North San Jose?</h3><p style="color:#cfcbc2">Our AI concierge answers in English or Spanish, day or night, and hands you to Ruben, RC or Pedro when you're ready.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn" data-chat="I work in North San Jose. Where should I look to buy?">Ask in English</button><button class="chip" style="margin:0" data-chat="¿Hablan español? Quiero comprar casa en Gilroy.">Preguntar en español</button></div></div>
+</div></div></section>
+
+<section class="s" id="listing"><div class="wrap">
+<div class="lab" data-rv><h2>Now arriving: 319 Echo Valley Rd</h2><span class="mono">Featured · Prunedale · Listed by Ruben</span></div>
+<div class="lst">
+<div class="gal" data-rv><img src="../media/319EchoValley.webp" alt="319 Echo Valley Road, Prunedale" width="2400" height="1349"><img src="../media/319EchoValley2.webp" alt="319 Echo Valley Road grounds" width="2400" height="1349" loading="lazy"><img src="../media/319EchoValley6.webp" alt="319 Echo Valley Road interior" width="2400" height="1601" loading="lazy"></div>
+<div class="card vault" data-vault id="vault" data-rv>
+<span class="mono">MLS #ML82060758 · as published Nov 2, 2026</span>
+<div class="big" style="margin-top:8px">$1,075,999</div>
+<div class="spec"><div><b>3</b><small>Beds</small></div><div><b>2</b><small>Baths</small></div><div><b>1,220</b><small>Sq ft</small></div><div><b>4.87</b><small>Acres</small></div><div><b>1918</b><small>Built</small></div><div><b>Prunedale</b><small>Area</small></div></div>
+<div class="locked"><p>Full details unlocked: the complete photo set, disclosures on request, a private showing window and Ruben's notes on the 4.87-acre lot.</p><div class="gal" style="margin-top:12px;grid-template-rows:auto"><img src="../media/319EchoValley3.webp" alt="319 Echo Valley Road view" loading="lazy" style="grid-row:auto;aspect-ratio:16/10"><img src="../media/319EchoValley7.webp" alt="319 Echo Valley Road detail" loading="lazy"></div></div>
+<form class="f" data-lead="listing"><input type="email" name="email" required placeholder="Email to unlock full details" aria-label="Email"><button class="btn">Unlock</button></form></div>
+</div></div></section>
+
+<section class="s" id="tools"><div class="wrap">
+<div class="lab" data-rv><h2>The control room</h2><span class="mono">AI tools · Built for this market</span></div>
+<div class="tools">
+<div class="card t-voice" data-rv><span class="mono">Voice AI search</span><h3>Say where you want to go.</h3><p style="color:#cfcbc2">Try “3 bedrooms with acreage near Gilroy” or ask in Spanish.</p>
+<div class="vrow"><button class="mic" id="mic" aria-label="Start voice search"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ffc62b" stroke-width="2"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+<form class="f" id="vq" style="flex:1;margin:0"><input id="vin" placeholder="Or type your search" aria-label="Search"><button class="btn">Go</button></form></div>
+<div class="vout" id="vout"></div><div class="res" id="vres"></div></div>
+<div class="card t-est" id="est" data-rv><span class="mono">Instant AI estimate</span><h3>What's my home worth?</h3>
+<div class="rng"><label><span>Area</span><select id="ea" style="min-height:44px;background:var(--k);border:1px solid var(--ln);border-radius:3px;padding:0 10px"><option value="720">San Jose</option><option value="640" selected>Morgan Hill</option><option value="560">Gilroy</option><option value="760">San Diego</option></select></label>
+<label><span>Square feet <output id="eso">1,800</output></span><input type="range" id="es" min="700" max="6000" step="50" value="1800"></label>
+<label><span>Acres <output id="eco">0.25</output></span><input type="range" id="ec" min="0" max="10" step="0.05" value="0.25"></label></div>
+<div class="scan" id="scan"><span>▸ Reading your inputs…</span><span>▸ Weighting lot size…</span><span>▸ Building your range…</span></div>
+<div class="estv" id="estv">$0</div>
+<form class="f" data-lead="estimate" id="ef"><input type="email" name="email" required placeholder="Email to reveal" aria-label="Email"><button class="btn">Reveal</button></form>
+<p class="note">Demo range from your inputs only. Ruben prepares a real comparative market analysis.</p></div>
+<div class="card t-mort" data-rv><span class="mono">Affordability</span><h3>Monthly payment</h3>
+<div class="rng"><label><span>Price <output id="mpo"></output></span><input type="range" id="mp" min="300000" max="4000000" step="5000" value="1075999"></label>
+<label><span>Down payment <output id="mdo"></output></span><input type="range" id="md" min="3" max="50" value="20"></label>
+<label><span>Rate (your quote) <output id="mro"></output></span><input type="range" id="mr" min="3" max="10" step="0.05" value="6.5"></label></div>
+<div class="big" id="mo">$0</div><p class="note" id="mb"></p></div>
+<div class="card t-alert" data-rv><span class="mono">Saved search · Listing alerts</span><h3>Get a seat on the next one.</h3><p style="color:#cfcbc2">We'll email you when a home matching your stop and budget comes up.</p>
+<form class="f" data-lead="alert"><select name="area" aria-label="Area"><option>San Jose</option><option>Morgan Hill</option><option>Gilroy</option><option>Salinas</option><option>San Diego</option></select><select name="max" aria-label="Max price"><option>Up to $1M</option><option>$1M – $2M</option><option>$2M+</option></select><input type="email" name="email" required placeholder="Email" aria-label="Email"><button class="btn">Set alert</button></form><p class="ok">✓ Alert saved (demo).</p></div>
+</div></div></section>
+
+<section class="s" id="crew"><div class="wrap">
+<div class="lab" data-rv><h2>The crew</h2><span class="mono">Bilingual · English / Español</span></div>
+<div class="team">
+<article class="mem" data-rv><div class="ph"><img src="../media/ruben.webp" alt="Ruben Martinez, Broker" width="1600" height="2000" loading="lazy"></div><div class="bd"><h3>Ruben Martinez</h3><span class="mono">Broker · DRE #01198060</span><p>A broker since 2004, with a long background in banking and financial services.</p></div></article>
+<article class="mem" data-rv><div class="ph"><img src="../media/rc.webp" alt="Rafael RC Covarrubias, Realtor" width="1152" height="1196" loading="lazy"></div><div class="bd"><h3>Rafael “RC” Covarrubias</h3><span class="mono">Realtor® · DRE #02442276</span><p>Executive experience from the tech industry. Lives in Morgan Hill, speaks Spanish, and also covers Salinas.</p></div></article>
+<article class="mem" data-rv><div class="ph mono-ph" aria-label="Pedro Silva monogram">PS</div><div class="bd"><h3>Pedro Silva</h3><span class="mono">Realtor® · DRE #01422644</span><p>Licensed since 2004 and based in Gilroy. Works on luxury estates.</p></div></article>
+</div></div></section>
+
+<section class="end" id="contact"><video autoplay muted loop playsinline poster="../media/ai-vineyards.jpg"><source media="(max-width:760px)" src="../media/ai-vineyards-m.mp4" type="video/mp4"><source src="../media/ai-vineyards.mp4" type="video/mp4"></video>
+<div class="wrap"><p class="mono" style="color:var(--y)">Final stop · 30 El Toro Avenue, Morgan Hill</p><h2>Tell us where you're headed.</h2>
+<form class="f" data-lead="contact" style="max-width:760px"><input name="name" required placeholder="Name" aria-label="Name"><input type="email" name="email" required placeholder="Email" aria-label="Email"><input name="where" placeholder="Buying, selling, or both? Where?" aria-label="Message" style="flex-basis:100%"><button class="btn">Send</button></form><p class="ok">✓ Thanks — we'll be in touch (demo, nothing was sent).</p>
+<p style="margin-top:26px"><a href="tel:+14085284477">408.528.4477</a> · <a href="mailto:info@wellsregroup.com">info@wellsregroup.com</a></p></div></section>
+</main>
+<footer><div class="wrap"><img src="../media/logo-light.png" alt="The Wells Real Estate Group" width="1061" height="523" loading="lazy"><p>The Wells Real Estate Group · Ruben Martinez, Broker, CA DRE #01198060. Equal Housing Opportunity.<br>30 El Toro Avenue, Morgan Hill, CA 95037</p><a class="vsh" href="https://studio.vshmedia.com" target="_blank" rel="noopener">Powered by VSH Media Studio</a></div></footer>
+
+<nav class="line" id="line" aria-label="Sections"><a href="#ride" data-s="ride"><i></i><span class="nm">Ride</span></a><span class="seg"></span><a href="#commute" data-s="commute"><i></i><span class="nm">Commute</span></a><span class="seg"></span><a href="#listing" data-s="listing"><i></i><span class="nm">Listing</span></a><span class="seg"></span><a href="#tools" data-s="tools"><i></i><span class="nm">Tools</span></a><span class="seg"></span><a href="#crew" data-s="crew"><i></i><span class="nm">Crew</span></a><span class="seg"></span><a href="#contact" data-s="contact"><i></i><span class="nm">Contact</span></a></nav>
+<script src="../shared/wells-chat.js" defer></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const push=o=>{(window.WELLS_LEADS=window.WELLS_LEADS||[]).push(Object.assign({at:new Date().toISOString()},o))};
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// clock
+const ck=()=>{$('#clk').textContent='Morgan Hill · '+new Date().toLocaleTimeString('en-US',{timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit'})+' PT'};ck();setInterval(ck,15000);
+// split-flap
+if(!RM)$$('[data-flap]').forEach((el,k)=>{const t=el.dataset.flap,A='ABCDEFGHIJKLMNOPQRSTUVWXYZ ';let n=0;const iv=setInterval(()=>{n++;el.textContent=[...t].map((c,i)=>i<n-6-k*2?c:(c===' '?' ':A[Math.random()*26|0])).join('');if(n>t.length+8+k*2){clearInterval(iv);el.textContent=t}},45)});
+// forms
+$$('form[data-lead]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}const o={type:f.dataset.lead};new FormData(f).forEach((v,k)=>o[k]=v);push(o);f.classList.add('sent');f.dispatchEvent(new CustomEvent('lead',{bubbles:true}))}));
+$$('[data-vault]').forEach(v=>v.addEventListener('lead',()=>v.classList.add('open')));
+// chat buttons fallback
+document.addEventListener('click',e=>{const b=e.target.closest('[data-chat]');if(b&&b.classList.contains('dyn')&&window.WellsChat){e.preventDefault();WellsChat.open();WellsChat.send(b.dataset.chat)}},true);
+// reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});$$('[data-rv]').forEach(x=>io.observe(x));
+// scrub ride
+const ride=$('#ride'),sv=$('#scrub'),stops=$$('.stop'),ticks=$$('.track span');let tgt=0,cur=0;
+function rideP(){const r=ride.getBoundingClientRect();return Math.min(1,Math.max(0,-r.top/(r.height-innerHeight)))}
+(function loop(){const p=rideP();ride.style.setProperty('--p',p.toFixed(4));const tt0=sv.duration?cur:p*11.8,i=tt0<3.4?0:tt0<6.2?1:tt0<9?2:3;stops.forEach((s,k)=>s.classList.toggle('on',k===i));ticks.forEach((t,k)=>t.classList.toggle('on',k<=i));
+ if(sv.duration){tgt=p*(sv.duration-.05);cur+=(tgt-cur)*(RM?1:.14);if(Math.abs(sv.currentTime-cur)>.02&&!sv.seeking)try{sv.currentTime=cur}catch(e){}}requestAnimationFrame(loop)})();
+sv.addEventListener('loadedmetadata',()=>sv.pause());
+// nav behaviour
+let ly=0;addEventListener('scroll',()=>{const y=scrollY;$('#strip').classList.toggle('hide',y>innerHeight*.6&&y>ly);$('#line').classList.toggle('away',y<innerHeight*.5||(innerHeight+y>document.documentElement.scrollHeight-160));ly=y},{passive:true});
+$('#line').classList.add('away');
+const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#line a').forEach(a=>a.classList.toggle('on',a.dataset.s===e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});['ride','commute','listing','tools','crew','contact'].forEach(id=>sio.observe(document.getElementById(id)));
+// commute (distance-based planning estimate)
+const D={mh:{'Downtown San Jose':21,'North San Jose':27,'Mountain View':34,'Gilroy':11,'Salinas':41},gi:{'Downtown San Jose':32,'North San Jose':38,'Mountain View':45,'Morgan Hill':11,'Salinas':30},sj:{'North San Jose':6,'Mountain View':12,'Morgan Hill':21,'Gilroy':32,'Salinas':60}};
+let fr='mh',md='car';const tt=()=>{$('#tt').innerHTML=Object.entries(D[fr]).map(([k,mi])=>{const m=Math.round(mi/(md==='car'?58:34)*60+6);return`<tr><td>${k}</td><td>${mi} mi</td><td>~${m} min</td></tr>`}).join('')};tt();
+[['#from',v=>fr=v],['#mode',v=>md=v]].forEach(([s,fn])=>$$(s+' button').forEach(b=>b.onclick=()=>{$$(s+' button').forEach(x=>x.setAttribute('aria-pressed',x===b));fn(b.dataset.v);tt()}));
+// voice search
+const L=[{t:'319 Echo Valley Rd, Prunedale',d:'3 bd · 4.87 ac · $1,075,999',k:'acre acreage land prunedale 3 bed ranch salinas gilroy echo terreno'}];
+const vs=q=>{const ql=q.toLowerCase();const area=['san jose','morgan hill','gilroy','salinas','san diego'].find(a=>ql.includes(a));let h=L.filter(l=>l.k.split(' ').some(w=>ql.includes(w)));$('#vres').innerHTML=(h.length?h.map(l=>`<a href="#listing"><span>${l.t}</span><span class="mono" style="color:var(--y)">${l.d}</span></a>`).join(''):'')+`<a href="#" class="dyn" data-chat="${q.replace(/"/g,'')}"><span>Ask the concierge: “${q}”</span><span class="mono" style="color:var(--y)">AI →</span></a>`+(area?`<a href="#tools" onclick="document.querySelector('[name=area]').value='${area.replace(/\b\w/g,c=>c.toUpperCase())}'"><span>Set an alert for ${area.replace(/\b\w/g,c=>c.toUpperCase())}</span><span class="mono" style="color:var(--y)">Alert →</span></a>`:'');push({type:'voice',q})};
+$('#vq').onsubmit=e=>{e.preventDefault();const q=$('#vin').value.trim();if(q)vs(q)};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;$('#mic').onclick=()=>{const b=$('#mic');if(!SR){$('#vout').textContent="Voice isn't supported in this browser. Type your search instead.";$('#vin').focus();return}const r=new SR();r.lang=/es/.test(navigator.language)?'es-US':'en-US';r.interimResults=true;b.classList.add('rec');$('#vout').textContent='Listening…';r.onresult=e=>{const t=[...e.results].map(x=>x[0].transcript).join(' ');$('#vout').textContent='“'+t+'”';$('#vin').value=t;if(e.results[e.results.length-1].isFinal)vs(t)};r.onend=()=>b.classList.remove('rec');r.onerror=()=>{b.classList.remove('rec');$('#vout').textContent='Mic unavailable. Type instead.'};r.start()};
+// estimate
+const ec=()=>{const s=+$('#es').value,a=+$('#ec').value,pp=+$('#ea').value;$('#eso').textContent=s.toLocaleString();$('#eco').textContent=a.toFixed(2);const b=s*pp+a*45000,lo=Math.round(b*.94/5000)*5000,hi=Math.round(b*1.06/5000)*5000;$('#estv').textContent='$'+lo.toLocaleString()+' – $'+hi.toLocaleString()};['#es','#ec','#ea'].forEach(s=>$(s).addEventListener('input',ec));ec();
+$('#ef').addEventListener('lead',()=>{const sc=$('#scan');sc.classList.add('go');$$('span',sc).forEach((x,i)=>setTimeout(()=>x.classList.add('v'),i*600));setTimeout(()=>{$('#estv').classList.add('open');$('#ef').style.display='none'},1900)});
+// mortgage
+const mg=()=>{const P=+$('#mp').value,d=+$('#md').value/100,r=+$('#mr').value/1200,n=360,Lo=P*(1-d),pm=Lo*r/(1-Math.pow(1+r,-n)),tx=P*.0115/12,ins=P*.0035/12;$('#mpo').textContent='$'+P.toLocaleString();$('#mdo').textContent=$('#md').value+'%';$('#mro').textContent=(+$('#mr').value).toFixed(2)+'%';$('#mo').textContent='$'+Math.round(pm+tx+ins).toLocaleString()+'/mo';$('#mb').textContent=`Principal & interest $${Math.round(pm).toLocaleString()} · est. tax $${Math.round(tx).toLocaleString()} · est. insurance $${Math.round(ins).toLocaleString()}. Estimates only.`};['#mp','#md','#mr'].forEach(s=>$(s).addEventListener('input',mg));mg();
+</script></body></html>
