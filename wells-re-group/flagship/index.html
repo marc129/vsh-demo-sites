@@ -208,6 +208,22 @@ footer .eho{display:inline-flex;align-items:center;gap:8px}
 @media (prefers-reduced-motion:reduce){.rv,.mask img,.hero video{transition:none;animation:none;opacity:1;transform:none}}
 .g>*,.card{min-width:0}
 html{overflow-x:clip}
+.ai .g{grid-template-columns:1fr;max-width:920px}
+.voicecard{padding:clamp(28px,4vw,60px)}.voicecard .voicebox input{font-size:clamp(22px,2.4vw,30px)}
+.places{display:inline-flex;align-self:flex-start;background:rgba(14,11,10,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:12px 20px;gap:10px 26px;font:600 12px/1.2 var(--sans);letter-spacing:.22em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);border-left:2px solid var(--wine)}
+.wc-fab{display:none!important}
+:root{--wc-bg:#5e0f22;--wc-accent:#d9b39a;--wc-deep:#78132b;--wc-surface:#fbf9f5;--wc-text:#1c1815;--wc-font:Inter,system-ui,sans-serif}
+.field input,.field select,.field textarea,.finder input,.finder select{font:400 17px/1.4 var(--sans);font-variant-numeric:lining-nums tabular-nums}
+b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+.emsg{font-size:13px;color:var(--wine);margin-top:10px;min-height:1px}.enote{font-size:13px;color:var(--soft);margin-top:10px}.raddr{font:500 17px/1.4 var(--sans);margin:6px 0 14px;text-transform:capitalize}
+.report{display:none;border-top:1px solid var(--line);margin-top:20px;padding-top:18px}.report.on{display:block;animation:fade .8s var(--ease)}.report dl div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.report dt{color:var(--soft)}
+.aifab{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:calc(20px + env(safe-area-inset-bottom));z-index:8000;display:flex;align-items:center;gap:12px;min-height:56px;padding:0 22px 0 18px;background:var(--wine);color:#fff;border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 40px -14px rgba(60,8,20,.6);font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:opacity .45s var(--ease),transform .45s var(--ease),background .3s}
+.aifab:hover{background:var(--wine2)}
+.aifab svg{flex:none}
+.aifab .dot{width:7px;height:7px;background:#f0c9b4;border-radius:50%;animation:pulse2 2.4s infinite}
+@keyframes pulse2{50%{opacity:.35}}
+.aifab.off{opacity:0;transform:translateY(16px);pointer-events:none}
+@media (max-width:640px){.aifab{min-height:52px;width:52px;padding:0;justify-content:center}.aifab .t,.aifab .dot{display:none}.places{padding:10px 14px;font-size:11px;gap:8px 16px;letter-spacing:.18em}}
 /* responsive */
 @media (max-width:1080px){header nav{display:none}.menu{display:block}.finder .wrap{grid-template-columns:1fr 1fr}.finder label:nth-child(2){border-right:0;margin-right:0}.finder label{border-bottom:1px solid var(--line)}.finder .go{grid-column:1/-1}.finder .go .btn{flex:1}
 .tg{grid-template-columns:1fr 1fr}.tg .agent:last-child{grid-column:auto}footer .g{grid-template-columns:1fr 1fr}}
@@ -231,7 +247,7 @@ html{overflow-x:clip}
 <video autoplay muted loop playsinline preload="auto" poster="../media/ai-sdcity.jpg"><source media="(max-width:760px)" src="../media/ai-sdcity-m.mp4" type="video/mp4"><source src="../media/ai-sdcity.mp4" type="video/mp4"></video>
 <div class="wrap inner">
 <div class="places rv"><span>San Diego</span><span>San Jose</span><span>Morgan Hill</span><span>Gilroy</span><span>Salinas</span></div>
-<h1 class="rv d1" data-es="Hogares de California, <em>representados</em> con criterio.">California homes, <em>represented</em> with judgment.</h1>
+<h1 class="rv d1" data-es="California, <em>con fluidez.</em>">California, <em>fluently.</em></h1>
 <div class="meta rv d2"><p data-es="Una correduría independiente y bilingüe. Asesoría residencial y de fincas desde el Sur de la Bahía hasta San Diego, dirigida por un bróker con licencia desde 2004.">An independent, bilingual brokerage. Residential and estate advisory from the South Bay to San Diego, led by a broker licensed since 2004.</p>
 <div class="ctas"><a class="btn light" href="#featured" data-es="Ver la propiedad">View the listing</a><a class="btn solid" href="#valuation" data-es="Valorar mi casa">Value my home</a></div></div>
 </div><div class="scrollcue" aria-hidden="true"></div>
@@ -313,14 +329,14 @@ html{overflow-x:clip}
 <section class="val" id="valuation"><div class="wrap g">
 <div><p class="eyebrow rv" data-es="Valuación instantánea con IA">Instant AI valuation</p><h2 class="rv d1" data-es="¿Cuánto vale <em>su</em> casa?">What is <em>your</em> home worth?</h2><p class="lead rv d2" style="margin-top:22px" data-es="Una estimación inmediata como punto de partida, seguida de un análisis de mercado preparado por Ruben. Sin compromiso.">An immediate estimate to start, followed by a broker-prepared market analysis from Ruben. No obligation.</p>
 <p class="small rv" style="margin-top:22px" data-es="La estimación es un rango ilustrativo, no una tasación.">The estimate is an illustrative range, not an appraisal. Your broker's analysis uses recent comparable sales.</p></div>
-<form class="panel rv d1" id="est">
+<form class="panel rv d1" id="est" novalidate>
 <label class="field"><span data-es="Dirección de la propiedad">Property address</span><input id="ea" required placeholder="Street, city" data-es-ph="Calle, ciudad" autocomplete="street-address"></label>
-<div class="row2"><label class="field"><span data-es="Recámaras">Bedrooms</span><select id="eb"><option>2</option><option selected>3</option><option>4</option><option>5+</option></select></label><label class="field"><span data-es="Pies²">Square feet</span><input id="es" inputmode="numeric" value="2000"></label></div>
+<div class="row2"><label class="field"><span data-es="Recámaras">Bedrooms</span><select id="eb"><option>2</option><option selected>3</option><option>4</option><option>5+</option></select></label><label class="field"><span data-es="Pies²">Square feet</span><input id="es" inputmode="numeric" value="2,000"></label></div>
 <div class="row2"><label class="field"><span data-es="Ciudad">Market</span><select id="em"><option>San Jose</option><option>Morgan Hill</option><option>Gilroy</option><option>Salinas</option><option>Prunedale</option><option>San Diego</option></select></label><label class="field"><span data-es="Condición">Condition</span><select id="ec"><option data-es="Excelente">Excellent</option><option selected data-es="Buena">Good</option><option data-es="Necesita trabajo">Needs work</option></select></label></div>
-<button class="btn solid" style="margin-top:24px;width:100%" data-es="Estimar ahora">Estimate now</button>
+<p class="emsg" id="emsg" role="alert"></p><button class="btn solid" style="margin-top:18px;width:100%" data-es="Estimar ahora">Estimate now</button>
 <ul class="steps" id="steps"><li><i></i><span data-es="Ubicando la propiedad">Locating the property</span></li><li><i></i><span data-es="Analizando el mercado local">Reading the local market</span></li><li><i></i><span data-es="Ajustando por tamaño y condición">Adjusting for size and condition</span></li></ul>
-<div class="result" id="res"><p class="eyebrow" data-es="Rango estimado">Estimated range</p><p class="range blur" id="rg">$0</p>
-<div class="gate" id="gate"><input type="email" id="ge" placeholder="Email to reveal" data-es-ph="Correo para ver" required><button type="button" class="btn ghost" id="gb" data-es="Ver">Reveal</button></div>
+<div class="result" id="res"><p class="eyebrow" data-es="Rango estimado">Estimated range</p><p class="raddr" id="raddr"></p><p class="range" id="rg">$0</p><p class="enote" id="enote"></p><div class="report" id="rep"><dl id="repdl"></dl></div>
+<div class="gate" id="gate"><input type="email" id="ge" placeholder="Email for the full report" data-es-ph="Correo para el informe completo" autocomplete="email"><button type="button" class="btn ghost" id="gb" data-es="Recibir informe">Unlock full report</button></div>
 <p class="small" id="gn" style="margin-top:14px" data-es="Ruben le enviará un análisis completo.">Ruben will follow up with a full comparable-sales analysis.</p></div>
 </form>
 </div></section>
@@ -328,11 +344,8 @@ html{overflow-x:clip}
 <section class="ai"><div class="wrap">
 <p class="eyebrow rv" data-es="Siempre disponible">Always available</p><h2 class="rv d1" data-es="Pregunte. <em>Hable.</em> En cualquier idioma.">Ask. <em>Speak.</em> In either language.</h2>
 <div class="g">
-<div class="card rv"><h3 data-es="Búsqueda por voz">Voice search</h3><p class="small" data-es="Toque el micrófono y diga lo que busca, por ejemplo “fincas con acres cerca de Gilroy”.">Tap the microphone and describe what you want, for example “acreage near Gilroy under two million”.</p>
+<div class="card rv voicecard"><h3 data-es="Búsqueda por voz">Voice search</h3><p class="small" data-es="Toque el micrófono y diga lo que busca, por ejemplo “fincas con acres cerca de Gilroy”.">Tap the microphone and describe what you want, for example “acreage near Gilroy under two million”.</p>
 <div class="voicebox"><input id="vq" placeholder="Say or type a search" data-es-ph="Diga o escriba su búsqueda"><button class="mic" id="vmic" aria-label="Voice search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div><p class="vout" id="vout"></p></div>
-<div class="card rv d1"><h3 data-es="Concierge con IA">AI concierge</h3><p class="small" data-es="Respuestas inmediatas sobre el equipo, las áreas y la propiedad destacada, de día o de noche.">Instant answers on the team, the areas and the featured listing, day or night.</p>
-<div class="qs"><button data-chat="What's my home worth?" data-es="¿Cuánto vale mi casa?">What's my home worth?</button><button data-chat="Current listing" data-es="Propiedad actual">Current listing</button><button data-chat="Meet the team" data-es="Conocer al equipo">Meet the team</button><button data-chat="Talk to an agent" data-es="Hablar con un agente">Talk to an agent</button></div>
-<button class="btn solid" style="align-self:flex-start" onclick="window.WellsChat&&WellsChat.open()" data-es="Abrir el concierge">Open the concierge</button></div>
 </div></div></section>
 
 <section class="contact" id="contact"><div class="wrap g">
@@ -357,6 +370,7 @@ html{overflow-x:clip}
 <div class="bot"><span>The Wells Real Estate Group · Ruben Martinez, Broker, CA DRE #01198060. <span class="eho">Equal Housing Opportunity.</span></span><a href="https://studio.vshmedia.com" target="_blank" rel="noopener">Powered By VSH Media Studio</a></div>
 </div></footer>
 
+<button class="aifab off" id="aifab" aria-label="Chat with the Wells AI concierge" onclick="window.WellsChat&&WellsChat.open()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v11H9l-5 4z"/></svg><span class="t" data-es="Pregunte a Wells">Ask Wells</span><span class="dot"></span></button>
 <script src="../shared/wells-chat.js" defer></script>
 <script>
 (()=>{const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let L='en';
@@ -372,6 +386,9 @@ const mob=matchMedia('(max-width:760px)').matches;
 function play(g){const v=g.querySelector('video');if(v&&!v.src){v.src=v.dataset.src+(mob?'-m':'')+'.mp4'}v&&v.play().catch(()=>{})}
 const gio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)play($('.guide.on'))}));gio.observe($('#communities'));
 $$('.tabs button').forEach(b=>b.onclick=()=>{$$('.tabs button').forEach(x=>x.classList.toggle('on',x==b));$$('.guide').forEach(g=>{g.classList.toggle('on',g.id=='g-'+b.dataset.t);if(g.id!='g-'+b.dataset.t)g.querySelector('video').pause()});play($('#g-'+b.dataset.t))});
+// fab: hidden over hero CTAs and contact form button (mobile overlap guard)
+const fab=$('#aifab'),vis=new Set();const fio=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));fab.classList.toggle('off',vis.size>0)},{threshold:0});
+fio.observe($('.hero .ctas'));$$('#lead .btn, #est .btn, .feat .detail .btn').forEach(b=>matchMedia('(max-width:640px)').matches&&fio.observe(b));
 // i18n
 $$('[data-es]').forEach(e=>e.dataset.en=e.innerHTML);$$('[data-es-ph]').forEach(e=>e.dataset.enPh=e.placeholder);
 function setL(l){L=l;document.documentElement.lang=l;$$('[data-es]').forEach(e=>e.innerHTML=l=='es'?e.dataset.es:e.dataset.en);$$('[data-es-ph]').forEach(e=>e.placeholder=l=='es'?e.dataset.esPh:e.dataset.enPh);$$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l==l));try{window.WellsChat&&WellsChat.setLang&&WellsChat.setLang(l)}catch(e){}}
@@ -391,11 +408,28 @@ $('#fmic').onclick=()=>listen($('#fmic'),$('#fq'),$('#fnote'));
 $('#finder').onsubmit=e=>{e.preventDefault();$('#fnote').textContent=interpret($('#fq').value+' '+$('#ft').value)};
 // estimate
 const base={'San Jose':780,'Morgan Hill':700,'Gilroy':560,'Salinas':450,'Prunedale':520,'San Diego':760};
-window.WELLS_LEADS=window.WELLS_LEADS||[];
-$('#est').onsubmit=e=>{e.preventDefault();const li=$$('#steps li');li.forEach(x=>x.className='');$('#res').classList.remove('on');
- li.forEach((x,i)=>setTimeout(()=>{x.className='on';setTimeout(()=>x.classList.add('done'),600)},i*800));
- setTimeout(()=>{const s=parseInt($('#es').value.replace(/\D/g,''))||2000,c=[1.1,1,.88][$('#ec').selectedIndex],v=s*base[$('#em').value]*c,f=n=>'$'+(Math.round(n/5000)*5000).toLocaleString();$('#rg').textContent=f(v*.94)+' – '+f(v*1.06);$('#res').classList.add('on')},2600)};
-$('#gb').onclick=()=>{const g=$('#ge');if(!g.checkValidity()){g.reportValidity();return}WELLS_LEADS.push({type:'valuation',email:g.value,address:$('#ea').value});$('#rg').classList.remove('blur');$('#gate').style.display='none'};
+window.WELLS_LEADS=window.WELLS_LEADS||[];let busy=false,last=null;
+const T=(en,es)=>L=='es'?es:en,fmt=n=>'$'+(Math.round(n/5000)*5000).toLocaleString('en-US'),cap=t=>t.trim().replace(/\s+/g,' ').toLowerCase().replace(/(^|[\s,.-])(\w)/g,(m,a,c)=>a+c.toUpperCase()).replace(/\b(Ca|Usa)\b/g,x=>x.toUpperCase()).replace(/\b(N|S|E|W)\b(?!\.)/g,'$1.');
+$('#ea').addEventListener('blur',()=>{if($('#ea').value.trim())$('#ea').value=cap($('#ea').value)});
+$('#es').addEventListener('blur',()=>{const n=parseInt($('#es').value.replace(/\D/g,''));if(n)$('#es').value=n.toLocaleString('en-US')});
+$('#est').onsubmit=e=>{e.preventDefault();if(busy)return;const msg=$('#emsg');msg.textContent='';
+ const addr=$('#ea').value.trim();if(addr.length<5||!/\d/.test(addr)){msg.textContent=T('Please enter a street address with a number, for example “30 El Toro Ave, Morgan Hill”.','Escriba una dirección con número, por ejemplo “30 El Toro Ave, Morgan Hill”.');$('#ea').focus();return}
+ let sq=parseInt($('#es').value.replace(/\D/g,''));const notes=[];
+ if(!sq){msg.textContent=T('Please enter the home’s square footage.','Escriba los pies cuadrados de la casa.');$('#es').focus();return}
+ if(sq>15000){notes.push(T(`We capped the size at 15,000 sq ft (you entered ${sq.toLocaleString('en-US')}). Ruben will confirm it in your report.`,`Limitamos el tamaño a 15,000 pies² (escribió ${sq.toLocaleString('en-US')}). Ruben lo confirmará.`));sq=15000}
+ if(sq<400){notes.push(T('We set the size to the 400 sq ft minimum.','Ajustamos el tamaño al mínimo de 400 pies².'));sq=400}
+ $('#es').value=sq.toLocaleString('en-US');
+ let mk=$('#em').value;const al=addr.toLowerCase(),hit=Object.keys(base).find(k=>al.includes(k.toLowerCase()));
+ if(hit&&hit!=mk){notes.push(T(`Your address is in ${hit}, so we used ${hit} rather than ${mk}.`,`Su dirección está en ${hit}, así que usamos ${hit} en lugar de ${mk}.`));mk=hit;$('#em').value=hit}
+ busy=true;const li=$$('#steps li');li.forEach(x=>x.className='');$('#res').classList.remove('on');$('#rep').classList.remove('on');
+ li.forEach((x,i)=>setTimeout(()=>{x.className='on';setTimeout(()=>x.classList.add('done'),550)},i*750));
+ setTimeout(()=>{const c=[1.1,1,.88][$('#ec').selectedIndex]||1,bd={'2':.97,'3':1,'4':1.03,'5+':1.06}[$('#eb').value]||1,ppsf=base[mk]*c*bd,v=sq*ppsf;
+  last={addr:cap(addr),mk,sq,v,ppsf};$('#raddr').textContent=last.addr;$('#rg').textContent=fmt(v*.94)+' – '+fmt(v*1.06);$('#enote').textContent=notes.join(' ');
+  $('#gate').style.display='';$('#res').classList.add('on');busy=false},2600)};
+$('#gb').onclick=()=>{const g=$('#ge'),ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g.value.trim());if(!ok){$('#emsg').textContent='';$('#gn').textContent=T('Please enter a valid email to unlock the full report.','Escriba un correo válido para recibir el informe.');g.focus();return}
+ WELLS_LEADS.push({type:'valuation',email:g.value.trim(),...last});const r=last;
+ $('#repdl').innerHTML=`<div><dt>${T('Market','Mercado')}</dt><dd>${r.mk}</dd></div><div><dt>${T('Size used','Tamaño')}</dt><dd>${r.sq.toLocaleString('en-US')} sq ft</dd></div><div><dt>${T('Indicative $/sq ft','$/pie² indicativo')}</dt><dd>$${Math.round(r.ppsf).toLocaleString('en-US')}</dd></div><div><dt>${T('Midpoint','Punto medio')}</dt><dd>${fmt(r.v)}</dd></div>`;
+ $('#rep').classList.add('on');$('#gate').style.display='none';$('#gn').textContent=T(`Thank you. Ruben will send a full comparable-sales analysis to ${g.value.trim()}.`,`Gracias. Ruben enviará un análisis completo a ${g.value.trim()}.`)};
 $('#lead').onsubmit=e=>{e.preventDefault();WELLS_LEADS.push({type:'contact',data:[...e.target.elements].map(x=>x.value)});[...e.target.children].forEach(c=>c.id!='thx'&&(c.style.display='none'));$('#thx').style.display='block'};
 })();
 </script>
