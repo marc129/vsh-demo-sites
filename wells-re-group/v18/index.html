@@ -1,0 +1,193 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Wells Real Estate Group · The Exhibition</title>
+<meta name="description" content="The Wells Real Estate Group of Morgan Hill, presented as an exhibition in seven rooms. Ruben Martinez, Broker, CA DRE #01198060. San Jose, Morgan Hill, Gilroy, San Diego.">
+<link rel="icon" href="../media/favicon.png"><link rel="apple-touch-icon" href="../media/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--wall:#efebe3;--wall2:#e5dfd3;--ink:#1c1a17;--ox:#7a2219;--mute:#6f685d}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--wall);color:var(--ink);font:400 17px/1.65 "Space Grotesk",system-ui,sans-serif;overflow-x:hidden}
+img,video{display:block;max-width:100%}a{color:inherit}
+.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+h1,h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:1.06;padding-bottom:.1em;letter-spacing:-.01em}
+h1{font-size:clamp(52px,9vw,148px)}h2{font-size:clamp(40px,6vw,96px)}
+h2 i,h1 i{color:var(--ox)}
+.cap{font:500 12px/1.4 "Space Grotesk";letter-spacing:.16em;text-transform:uppercase}
+.wrap{width:min(1280px,100% - 64px);margin-inline:auto}
+header{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:rgba(239,235,227,.88);backdrop-filter:blur(10px);border-bottom:1px solid #d6cfc1;transition:transform .35s}
+header.hide{transform:translateY(-110%)}
+header img{height:50px;width:auto}
+.hr{display:flex;gap:8px;align-items:center}
+.b{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:500 14px "Space Grotesk";cursor:pointer;text-decoration:none;border-radius:2px}
+.b.f{background:var(--ink);color:var(--wall)}.b.o{background:var(--ox);border-color:var(--ox);color:#fff}
+.kbd{font:500 11px "Space Grotesk";border:1px solid #b8b0a1;padding:2px 6px;border-radius:3px;margin-left:8px}
+/* entrance */
+.ent{padding:150px 0 80px}
+.ent .g{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:end}
+.frame{background:#fff;padding:clamp(10px,1.4vw,18px);box-shadow:0 2px 0 #d3cbbd,0 40px 70px -30px rgba(40,30,20,.45)}
+.frame video,.frame img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.label{margin-top:18px;max-width:340px;border-left:2px solid var(--ox);padding-left:14px;font-size:14px;color:var(--mute)}
+.label b{display:block;color:var(--ink);font-weight:600}
+.intro{max-width:460px;margin-top:22px;color:#3b362f}
+/* plan minimap */
+.plan{position:fixed;right:22px;bottom:22px;z-index:39;background:rgba(255,255,255,.9);border:1px solid #cfc7b8;padding:10px;display:grid;grid-template-columns:repeat(4,38px);grid-auto-rows:30px;gap:3px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.plan a{display:grid;place-items:center;border:1px solid #b8b0a1;font:600 11px "Space Grotesk";text-decoration:none;color:var(--mute)}
+.plan a.on{background:var(--ox);border-color:var(--ox);color:#fff}
+.plan .t{grid-column:1/-1;font:600 10px "Space Grotesk";letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center}
+/* rooms */
+.room{padding:120px 0;border-top:1px solid #d6cfc1;position:relative}
+.rn{display:flex;gap:18px;align-items:baseline;margin-bottom:34px}
+.rn .num{font:400 clamp(60px,8vw,120px)/1 "Instrument Serif";color:var(--ox);padding-bottom:.1em}
+.dark{background:#171512;color:#ece6da;border-top:0}.dark .label{color:#a49b8b}.dark .label b{color:#fff}.dark .b{color:#ece6da;border-color:#ece6da}
+/* room I broker */
+.broker{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.broker .frame img{aspect-ratio:4/5;object-position:50% 20%}
+.quote{font:400 clamp(28px,3.2vw,46px)/1.2 "Instrument Serif";padding-bottom:.1em}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px;border-top:1px solid #cfc7b8;padding-top:22px}
+/* room II horizontal gallery */
+.hall{position:relative;height:420vh}
+.hall .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.track{display:flex;gap:6vw;padding:0 8vw;will-change:transform}
+.work{flex:none;width:min(62vw,980px)}
+.work .frame video{aspect-ratio:16/9}
+.hall .hd{position:absolute;top:110px;left:8vw}
+/* listing */
+.lst{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
+.salon{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.salon .frame{padding:10px}.salon .frame:first-child{grid-column:1/-1}
+.cat{border-top:1px solid #cfc7b8;margin:22px 0}.cat div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #cfc7b8}
+.cat div b{font-weight:600}
+.vault{position:relative;margin-top:16px;border:1px solid var(--ink);padding:20px}
+.vault .lock{filter:blur(6px);transition:filter .7s;user-select:none}.vault.open .lock{filter:none}.vault.open form{display:none}
+.fld{display:block;margin:10px 0}.fld span{display:block;font:500 11px "Space Grotesk";letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
+.fld input,.fld select{width:100%;height:50px;border:1px solid currentColor;background:transparent;color:inherit;font:500 16px "Space Grotesk";padding:0 12px;border-radius:2px}
+.fld select option{color:#111}
+input[type=range]{width:100%;accent-color:var(--ox);height:44px}
+.thanks{display:none}.sent .thanks{display:block}
+/* staging */
+.stage{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.stage .after{clip-path:inset(0 0 0 var(--s))}
+.stage .bar{position:absolute;top:0;bottom:0;left:var(--s);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.stage input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.stage .t{position:absolute;bottom:12px;background:rgba(255,255,255,.9);padding:4px 10px;font:500 11px "Space Grotesk";letter-spacing:.12em;text-transform:uppercase}
+.stage .t.a{right:12px}.stage .t.bf{left:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+/* appraisal */
+.est-out{font:400 clamp(36px,4.4vw,62px)/1.1 "Instrument Serif";color:var(--ox);filter:blur(10px);margin:14px 0;transition:filter .9s;padding-bottom:.1em}
+[data-est].open .est-out{filter:none}[data-est].open form{display:none}
+.scan{display:grid;gap:4px;font-size:13px;color:var(--mute)}
+[data-est].open .scan span{animation:sc .5s both}.scan span:nth-child(2){animation-delay:.4s!important}.scan span:nth-child(3){animation-delay:.8s!important}@keyframes sc{from{opacity:0}}
+.pl{background:#fff;padding:30px;border:1px solid #d6cfc1}
+.dark .pl{background:#211e1a;border-color:#3a352e}
+.big{font:400 clamp(40px,5vw,70px)/1.1 "Instrument Serif";padding-bottom:.08em}
+.rng{display:flex;justify-content:space-between;font-size:14px}
+.ledger div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #b8b0a1;font-size:15px}
+/* desk */
+.desk{display:grid;grid-template-columns:1.2fr 1fr;gap:56px}
+.vrow{display:flex;gap:8px}.vrow input{flex:1;min-width:0;height:56px;border:1px solid var(--ink);background:#fff;font:500 17px "Space Grotesk";padding:0 14px}
+.mic{width:56px;height:56px;border:0;background:var(--ox);color:#fff;font-size:20px;cursor:pointer;flex:none}.mic.rec{animation:p 1s infinite}@keyframes p{50%{opacity:.6}}
+.vout{min-height:26px;margin-top:10px;color:var(--ox);font-size:15px}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}
+.team .frame{padding:10px}.team .frame img,.team .mm{aspect-ratio:4/5;width:100%;object-fit:cover;object-position:50% 20%}
+.mm{display:grid;place-items:center;background:var(--wall2);font:400 110px/1 "Instrument Serif";color:var(--ox);padding-bottom:.1em}
+/* palette */
+.pal{position:fixed;inset:0;z-index:60;background:rgba(28,26,23,.45);display:none;align-items:flex-start;justify-content:center;padding:14vh 16px}
+.pal.on{display:flex}
+.pal .bx{width:min(620px,100%);background:#fff;border:1px solid var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.pal input{width:100%;height:58px;border:0;border-bottom:1px solid #ddd;font:500 18px "Space Grotesk";padding:0 18px;outline:0}
+.pal ul{list-style:none;max-height:50vh;overflow:auto}.pal li{padding:14px 18px;cursor:pointer;display:flex;justify-content:space-between}.pal li.sel,.pal li:hover{background:var(--wall)}
+footer{background:#171512;color:#a49b8b;padding:60px 0 110px;font-size:14px}
+footer .f{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center}footer img{height:60px;width:auto}
+footer a{color:#ece6da}footer .vsh{color:#e9b9a8;font-weight:600}
+[data-rv]{opacity:0;transform:translateY(24px);transition:opacity 1s,transform 1s}[data-rv].in{opacity:1;transform:none}
+.wipe{clip-path:inset(0 0 100% 0);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1)}.wipe.in{clip-path:inset(0 0 0 0)}
+@media (max-width:900px){
+ .wrap{width:calc(100% - 40px)}header{padding:10px 16px}header img{height:40px}.hr .b:not(.o){display:none}.hr .b.es{display:inline-flex}
+ .ent .g,.broker,.lst,.two,.desk{grid-template-columns:1fr;gap:36px}
+ .plan{right:auto;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));grid-template-columns:repeat(8,36px);grid-auto-rows:40px;padding:6px;transition:transform .35s}
+ .plan .t{display:none}.plan.hide{transform:translate(-50%,140%)}
+ .hall{height:auto}.hall .pin{position:static;height:auto;display:block;padding:100px 0 40px}.hall .hd{position:static;padding:0 20px 24px}
+ .track{flex-direction:column;padding:0 20px;gap:40px;transform:none!important}.work{width:100%}
+ .team{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){body{font-size:16px}.wrap{width:calc(100% - 32px)}.room{padding:84px 0}.ent{padding:110px 0 60px}.team{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.plan{grid-template-columns:repeat(8,1fr);width:calc(100% - 20px)}.salon{grid-template-columns:1fr}}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "The Wells Real Estate Group", "url": "https://wellsregroup.com", "telephone": "+1-408-528-4477", "email": "info@wellsregroup.com", "address": {"@type": "PostalAddress", "streetAddress": "30 El Toro Avenue", "addressLocality": "Morgan Hill", "addressRegion": "CA", "postalCode": "95037", "addressCountry": "US"}, "areaServed": ["San Jose", "Morgan Hill", "Gilroy", "San Diego"], "knowsLanguage": ["en", "es"], "employee": [{"@type": "Person", "name": "Ruben Martinez", "jobTitle": "Broker"}, {"@type": "Person", "name": "Rafael Covarrubias", "jobTitle": "Realtor"}, {"@type": "Person", "name": "Pedro Silva", "jobTitle": "Realtor"}]}</script></head><body>
+<header><a href="#top" aria-label="Home"><img src="../media/logo-color.png" alt="The Wells Real Estate Group" width="1061" height="523"></a><div class="hr"><button class="b" data-pal>Search rooms<span class="kbd">⌘K</span></button><button class="b es" data-lang aria-label="Español">ES</button><button class="b o" data-chat="I'd like to speak with Ruben">Concierge</button></div></header>
+<nav class="plan" aria-label="Floor plan"><span class="t">Floor plan</span><a href="#top">E</a><a href="#r1">I</a><a href="#r2">II</a><a href="#r3">III</a><a href="#r4">IV</a><a href="#r5">V</a><a href="#r6">VI</a><a href="#r7">VII</a></nav>
+<main>
+<section class="ent" id="top" data-room><div class="wrap g"><div><p class="cap" data-es="La exposición · Morgan Hill, California">The Exhibition · Morgan Hill, California</p><h1 data-rv data-es="Casas, <i>en exhibición.</i>">Homes, <i>on view.</i></h1><p class="intro" data-es="The Wells Real Estate Group en siete salas: el corredor, los lugares, la propiedad y las herramientas que usamos para vender y comprar bien.">The Wells Real Estate Group in seven rooms: the broker, the places, the property, and the instruments we use to buy and sell well. Open the floor plan or press ⌘K to move between rooms.</p></div>
+<div><div class="frame wipe"><video class="" autoplay muted loop playsinline preload="metadata" poster="../media/ai-estate.jpg"><source media="(max-width:760px)" src="../media/ai-estate-m.mp4" type="video/mp4"><source src="../media/ai-estate.mp4" type="video/mp4"></video></div><p class="label"><b>Entrance. Estate at golden hour</b>South County, Santa Clara Valley. Moving image, 1920 × 1080.</p></div></div></section>
+
+<section class="room" id="r1" data-room><div class="wrap"><div class="rn"><span class="num">I</span><span class="cap" data-es="El corredor">The Broker</span></div><div class="broker"><div><div class="frame wipe"><img src="../media/ruben.webp" alt="Ruben Martinez, Broker" width="1600" height="2000" loading="lazy"></div><p class="label"><b>Ruben Martinez</b>Broker, The Wells Real Estate Group. CA DRE #01198060.</p></div>
+<div><p class="quote" data-rv data-es="Corredor desde 2004, con una larga trayectoria en banca y servicios financieros.">A broker since 2004, after a long career in banking and financial services.</p><p style="margin-top:20px;max-width:520px;color:#3b362f" data-es="Ruben dirige el equipo desde 30 El Toro Avenue en Morgan Hill, atendiendo San José, Morgan Hill, Gilroy y San Diego, en inglés y en español.">Ruben leads the group from 30 El Toro Avenue in Morgan Hill, serving San Jose, Morgan Hill, Gilroy and San Diego, in English and Spanish.</p>
+<div class="facts"><div><p class="cap">Since</p><p class="big">2004</p></div><div><p class="cap">Markets</p><p class="big">4</p></div></div><p style="margin-top:24px"><button class="b f" data-chat="What's Ruben's background?">Ask about Ruben</button></p></div></div></div></section>
+
+<section class="room dark hall" id="r2" data-room style="padding:0"><div class="pin"><div class="hd"><div class="rn" style="margin:0"><span class="num">II</span><span class="cap" data-es="Los lugares">The Places</span></div></div><div class="track">
+<figure class="work"><div class="frame"><video class="" autoplay muted loop playsinline preload="metadata" poster="../media/ai-sdcity.jpg"><source media="(max-width:760px)" src="../media/ai-sdcity-m.mp4" type="video/mp4"><source src="../media/ai-sdcity.mp4" type="video/mp4"></video></div><figcaption class="label"><b>San Diego, the city</b>Downtown skyline, the bay and the Coronado Bridge at dusk.</figcaption></figure>
+<figure class="work"><div class="frame"><video class="" autoplay muted loop playsinline preload="metadata" poster="../media/ai-sanjose.jpg"><source media="(max-width:760px)" src="../media/ai-sanjose-m.mp4" type="video/mp4"><source src="../media/ai-sanjose.mp4" type="video/mp4"></video></div><figcaption class="label"><b>San Jose</b>Aerial of the valley’s capital. RC Covarrubias brings tech-industry executive experience here.</figcaption></figure>
+<figure class="work"><div class="frame"><video class="" autoplay muted loop playsinline preload="metadata" poster="../media/ai-vineyards.jpg"><source media="(max-width:760px)" src="../media/ai-vineyards-m.mp4" type="video/mp4"><source src="../media/ai-vineyards.mp4" type="video/mp4"></video></div><figcaption class="label"><b>Morgan Hill & Gilroy</b>South County vineyards and hills. Pedro Silva is based in Gilroy and works luxury estates.</figcaption></figure>
+<figure class="work"><div class="frame"><video class="" autoplay muted loop playsinline preload="metadata" poster="../media/ai-coast.jpg"><source media="(max-width:760px)" src="../media/ai-coast-m.mp4" type="video/mp4"><source src="../media/ai-coast.mp4" type="video/mp4"></video></div><figcaption class="label"><b>The Southern California coast</b>For clients moving between the Bay Area and San Diego.</figcaption></figure>
+</div></div></section>
+
+<section class="room" id="r3" data-room><div class="wrap"><div class="rn"><span class="num">III</span><span class="cap" data-es="La propiedad">The Listing</span></div><div class="lst"><div class="salon"><div class="frame"><img src="../media/319EchoValley.webp" alt="319 Echo Valley Rd" width="2400" height="1349" loading="lazy"></div><div class="frame"><img src="../media/319EchoValley2.webp" alt="319 Echo Valley Rd grounds" width="2400" height="1349" loading="lazy"></div><div class="frame"><img src="../media/319EchoValley3.webp" alt="319 Echo Valley Rd" width="2400" height="1349" loading="lazy"></div></div>
+<div><h2 style="font-size:clamp(36px,4.4vw,64px)">319 Echo Valley Rd, <i>Prunedale</i></h2><div class="cat"><div><span>Price</span><b>$1,075,999</b></div><div><span>Land</span><b>4.87 acres</b></div><div><span>Built</span><b>1918</b></div><div><span>Bedrooms · Baths</span><b>3 · 2</b></div><div><span>Interior</span><b>1,220 sq ft</b></div><div><span>MLS</span><b>#ML82060758</b></div><div><span>Listed by</span><b>Ruben Martinez</b></div></div>
+<div class="vault" data-vault><div class="lock"><p><b>Full catalogue entry:</b> the complete photo set, disclosures packet, showing instructions and Ruben’s notes on the parcel.</p></div><form data-lead="listing-319" novalidate><label class="fld"><span>Email to unlock full details</span><input type="email" name="email" required autocomplete="email"></label><button class="b f" style="width:100%">Unlock the catalogue entry</button></form></div><p class="label">As published Nov 2, 2026.</p></div></div></div></section>
+
+<section class="room" id="r4" data-room style="background:var(--wall2)"><div class="wrap two"><div><div class="rn"><span class="num">IV</span><span class="cap" data-es="Restauración">Conservation</span></div><h2 data-es="Amueblado <i>virtual con IA.</i>">AI virtual <i>staging.</i></h2><p style="margin-top:18px;max-width:460px" data-es="Deslice para comparar el espacio tal como está y amueblado virtualmente. Las fotos de la propiedad nunca se alteran; el amueblado se muestra solo como propuesta.">Drag to compare the room as listed against a virtually staged proposal. Listing photos are never altered; staging is shown only as a proposal for sellers.</p><p style="margin-top:22px"><button class="b f" data-chat="Can you virtually stage my home?">Stage my home</button></p></div>
+<div><div class="frame"><div class="stage" data-stage><img src="../media/319EchoValley6.webp" alt="Room as listed" width="2400" height="1601"><img class="after" src="../media/staged-kitchen.webp" alt="Virtually staged proposal" width="2400" height="1800"><span class="t bf">As listed</span><span class="t a">Staged</span><div class="bar"></div><input type="range" min="0" max="100" value="50" aria-label="Compare staging"></div></div></div></div></section>
+
+<section class="room dark" id="r5" data-room><div class="wrap two"><div><div class="rn"><span class="num">V</span><span class="cap" data-es="Tasación">The Appraisal</span></div><h2 data-es="¿Cuánto vale <i>su casa?</i>">What is your <i>home worth?</i></h2><p style="margin-top:18px;max-width:440px;color:#bdb4a4">An instant AI estimate from your own inputs, revealed by email. Ruben follows with real comparable sales.</p></div>
+<div class="pl" data-est><form data-lead="estimate" novalidate><label class="fld"><span>Address</span><input name="address" required autocomplete="street-address"></label><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><label class="fld"><span>Sq ft</span><input name="sqft" type="number" inputmode="numeric" value="2000"></label><label class="fld"><span>Acres</span><input name="acres" type="number" inputmode="decimal" value="0.3" step="0.05"></label></div><label class="fld"><span>Market</span><select name="ppsf"><option value="830">San Jose</option><option value="780" selected>Morgan Hill</option><option value="690">Gilroy</option><option value="760">San Diego</option></select></label><div class="scan"><span>— Measuring the property</span><span>— Weighing the market</span><span>— Hanging your range</span></div><div class="est-out" data-est-out>—</div><label class="fld"><span>Email to reveal</span><input type="email" name="email" required autocomplete="email"></label><button class="b o" style="width:100%">Reveal my estimate</button></form><p class="label">Demo range only. Not an appraisal.</p></div></div></section>
+
+<section class="room" id="r6" data-room><div class="wrap two"><div><div class="rn"><span class="num">VI</span><span class="cap" data-es="La cuenta">The Ledger</span></div><h2 data-es="Lo que <i>se lleva.</i>">What you <i>walk away with.</i></h2><p style="margin-top:18px;max-width:440px">A live seller net sheet. Move the sliders to see estimated proceeds after commission, title, escrow and transfer tax.</p></div>
+<div class="pl" data-net><p class="cap">Estimated net proceeds</p><p class="big" data-net-out>—</p><form><label class="fld"><div class="rng"><span>Sale price</span><output for="price" data-p="$"></output></div><input type="range" name="price" min="400000" max="4000000" step="5000" value="1250000"></label><label class="fld"><div class="rng"><span>Commission</span><output for="comm" data-u="%"></output></div><input type="range" name="comm" min="1" max="6" step="0.25" value="5"></label><label class="fld"><div class="rng"><span>Mortgage payoff</span><output for="mort" data-p="$"></output></div><input type="range" name="mort" min="0" max="2000000" step="5000" value="400000"></label></form><div class="ledger"></div><p class="label">Estimates for illustration. Ruben prepares exact figures.</p></div></div>
+<div class="wrap" style="margin-top:80px"><div class="pl" data-mort style="display:grid;grid-template-columns:1fr 1fr;gap:30px"><div><p class="cap">Buyer’s side · affordability</p><p class="big" data-mort-out>—</p><p class="label" data-mort-break></p></div><form><label class="fld"><div class="rng"><span>Price</span><output for="price" data-p="$"></output></div><input type="range" name="price" min="400000" max="3000000" step="5000" value="1075999"></label><label class="fld"><div class="rng"><span>Down</span><output for="down" data-u="%"></output></div><input type="range" name="down" min="3" max="50" value="20"></label><label class="fld"><div class="rng"><span>Your rate</span><output for="rate" data-u="%"></output></div><input type="range" name="rate" min="3" max="9" step="0.05" value="6.5"></label></form></div></div></section>
+
+<section class="room" id="r7" data-room style="background:var(--wall2)"><div class="wrap"><div class="rn"><span class="num">VII</span><span class="cap" data-es="Adquisiciones">The Acquisitions Desk</span></div><div class="desk"><div><h2 data-es="Díganos <i>qué busca.</i>">Tell us what <i>you’re after.</i></h2><p style="margin:16px 0 22px;max-width:480px">Speak or type in English or Spanish. Voice AI search sends your request to the concierge.</p><div class="vrow"><input id="vq" placeholder="“Acreage with a view near Gilroy”" aria-label="Search"><button class="mic" data-voice="#vout" data-input="#vq" aria-label="Voice search">🎙</button><button class="b f" id="vgo" style="min-height:56px">Ask</button></div><p class="vout" id="vout"></p>
+<form data-lead="alerts" novalidate style="margin-top:26px"><label class="fld"><span>Save this search · listing alerts by email</span><input type="email" name="email" required autocomplete="email"></label><button class="b">Start alerts</button><p class="thanks">Saved. New matches will come to your inbox.</p></form></div>
+<div><p class="cap">The curators</p><div class="team" style="grid-template-columns:1fr 1fr"><div><div class="frame"><img src="../media/rc.webp" alt="Rafael RC Covarrubias" width="1152" height="1196" loading="lazy"></div><p class="label"><b>Rafael “RC” Covarrubias</b>Realtor®, DRE #02442276. Tech-industry executive background; lives in Morgan Hill; Spanish; also Salinas.</p></div><div><div class="frame"><div class="mm">PS</div></div><p class="label"><b>Pedro Silva</b>Realtor®, DRE #01422644. Licensed since 2004; luxury estates; Gilroy.</p></div></div>
+<p style="margin-top:26px">30 El Toro Avenue, Morgan Hill, CA 95037<br><a href="tel:+14085284477">408.528.4477</a> · <a href="mailto:info@wellsregroup.com">info@wellsregroup.com</a></p></div></div></div></section>
+</main>
+<footer><div class="wrap f"><img src="../media/logo-light.png" alt="The Wells Real Estate Group" width="1061" height="523" loading="lazy"><p>The Wells Real Estate Group · Ruben Martinez, Broker, CA DRE #01198060. Equal Housing Opportunity.</p><p><a class="vsh" href="https://studio.vshmedia.com" target="_blank" rel="noopener">Powered by VSH Media Studio</a></p></div></footer>
+<div class="pal" role="dialog" aria-label="Command palette"><div class="bx"><input placeholder="Go to a room, ask, call…" aria-label="Command"><ul></ul></div></div>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const push=o=>{(window.WELLS_LEADS=window.WELLS_LEADS||[]).push(Object.assign({at:new Date().toISOString()},o))};
+$$("form[data-lead]").forEach(f=>f.addEventListener("submit",e=>{e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}const o={type:f.dataset.lead};new FormData(f).forEach((v,k)=>o[k]=v);push(o);f.classList.add("sent");f.dispatchEvent(new CustomEvent("lead",{bubbles:true}))}));
+/* gated estimate: range computed from the visitor's own inputs, blurred until email */
+$$("[data-est]").forEach(w=>{const f=$("form",w),out=$("[data-est-out]",w);const calc=()=>{const s=+f.sqft.value||0,ppsf=+(f.ppsf?f.ppsf.value:0)||0,ac=+(f.acres?f.acres.value:0)||0;const base=s*ppsf+ac*45000;const lo=Math.round(base*.94/5000)*5000,hi=Math.round(base*1.06/5000)*5000;out.textContent=base?("$"+lo.toLocaleString()+" – $"+hi.toLocaleString()):"—"};f.addEventListener("input",calc);calc();w.addEventListener("lead",()=>{const sc=$(".scan",f);if(sc)f.after(sc);(sc||f).after(out);w.classList.add("open")})});
+/* vault unlock */
+$$("[data-vault]").forEach(v=>v.addEventListener("lead",()=>v.classList.add("open")));
+/* voice search (Web Speech API, en-US / es-US) */
+$$("[data-voice]").forEach(b=>{const out=$(b.dataset.voice);const SR=window.SpeechRecognition||window.webkitSpeechRecognition;b.addEventListener("click",()=>{const lang=b.dataset.lang||(document.documentElement.lang==="es"?"es-US":"en-US");if(!SR){out.textContent=lang.startsWith("es")?"Su navegador no admite voz: escriba su búsqueda.":"Voice isn't supported in this browser — type your search instead.";const i=$(b.dataset.input);i&&i.focus();return}const r=new SR();r.lang=lang;r.interimResults=true;b.classList.add("rec");out.textContent=lang.startsWith("es")?"Escuchando…":"Listening…";r.onresult=e=>{const t=[...e.results].map(x=>x[0].transcript).join(" ");out.textContent="“"+t+"”";const i=$(b.dataset.input);if(i)i.value=t;if(e.results[e.results.length-1].isFinal)push({type:"voice",q:t,lang})};r.onend=()=>b.classList.remove("rec");r.onerror=()=>{b.classList.remove("rec");out.textContent="Mic unavailable — type instead."};r.start()})});
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});$$("[data-rv]").forEach(x=>io.observe(x));
+
+/* affordability: standard amortisation from the visitor's own rate */
+$$("[data-mort]").forEach(w=>{const f=$("form",w),o=$("[data-mort-out]",w),b=$("[data-mort-break]",w);const go=()=>{const P=+f.price.value,d=+f.down.value/100,r=+f.rate.value/1200,n=360;const L=P*(1-d),pm=r?L*r/(1-Math.pow(1+r,-n)):L/n,tax=P*.0115/12,ins=P*.0035/12;o.textContent="$"+Math.round(pm+tax+ins).toLocaleString()+"/mo";b.innerHTML=`Principal & interest $${Math.round(pm).toLocaleString()} · est. property tax $${Math.round(tax).toLocaleString()} · est. insurance $${Math.round(ins).toLocaleString()}`;f.querySelectorAll("output").forEach(x=>{const i=f[x.htmlFor.value];if(i)x.textContent=(x.dataset.p||"")+(+i.value).toLocaleString()+(x.dataset.u||"")})};f.addEventListener("input",go);go()});
+
+$$("[data-stage]").forEach(w=>{const r=$("input",w);const go=()=>w.style.setProperty("--s",r.value+"%");r.addEventListener("input",go);go()});
+
+/* horizontal hall */
+$$(".hall").forEach(h=>{const t=$(".track",h);const go=()=>{if(innerWidth<=900)return;const r=h.getBoundingClientRect(),max=t.scrollWidth-innerWidth,p=Math.min(1,Math.max(0,-r.top/(h.offsetHeight-innerHeight)));t.style.transform=`translateX(${-p*max}px)`};addEventListener("scroll",go,{passive:true});addEventListener("resize",go);go()});
+/* plan minimap active room */
+const rooms=$$("[data-room]");const pio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$(".plan a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});rooms.forEach(r=>pio.observe(r));
+let ly=scrollY;addEventListener("scroll",()=>{const d=scrollY>ly&&scrollY>200;$("header").classList.toggle("hide",d);$(".plan").classList.toggle("hide",d&&innerWidth<=900);ly=scrollY},{passive:true});
+/* net sheet */
+$$("[data-net]").forEach(w=>{const f=$("form",w),o=$("[data-net-out]",w),l=$(".ledger",w);const go=()=>{const P=+f.price.value,c=+f.comm.value/100,m=+f.mort.value;const comm=P*c,tt=P*.0055+1200,xfer=P*.0011,net=P-comm-tt-xfer-m;const $f=n=>"$"+Math.round(n).toLocaleString();o.textContent=$f(net);l.innerHTML=`<div><span>Sale price</span><b>${$f(P)}</b></div><div><span>Commission (${(c*100).toFixed(1)}%)</span><b>−${$f(comm)}</b></div><div><span>Title & escrow (est.)</span><b>−${$f(tt)}</b></div><div><span>County transfer tax (est.)</span><b>−${$f(xfer)}</b></div><div><span>Mortgage payoff</span><b>−${$f(m)}</b></div>`;f.querySelectorAll("output").forEach(x=>{const i=f[x.htmlFor.value];if(i)x.textContent=(x.dataset.p||"")+(+i.value).toLocaleString()+(x.dataset.u||"")})};f.addEventListener("input",go);go()});
+/* EN/ES */
+const T=$$("[data-es]");T.forEach(e=>e.dataset.en=e.innerHTML);$$("[data-lang]").forEach(b=>b.onclick=()=>{const es=document.documentElement.lang!=="es";document.documentElement.lang=es?"es":"en";T.forEach(e=>e.innerHTML=es?e.dataset.es:e.dataset.en);$$("[data-lang]").forEach(x=>x.textContent=es?"EN":"ES")});
+/* command palette */
+const C=[["Room I · The Broker","#r1"],["Room II · The Places","#r2"],["Room III · The Listing, 319 Echo Valley","#r3"],["Room IV · AI virtual staging","#r4"],["Room V · Instant AI appraisal","#r5"],["Room VI · Seller net sheet","#r6"],["Room VII · Voice search + listing alerts","#r7"],["Ask the AI concierge","chat"],["Call 408.528.4477","tel:+14085284477"],["Email info@wellsregroup.com","mailto:info@wellsregroup.com"],["Cambiar a español","lang"]];
+const pal=$(".pal"),pi=$("input",pal),ul=$("ul",pal);let sel=0;const render=()=>{const q=pi.value.toLowerCase();const r=C.filter(c=>c[0].toLowerCase().includes(q));sel=Math.min(sel,Math.max(0,r.length-1));ul.innerHTML=r.map((c,i)=>`<li class="${i==sel?"sel":""}" data-h="${c[1]}">${c[0]}<span>↵</span></li>`).join("");return r};
+const run=h=>{pal.classList.remove("on");if(h==="chat")window.WellsChat&&WellsChat.open();else if(h==="lang")$("[data-lang]").click();else location.href=h};
+const openP=()=>{pal.classList.add("on");pi.value="";sel=0;render();setTimeout(()=>pi.focus(),10)};
+addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openP()}if(!pal.classList.contains("on"))return;if(e.key==="Escape")pal.classList.remove("on");const r=render();if(e.key==="ArrowDown"){sel=(sel+1)%r.length;render()}if(e.key==="ArrowUp"){sel=(sel-1+r.length)%r.length;render()}if(e.key==="Enter"&&r[sel])run(r[sel][1])});
+pi.addEventListener("input",()=>{sel=0;render()});ul.addEventListener("click",e=>{const l=e.target.closest("li");if(l)run(l.dataset.h)});pal.addEventListener("click",e=>{if(e.target===pal)pal.classList.remove("on")});$$("[data-pal]").forEach(b=>b.onclick=openP);
+const wio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$(".wipe",e.target.parentElement)?.classList.add("in");wio.unobserve(e.target)}}),{threshold:.1});$$(".wipe").forEach(x=>{const s=document.createElement("i");s.style.cssText="display:block;height:1px";x.before(s);wio.observe(s)});
+
+$("#vgo").onclick=()=>{const q=$("#vq").value.trim();if(q&&window.WellsChat)WellsChat.send(q)};$("#vq").addEventListener("keydown",e=>{if(e.key==="Enter")$("#vgo").click()});
+new MutationObserver(()=>{const t=$("#vout").textContent;if(/^“.*”$/.test(t)&&window.WellsChat)setTimeout(()=>WellsChat.send(t.slice(1,-1)),600)}).observe($("#vout"),{childList:true,subtree:true,characterData:true});
+</script><script src="../shared/wells-chat.js" defer></script></body></html>
