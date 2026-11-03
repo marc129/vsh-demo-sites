@@ -224,6 +224,49 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 @keyframes pulse2{50%{opacity:.35}}
 .aifab.off{opacity:0;transform:translateY(16px);pointer-events:none}
 @media (max-width:640px){.aifab{min-height:52px;width:52px;padding:0;justify-content:center}.aifab .t,.aifab .dot{display:none}.places{padding:10px 14px;font-size:11px;gap:8px 16px;letter-spacing:.18em}}
+.vhead{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,5vw,90px);align-items:end;margin-bottom:56px}
+.vs{display:grid;grid-template-columns:5fr 7fr;border:1px solid var(--line);background:var(--paper);min-height:560px}
+.vs-l{background:var(--ink);color:#efe8de;padding:clamp(24px,3.4vw,48px);display:flex;flex-direction:column;gap:22px;min-width:0}
+.vs-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.vs-state{display:flex;align-items:center;gap:10px;font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#cdbfae}
+.vs-state i{width:8px;height:8px;background:#6d645b}
+.vs[data-s=listen] .vs-state i{background:#e0566f;animation:pulse2 1s infinite}.vs[data-s=think] .vs-state i{background:var(--gold);animation:pulse2 .6s infinite}.vs[data-s=speak] .vs-state i{background:#9fc79a}
+.vs-mute{display:flex;align-items:center;gap:8px;background:none;border:1px solid #3d3530;color:#cdbfae;min-height:44px;padding:0 14px;cursor:pointer;font-size:12px;letter-spacing:.08em}
+.vs-mute .x{display:none}.vs-mute[aria-pressed=true] .x{display:inline}.vs-mute[aria-pressed=true] .w{display:none}
+.vs-mic{position:relative;align-self:center;width:132px;height:132px;margin:10px 0;border:1px solid rgba(239,232,222,.3);background:linear-gradient(160deg,#8a1a35,#4e0c1c);color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .4s var(--ease),box-shadow .4s}
+.vs-mic:hover{transform:translateY(-2px)}
+.vs-mic:before,.vs-mic:after{content:"";position:absolute;inset:-1px;border:1px solid rgba(224,86,111,.6);opacity:0}
+.vs[data-s=listen] .vs-mic:before{animation:ring 1.6s infinite}.vs[data-s=listen] .vs-mic:after{animation:ring 1.6s .8s infinite}
+@keyframes ring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.45)}}
+.vs-mic .bars{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:3px;height:16px;align-items:flex-end;opacity:0}
+.vs-mic .bars i{width:3px;height:4px;background:#f0c9b4}
+.vs[data-s=listen] .bars,.vs[data-s=speak] .bars{opacity:1}.vs[data-s=listen] .bars i,.vs[data-s=speak] .bars i{animation:bar .9s infinite ease-in-out}
+.bars i:nth-child(2){animation-delay:.15s!important}.bars i:nth-child(3){animation-delay:.3s!important}.bars i:nth-child(4){animation-delay:.45s!important}.bars i:nth-child(5){animation-delay:.6s!important}
+@keyframes bar{50%{height:16px}}
+.vs-tr{font:300 clamp(22px,2.2vw,28px)/1.35 var(--serif);text-align:center;min-height:2.8em;color:#f3ece2;padding-bottom:.1em}
+.vs-tr.interim{color:#b9afa3;font-style:italic}
+.vs-in{display:flex;border-bottom:1px solid #6d645b}
+.vs-in input{flex:1;min-width:0;background:none;border:0;outline:none;color:#fff;font:400 16px/1.4 var(--sans);min-height:52px}
+.vs-in input::placeholder{color:#8f857a}
+.vs-go{background:none;border:0;color:#fff;width:48px;cursor:pointer}
+.vs-l .qs button{border-color:#3d3530;color:#e3d8ca}.vs-l .qs button:hover{border-color:#d9b39a;color:#fff}
+.vs-r{padding:clamp(24px,3.4vw,48px);display:flex;flex-direction:column;gap:22px;min-width:0}
+.vs-say{font:300 clamp(24px,2.4vw,32px)/1.3 var(--serif);padding-bottom:.08em}
+.vs-you{font-size:13px;color:var(--soft)}.vs-you b{font-weight:500;color:var(--ink)}
+.vs-tags{display:flex;flex-wrap:wrap;gap:8px}.vs-tags span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:7px 10px;color:var(--wine)}
+.vs-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vc{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;transition:border-color .4s}
+.vc:hover{border-color:var(--wine)}
+.vc .ph{aspect-ratio:16/10}.vc .b{padding:16px 18px 18px}.vc .k{font:500 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--wine)}
+.vc h4{font:400 22px/1.2 var(--serif);margin:8px 0 4px;padding-bottom:.06em}.vc p{font-size:13px;color:var(--soft);line-height:1.5}
+.vs-note{font-size:13px;color:var(--soft);border-left:2px solid var(--wine);padding-left:14px}
+.vs-r .qs button{font-size:13px}
+.vs-lead{display:flex;gap:10px;flex-wrap:wrap;background:var(--ivory);padding:18px}
+.vs-lead p{width:100%;font-size:14px}
+.vs-lead input{flex:1;min-width:180px;border:1px solid var(--line);background:#fff;min-height:48px;padding:0 14px;outline:none;font:400 16px var(--sans)}
+.vs-lead .err{color:var(--wine);font-size:13px}
+@media (max-width:900px){.vhead,.vs{grid-template-columns:1fr}.vs-mic{width:112px;height:112px}}
+@media (max-width:640px){.vs-cards{grid-template-columns:1fr}.vs-lead .btn{width:100%}}
 /* responsive */
 @media (max-width:1080px){header nav{display:none}.menu{display:block}.finder .wrap{grid-template-columns:1fr 1fr}.finder label:nth-child(2){border-right:0;margin-right:0}.finder label{border-bottom:1px solid var(--line)}.finder .go{grid-column:1/-1}.finder .go .btn{flex:1}
 .tg{grid-template-columns:1fr 1fr}.tg .agent:last-child{grid-column:auto}footer .g{grid-template-columns:1fr 1fr}}
@@ -341,12 +384,22 @@ b,.price,.range,.specs b,.facts b{font-variant-numeric:lining-nums;font-feature-
 </form>
 </div></section>
 
-<section class="ai"><div class="wrap">
-<p class="eyebrow rv" data-es="Siempre disponible">Always available</p><h2 class="rv d1" data-es="Pregunte. <em>Hable.</em> En cualquier idioma.">Ask. <em>Speak.</em> In either language.</h2>
-<div class="g">
-<div class="card rv voicecard"><h3 data-es="Búsqueda por voz">Voice search</h3><p class="small" data-es="Toque el micrófono y diga lo que busca, por ejemplo “fincas con acres cerca de Gilroy”.">Tap the microphone and describe what you want, for example “acreage near Gilroy under two million”.</p>
-<div class="voicebox"><input id="vq" placeholder="Say or type a search" data-es-ph="Diga o escriba su búsqueda"><button class="mic" id="vmic" aria-label="Voice search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div><p class="vout" id="vout"></p></div>
-</div></div></section>
+<section class="ai" id="voice"><div class="wrap">
+<div class="vhead"><div><p class="eyebrow rv" data-es="Búsqueda por voz con IA">Voice AI search</p><h2 class="rv d1" data-es="Díganos lo que <em>busca</em>.">Tell us what you're <em>looking for</em>.</h2></div>
+<p class="lead rv d2" data-es="Hable o escriba, en inglés o español. Entendemos zona, precio, recámaras y tipo de propiedad, y le respondemos al instante.">Speak or type, in English or Spanish. We understand area, price, bedrooms and property type, and answer you right away.</p></div>
+<div class="vs rv" id="vs">
+<div class="vs-l">
+<div class="vs-top"><span class="vs-state" id="vstate"><i></i><b data-es="Listo">Ready</b></span><button class="vs-mute" id="vmute" aria-pressed="false" aria-label="Mute spoken replies"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w" d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/><path class="x" d="M16 9l6 6M22 9l-6 6"/></svg><span id="vmutel" data-es="Voz activada">Voice on</span></button></div>
+<button class="vs-mic" id="vmic" aria-label="Start voice search"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button>
+<p class="vs-tr" id="vtr" aria-live="polite" data-es="Toque para hablar, o escriba abajo.">Tap to speak, or type below.</p>
+<form class="vs-in" id="vform"><input id="vq" autocomplete="off" placeholder="e.g. 3 bedrooms near Gilroy under $1.2M" data-es-ph="p. ej. 3 recámaras cerca de Gilroy, menos de $1.2M"><button class="vs-go" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+<div class="qs" id="vstart"><button type="button" data-q="I want to buy a house" data-qes="Quiero comprar una casa" data-es="Quiero comprar una casa">I want to buy a house</button><button type="button" data-q="Acreage near Gilroy under 2 million" data-qes="Terreno cerca de Gilroy, menos de 2 millones" data-es="Terreno cerca de Gilroy">Acreage near Gilroy</button><button type="button" data-q="What is my home worth?" data-qes="¿Cuánto vale mi casa?" data-es="¿Cuánto vale mi casa?">What's my home worth?</button></div>
+</div>
+<div class="vs-r" id="vres" aria-live="polite">
+<div class="vs-empty"><p class="eyebrow" data-es="Respuesta">Response</p><p class="vs-say" data-es="Sus resultados aparecerán aquí: propiedades, guías de zona y el siguiente paso con nuestro equipo.">Your results appear here: listings, area guides and the next step with our team.</p></div>
+</div>
+</div>
+</div></section>
 
 <section class="contact" id="contact"><div class="wrap g">
 <div><p class="eyebrow rv" style="color:#e4bfa9" data-es="Contacto">Contact</p><h2 class="rv d1" data-es="Comience con una <em>conversación</em>.">Begin with a <em>conversation</em>.</h2><p class="lead rv d2" style="margin-top:20px" data-es="Comprar, vender o simplemente explorar. Le respondemos personalmente.">Buying, selling, or simply exploring. A member of the team will reply personally.</p>
@@ -395,21 +448,76 @@ function setL(l){L=l;document.documentElement.lang=l;$$('[data-es]').forEach(e=>
 $$('.lang button').forEach(b=>b.onclick=()=>setL(b.dataset.l));
 // chat hooks
 document.addEventListener('click',e=>{const t=e.target.closest('[data-tour]');if(t)$('#li').selectedIndex=2});
-// voice
+const T=(en,es)=>L=='es'?es:en;
+// voice AI search
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-function interpret(q){q=q.toLowerCase();const m=['san diego','san jose','morgan hill','gilroy','salinas','prunedale'].find(c=>q.includes(c));const acre=/acre|ranch|land|estate|finca|terreno/.test(q);
- if(/echo|prunedale/.test(q)||acre&&(!m||m=='prunedale'))return L=='es'?'Coincidencia: 319 Echo Valley Rd, Prunedale · 4.87 acres · $1,075,999. Vea la propiedad arriba.':'Match: 319 Echo Valley Rd, Prunedale · 4.87 acres · $1,075,999. See the featured listing above.';
- if(m)return (L=='es'?'Buscando en ':'Searching ')+m.replace(/\b\w/g,c=>c.toUpperCase())+(acre?(L=='es'?' · fincas y terreno':' · estates & acreage'):'')+(L=='es'?'. Un asesor le enviará opciones fuera del mercado; abra el concierge para continuar.':'. An advisor can send on- and off-market options; the concierge can take it from here.');
- return L=='es'?'Entendido. Abra el concierge y le ayudamos a afinar la búsqueda.':'Understood. Open the concierge and we will refine it with you.'}
-function listen(btn,input,out){if(!SR){out.textContent=L=='es'?'Voz no disponible en este navegador. Escriba su búsqueda.':'Voice is not available in this browser. Type your search instead.';input.focus();return}
- const r=new SR();r.lang=L=='es'?'es-US':'en-US';r.interimResults=true;btn.classList.add('live');r.onresult=e=>{input.value=[...e.results].map(x=>x[0].transcript).join('');if(e.results[e.results.length-1].isFinal)out.textContent=interpret(input.value)};r.onend=()=>btn.classList.remove('live');r.onerror=()=>{btn.classList.remove('live');out.textContent=L=='es'?'No se pudo escuchar. Escriba su búsqueda.':'Could not hear that. Type your search instead.'};r.start()}
-$('#vmic').onclick=()=>listen($('#vmic'),$('#vq'),$('#vout'));$('#vq').onkeydown=e=>{if(e.key=='Enter')$('#vout').textContent=interpret($('#vq').value)};
-$('#fmic').onclick=()=>listen($('#fmic'),$('#fq'),$('#fnote'));
-$('#finder').onsubmit=e=>{e.preventDefault();$('#fnote').textContent=interpret($('#fq').value+' '+$('#ft').value)};
+const AREAS=[['San Diego',/san diego|la jolla|coronado|del mar/,'ai-coast','Coastal, urban and waterfront living, from downtown to the beaches.','Vida costera, urbana y frente al mar.','sd'],['San Jose',/san jos[eé]|silicon|willow glen|almaden/,'ai-sanjose','The South Bay\'s most active market, close to tech employers.','El mercado más activo del Sur de la Bahía.','sj'],['Morgan Hill',/morgan hill/,'ai-vineyards','Our home base: foothills, vineyards and estates with land.','Nuestra base: colinas, viñedos y fincas.','mh'],['Gilroy',/gilroy/,'ai-vineyards','Vineyard and ranch country, where Pedro handles luxury estates.','Viñedos y ranchos; Pedro atiende fincas de lujo.','mh'],['Salinas',/salinas|monterey/,'ai-estate','Farmland, acreage and historic homes near the Monterey coast.','Tierras agrícolas, acres y casas históricas.','cc'],['Prunedale',/prunedale|echo valley/,'ai-estate','Hillside acreage, home to our featured listing.','Acres en las colinas, donde está nuestra propiedad destacada.','cc']];
+const LST={name:'319 Echo Valley Rd',city:'Prunedale',price:1075999,beds:3,baths:2,sqft:1220,acres:4.87,img:'../media/319EchoValley.webp'};
+function parse(raw){const t=raw.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const q={raw};
+ const es=/\b(quiero|busco|casa|comprar|vender|recamaras?|habitaciones|cuartos|menos de|millones?|cuanto|terreno|finca|precio|zona|cerca de|vale)\b/.test(t);q.es=es;
+ q.intent=/\b(sell|selling|list my|vender|vendo)\b/.test(t)?'sell':/\b(worth|value|valuation|apprais|cuanto vale|valuacion|valor)\b/.test(t)?'value':/\b(tour|visit|see it|showing|visita|ver la)\b/.test(t)?'tour':/\b(agent|ruben|rc|pedro|talk|call|agente|hablar|llamar)\b/.test(t)?'agent':/\b(rent|lease|rentar|alquilar)\b/.test(t)?'rent':/\b(buy|buying|purchase|looking|find|search|home|house|comprar|busco|quiero|casa|propiedad)\b|\d\s*(bed|br|rec)/.test(t)?'buy':null;
+ q.areas=AREAS.filter(a=>a[1].test(t));if(/central coast|costa central/.test(t))q.areas=AREAS.filter(a=>a[5]=='cc');if(/bay area|south bay|bahia/.test(t))q.areas=AREAS.filter(a=>a[5]=='sj'||a[5]=='mh');
+ let m=t.match(/(under|below|max|up to|less than|menos de|hasta|maximo)\s*\$?\s*([\d.,]+)\s*(m\b|mm|million|millones?|millon|k\b|mil\b)?/);
+ if(!m)m=t.match(/\$\s*([\d.,]+)\s*(m\b|million|k\b)?/)&&[0,0,...t.match(/\$\s*([\d.,]+)\s*(m\b|million|k\b)?/).slice(1)];
+ if(m){let v=parseFloat(String(m[2]).replace(/,/g,''));const u=m[3]||'';v=/^m|mill/.test(u)?v*1e6:/^k|mil$/.test(u)?v*1e3:v<100?v*1e6:v<10000?v*1e3:v;q.max=v}
+ const b=t.match(/(\d+)\s*\+?\s*(bed|bd|br|bedroom|recamara|habitacion|cuarto|dormitorio)/)||t.match(/(one|two|three|four|five|una|dos|tres|cuatro|cinco)\s*(bed|bedroom|recamara|habitacion|cuarto)/);
+ if(b){const w={one:1,two:2,three:3,four:4,five:5,una:1,dos:2,tres:3,cuatro:4,cinco:5};q.beds=+b[1]||w[b[1]]}
+ q.type=/acre|ranch|land|farm|terreno|rancho|finca|acres/.test(t)?'acreage':/condo|condominio|apartment|departamento|townhome/.test(t)?'condo':/luxury|estate|lujo|mansion/.test(t)?'estate':/house|home|single.family|casa|vivienda/.test(t)?'home':null;
+ return q}
+const money=n=>n>=1e6?'$'+(+(n/1e6).toFixed(2))+'M':'$'+Math.round(n/1e3)+'K';
+function reply(q){const es=L=='es',tg=[],out={cards:[],chips:[],lead:false};
+ if(q.intent)tg.push({buy:T('Buying','Compra'),sell:T('Selling','Venta'),value:T('Valuation','Valuación'),tour:T('Tour','Visita'),agent:T('Agent','Agente'),rent:T('Rental','Renta')}[q.intent]);
+ q.areas.forEach(a=>tg.push(a[0]));if(q.max)tg.push(T('Under ','Hasta ')+money(q.max));if(q.beds)tg.push(q.beds+'+ '+T('beds','rec.'));if(q.type)tg.push({acreage:T('Acreage','Terreno'),condo:'Condo',estate:T('Estate','Finca'),home:T('Home','Casa')}[q.type]);
+ out.tags=tg;
+ const fits=(!q.areas.length||q.areas.some(a=>a[5]=='cc'))&&(!q.max||q.max>=LST.price)&&(!q.beds||q.beds<=LST.beds)&&q.type!='condo';
+ if(q.intent=='sell'||q.intent=='value'){out.say=q.intent=='value'?T('Happy to help you find out.','Con gusto le ayudamos.')+' '+T('Our instant AI estimate gives you a range in seconds, and Ruben follows up with a full comparable-sales analysis.','Nuestra estimación con IA le da un rango en segundos y Ruben le envía un análisis completo de ventas comparables.'):T('Happy to help you sell. Our instant AI estimate gives you a range in seconds, and Ruben follows up with a full comparable-sales analysis.','Con gusto le ayudamos a vender. Nuestra estimación con IA le da un rango en segundos y Ruben le envía un análisis completo de ventas comparables.');out.action='value';out.chips=[[T('Start my estimate','Iniciar estimación'),'#valuation'],[T('Talk to Ruben','Hablar con Ruben'),'lead']];out.lead=true}
+ else if(q.intent=='agent'){out.say=T('Of course. Leave your email or phone and Ruben or a member of the team will reach out personally, or call 408.528.4477.','Claro. Deje su correo o teléfono y Ruben o alguien del equipo le contactará personalmente, o llame al 408.528.4477.');out.lead=true;out.chips=[[T('Meet the team','Conocer al equipo'),'#team']]}
+ else if(q.intent=='rent'){out.say=T('We focus on buying and selling, so we don\'t carry rentals. If you\'re weighing a purchase instead, Ruben can walk you through it.','Nos enfocamos en compra y venta, así que no manejamos rentas. Si considera comprar, Ruben puede orientarle.');out.lead=true}
+ else{const where=q.areas.length?q.areas.map(a=>a[0]).join(es?' y ':' and '):T('the South Bay, the Central Coast and San Diego','el Sur de la Bahía, la Costa Central y San Diego');
+  out.say=fits?T(`Here's what fits: our featured listing in Prunedale, 3 bedrooms on 4.87 acres at $1,075,999. Our public inventory is small, so Ruben can also send you on- and off-market homes in ${where}.`,`Esto coincide: nuestra propiedad destacada en Prunedale, 3 recámaras en 4.87 acres por $1,075,999. Nuestro inventario público es pequeño, así que Ruben puede enviarle casas dentro y fuera del mercado en ${where}.`)
+   :T(`I don't have a public listing that matches${q.areas.length?' in '+where:''} right now. Our inventory is limited, but Ruben can send you matching homes, including off-market ones, as soon as they come up.`,`Ahora no tengo una propiedad pública que coincida${q.areas.length?' en '+where:''}. Nuestro inventario es limitado, pero Ruben puede enviarle casas que coincidan, incluso fuera del mercado, en cuanto surjan.`);
+  if(!q.intent&&!q.areas.length&&!q.max&&!q.beds&&!q.type)out.say=T('I can help you buy, sell or value a home across San Jose, Morgan Hill, Gilroy, Salinas and San Diego. Tell me an area, a budget or how many bedrooms.','Puedo ayudarle a comprar, vender o valorar una casa en San Jose, Morgan Hill, Gilroy, Salinas y San Diego. Dígame una zona, un presupuesto o cuántas recámaras.');
+  if(fits)out.cards.push('L');(q.areas.length?q.areas:[AREAS[0],AREAS[2]]).slice(0,fits?1:2).forEach(a=>out.cards.push(a));
+  out.lead=true;out.chips=[[T('Under $1.5M','Menos de $1.5M'),'+ under 1.5 million'],[T('With acreage','Con terreno'),'+ with acreage'],[T('In San Diego','En San Diego'),'+ in San Diego'],[T('Tour Echo Valley','Visitar Echo Valley'),'#featured']]}
+ out.chips.push([T('Ask Wells chat','Chat Ask Wells'),'chat']);return out}
+const VS=$('#vs'),VR=$('#vres'),VTR=$('#vtr'),VQ=$('#vq');let lastQ='',rec=null,muted=false;try{muted=localStorage.getItem('wells-mute')=='1'}catch(e){}
+function state(s,label){VS.dataset.s=s;$('#vstate b').textContent=label||{idle:T('Ready','Listo'),listen:T('Listening…','Escuchando…'),think:T('Thinking…','Pensando…'),speak:T('Speaking','Hablando')}[s]}
+function setMute(m){muted=m;$('#vmute').setAttribute('aria-pressed',m);$('#vmutel').textContent=m?T('Voice off','Voz desactivada'):T('Voice on','Voz activada');try{localStorage.setItem('wells-mute',m?'1':'0')}catch(e){}if(m&&window.speechSynthesis)speechSynthesis.cancel()}
+$('#vmute').onclick=()=>setMute(!muted);setMute(muted);
+function speak(t){if(muted||!window.speechSynthesis){state('idle');return}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=L=='es'?'es-US':'en-US';const v=speechSynthesis.getVoices().find(v=>v.lang.startsWith(L));if(v)u.voice=v;u.rate=1;u.onstart=()=>state('speak');u.onend=u.onerror=()=>state('idle');speechSynthesis.speak(u);setTimeout(()=>{if(!speechSynthesis.speaking)state('idle')},1500)}catch(e){state('idle')}}
+function card(c){if(c=='L')return `<button class="vc" data-go="#featured"><div class="ph"><img src="${LST.img}" alt="319 Echo Valley Rd" loading="lazy"></div><div class="b"><span class="k">${T('Featured listing · Prunedale','Propiedad destacada · Prunedale')}</span><h4>319 Echo Valley Rd</h4><p>$1,075,999 · 3 ${T('bd','rec.')} · 2 ${T('ba','baños')} · 1,220 ${T('sq ft','pies²')} · 4.87 ${T('acres','acres')}</p></div></button>`;
+ return `<button class="vc" data-tab="${c[5]}"><div class="ph"><img src="../media/${c[2]}.jpg" alt="${c[0]}" loading="lazy"></div><div class="b"><span class="k">${T('Area guide','Guía de zona')}</span><h4>${c[0]}</h4><p>${T(c[3],c[4])}</p></div></button>`}
+function run(text){text=(text||'').trim();if(!text){VQ.focus();VTR.textContent=T('Type or say what you\'re looking for.','Escriba o diga lo que busca.');return}
+ lastQ=text;const q=parse(text);if(q.es&&L!='es')setL('es');else if(!q.es&&L=='es'&&/\b(i|want|buy|my|what|house|home|under|bedrooms?|near|with)\b/i.test(text))setL('en');VTR.classList.remove('interim');VTR.textContent='“'+text+'”';VQ.value='';state('think');
+ setTimeout(()=>{const r=reply(q);VR.innerHTML=`<p class="vs-you">${T('You asked','Usted preguntó')}: <b></b></p>${r.tags.length?`<div class="vs-tags">${r.tags.map(x=>`<span>${x}</span>`).join('')}</div>`:''}<p class="vs-say">${r.say}</p>${r.cards.length?`<div class="vs-cards">${r.cards.map(card).join('')}</div>`:''}${r.lead?`<form class="vs-lead" id="vlead" novalidate><p>${r.action=='value'?T('Have Ruben prepare your home\'s analysis. Email or phone, whichever you prefer.','Ruben puede preparar el análisis de su casa. Correo o teléfono, como prefiera.'):T('Have Ruben send you matches. Email or phone, whichever you prefer.','Reciba opciones de Ruben. Correo o teléfono, como prefiera.')}</p><input id="vlc" autocomplete="email" placeholder="${T('Email or phone','Correo o teléfono')}"><button class="btn solid">${T('Send me matches','Enviarme opciones')}</button><span class="err" id="vle"></span></form>`:''}<div class="qs">${r.chips.map(c=>`<button type="button" data-c="${c[1]}">${c[0]}</button>`).join('')}</div>`;
+  VR.querySelector('.vs-you b').textContent=text;speak(r.say)},650)}
+$('#vform').onsubmit=e=>{e.preventDefault();run(VQ.value)};
+$$('#vstart button').forEach(b=>b.onclick=()=>run(L=='es'?b.dataset.qes:b.dataset.q));
+VR.addEventListener('click',e=>{const v=e.target.closest('.vc'),c=e.target.closest('[data-c]');
+ if(v){if(v.dataset.tab){$(`.tabs button[data-t="${v.dataset.tab}"]`).click();location.hash='#communities'}else location.hash=v.dataset.go}
+ if(c){const k=c.dataset.c;if(k=='chat'){window.WellsChat?WellsChat.send(lastQ||T('I want to buy a house','Quiero comprar una casa')):0}else if(k=='lead'){$('#vlc')&&$('#vlc').focus()}else if(k[0]=='#')location.hash=k;else run(lastQ+' '+(L=='es'?k.replace('+ under 1.5 million',' menos de 1.5 millones').replace('+ with acreage',' con terreno').replace('+ in San Diego',' en San Diego'):k.slice(2)))}});
+VR.addEventListener('submit',e=>{e.preventDefault();const v=$('#vlc').value.trim(),em=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),ph=v.replace(/\D/g,'').length>=10;
+ if(!em&&!ph){$('#vle').textContent=T('Please enter a valid email or a 10-digit phone number.','Escriba un correo válido o un teléfono de 10 dígitos.');return}
+ WELLS_LEADS.push({type:'voice-search',contact:v,query:lastQ});e.target.innerHTML=`<p>${T('Thank you. Ruben will send matches to','Gracias. Ruben enviará opciones a')} <b>${v.replace(/</g,'')}</b>.</p>`;speak(T('Thank you. Ruben will be in touch.','Gracias. Ruben se comunicará con usted.'))});
+function fallback(why){state('idle');VTR.classList.remove('interim');VTR.textContent=why;VQ.focus()}
+$('#vmic').onclick=()=>{if(VQ.value.trim()){run(VQ.value);return}
+ if(rec){rec.stop();return}
+ if(!SR){fallback(T('Voice input isn\'t available in this browser, so just type your request below. I\'ll answer the same way.','La voz no está disponible en este navegador; escriba su búsqueda abajo y le respondo igual.'));return}
+ try{window.speechSynthesis&&speechSynthesis.cancel();rec=new SR();rec.lang=L=='es'?'es-US':'en-US';rec.interimResults=true;rec.continuous=false;let fin='',got=false;
+  rec.onstart=()=>{state('listen');VTR.classList.add('interim');VTR.textContent=T('Listening… go ahead.','Escuchando… adelante.')};
+  rec.onresult=e=>{got=true;let it='';fin='';for(const r of e.results){r.isFinal?fin+=r[0].transcript:it+=r[0].transcript}VTR.textContent=(fin+' '+it).trim();VQ.value=(fin+' '+it).trim()};
+  rec.onerror=e=>{got=got||false;rec._err=e.error};
+  rec.onend=()=>{const t=VQ.value.trim(),err=rec&&rec._err;rec=null;if(t){run(t);return}
+   fallback(err=='not-allowed'||err=='service-not-allowed'?T('Microphone access is off. No problem, type your request below and I\'ll take it from there.','El micrófono está desactivado. No hay problema: escriba su búsqueda abajo.'):T('I didn\'t catch anything that time. Tap to try again, or type below.','No escuché nada esta vez. Toque para intentar de nuevo o escriba abajo.'))};
+  rec.start()}catch(e){rec=null;fallback(T('Voice isn\'t available right now, so type your request below.','La voz no está disponible ahora; escriba su búsqueda abajo.'))}};
+state('idle');
+// header finder → voice AI
+$('#fmic').onclick=()=>{location.hash='#voice';setTimeout(()=>$('#vmic').click(),400)};
+$('#finder').onsubmit=e=>{e.preventDefault();const ft=$('#ft').selectedIndex;run([$('#fq').value,['','acreage','home','condo'][ft]].join(' ').trim()||T('I want to buy a house','Quiero comprar una casa'));location.hash='#voice'};
 // estimate
 const base={'San Jose':780,'Morgan Hill':700,'Gilroy':560,'Salinas':450,'Prunedale':520,'San Diego':760};
 window.WELLS_LEADS=window.WELLS_LEADS||[];let busy=false,last=null;
-const T=(en,es)=>L=='es'?es:en,fmt=n=>'$'+(Math.round(n/5000)*5000).toLocaleString('en-US'),cap=t=>t.trim().replace(/\s+/g,' ').toLowerCase().replace(/(^|[\s,.-])(\w)/g,(m,a,c)=>a+c.toUpperCase()).replace(/\b(Ca|Usa)\b/g,x=>x.toUpperCase()).replace(/\b(N|S|E|W)\b(?!\.)/g,'$1.');
+const fmt=n=>'$'+(Math.round(n/5000)*5000).toLocaleString('en-US'),cap=t=>t.trim().replace(/\s+/g,' ').toLowerCase().replace(/(^|[\s,.-])(\w)/g,(m,a,c)=>a+c.toUpperCase()).replace(/\b(Ca|Usa)\b/g,x=>x.toUpperCase()).replace(/\b(N|S|E|W)\b(?!\.)/g,'$1.');
 $('#ea').addEventListener('blur',()=>{if($('#ea').value.trim())$('#ea').value=cap($('#ea').value)});
 $('#es').addEventListener('blur',()=>{const n=parseInt($('#es').value.replace(/\D/g,''));if(n)$('#es').value=n.toLocaleString('en-US')});
 $('#est').onsubmit=e=>{e.preventDefault();if(busy)return;const msg=$('#emsg');msg.textContent='';
